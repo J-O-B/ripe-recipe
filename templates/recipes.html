@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripe Recipes</title>
+</head>
+<body>
+    <h1>Recipes</h1>
+    {% for recipe in recipes %}
+
+        <h3>{{ recipe.recipe_name }}</h3><br>
+        <p>Prep Time: {{ recipe.prep_time }}</p>
+        <p>Cooking Time: {{ recipe.cooking_time }}</p>
+        <p>Recipe Difficulty: {{ recipe.difficulty }}</p>
+        <img src="{{ recipe.pic_url }}" alt="">
+        <p>About This Recipe:<br>{{ recipe.description }}</p>
+        {% set ins_list = recipe.instructions.split('$') %}
+            {% for x in ins_list %}
+                <ul>
+                    <li>{{ x }}{{ ins_list[x] }}</li>
+                </ul>
+            {% endfor %}<br>
+
+        {% set ing_list = recipe.ingredients.split('.') %}
+            {% for x in ing_list %}
+                <ul>
+                    <li>{{ x }}{{ ing_list[x] }}</li>
+                </ul>
+            {% endfor %} 
+
+
+
+    {% endfor %}
+</body>
+</html>
