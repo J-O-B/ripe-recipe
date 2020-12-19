@@ -1,48 +1,52 @@
 {% extends "base.html" %}
 {% block home %}
-<div class="container">
-    <div class="col m8 s10 center-align text-shadow">
-            <h1>Ripe RecipeS</h1>
-    </div>
-    <!--Top Line-->
-    <div class="row center-align">
-        <div class="col s12 m4 l4 center-align home-nav-buttons">
-            <button>Login</button>
-        </div>
-        <div class="col s12 m4 l4"></div>
-        <div class="col s12 m4 l4 center-align home-nav-buttons">
-            <button>Sign Up</button>
-        </div>
-    </div>
-    <!--Line With Logo-->
-    <div class="row center-align">
-        <div class="col s12 m6 offset-m3 logo">
-            <img src="../static/img/logo.png" alt="">
-        </div>
-    </div>
-    <!--The Bottom Nav Links-->
-    <div class="row center-align">
-        <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
-            <button>Browse Recipes</button>
-        </div>
-        <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
-            <button>Search Recipes</button>
-        </div>
-        <div class="col s12 m4 l4 center-align home-nav-buttons">
-            <button>Recipe Categories</button>
-        </div>
-    </div>
-    <div class="row center-align">
-        <div class="col s6 m6 l6 center-align home-nav-buttons">
-            <button>About</button>
-        </div>
-        <div class="col s6 m6 l6 center-align home-nav-buttons">
-            <button>Contact Us</button>
-        </div>
-    </div>
 
 
-</div>
+<!--For Planning:-->
+    <!--if session exists-->
+        <div class="container">
+            <div class="col m8 s10 center-align text-shadow">
+                    <h1>Ripe RecipeS</h1>
+            </div>
+            <!--Top Line-->
+            <div class="row center-align">
+                <div class="col s12 m4 l4 center-align home-nav-buttons">
+                    <button>Login</button>
+                </div>
+                <div class="col s12 m4 l4"></div>
+                <div class="col s12 m4 l4 center-align home-nav-buttons">
+                    <button>Sign Up</button>
+                </div>
+            </div>
+            <!--Line With Logo-->
+            <div class="row center-align">
+                <div class="col s12 m6 offset-m3 logo">
+                    <img src="../static/img/logo.png" alt="">
+                </div>
+            </div>
+            <!--The Bottom Nav Links-->
+            <div class="row center-align">
+                <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
+                    <button>Browse Recipes</button>
+                </div>
+                <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
+                    <button>Search Recipes</button>
+                </div>
+                <div class="col s12 m4 l4 center-align home-nav-buttons">
+                    <button>Recipe Categories</button>
+                </div>
+            </div>
+            <div class="row center-align">
+                <div class="col s6 m6 l6 center-align home-nav-buttons">
+                    <button>About</button>
+                </div>
+                <div class="col s6 m6 l6 center-align home-nav-buttons">
+                    <button>Contact Us</button>
+                </div>
+            </div>
+        </div>
+
+    <!--if no session exists create diff homepage set variable home=false-->
 
 
 
