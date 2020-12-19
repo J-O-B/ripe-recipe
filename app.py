@@ -29,10 +29,37 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+
 @app.route("/recipes")
 def recipes():
     recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes)
+
+# need <recipe_name> here
+
+
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 
 if __name__ == "__main__":
