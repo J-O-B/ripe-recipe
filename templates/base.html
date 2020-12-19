@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="nav-wrapper nav-logo">
                         <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
-                        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                        <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                         <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
 
                                 <div class="col l1 m1 s1">
@@ -55,53 +55,70 @@
                                 <div class="col l1 m1 s1">
                                     <a href=""><h3><i class="fas fa-shopping-basket"></i></h3></a>
                                 </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="nav-content">
+                <div class="row hide-on-small-only">
+                    <div class="custom-nav nav-content">
                         <div class="tabs tabs-transparent custom-nav">
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test1">
-                                    <span class="secondary-nav">My Profile</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test1" class="secondary-nav">My Profile</a>
                             </div>
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test2">
-                                    <span class="secondary-nav">My Recipes</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test3" class="secondary-nav">My Recipes</a>
                             </div>
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test3">
-                                    <span class="secondary-nav">Add Recipe</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test3" class="secondary-nav">Add Recipe</a>
                             </div>
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test4">
-                                    <span class="secondary-nav">Edit Recipe</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test4" class="secondary-nav">Edit Recipe</a>
                             </div>
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test4">
-                                    <span class="secondary-nav">Request Delete</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test4" class="secondary-nav">Request Delete</a>
                             </div>
-                            <div class="col l2 m4 s6 tab">
-                                <a href="#test4">
-                                    <span class="secondary-nav">Logout</span>
-                                </a>
+                            <div class="col s2 center-align">
+                                <a href="#test4" class="secondary-nav">Logout</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <ul class="sidenav" id="mobile-demo">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-            </ul>
+            <div class="sidenav custom-sidenav" id="sidenav">
+                <h4 class="center-align text-main">Ripe Recipes Menu:</h4>
+                <hr class="custom-short-div">
+                <div class="center-align secondary-nav">
+                    <a href="sass.html" class="secondary-nav">View Recipes</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="badges.html" class="secondary-nav">Search Recipes</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="collapsible.html" class="secondary-nav">About RipeRecipe</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="collapsible.html" class="secondary-nav">Contact Us</a>
+                </div>
+                <hr class="custom-short-div">
+                <div class="center-align secondary-nav">
+                    <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="#test3" class="secondary-sub-nav text-shadow">My Recipes</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="#test3" class="secondary-sub-nav text-shadow">Add Recipe</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="#test4" class="secondary-sub-nav text-shadow">Edit Recipe</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="#test4" class="secondary-sub-nav text-shadow">Request Delete</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="#test4" class="secondary-sub-nav text-shadow">Logout</a>
+                </div>
+            </div>
 
         {% endblock %}
     {% endif %}
