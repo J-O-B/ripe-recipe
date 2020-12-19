@@ -18,9 +18,15 @@ h5,
 h6{
     font-family: 'Montez', cursive;
 }
+.title h1{
+    color: rgb(245,41,135);
+}
 
 .text-shadow{
-    text-shadow: 2px, 2px, 2px rgb(0,0,0);
+    text-shadow: 2px 2px rgb(0,0,0);
+}
+.text-shadow:hover{
+    text-shadow: 1px 1px rgb(0,0,0);
 }
 
 .logo img{
@@ -28,4 +34,17 @@ h6{
 }
 .home-nav-buttons{
     margin-bottom:25px;
+}
+
+.home-icons{
+    min-width:200px;
+    background-color: rgb(245,41,135);
+    color: rgb(179,229,252);
+    transition: all 0.5s ease-in-out;
+    font-weight: 500;
+}
+.home-icons:hover{
+    min-width:200px;
+    background-color: rgb(179,229,252);
+    color: rgb(245,41,135);
 }
