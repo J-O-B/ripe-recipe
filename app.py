@@ -24,8 +24,13 @@ def home():
     return render_template("home.html", home=home)
 
 
-@app.route("/get_recipes")
-def get_recipes():
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+@app.route("/recipes")
+def recipes():
     recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes)
 

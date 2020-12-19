@@ -48,3 +48,12 @@ h6{
     background-color: rgb(179,229,252);
     color: rgb(245,41,135);
 }
+.logo img{
+    height:100px;
+}
+.custom-nav{
+    width:100%;    
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}

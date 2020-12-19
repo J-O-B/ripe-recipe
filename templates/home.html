@@ -11,7 +11,7 @@
             <!--Top Line-->
             <div class="row center-align">
                 <div class="col s12 m4 l4 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons text-shadow"><i class="fas fa-lock-open"></i>  Login</a>
+                    <a href="{{ url_for('login') }}" class="btn-large home-icons text-shadow test"><i class="fas fa-lock-open"></i>  Login</a>
                 </div>
                 <div class="col s12 m4 l4"></div>
                 <div class="col s12 m4 l4 center-align home-nav-buttons">
@@ -21,33 +21,35 @@
             <!--Line With Logo-->
             <div class="row center-align">
                 <div class="col s12 m6 offset-m3 logo">
-                    <img src="../static/img/logo.png" alt="">
+
+                    <!--Need to create 3d with mouse movement on this picture!!!!-->
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+                
                 </div>
             </div>
             <!--The Bottom Nav Links-->
             <div class="row center-align">
                 <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons"><i class="far fa-eye"></i>  View Recipes</a>
+                    <a href="#" class="btn-large home-icons text-shadow"><i class="far fa-eye"></i><span>  View Recipes</span></a>
                 </div>
                 <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons"><i class="fas fa-search"></i>  Search Recipes</a>
+                    <a href="#" class="btn-large home-icons text-shadow"><i class="fas fa-search"></i>  Search Recipes</a>
                 </div>
                 <div class="col s12 m4 l4 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons"><i class="fas fa-layer-group"></i>  Categories</a>
+                    <a href="#" class="btn-large home-icons text-shadow"><i class="fas fa-layer-group"></i>  Categories</a>
                 </div>
             </div>
             <div class="row center-align">
                 <div class="col s6 m6 l6 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons"><i class="far fa-address-card"></i>  About</a>
+                    <a href="#" class="btn-large home-icons text-shadow"><i class="far fa-address-card"></i>  About</a>
                 </div>
                 <div class="col s6 m6 l6 center-align home-nav-buttons">
-                    <a href="#" class="btn-large home-icons"><i class="far fa-envelope"></i>  Contact Us</a>
+                    <a href="#" class="btn-large home-icons text-shadow"><i class="far fa-envelope"></i>  Contact Us</a>
                 </div>
             </div>
         </div>
 
     <!--if no session exists create diff homepage set variable home=false-->
-
 
 
 {% endblock %}
