@@ -1,0 +1,31 @@
+/* Import Fonts From Google Fonts */
+/* Montez - Titles */
+/* Roboto - General Text */
+@import url('https://fonts.googleapis.com/css2?family=Montez&family=Roboto:ital,wght@0,300;0,500;1,300;1,500&display=swap');
+
+/* Global CSS */
+body{
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Montez', cursive;
+}
+
+.text-shadow{
+    text-shadow: 2px, 2px, 2px rgb(0,0,0);
+}
+
+.logo img{
+    max-width:250px;
+}
+.home-nav-buttons{
+    margin-bottom:25px;
+}

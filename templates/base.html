@@ -16,6 +16,14 @@
     <title>Ripe Recipes</title>
 </head>
 <body>
+    <!--Check for home variable to render different template style-->
+    {% if home == True %}
+        {% block home %}
+        {% endblock %}
+    {% else %}
+        {% block nav %}
+        {% endblock %}
+    {% endif %}
 
     {% block main_content %}
     {% endblock %}
