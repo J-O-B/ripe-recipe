@@ -3,9 +3,9 @@
 
 
 <!--For Planning:-->
-    <!--if session exists-->
-        <div class="container">
-            <div class="col m8 s10 center-align text-shadow title">
+    <!--if no session exists-->
+        <div class="no-user-home">
+            <div class="col m8 s10 center-align text-shadow title margin-top">
                     <h1>Ripe RecipeS</h1>
             </div>
             <!--Top Line-->
@@ -29,10 +29,10 @@
             </div>
             <!--The Bottom Nav Links-->
             <div class="row center-align">
-                <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
+                <div class="col s12 m4 l4 center-align home-nav-buttons">
                     <a href="{{ url_for('recipes') }}" class="btn-large home-icons text-shadow"><i class="far fa-eye"></i><span>  View Recipes</span></a>
                 </div>
-                <div class="col s5 offset-s1 m4 l4 center-align home-nav-buttons">
+                <div class="col s12 m4 l4 center-align home-nav-buttons">
                     <a href="{{ url_for('search') }}" class="btn-large home-icons text-shadow"><i class="fas fa-search"></i>  Search Recipes</a>
                 </div>
                 <div class="col s12 m4 l4 center-align home-nav-buttons">
@@ -40,10 +40,10 @@
                 </div>
             </div>
             <div class="row center-align">
-                <div class="col s6 m6 l6 center-align home-nav-buttons">
+                <div class="col s12 m6 l6 center-align home-nav-buttons">
                     <a href="{{ url_for('about') }}" class="btn-large home-icons text-shadow"><i class="far fa-address-card"></i>  About</a>
                 </div>
-                <div class="col s6 m6 l6 center-align home-nav-buttons">
+                <div class="col s12 m6 l6 center-align home-nav-buttons">
                     <a href="{{ url_for('contact') }}" class="btn-large home-icons text-shadow"><i class="far fa-envelope"></i>  Contact Us</a>
                 </div>
             </div>

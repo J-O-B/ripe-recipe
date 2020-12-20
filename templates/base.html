@@ -18,6 +18,7 @@
 <body>
 
     <!--Check for home variable to render different template style-->
+    <header>
     {% if home == True %}
         {% block home %}
         {% endblock %}
@@ -26,8 +27,16 @@
             <nav class="nav-extended light-blue lighten-4">
                 <div class="row">
                     <div class="nav-wrapper nav-logo">
-                        <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
-                        <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                        <div class="col s4">
+                            <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image for Ripe Recipe">
+                        </div>
+                        <div class="col s4">
+                            <h3 class="center-align pink-text text-lighten-2 hide-on-med-and-up">Ripe Recipes</h3>
+                        </div>
+                        <div class="col s4">
+                            <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                        </div>
+                        
                         <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
 
                                 <div class="col l1 m1 s1">
@@ -134,10 +143,29 @@
 
         {% endblock %}
     {% endif %}
+    </header>
+
+    <section>
+        <!--Flash Message Feedback-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row">
+                        <div class="col s10 offset-s1 flashes">
+                            <h4 class="light-blue lighten-4 center-align text-shadow">{{ message }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 
     <!--Main Content Block-->
-    {% block main_content %}
-    {% endblock %}
+    <main class="container">
+        {% block main_content %}
+        {% endblock %}
+    </main>
+    
 
     <!--jQuery Script-->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>

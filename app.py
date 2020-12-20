@@ -47,7 +47,11 @@ def signup():
             "fav_food": request.form.get("fav_food").lower(),
             "prof_pic": request.form.get("prof_pic").lower(),
             "bio": request.form.get("bio").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "fav_recipes": "",
+            "chef_rating": 3,
+            "num_of_ratings": 1,
+            "purchased_items": ""
         }
         mongo.db.users.insert_one(register)
 
