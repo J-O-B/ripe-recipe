@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -29,8 +30,30 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
+    if request.method == "POST":
+        # Check if username already exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get('username').lower()})
+
+        if existing_user:
+            flash("Username Already Exists")
+            return redirect(url_for("signup"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "email": request.form.get("email").lower(),
+            "fav_food": request.form.get("fav_food").lower(),
+            "prof_pic": request.form.get("prof_pic").lower(),
+            "bio": request.form.get("bio").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        # Put the new user into "session" cookie
+        session['user'] = request.form.get("username").lower()
+        flash("Congratulations, You Are Now Part Of The Ripe Family!")
     return render_template("signup.html")
 
 

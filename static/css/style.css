@@ -13,7 +13,8 @@
 
 /*----------------------------------------------------------------- Global CSS */
 body{
-    background-color: var(--third);
+    background: radial-gradient(var(--second), var(--first));
+    background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
