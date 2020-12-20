@@ -61,6 +61,34 @@ def signup():
     return render_template("signup.html")
 
 
+@app.route("/newrecipe", methods=["GET", "POST"])
+def newrecipe():
+    if request.method == "POST":
+
+        newrecipe = {
+            "recipe_name": request.form.get("username").lower(),
+            "serves": request.form.get("email").lower(),
+            "prep_time": request.form.get("fav_food").lower(),
+            "cook_time": request.form.get("prof_pic").lower(),
+            "difficulty": request.form.get("bio").lower(),
+            "pic_url": request.form.get("username").lower(),
+            "description": request.form.get("username").lower(),
+            "ingredients": request.form.get("username").lower(),
+            "nutrition": request.form.get("username").lower(),
+            "instructions": request.form.get("username").lower(),
+            "rating": request.form.get("username").lower(),
+            "num_ratings": request.form.get("username").lower(),
+            "created_by": session['user'],
+            "tags": request.form.get("username").lower(),
+        }
+        mongo.db.users.insert_one(newrecipe)
+
+        # Put the new user into "session" cookie
+        session['user']
+        flash("Congratulations, You Are Now Part Of The Ripe Family!")
+    return render_template("add_recipe.html")
+
+
 @app.route("/recipes")
 def recipes():
     recipes = mongo.db.recipes.find()

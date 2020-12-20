@@ -16,7 +16,7 @@ body{
     background: radial-gradient(var(--second), var(--first));
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 h1,
