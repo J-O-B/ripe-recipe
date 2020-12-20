@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+
+    <div class="container light-blue lighten-4">
+        <div class="row">
+            <div class="col s12 m12 center-align">
+                <h2>We Currently Have Recipes That Are Within The Following Categories.</h2>
+            </div>
+                <div class="row">
+                    <div class="col s1"></div>
+                    {% for category in categories %}
+                    <div class="col s5 border center-align">
+                        <h1>{{ category.category_name|capitalize }}</h1>
+                    </div>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -49,7 +49,8 @@ def search():
 
 @app.route("/categories")
 def categories():
-    return render_template("categories.html")
+    categories = mongo.db.categories.find()
+    return render_template("categories.html", categories=categories)
 
 
 @app.route("/about")

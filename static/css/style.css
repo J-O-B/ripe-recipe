@@ -13,17 +13,14 @@
 
 /*----------------------------------------------------------------- Global CSS */
 body{
-    background-color: #ffffff;
+    background-color: var(--third);
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6{
+h3{
     font-family: 'Montez', cursive;
 }
 
@@ -32,11 +29,23 @@ h6{
 }
 
 .text-shadow{
-    text-shadow: 2px 2px rgb(0,0,0);
+    text-shadow: 2px 2px var(--third);
 }
 
 .text-shadow:hover{
-    text-shadow: 1px 1px rgb(0,0,0);
+    text-shadow: 1px 1px var(--second);
+}
+
+.border{
+    -webkit-box-shadow: 3px 3px 5px 6px var(--third);  
+    -moz-box-shadow: 3px 3px 5px 6px var(--third);  
+    box-shadow: 3px 3px 5px 6px var(--third); 
+    transition: all 1s ease-in-out;
+}
+.border:hover{
+    -moz-box-shadow: inset 0 0 10px var(--third);
+    -webkit-box-shadow: inset 0 0 10px var(--third);
+    box-shadow: inset 0 0 10px var(--third);
 }
 
 /*---------------------------------------------------------------- Divs */
