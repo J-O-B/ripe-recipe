@@ -10,12 +10,24 @@
     
 <!--Card to hold the signup form-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('signup') }}">
+        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('newrecipe') }}">
             <div class="card-panel light-blue lighten-4 round-corners">
                 <div class="row">
+                    <div class="input-field col m10 offset-m1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <select name="category" id="category">
+                            <option value="starter">Starter</option>
+                            <option value="main">Main</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label for="category" class="black-text">Select A Recipe Category</label>
+                        <span class="helper-text" data-error="Please Select A Difficulty Level" data-success="Input Correct"></span>
+                    </div>
+
                     <div class="input-field col l5 offset-l1 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="recipe_name" name="recipe_name" type="text" minlength="5" maxlength="50" pattern="^[a-zA-Z0-9]{5,20}$" class="validate">
+                        <input id="recipe_name" name="recipe_name" type="text" minlength="5" maxlength="50" class="validate">
                         <label class="black-text" for="recipe_name">Recipe Name</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
@@ -36,7 +48,7 @@
                     
                     <div class="input-field col l5 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="cook_time" name="cook_time" type="text" class="timepicker">
+                        <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5" pattern="^[0-9]{1,5}$" class="validate">
                         <label class="black-text" for="cook_time">Cooking Time</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
@@ -48,31 +60,93 @@
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
                         </select>
-                        <label for="difficulty">Materialize Select</label>
+                        <label for="difficulty" class="black-text">Select a Difficulty</label>
                         <span class="helper-text" data-error="Please Select A Difficulty Level" data-success="Input Correct"></span>
+                    </div>
+                    
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="recipe_pic" name="recipe_pic" type="text" class="validate">
+                        <label class="black-text" for="recipe_pic">Picture (From URL)</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="ingredients" name="ingredients" type="text" minlength="5" maxlength="500" pattern="^[a-zA-Z0-9]{5,20}$" class="validate">
+                        <input id="ingredients" name="ingredients" type="text" minlength="5" maxlength="500" class="validate">
                         <label class="black-text" for="ingredients">Ingredients, Seperate Ingredients With Minus (-)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
-                    
-                    <div class="col s4 offset-s1 center-align">
-                        <h5>Nutrition Information:</h5>
-                    </div>
-                    <div class="input-field col s4 offset-s1">
+
+                    <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="nutrition" name="nutrition" type="text" minlength="5" maxlength="500" pattern="^[a-zA-Z0-9]{5,20}$" class="validate">
-                        <label class="black-text" for="nutrition">Nutrition, Seperate Ingredients With Minus (-)</label>
+                        <input id="description" name="description" type="text" minlength="5" maxlength="500" class="validate" required>
+                        <label class="black-text" for="description">Description of Recipe</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="instructions" name="instructions" type="text" minlength="5" maxlength="1500" class="validate" required>
+                        <label class="black-text" for="instructions">Instructions after each step use the minus (-)</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+
+                    <div class="col s10 offset-s2">
+                        <h5>Nutrition Information:</h5>
+                        <div class="input-field col s4">
+                            <input id="kcal" name="kcal" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="kcal">KCAL</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4 offset-s2">
+                            <input id="fat" name="fat" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="fat">Fat (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="saturates" name="saturates" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="saturates">Saturates (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4 offset-s2">
+                            <input id="carbs" name="carbs" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="carbs">Carbs (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="sugar" name="sugar" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="sugar">Sugar (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4 offset-s2">
+                            <input id="fibre" name="fibre" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="fibre">Fibre (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="protein" name="protein" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="protein">Protein (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                        <div class="input-field col s4 offset-s2">
+                            <input id="salt" name="salt" type="text" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <label class="black-text" for="salt">Salt (grams)</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="tags" name="tags" type="text" minlength="5" maxlength="500" class="validate" required>
+                        <label class="black-text" for="tags">Tags For This Recipe (i.e "chicken")</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
                 </div>
                 
                 <div class="row">
                     <button type="submit" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
+                        Submit Recipe <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>

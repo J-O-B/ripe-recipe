@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import date
 if os.path.exists("env.py"):
     import env
 
@@ -35,7 +36,7 @@ def signup():
     if request.method == "POST":
         # Check if username already exists
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get('username').lower()})
+            {"username": request.form.get('username')})
 
         if existing_user:
             flash("Username Already Exists")
@@ -43,20 +44,20 @@ def signup():
 
         register = {
             "username": request.form.get("username").lower(),
-            "email": request.form.get("email").lower(),
+            "email": request.form.get("email"),
             "fav_food": request.form.get("fav_food").lower(),
-            "prof_pic": request.form.get("prof_pic").lower(),
+            "prof_pic": request.form.get("prof_pic"),
             "bio": request.form.get("bio").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "fav_recipes": "",
-            "chef_rating": 3,
-            "num_of_ratings": 1,
-            "purchased_items": ""
+            "chef_rating": "3",
+            "num_of_ratings": "1",
+            "purchased_items": "",
         }
         mongo.db.users.insert_one(register)
 
         # Put the new user into "session" cookie
-        session['user'] = request.form.get("username").lower()
+        session['user'] = request.form.get("username")
         flash("Congratulations, You Are Now Part Of The Ripe Family!")
     return render_template("signup.html")
 
@@ -66,26 +67,36 @@ def newrecipe():
     if request.method == "POST":
 
         newrecipe = {
-            "recipe_name": request.form.get("username").lower(),
-            "serves": request.form.get("email").lower(),
-            "prep_time": request.form.get("fav_food").lower(),
-            "cook_time": request.form.get("prof_pic").lower(),
-            "difficulty": request.form.get("bio").lower(),
-            "pic_url": request.form.get("username").lower(),
-            "description": request.form.get("username").lower(),
-            "ingredients": request.form.get("username").lower(),
-            "nutrition": request.form.get("username").lower(),
-            "instructions": request.form.get("username").lower(),
-            "rating": request.form.get("username").lower(),
-            "num_ratings": request.form.get("username").lower(),
+            "category_name": request.form.get("category"),
+            "recipe_name": request.form.get("recipe_name"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "cooking_time": request.form.get("cook_time"),
+            "difficulty": request.form.get("difficulty"),
+            "pic_url": request.form.get("recipe_pic"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "instructions": request.form.get("instructions"),
+            "rating": "3",
+            "rating_count": "1",
             "created_by": session['user'],
-            "tags": request.form.get("username").lower(),
+            "tags": request.form.get("tags"),
+            "kcal": request.form.get("kcal"),
+            "fat": request.form.get("fat"),
+            "saturates": request.form.get("saturates"),
+            "carbs": request.form.get("carbs"),
+            "sugars": request.form.get("sugar"),
+            "fibre": request.form.get("fibre"),
+            "protein": request.form.get("protein"),
+            "salt": request.form.get("salt"),
         }
-        mongo.db.users.insert_one(newrecipe)
 
-        # Put the new user into "session" cookie
-        session['user']
-        flash("Congratulations, You Are Now Part Of The Ripe Family!")
+        mongo.db.recipes.insert_one(newrecipe)
+
+        # Need to update users my_recipes here
+
+        flash("Thanks For Your Recipe, It's Been Added To The Database")
+        return redirect(url_for('recipes'))
     return render_template("add_recipe.html")
 
 
