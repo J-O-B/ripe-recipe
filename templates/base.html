@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="col l2 m2 s2">
-                                    <a href="#"><h3><i class="fas fa-store"></i> Store</h3></a>
+                                    <a href="{{ url_for('store') }}"><h3><i class="fas fa-store"></i> Store</h3></a>
                                 </div>
 
                                 <div class="col l2 m2 s2">
@@ -99,7 +99,7 @@
                     <div class="nav-content">
                         <div class="tabs tabs-transparent ">
                             <div class="col s6 offset-s3 flex-justify">
-                                <a href="{{ url_for('login') }}" class="secondary-nav">Browse Store</a>
+                                <a href="{{ url_for('store') }}" class="secondary-nav">Browse Store</a>
                                 <a href="{{ url_for('login') }}" class="secondary-nav">Login</a>
                                 <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
                             </div>
@@ -122,7 +122,7 @@
                     <a href="{{ url_for('about') }}" class="secondary-nav">About RipeRecipe</a>
                 </div>
                 <div class="center-align secondary-nav">
-                    <a href="{{ url_for('contact') }}" class="secondary-nav">Store</a>
+                    <a href="{{ url_for('store') }}" class="secondary-nav">Store</a>
                 </div>
                 <hr class="custom-short-div">
         {% if session['user'] %}       

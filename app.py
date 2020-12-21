@@ -145,6 +145,11 @@ def my_profile(user):
     return render_template("profile.html", user=user)
 
 
+@app.route("/store")
+def store():
+    return render_template("store.html")
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")
