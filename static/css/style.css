@@ -153,3 +153,13 @@ img{
     margin-top:30px;
     margin-bottom:15px;
 }
+
+/*----------------------------------------------------------------------------------------User Profile */
+#prof_pic{
+    width: 75%;
+    margin-top:25px;
+    margin-left:25px;
+}
+.profile-pic{
+    width:100%;
+}

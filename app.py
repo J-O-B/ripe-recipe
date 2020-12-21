@@ -138,6 +138,13 @@ def categories():
     return render_template("categories.html", categories=categories)
 
 
+@app.route("/myprofile/<user>")
+def my_profile(user):
+    user = mongo.db.users.find_one(
+            {"username": session["user"]})
+    return render_template("profile.html", user=user)
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")
