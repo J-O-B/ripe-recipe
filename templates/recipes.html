@@ -8,17 +8,21 @@
         <p>Prep Time: {{ recipe.prep_time }}</p>
         <p>Cooking Time: {{ recipe.cooking_time }}</p>
         <p>Recipe Difficulty: {{ recipe.difficulty }}</p>
-        <img src="{{ recipe.pic_url }}" alt="">
+        <img src="{{ recipe.pic_url }}" alt="Recipe Picture">
         <p>About This Recipe:<br>{{ recipe.description }}</p>
-        {% set ins_list = recipe.instructions.split('$') %}
+        {% set ins_list = recipe.instructions.split("-") %}
+            <h3>Instructions:</h3>
             {% for x in ins_list %}
+                {% set num = x %}
                 <ul>
-                    <li>{{ x }}{{ ins_list[x] }}</li>
+                    <li>Step : {{ x }}{{ ins_list[x] }}</li>
                 </ul>
             {% endfor %}<br>
 
-        {% set ing_list = recipe.ingredients.split('.') %}
+        {% set ing_list = recipe.ingredients.split('-') %}
+            <h3>Ingredients</h3>
             {% for x in ing_list %}
+            
                 <ul>
                     <li>{{ x }}{{ ing_list[x] }}</li>
                 </ul>

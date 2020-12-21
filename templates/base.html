@@ -70,6 +70,7 @@
                     </div>
                 </div>
                 <hr>
+                {% if session["user"] %}
                 <div class="row hide-on-small-only">
                     <div class="custom-nav nav-content">
                         <div class="tabs tabs-transparent custom-nav">
@@ -80,7 +81,7 @@
                                 <a href="#test3" class="secondary-nav">My Recipes</a>
                             </div>
                             <div class="col s2 center-align">
-                                <a href="#test3" class="secondary-nav">Add Recipe</a>
+                                <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Add Recipe</a>
                             </div>
                             <div class="col s2 center-align">
                                 <a href="#test4" class="secondary-nav">Edit Recipe</a>
@@ -94,6 +95,18 @@
                         </div>
                     </div>
                 </div>
+                {% else %}
+                <div class="row hide-on-small-only">
+                    <div class="nav-content">
+                        <div class="tabs tabs-transparent ">
+                            <div class="col s6 offset-s3 flex-justify">
+                                <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Login</a>
+                                <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </nav>
 
             <div class="sidenav custom-sidenav" id="sidenav">
@@ -112,7 +125,7 @@
                     <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
                 </div>
                 <hr class="custom-short-div">
-        <!--need for loop to check for signed in user-->        
+        {% if session['user'] %}       
                 <div class="center-align secondary-nav">
                     <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
                 </div>
@@ -120,7 +133,7 @@
                     <a href="#test3" class="secondary-sub-nav text-shadow">My Recipes</a>
                 </div>
                 <div class="center-align secondary-nav">
-                    <a href="#test3" class="secondary-sub-nav text-shadow">Add Recipe</a>
+                    <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav text-shadow">Add Recipe</a>
                 </div>
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Edit Recipe</a>
@@ -131,14 +144,14 @@
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Logout</a>
                 </div>
-        <!--else no user-->
+        {% else %}
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Login</a>
                 </div>
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Signup</a>
                 </div>
-        <!--Endif-->
+        {% endif %}
             </div>
 
         {% endblock %}

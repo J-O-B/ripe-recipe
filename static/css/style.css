@@ -59,6 +59,11 @@ img{
 .margin-top{
     margin-top:250px;
 }
+.flex-justify{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 /*---------------------------------------------------------------- Flashes */
 .flashes h4{
     font-size:200%;

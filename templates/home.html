@@ -4,6 +4,7 @@
 
 <!--For Planning:-->
     <!--if no session exists-->
+    {% if not session['user'] %}  
         <div class="no-user-home">
             <div class="col m8 s10 center-align text-shadow title margin-top">
                     <h1>Ripe RecipeS</h1>
@@ -50,6 +51,10 @@
         </div>
 
     <!--if no session exists create diff homepage set variable home=false-->
+    {% else %}
+    {% set home = false %}
+        <h2>Test</h2>
+    {% endif %}
 
 
 {% endblock %}
