@@ -9,6 +9,7 @@
   --first: rgb(245,41,135);
   --second: rgb(179,229,252);
   --third: rgb(234,128,252);
+  --black: rgb(0,0,0);
 }
 
 /*----------------------------------------------------------------- Global CSS */
@@ -17,6 +18,7 @@ body{
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+    color: var(--black);
 }
 
 h1,
@@ -42,19 +44,19 @@ img{
     box-shadow: 3px 3px 5px 6px var(--third); 
     transition: all 1s ease-in-out;
 }
-.border:hover{
-    -moz-box-shadow: inset 0 0 10px var(--third);
-    -webkit-box-shadow: inset 0 0 10px var(--third);
-    box-shadow: inset 0 0 10px var(--third);
-}
 
 .round-border{
     border-radius: 50%;
     background: linear-gradient(90deg, var(--third), var(--second), var(--third));
 }
 .round-corners{
-    border-radius: 10%;
-    background: linear-gradient(90deg, var(--third), var(--second), var(--third));
+    border-radius: 30%;
+}
+.round-image{
+    border-radius: 50%;
+}
+.soft-corners{
+    border-radius: 15%;
 }
 .margin-top{
     margin-top:250px;
@@ -129,24 +131,20 @@ img{
     justify-content: space-around;
 }
 .custom-nav h3{
-    color: var(--first);
+    color: #000;
     text-shadow: 2px 2px var(--third);
     font-weight: 500;
 }
 
 .secondary-nav{
-    color: var(--first);
+    color: #000;
     text-shadow: 2px 2px var(--third);
     font-weight: 500;
     font-size:110%;
 }
-.secondary-nav:hover{
-    color: var(--third);
-    text-shadow: 2px 2px var(--first);
-    font-weight: 500;
-}
+
 .secondary-sub-nav{
-    color: var(--third);
+    color: #000;
     text-shadow: 2px 2px var(--third);
     font-weight: 500;
     font-size:90%;

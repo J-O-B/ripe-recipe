@@ -1,25 +1,47 @@
 {% extends "base.html" %}
 {% block main_content %}
-
-<!--Card to hold the login form-->
+    
+<!--Card to hold the signup form-->
     <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="fas fa-user"></i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">First Name</label>
+        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('login') }}">
+            <div class="card-panel light-blue lighten-4 round-corners">
+                <div class="col s12 m6 offset-m3">
+                    <h1 class="center-align black-text text-lighten-2 border round-border">Login</h1>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="fas fa-key"></i>
-                    <input id="icon_telephone" type="tel" class="validate">
-                    <label for="icon_telephone">Telephone</label>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-cog prefix black-text text-lighten-2"></i>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                        <label class="black-text" for="username">Username</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-lock prefix black-text text-lighten-2"></i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                        <label class="black-text" for="password">Password</label>
+                        <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="col s3 offset-s2 btn-large red accent-3 black-text soft-corners">
+                        Cancel <i class="fas fa-times-circle"></i>
+                    </button>
+                    <button type="submit" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
+                        Login <i class="fas fa-sign-in-alt"></i>
+                    </button>
                 </div>
             </div>
         </form>
     </div>
 
+    <div class="row">
+        <div class="col s6 offset-s3 border round-border">
+            <h5 class="center-align">
+                New Here? <a href="{{ url_for('signup') }}" class="light-blue-text text-darken-4">Join For Free!</a>
+            </h5>
+        </div>
+    </div>
 
 {% endblock %}

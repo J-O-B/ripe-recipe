@@ -51,19 +51,18 @@
                                 </div>
 
                                 <div class="col l2 m2 s2 nav-logo">
-                                    <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                                    <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Image"></a>
+                                </div>
+
+                                <div class="col l2 m2 s2">
+                                    <a href="#"><h3><i class="fas fa-store"></i> Store</h3></a>
                                 </div>
 
                                 <div class="col l2 m2 s2">
                                     <a href="{{ url_for('about') }}"><h3><i class="far fa-address-card"></i> About</h3></a>
                                 </div>
 
-                                <div class="col l2 m2 s2">
-                                    <a href="{{ url_for('contact') }}"><h3><i class="far fa-envelope"></i> Contact</h3></a>
-                                </div>
-
                                 <div class="col l1 m1 s1">
-                                    <a href=""><h3></h3></a><i class="fas fa-store"></i>
                                     <a href=""><h3><i class="fas fa-shopping-basket"></i></h3></a>
                                 </div>
                         </div>
@@ -78,9 +77,6 @@
                                 <a href="#test1" class="secondary-nav">My Profile</a>
                             </div>
                             <div class="col s2 center-align">
-                                <a href="#test3" class="secondary-nav">My Recipes</a>
-                            </div>
-                            <div class="col s2 center-align">
                                 <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Add Recipe</a>
                             </div>
                             <div class="col s2 center-align">
@@ -88,6 +84,9 @@
                             </div>
                             <div class="col s2 center-align">
                                 <a href="#test4" class="secondary-nav">Request Delete</a>
+                            </div>
+                            <div class="col s2 center-align">
+                                <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
                             </div>
                             <div class="col s2 center-align">
                                 <a href="#test4" class="secondary-nav">Logout</a>
@@ -100,7 +99,8 @@
                     <div class="nav-content">
                         <div class="tabs tabs-transparent ">
                             <div class="col s6 offset-s3 flex-justify">
-                                <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Login</a>
+                                <a href="{{ url_for('login') }}" class="secondary-nav">Browse Store</a>
+                                <a href="{{ url_for('login') }}" class="secondary-nav">Login</a>
                                 <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
                             </div>
                         </div>
@@ -122,15 +122,12 @@
                     <a href="{{ url_for('about') }}" class="secondary-nav">About RipeRecipe</a>
                 </div>
                 <div class="center-align secondary-nav">
-                    <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
+                    <a href="{{ url_for('contact') }}" class="secondary-nav">Store</a>
                 </div>
                 <hr class="custom-short-div">
         {% if session['user'] %}       
                 <div class="center-align secondary-nav">
                     <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="#test3" class="secondary-sub-nav text-shadow">My Recipes</a>
                 </div>
                 <div class="center-align secondary-nav">
                     <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav text-shadow">Add Recipe</a>
@@ -140,6 +137,9 @@
                 </div>
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Request Delete</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
                 </div>
                 <div class="center-align secondary-nav">
                     <a href="#test4" class="secondary-sub-nav text-shadow">Logout</a>

@@ -26,8 +26,27 @@ def home():
     return render_template("home.html", home=home)
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        # Check for valid user in database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # Check for valid password for that user
+            if check_password_hash(
+              existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # If password is wrong
+                flash("Username and/or Password Incorrect")
+                return redirect(url_for("login"))
+        else:
+            # username doesn't exist
+            flash("Username and/or Password Incorrect")
+            return redirect(url_for("login"))
     return render_template("login.html")
 
 
