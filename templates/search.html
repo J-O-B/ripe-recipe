@@ -5,21 +5,28 @@
     <div class="row center-align">
         <div class="col s12 m6 offset-m3 center">
             <div class="card light-blue lighten-4 center-align">
-                <div class="card-content pink-text">
-                    <span class="card-title">Search: </span>
+                <div class="card-content black-text">
                     <p>
-                        To search for a recipe, you can look for keywords, such as "Chicken" 
+                        <em>To search for a recipe, you can look for keywords, such as "Chicken"</em> 
                     </p>
                     <form>
-                        <label for="search-text">Search: </label>
-                        <input name="search-text" id="search-text" type="text">
-                        <input class="btn" type="submit" value="Search">
+                        <div class="input-field col s10 offset-s1">
+                            <i class="far fa-question-circle prefix black-text text-lighten-2"></i>
+                            <input id="search" name="search" type="text" minlength="1" maxlength="100" class="validate" required>
+                            <label class="black-text" for="search">Search For ...</label>
+                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                                Search <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <div class="card-action">
                     <p>Don't want to search? You can also browse all recipes, or browse by category:</p>
-                    <a href="{{ url_for('recipes') }}"><strong>View All Recipes</strong></a>
-                    <a href="{{ url_for('categories') }}"><strong>Browse By Category</strong></a>
+                    <a href="{{ url_for('recipes') }}"><strong class="black-text text-shadow">View All Recipes</strong></a>
+                    <a href="{{ url_for('categories') }}"><strong class="black-text text-shadow">Browse By Category</strong></a>
                 </div>
             </div>
         </div>

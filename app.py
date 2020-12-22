@@ -165,6 +165,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/cart")
+def cart():
+    return render_template("cart.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
