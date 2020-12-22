@@ -38,6 +38,9 @@ img{
     text-shadow: 2px 2px var(--third);
 }
 
+.spacer{
+    margin-top:20px;
+}
 .border{
     -webkit-box-shadow: 3px 3px 5px 6px var(--third);  
     -moz-box-shadow: 3px 3px 5px 6px var(--third);  
@@ -167,7 +170,14 @@ img{
 /*---------------------------------------------------------------------------------------- Store */
 
 .product-card{
-    margin-top:50px;
+    min-height: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-card-info{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 

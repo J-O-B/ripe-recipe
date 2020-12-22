@@ -9,3 +9,8 @@ $(document).ready(function(){
     // Carousel Functionality
     $('.carousel').carousel();
   });
+
+  // Full Width Slider
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
