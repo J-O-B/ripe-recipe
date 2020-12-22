@@ -3,14 +3,41 @@
 
         
             <div class="row">
-                <div class="col s12 m3 offset-m1 light-blue">
-                    <div class="col s12 profile-pic">
+                <div class="col s12 m3 offset-m1 light-blue prof-top-card">
                         <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
-                    </div>
                 </div>
-                <div class="col s12 m6 offset-m1 light-blue">
+                <div class="col s12 m7 offset-m1 light-blue prof-top-card">
                     <h2>{{ user.username|capitalize }}</h2>
                     <p>{{ user.bio }}</p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 m5 offset-m1 light-blue">
+                    <h3>My Recipes:</h3>
+                        {% for recipe in myrecipes %}
+                            {% if (recipe.created_by == session["user"]) and 
+                                  (myrecipes != "") %}
+                                <ul>
+                                    <li>{{ recipe.recipe_name|capitalize }}</li>
+                                </ul>
+                            {% else %}
+                                <h5>There seems to be no recipes created by you</h5>
+                            {% endif %}
+                        {% endfor %}
+                </div>
+                <div class="col s10 m5 offset-m1 light-blue">
+                    <h3>Saved Recipes:</h3>
+                    {% for recipe in myrecipes %}
+                            {% if not recipe.fav_recipes == "" %}
+                                <ul>
+                                    <li>{{ recipe.fav_recipes|capitalize }}</li>
+                                </ul>
+                            {% else %}
+                                <h5>You don't seem to have any favorite recipes yet!</h5>
+                                <p>Maybe check out some more recipes? <a href="{{ url_for('recipes') }}">Browse Recipes</a></p>
+                            {% endif %}
+                        {% endfor %}
                 </div>
             </div>
 

@@ -138,11 +138,16 @@ def categories():
     return render_template("categories.html", categories=categories)
 
 
-@app.route("/myprofile/<user>")
-def my_profile(user):
+@app.route("/myprofile")
+def my_profile():
+
     user = mongo.db.users.find_one(
             {"username": session["user"]})
-    return render_template("profile.html", user=user)
+
+    myrecipes = mongo.db.recipes.find(
+            {"created_by": session["user"]})
+
+    return render_template("profile.html", user=user, myrecipes=myrecipes)
 
 
 @app.route("/store")
