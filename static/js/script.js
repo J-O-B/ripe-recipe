@@ -14,3 +14,11 @@ $(document).ready(function(){
   $('.carousel.carousel-slider').carousel({
     fullWidth: true
   });
+
+ // Date Generator
+function dateGen(){
+    var d = new Date();
+    var date = d.getFullYear();
+    $('#date').text(date)
+}
+dateGen();
