@@ -167,6 +167,16 @@ img{
 .prof-top-card{
     height:300px;
 }
+/*---------------------------------------------------------------------------------------- Recipes */
+.category-card img{
+    border-radius: 50%;
+    height:125px;
+}
+.category-card{
+    margin-bottom: 50px;
+    text-decoration: none;
+    color:black;
+}
 
 /*---------------------------------------------------------------------------------------- Store */
 
