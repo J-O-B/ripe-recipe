@@ -226,6 +226,11 @@ img{
     height:auto;
 }
 
+.about-video video{
+    width:90%;
+    border-radius: 5%;
+    margin:20px;
+}
 /*---------------------------------------------------------------------------------------- Footer */
 footer{
     position: relative;
