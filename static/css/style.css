@@ -27,6 +27,13 @@ h2,
 h3{
     font-family: 'Montez', cursive;
 }
+
+.no-margin{
+    margin:0;
+}
+.see-through{
+    background: transparent;
+}
 img{
     max-width: 90vw;
 }
@@ -85,37 +92,54 @@ img{
     text-shadow: var(--third);
 }
 /*-----------------------------------------------------------------Homepage */
-.logo img{
-    max-width:250px;
-}
-.home-nav-buttons{
-    margin-bottom:25px;
-}
-.no-user-home{
-    position: absolute;
-    top:0;
-    background:url("../img/home-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height:99vh;
-    width: 100vw;
+#hero{
     margin:0;
     padding:0;
+    position: relative;
+    top:0;
+    height:60vh;
+    width:99vw;
+    overflow: hidden;
+    margin-bottom:50px;
+}
+.video-container{
+    position: absolute;
+    z-index: 0;
+    top:0;
+    left:0;
+}
+.video-container video{
+    width:99vw;
+    display: block;
+}
+.video-bg{
+    position: relative;
+}
+.header-content{
+    z-index: 1;
+    position: absolute; 
+    left: 0; 
+    right: 0;
+    top:10%;
+    height:300px;
+    max-height: 100%;
+    margin: auto;
+    width: 500px;
+    max-width: 95vw;
+    background: rgba(245,41,135, 0.5);
+    border-radius: 30%;
+}
+#home-cards i{
+    font-size: 200%;
+    border-radius: 50%;
+    text-shadow: 1px 1px var(--first);
 }
 
-.home-icons{
-    min-width:200px;
-    background-color: var(--first);
-    color: var(--second);
-    transition: all 0.5s ease-in-out;
-    font-weight: 500;
+.home-cards{
+    margin-bottom: 20px;
+    height:300px;
 }
 
-.home-icons:hover{
-    min-width:200px;
-    background-color: var(--second);
-    color: var(--first);
-}
 /*-----------------------------------------------------------------Navbar */
 .fa-bars{
     font-size: 300%;

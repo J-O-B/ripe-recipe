@@ -30,89 +30,13 @@
                         common interests, food! 
                     </p>
                 </div>
-                <!--Carousel-->
-                <h5>(<i class="far fa-hand-pointer"></i> Swipe To Use:)</h5>
-                <div class="carousel">
-            <!--Carousel 1-->
-                    <div class="card carousel-item center-align">
-                       <div class="card">
-                            <div class="card-image">
-                                <img src="{{ url_for('static', filename='img/home-bg.jpg') }}">
-                                <span class="card-title">Recipes</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    Our recipes come from varous places, but our number one resource is YOU! <br>
-                                    We aim to share your recipes with others from around the world.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            <!--Carousel 2-->
-                    <div class="card carousel-item center-align">
-                       <div id="2" class="card">
-                            <div class="card-image">
-                                <img src="{{ url_for('static', filename='img/home-bg.jpg') }}">
-                                <span class="card-title">Store</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    We only list items that have a stellar customer satisfaction rating. If we don't have what you're looking for, 
-                                    feel free to send a message to an admin from your profile page and we can try help you find the perfect product, 
-                                    even if we have to point you to another business! 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            <!--Carousel 3-->
-                    <div class="card carousel-item center-align">
-                       <div class="card">
-                            <div class="card-image">
-                                <img src="{{ url_for('static', filename='img/home-bg.jpg') }}">
-                                <span class="card-title">Chef Ratings</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    An initial rating of 3 / 5 is applied to all new members. Once you submit recipes, you can increase (or decrease) your 
-                                    chef rating. This score is based on the combined average of all of your recipes.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            <!--Carousel 4-->
-                    <div class="card carousel-item center-align">
-                       <div class="card">
-                            <div class="card-image">
-                                <img src="{{ url_for('static', filename='img/home-bg.jpg') }}">
-                                <span class="card-title">Recipe Ratings</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    An initial rating of 3 / 5 is applied to all new recipes. This score will increase (or decrease) when other members 
-                                    rate your recipe. This score is based on an average of all ratings.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            <!--Carousel 5-->
-                    <div class="card carousel-item center-align">
-                       <div class="card">
-                            <div class="card-image">
-                                <img src="{{ url_for('static', filename='img/home-bg.jpg') }}">
-                                <span class="card-title">Our Guarantee</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    Our Ripe guarantee is to maintain our member first ideology. Our services will remain free to use.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <!--Video-->
+                <video width="320" height="240" controls>
+                    <source src="{{ url_for('static', filename='vid/ripe-recipe.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
 
-                
+        <!--Bottom Cards-->  
         <div class="row">
             <div class="col s12 about-card">
                 <div class="col s12 m5 center-align light-blue about-card">

@@ -19,11 +19,6 @@
 
     <!--Check for home variable to render different template style-->
     <header>
-    {% if home == True %}
-        {% block home %}
-        {% endblock %}
-    {% else %}
-        {% block nav %}
             <nav class="nav-extended light-blue lighten-4">
                 <div class="row">
                     <div class="nav-wrapper nav-logo">
@@ -70,7 +65,7 @@
                 </div>
                 <hr>
                 {% if session["user"] %}
-                <div class="row hide-on-small-only">
+                <div class="no-margin row hide-on-small-only">
                     <div class="custom-nav nav-content">
                         <div class="tabs tabs-transparent custom-nav">
                             <div class="col s2 center-align">
@@ -95,11 +90,11 @@
                     </div>
                 </div>
                 {% else %}
-                <div class="row hide-on-small-only">
+                <div class="no-margin row hide-on-small-only">
                     <div class="nav-content">
                         <div class="tabs tabs-transparent ">
                             <div class="col s6 offset-s3 flex-justify">
-                                <a href="{{ url_for('store') }}" class="secondary-nav">Browse Store</a>
+                                <a href="{{ url_for('contact') }}" class="secondary-nav">Contact</a>
                                 <a href="{{ url_for('login') }}" class="secondary-nav">Login</a>
                                 <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
                             </div>
@@ -146,16 +141,16 @@
                 </div>
         {% else %}
                 <div class="center-align secondary-nav">
-                    <a href="#test4" class="secondary-sub-nav text-shadow">Login</a>
+                    <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
                 </div>
                 <div class="center-align secondary-nav">
-                    <a href="#test4" class="secondary-sub-nav text-shadow">Signup</a>
+                    <a href="{{ url_for('login') }}" class="secondary-sub-nav text-shadow">Login</a>
+                </div>
+                <div class="center-align secondary-nav">
+                    <a href="{{ url_for('signup') }}" class="secondary-sub-nav text-shadow">Signup</a>
                 </div>
         {% endif %}
             </div>
-
-        {% endblock %}
-    {% endif %}
     </header>
 
 <!--Flash Message Feedback-->
@@ -172,7 +167,9 @@
             {% endif %}
         {% endwith %}
     </section>
-
+<!--hero Content Block-->
+    {% block hero %}
+    {% endblock %}
 <!--Main Content Block-->
     <main class="container">
         {% block main_content %}
@@ -181,6 +178,8 @@
 
 <!--Footer Block-->
     <footer>
+        <!--Empty Row To Ensure No Interference With Footer Layout-->
+        <div class="row"></div>
         <div class="row">
             <div class="col s10 offset-s1 m4 blue black-text center-align footer-content">
                 <h5>Company</h5>
