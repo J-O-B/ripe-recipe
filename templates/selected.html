@@ -4,27 +4,77 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align black-text text-lighten-2 border round-border">Success!</h1>
+            <h1 class="center-align black-text text-lighten-2 border round-border">Your Selected Recipe:</h1>
         </div>
     </div>
         {% for recipes in recipe %}
-        <p>{{ recipes.category_name }}</p>
-        <p>{{ recipes.recipe_name }}</p>
-        <p>{{ recipes.prep_time }}</p>
-        <p>{{ recipes.cooking_time }}</p>
-        <p>{{ recipes.difficulty }}</p>
-        <p><img src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture"></p>
-        <p>{{ recipes.description }}</p>
-        {% set list1 = recipes.ingredients.split('-') %}
-            {% for item in list1 %}
-                <p>{{ item }}</p>
-            {% endfor %} 
-        {% set list2 = recipes.instructions.split('.') %}
-            {% for item in list2 %}
-                <p>{{ item }}</p>
-            {% endfor %} 
-        <p>{{ recipes.rating }}</p>
-
+            <div class="row">
+                <div class="col s10 offset-s1 m4 grey lighten-2 top-recipe-card border soft-corners">
+                    <!--Recipe Image-->
+                    <img class="recipe-image soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
+                </div>
+                <div class="col s10 offset-s1 m8 grey lighten-2 top-recipe-card border soft-corners">
+                    <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
+                    <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
+                    <p><strong>Prep Time: </strong><span class="center-align">{{ recipes.prep_time }} min</span></p>
+                    <p><strong>Cooking Time: </strong><span class="center-align">{{ recipes.cooking_time }} min</span></p>
+                    <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
+                    <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
+                    <div class="col s3 center-align">
+                        <p><strong>KCAL</strong><br>{{ recipes.kcal }}</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Fat</strong><br>{{ recipes.fat }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Saturates</strong><br>{{ recipes.saturates }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Carbs</strong><br>{{ recipes.carbs }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Sugars</strong><br>{{ recipes.sugars }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Fibre</strong><br>{{ recipes.fibre }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Protein</strong><br>{{ recipes.protein }}g</p>
+                    </div>
+                    <div class="col s3 center-align">
+                        <p><strong>Salt</strong><br>{{ recipes.salt }}g</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 offset-s1 m6">
+                    <h3 class="center-align">Ingredients:</h3>
+                    <hr class="custom-short-div">
+                    {% set list1 = recipes.ingredients.split('.') %}
+                        <ul>
+                        {% for item in list1 %}
+                            {% if item|length != 0 %}
+                                <li>{{ item|capitalize }}.</li>
+                            {% endif %}
+                        {% endfor %} 
+                        </ul>
+                </div>
+                <div class="col s10 offset-s1 m6">
+                    <h3 class="center-align">Instructions:</h3>
+                    <hr class="custom-short-div">
+                    <!--Convert instructions string into a list-->
+                    {% set list2 = recipes.instructions.split('.') %}
+                        <ol>
+                        <!--Run through new list of instructions-->
+                        {% for item in list2 %}
+                            <!--Stop an empty last list item-->
+                            {% if item|length != 0 %}
+                                <li>{{ item|capitalize }}.</li>
+                            {% endif %}
+                        {% endfor %}     
+                        </ol>     
+                </div>
+            </div>
         {% endfor %}
 
         
