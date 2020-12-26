@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h1 class="center-align black-text text-lighten-2 border round-border">Main Course Recipes:</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for mains in main %}
+        <div class="col s6 m2 offset-m1 grey lighten-2 soft-corners border center-align">
+            <form  method="POST" action="{{ url_for('main') }}">
+                <h5>{{ mains.recipe_name|capitalize }}</h5>
+                <img class ="recipe-pic" src="{{ mains.pic_url }}" alt="Recipe Picture">
+                <p>{{ mains.description }}</p>
+                <input name="name" id="name" value="{{ mains.recipe_name }}">
+                <button type="submit" value="{{ mains.recipe_name }}" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
+                        View More
+                </button>
+            </form>
+                
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

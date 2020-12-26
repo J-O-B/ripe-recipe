@@ -192,14 +192,10 @@ img{
     height:300px;
 }
 /*---------------------------------------------------------------------------------------- Recipes */
-.category-card img{
-    border-radius: 50%;
-    height:125px;
-}
-.category-card{
-    margin-bottom: 50px;
-    text-decoration: none;
-    color:black;
+.recipe-pic{
+    height:100px;
+    width:100px;
+    border-radius: 30%;
 }
 
 /*---------------------------------------------------------------------------------------- Store */

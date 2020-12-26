@@ -133,10 +133,23 @@ def search():
     return render_template("search.html")
 
 
-@app.route("/categories")
-def categories():
-    categories = mongo.db.categories.find()
-    return render_template("categories.html", categories=categories)
+@app.route("/main", methods=["GET", "POST"])
+def main():
+    main = mongo.db.recipes.find({"category_name": "main"})
+    name = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        recipe = mongo.db.recipes.find(
+            {"recipe_name": request.form.get("name")})
+
+        return render_template("selected.html", recipe=recipe, name=name)
+
+    return render_template("main.html", main=main)
+
+
+@app.route("/main/<name>")
+def mains(name):
+    return render_template("selected.html")
 
 
 @app.route("/myprofile")
