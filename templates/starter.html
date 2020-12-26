@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h1 class="center-align black-text text-lighten-2 border round-border">Starter Recipes:</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for starters in starter %}
+        <div class="col s6 m2 offset-m1 grey lighten-2 soft-corners border center-align">
+            <form  method="POST" action="{{ url_for('starter') }}">
+                <h5>{{ starters.recipe_name|capitalize }}</h5>
+                <img class ="recipe-pic" src="{{ starters.pic_url }}" alt="Recipe Picture">
+                <p>{{ starters.description }}</p>
+                <input class="hidden" name="name" id="name" value="{{ starters.recipe_name }}">
+                <button type="submit" value="{{ starters.recipe_name }}" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
+                        View More
+                </button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col s10 offset-s1 center-align">
+            <a href="{{ url_for('recipes') }}">Back to the categories?</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}

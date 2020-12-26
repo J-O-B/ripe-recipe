@@ -133,6 +133,20 @@ def search():
     return render_template("search.html")
 
 
+@app.route("/starter", methods=["GET", "POST"])
+def starter():
+    starter = mongo.db.recipes.find({"category_name": "starter"})
+    name = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        recipe = mongo.db.recipes.find(
+            {"recipe_name": request.form.get("name")})
+
+        return render_template("selected.html", recipe=recipe, name=name)
+
+    return render_template("starter.html", starter=starter)
+
+
 @app.route("/main", methods=["GET", "POST"])
 def main():
     main = mongo.db.recipes.find({"category_name": "main"})
@@ -147,9 +161,32 @@ def main():
     return render_template("main.html", main=main)
 
 
-@app.route("/main/<name>")
-def mains(name):
-    return render_template("selected.html")
+@app.route("/dessert", methods=["GET", "POST"])
+def dessert():
+    dessert = mongo.db.recipes.find({"category_name": "dessert"})
+    name = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        recipe = mongo.db.recipes.find(
+            {"recipe_name": request.form.get("name")})
+
+        return render_template("selected.html", recipe=recipe, name=name)
+
+    return render_template("dessert.html", dessert=dessert)
+
+
+@app.route("/drink", methods=["GET", "POST"])
+def drink():
+    drink = mongo.db.recipes.find({"category_name": "drink"})
+    name = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        recipe = mongo.db.recipes.find(
+            {"recipe_name": request.form.get("name")})
+
+        return render_template("selected.html", recipe=recipe, name=name)
+
+    return render_template("drink.html", drink=drink)
 
 
 @app.route("/myprofile")

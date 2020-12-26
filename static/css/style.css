@@ -37,7 +37,9 @@ h3{
 img{
     max-width: 90vw;
 }
-
+.hidden{
+    display:none;
+}
 .title h1{
     color: var(--first);
 }
@@ -197,6 +199,17 @@ img{
     width:100px;
     border-radius: 30%;
 }
+.category-card{
+    overflow: hidden;
+    text-decoration: none;
+    color: #000;
+    margin-bottom:20px;
+}
+.category-card img{
+    max-width:100%;
+    max-height: 100%;
+}
+
 
 /*---------------------------------------------------------------------------------------- Store */
 
