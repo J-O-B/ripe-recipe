@@ -7,10 +7,25 @@
             <h1 class="center-align black-text text-lighten-2 border round-border">Success!</h1>
         </div>
     </div>
-        {{ name }}
         {% for recipes in recipe %}
+        <p>{{ recipes.category_name }}</p>
         <p>{{ recipes.recipe_name }}</p>
+        <p>{{ recipes.prep_time }}</p>
+        <p>{{ recipes.cooking_time }}</p>
+        <p>{{ recipes.difficulty }}</p>
+        <p><img src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture"></p>
         <p>{{ recipes.description }}</p>
+        {% set list1 = recipes.ingredients.split('-') %}
+            {% for item in list1 %}
+                <p>{{ item }}</p>
+            {% endfor %} 
+        {% set list2 = recipes.instructions.split('.') %}
+            {% for item in list2 %}
+                <p>{{ item }}</p>
+            {% endfor %} 
+        <p>{{ recipes.rating }}</p>
+
         {% endfor %}
 
+        
 {% endblock %}
