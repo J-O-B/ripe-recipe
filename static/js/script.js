@@ -10,9 +10,10 @@ $(document).ready(function(){
     $('.carousel').carousel();
   });
 
-  // Full Width Slider
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true
+  // Full Width Slider 
+  $('.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
   });
 
  // Date Generator

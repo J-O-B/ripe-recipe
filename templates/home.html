@@ -8,7 +8,7 @@
             </video>
         </div>
         <div class="header-content">
-            <div class="col m6 s10 see-through">
+            <div class="col m8 s10 see-through">
                 <h2 class="center-align">Welcome To Ripe Recipes</h2>
                 <hr class="custom-short-div">
                 <p class="center-align">
@@ -26,41 +26,103 @@
 {% block main_content %}
     <section>
         <div class="row" id="home-cards">
-            <div class="col m4 s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                <h3>Community</h3>
-                <hr class="custom-short-div">
-                <i class="fas fa-globe-europe"></i>
-                <br><br>
-                <p>Our Community Contains Users From Across The Globe</p>
+            <div class="col m4 s10 offset-s1">
+                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
+                    <h3>Community</h3>
+                    <hr class="custom-short-div">
+                    <i class="fas fa-globe-europe"></i>
+                    <br><br>
+                    <p>Our Community Contains Users From Across The Globe</p>
+                </div> 
             </div>
-            <div class="col m4 s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                <h3>Free</h3>
-                <hr class="custom-short-div">
-                <i class="fas fa-comment-dollar"></i>
-                <br><br>
-                <p>Our Services Are Absolutely Free! For All Users!</p>
+            <div class="col m4 s10 offset-s1">
+                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
+                    <h3>Free</h3>
+                    <hr class="custom-short-div">
+                    <i class="fas fa-comment-dollar"></i>
+                    <br><br>
+                    <p>Our Services Are Absolutely Free! For All Users!</p>
+                </div> 
             </div>
-            <div class="col m4 s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                <h3>Recipes</h3>
-                <hr class="custom-short-div">
-                <i class="far fa-list-alt"></i>
-                <br><br>
-                <p>Our Database Contains Only User Generated Recipes.</p>
+            <div class="col m4 s10 offset-s1">
+                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
+                    <h3>Recipes</h3>
+                    <hr class="custom-short-div">
+                    <i class="far fa-list-alt"></i>
+                    <br><br>
+                    <p>Our Database Contains Only User Generated Recipes.</p>   
+                </div> 
             </div>
         </div>
     </section>
 
     <div class="row">
-        <div class="col s10 offset-s1 grey lighten-2 soft-corners">
-            <h3 class="center-align">About Ripe Recipes</h3>
+        <div id="about-card" class="col s10 offset-s1 grey lighten-2 round-corners center-align">
+            <h3 class="center-align">Ripe Features</h3>
             <hr class="custom-short-div">
-            <p class="center-align">
-                Ripe is a completely free to use online cookbook and store.<br><br>
-                Our recipe database is made entirely from user generated recipes from around the world.<br><br>
-                As a user, you will only be able to view recipes, however, as a member, you can unlock all the features of Ripe as well as take part 
-                in Ripe promotional offers where you may recieve vouchers and or discounts for our online store.<br>
-                With That In Mind <a href="{{ url_for('signup') }}">Sign Up Here</a>
-            </p>
+            <i class="fas fa-chevron-circle-left"></i>
+            <span>Swipe Left Or Right</span>
+            <i class="fas fa-chevron-circle-right"></i>
+            <div class="carousel carousel-slider">
+                <!--Slide One-->
+                <div class="carousel-item slide">
+                    <div class="col s6">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="col s6">
+                        <h4>Social</h4>
+                        <p>
+                            Ripe is a completely free to use online cookbook and store. We welcome users from all over the world and aim 
+                            to provide users with a social media like platform centered around the culinary arts.                        
+                        </p> 
+                    </div> 
+                </div>
+                <!--Slide Two-->
+                <div class="carousel-item slide">
+                    <div class="col s6">
+                        <i class="fas fa-user-lock"></i> 
+                    </div>
+                    <div class="col s6">
+                        <h4>Free Membership</h4>
+                        <p>
+                            Ripe offers free membership to all users. Although some of our services are open to all users, some of Ripe's 
+                            features are for members only!                        
+                        </p> 
+                        <p>
+                            Should you wish to join our community, you can <a href="{{ url_for('signup') }}"><strong>Sign Up</strong></a>
+                            or <a href="{{ url_for('login') }}"><strong>Login</strong></a>
+                        </p>
+                    </div> 
+                </div>
+                <!--Slide Three-->
+                <div class="carousel-item slide">
+                    <div class="col s6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="col s6 center-align">
+                        <h4>Our Data</h4> 
+                        <p>
+                            All of our recipes as well as user information are stored externally on secure servers. This security, paired with 
+                            our secure store payments means that your data is safe with us.
+                        </p>
+                        <cite>* To ensure even higher levels of security, we do not store or ask for specific personal information.</cite>
+                    </div> 
+                </div>
+                <!--Slide Four-->
+                <div class="carousel-item slide">
+                    <div class="col s6">
+                        <i class="fas fa-store-alt"></i>
+                    </div>
+                    <div class="col s6 center-align">
+                        <h4>The Ripe Store</h4>
+                        <p>
+                            The Ripe Store was created to help our members source only the best in culinary utensils and accessorise.<br>
+                            Our product line is aimed to offer unbeatable value, quality, and customer satisfaction.                      
+                        </p> 
+                        <p>For more, visit the <a href="{{ url_for('store') }}"><strong>Ripe Store</strong></a></p>
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %} 
