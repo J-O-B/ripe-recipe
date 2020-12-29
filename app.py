@@ -134,36 +134,39 @@ def search():
 @app.route("/starter", methods=["GET", "POST"])
 def starter():
     starter = mongo.db.recipes.find({"category_name": "starter"})
-    name = ""
-    if request.method == "POST":
-        name = request.form.get("name")
-        recipe = mongo.db.recipes.find(
-            {"recipe_name": request.form.get("name")})
-
-        return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template("starter.html", starter=starter)
 
 
-@app.route("/user", methods=["GET", "POST"])
-def user():
+@app.route("/recipe/<name>", methods=["GET", "POST"])
+def selected(name):
+    """
+    The selected page is a general page which can run all recipe types,
+    on page logic will change
+    """
+    name = request.form.get("name")
+    recipe = mongo.db.recipes.find(
+        {"recipe_name": request.form.get("name")})
+
+    return render_template("selected.html", recipe=recipe, name=name)
+
+
+@app.route("/user/<user>", methods=["GET", "POST"])
+def user(user):
     user = request.form.get("user")
     userDB = mongo.db.users.find(
         {"username": request.form.get("user")})
 
-    return render_template("user.html", user=user, userDB=userDB)
+    recipes = mongo.db.recipes.find(
+            {"created_by": user})
+
+    return render_template(
+        "user.html", recipes=recipes, user=user, userDB=userDB)
 
 
 @app.route("/main", methods=["GET", "POST"])
 def main():
     main = mongo.db.recipes.find({"category_name": "main"})
-    name = ""
-    if request.method == "POST":
-        name = request.form.get("name")
-        recipe = mongo.db.recipes.find(
-            {"recipe_name": request.form.get("name")})
-
-        return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template("main.html", main=main)
 
@@ -171,13 +174,6 @@ def main():
 @app.route("/dessert", methods=["GET", "POST"])
 def dessert():
     dessert = mongo.db.recipes.find({"category_name": "dessert"})
-    name = ""
-    if request.method == "POST":
-        name = request.form.get("name")
-        recipe = mongo.db.recipes.find(
-            {"recipe_name": request.form.get("name")})
-
-        return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template("dessert.html", dessert=dessert)
 
@@ -185,13 +181,6 @@ def dessert():
 @app.route("/drink", methods=["GET", "POST"])
 def drink():
     drink = mongo.db.recipes.find({"category_name": "drink"})
-    name = ""
-    if request.method == "POST":
-        name = request.form.get("name")
-        recipe = mongo.db.recipes.find(
-            {"recipe_name": request.form.get("name")})
-
-        return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template("drink.html", drink=drink)
 

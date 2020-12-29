@@ -77,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <form  method="POST" action="{{ url_for('user') }}">
+                    <form  method="POST" action="{{ url_for('user', user=recipes.created_by) }}">
                         <input class="hidden" name="user" id="user" value="{{ recipes.created_by }}">
                         <button type="submit" value="{{ recipes.created_by }}" class="col s12 btn-large green accent-3 black-text soft-corners">
                                 This Recipe Was Created By {{ recipes.created_by }}, View More Of {{ recipes.created_by }}'s Recipes
