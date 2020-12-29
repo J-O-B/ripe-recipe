@@ -125,8 +125,6 @@ def recipes():
     recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes)
 
-# need <recipe_name> here
-
 
 @app.route("/search")
 def search():
@@ -145,6 +143,15 @@ def starter():
         return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template("starter.html", starter=starter)
+
+
+@app.route("/user", methods=["GET", "POST"])
+def user():
+    user = request.form.get("user")
+    userDB = mongo.db.users.find(
+        {"username": request.form.get("user")})
+
+    return render_template("user.html", user=user, userDB=userDB)
 
 
 @app.route("/main", methods=["GET", "POST"])
