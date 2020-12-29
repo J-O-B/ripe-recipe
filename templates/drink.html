@@ -8,14 +8,14 @@
         </div>
     </div>
     <div class="row">
-        {% for mains in main %}
+        {% for drinks in drink %}
         <div class="col s6 m2 offset-m1 grey lighten-2 soft-corners border center-align">
-            <form  method="POST" action="{{ url_for('main') }}">
-                <h5>{{ mains.recipe_name|capitalize }}</h5>
-                <img class ="recipe-pic" src="{{ mains.pic_url }}" alt="Recipe Picture">
-                <p>{{ mains.description }}</p>
-                <input name="name" id="name" value="{{ mains.recipe_name }}">
-                <button type="submit" value="{{ mains.recipe_name }}" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
+            <form  method="POST" action="{{ url_for('drink') }}">
+                <h5>{{ drinks.recipe_name|capitalize }}</h5>
+                <img class ="recipe-pic" src="{{ drinks.pic_url }}" alt="Recipe Picture">
+                <p>{{ drinks.description }}</p>
+                <input class="hidden" name="name" id="name" value="{{ drinks.recipe_name }}">
+                <button type="submit" value="{{ drinks.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
                         View More
                 </button>
             </form>

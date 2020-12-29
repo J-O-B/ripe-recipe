@@ -14,8 +14,8 @@
                 <h5>{{ mains.recipe_name|capitalize }}</h5>
                 <img class ="recipe-pic" src="{{ mains.pic_url }}" alt="Recipe Picture">
                 <p>{{ mains.description }}</p>
-                <input name="name" id="name" value="{{ mains.recipe_name }}">
-                <button type="submit" value="{{ mains.recipe_name }}" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
+                <input class="hidden" name="name" id="name" value="{{ mains.recipe_name }}">
+                <button type="submit" value="{{ mains.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
                         View More
                 </button>
             </form>
