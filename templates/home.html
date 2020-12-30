@@ -9,14 +9,13 @@
         </div>
         <div class="header-content">
             <div class="col m8 s10 see-through">
-                <h2 class="center-align">Welcome To Ripe Recipes</h2>
+                <h2 class="center-align">
+                    Welcome To Ripe Recipes
+                </h2>
                 <hr class="custom-short-div">
-                <p class="center-align">
-                    "Cooking is all about people. Food is maybe the only universal 
-                    thing that really has the power to bring everyone together. No 
-                    matter what culture, everywhere around the world, people eat together."<br>
-                    - Guy Fieri
-                </p>
+                <h3 class="center-align">
+                    The Culinary Social Platform
+                </h3>
             </div>
         </div>
     </section>
@@ -56,73 +55,85 @@
         </div>
     </section>
 
+    <!--First Row-->
     <div class="row">
-        <div id="about-card" class="col s10 offset-s1 grey lighten-2 round-corners center-align">
-            <h3 class="center-align">Ripe Features</h3>
-            <hr class="custom-short-div">
-            <i class="fas fa-chevron-circle-left"></i>
-            <span>Swipe Left Or Right</span>
-            <i class="fas fa-chevron-circle-right"></i>
-            <div class="carousel carousel-slider">
-                <!--Slide One-->
-                <div class="carousel-item slide">
-                    <div class="col s6">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="col s6">
-                        <h4>Social</h4>
-                        <p>
-                            Ripe is a completely free to use online cookbook and store. We welcome users from all over the world and aim 
-                            to provide users with a social media like platform centered around the culinary arts.                        
-                        </p> 
-                    </div> 
-                </div>
-                <!--Slide Two-->
-                <div class="carousel-item slide">
-                    <div class="col s6">
-                        <i class="fas fa-user-lock"></i> 
-                    </div>
-                    <div class="col s6">
-                        <h4>Free Membership</h4>
-                        <p>
-                            Ripe offers free membership to all users. Although some of our services are open to all users, some of Ripe's 
-                            features are for members only!                        
-                        </p> 
-                        <p>
-                            Should you wish to join our community, you can <a href="{{ url_for('signup') }}"><strong>Sign Up</strong></a>
-                            or <a href="{{ url_for('login') }}"><strong>Login</strong></a>
-                        </p>
-                    </div> 
-                </div>
-                <!--Slide Three-->
-                <div class="carousel-item slide">
-                    <div class="col s6">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="col s6 center-align">
-                        <h4>Our Data</h4> 
-                        <p>
-                            All of our recipes as well as user information are stored externally on secure servers. This security, paired with 
-                            our secure store payments means that your data is safe with us.
-                        </p>
-                        <cite>* To ensure even higher levels of security, we do not store or ask for specific personal information.</cite>
-                    </div> 
-                </div>
-                <!--Slide Four-->
-                <div class="carousel-item slide">
-                    <div class="col s6">
-                        <i class="fas fa-store-alt"></i>
-                    </div>
-                    <div class="col s6 center-align">
-                        <h4>The Ripe Store</h4>
-                        <p>
-                            The Ripe Store was created to help our members source only the best in culinary utensils and accessorise.<br>
-                            Our product line is aimed to offer unbeatable value, quality, and customer satisfaction.                      
-                        </p> 
-                        <p>For more, visit the <a href="{{ url_for('store') }}"><strong>Ripe Store</strong></a></p>
-                    </div> 
-                </div>
+        <div class="col s12 m5 offset-m1 home-cards">
+            <div class="col s12 red center-align">
+                <h3>Social</h3>
+                <hr class="custom-short-div">
+                <p>
+                    Ripe is an online cookbook with a twist. Based on our common interest in the culinary arts, Ripe 
+                    aims to bring like minded food and drink enthusiasts from all over the world together in their 
+                    shared love for food and drinks!                        
+                </p>
+            </div>
+        </div>
+        <div class="col s12 m5 home-cards">
+            <div class="col s12 blue center-align">
+                <h3>Free Membership</h3>
+                <hr class="custom-short-div">
+                <p>
+                    As our focus remains entirely around user centric philosophy, our services are and will remain free to use. 
+                    At Ripe, our users always come first, and ultimately, it is our users who have the power to steer our shared 
+                    aims, goals, and future targets.
+                </p> 
+                <p>
+                    Should you wish to join our community, you can <a href="{{ url_for('signup') }}"><strong>Sign Up</strong></a>
+                    or <a href="{{ url_for('login') }}"><strong>Login</strong></a>
+                </p>
             </div>
         </div>
     </div>
+    <!--Second Row-->
+    <div class="row">
+        <div class="col s12 m4 home-cards center-align">
+            <h3>User Profiles</h3>
+            <hr class="custom-short-div">
+            <p>
+                As a member of Ripe, you will get your very own profile page. On this page, users will be able to view all of 
+                your recipes, view your favorite recipes as well as leave messages for you on your very own chopping board!  
+            </p>
+        </div>
+        <div  class="col s12 m4 home-cards center-align">
+            Logo
+        </div>
+        <div class="col s12 m4 home-cards center-align">
+            <h3>The Chopping Board</h3>
+            <hr class="custom-short-div">
+            <p>
+                As a social platform, our users can communicate with one another through a messaging system known as 
+                the chopping board. Once navigating to a users profile page, you can leave a message for them should 
+                you wish to do so. Simply add your message and click submit to add your message.                     
+            </p>
+        </div>
+    </div>
+    <!--Third Row-->
+    <div class="row">
+        <div class="col s12 m5 offset-m1 home-cards">
+            <div class="col s12 center-align">
+                <h3>Ratings</h3>
+                <hr class="custom-short-div">
+                <p>
+                    For each new member, or new recipe, an initial score of stars is applied. Once users rate recipes, this 
+                    score may rise or fall, depending on user ratings.
+                </p>
+            </div>
+        </div>
+        <div class="col s12 m5 home-cards">
+            <div class="col s12 center-align">
+                <h3>The Ripe Store</h3>
+                <hr class="custom-short-div">
+                <p>
+                    The Ripe Store was created to help our members source only the best in culinary utensils and accessorise.<br>
+                    Our product line is aimed to offer unbeatable value, quality, and customer satisfaction.                      
+                </p> 
+                <p>
+                    For more, visit the <a href="{{ url_for('store') }}"><strong>Ripe Store</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
+                    
+                
+                
 {% endblock %} 
