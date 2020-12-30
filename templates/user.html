@@ -25,7 +25,15 @@
                         {% for x in recipes %}
                             {% if x.recipe_name != "" %}
                                 <ul>
-                                    <li>{{ x.recipe_name|capitalize }}</li>
+                                    <li>
+                                        <form  method="POST" action="{{ url_for('selected', name=x.recipe_name) }}">
+                                            <h5>{{ x.recipe_name|capitalize }}</h5>
+                                            <input class="hidden" name="name" id="name" value="{{ x.recipe_name }}">
+                                            <button type="submit" value="{{ x.recipe_name }}" class="col s12 btn green accent-3 black-text soft-corners">
+                                                    View Recipe
+                                            </button>
+                                        </form>
+                                    </li>
                                 </ul>
                             {% else %}
                                 <h5>This User Does Not Yet Have Any Recipes Available.</h5>
