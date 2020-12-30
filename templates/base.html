@@ -181,22 +181,31 @@
         <!--Empty Row To Ensure No Interference With Footer Layout-->
         <div class="row"></div>
         <div class="row">
-            <div class="col s10 offset-s1 m4 blue black-text center-align footer-content">
-                <h5>Company</h5>
+            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
+                <h3>Ripe</h3>
+                <hr class="custom-short-div">
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Store</a></li>
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="#">Search</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('store') }}">Store</a></li>
+                    <li><a href="{{ url_for('recipes') }}">Browse</a></li>
+                    <li><a href="{{ url_for('search') }}">Search</a></li>
                 </ul>
             </div>
-            <div class="col s10 offset-s1 m4 blue black-text center-align footer-content">
-                <!--Span contains JS date function-->
-                © John O'Brien <span id="date"></span>
+            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
+                <h3>Links</h3>
+                <hr class="custom-short-div">
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Signup</a></li>
+                    <li><a href="#">Add Recipe</a></li>
+                    <li><a href="#">Edit Recipe</a></li>
+                    <li><a href="#">Top Recipes</a></li>
+                </ul>
             </div>
-            <div class="col s10 offset-s1 m4 blue black-text center-align footer-content">
-                <h5>Ripe Social</h5>
+            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
+                <h3>Ripe Social</h3>
+                <hr class="custom-short-div">
                 <ul>
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">Instagram</a></li>
@@ -204,6 +213,12 @@
                     <li><a href="#">LinkedIn</a></li>
                     <li><a href="#">Pinterest</a></li>
                 </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s10 offset-s1 black-text center-align footer-content">
+                <!--Span contains JS date function-->
+                © John O'Brien <span id="date"></span>
             </div>
         </div>
     </footer>

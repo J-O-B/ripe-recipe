@@ -1,51 +1,113 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-
+    {% for recipes in recipe %}
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align black-text text-lighten-2 border round-border">Your Selected Recipe:</h1>
+            <h4 class="center-align black-text text-lighten-2 border round-border"><strong>{{ recipes.recipe_name|capitalize }}</strong></h4>
         </div>
     </div>
-        {% for recipes in recipe %}
+            <!--Top Section-->
             <div class="row">
                 <div class="col s10 offset-s1 m4 grey lighten-2 top-recipe-card border soft-corners">
                     <!--Recipe Image-->
                     <img class="recipe-image soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
                 </div>
-                <div class="col s10 offset-s1 m8 grey lighten-2 top-recipe-card border soft-corners">
-                    <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
-                    <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
-                    <p><strong>Prep Time: </strong><span class="center-align">{{ recipes.prep_time }} min</span></p>
-                    <p><strong>Cooking Time: </strong><span class="center-align">{{ recipes.cooking_time }} min</span></p>
-                    <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
-                    <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
-                    <div class="col s3 center-align">
-                        <p><strong>KCAL</strong><br>{{ recipes.kcal }}</p>
+                <div class="col s10 offset-s1 m8 top-recipe-card">
+                    <!--Left Block-->
+                    <div class="col m6 s12 left-block">
+                        <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
+                        <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
+                        <p><strong>Prep Time: </strong><span class="center-align">{{ recipes.prep_time }} min</span></p>
+                        <p><strong>Cooking Time: </strong><span class="center-align">{{ recipes.cooking_time }} min</span></p>
                     </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Fat</strong><br>{{ recipes.fat }}g</p>
+                    <!--Right Block-->
+                    <div class="col m6 s12 right-block">
+                        <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
+                        <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
+
+                    <!--Rating Count-->
+                    {% set x = recipes.rating|int %}
+                    {% if x == 1 %}
+                        <p><strong>Rating: </strong><span class="center-align">
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span></p>
+                    {% elif x == 2 %}
+                        <p><strong>Rating: </strong><span class="center-align">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span></p>
+                    {% elif x == 3 %}
+                        <p><strong>Rating: </strong><span class="center-align">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span></p>
+                    {% elif x == 4 %}
+                        <p><strong>Rating: </strong><span class="center-align">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span></p>
+                    {% elif x == 5 %}
+                        <p><strong>Rating: </strong><span class="center-align">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span></p>
+                    {% endif %}
                     </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Saturates</strong><br>{{ recipes.saturates }}g</p>
-                    </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Carbs</strong><br>{{ recipes.carbs }}g</p>
-                    </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Sugars</strong><br>{{ recipes.sugars }}g</p>
-                    </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Fibre</strong><br>{{ recipes.fibre }}g</p>
-                    </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Protein</strong><br>{{ recipes.protein }}g</p>
-                    </div>
-                    <div class="col s3 center-align">
-                        <p><strong>Salt</strong><br>{{ recipes.salt }}g</p>
-                    </div>
+                    <!--Alignment Reset-->
+                    <div class="col s12"></div>
+                    
                 </div>
             </div>
+            <!--Nutrition Row-->
+            <div class="row">
+                <div class="col s10 offset-s1 center-align">
+                    <h3>Nutrition</h3>
+                    <hr class="custom-short-div">
+                </div>
+                        <div class="col s3 center-align">
+                            <p><strong>KCAL</strong><br>{{ recipes.kcal }}</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Fat</strong><br>{{ recipes.fat }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Saturates</strong><br>{{ recipes.saturates }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Carbs</strong><br>{{ recipes.carbs }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Sugars</strong><br>{{ recipes.sugars }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Fibre</strong><br>{{ recipes.fibre }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Protein</strong><br>{{ recipes.protein }}g</p>
+                        </div>
+                        <div class="col s3 center-align">
+                            <p><strong>Salt</strong><br>{{ recipes.salt }}g</p>
+                        </div>
+                    </div>
+
+            <!--Bottom Section-->
             <div class="row">
                 <div class="col s10 offset-s1 m6">
                     <h3 class="center-align">Ingredients:</h3>

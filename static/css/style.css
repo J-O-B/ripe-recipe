@@ -14,7 +14,7 @@
 
 /*----------------------------------------------------------------- Global CSS */
 body{
-    background: var(--third);
+    background: var(--second);
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -136,15 +136,11 @@ img{
     background: rgba(245,41,135, 0.5);
     border-radius: 30%;
 }
+
 #home-cards i{
     font-size: 200%;
     border-radius: 50%;
     text-shadow: 1px 1px var(--first);
-}
-
-.come-cards a{
-    text-decoration: none;
-    color:#000;
 }
 
 .home-cards{
@@ -153,7 +149,11 @@ img{
     height:300px;
     text-decoration: none;
     color:#000;
-    text-shadow: 1px 1px #fff;
+    text-shadow: 2px 2px var(--second), 1px 1px var(--first);
+}
+#home-card-logo{
+    width:100%;
+    height:auto;
 }
 
 /*-----------------------------------------------------------------Navbar */
@@ -269,6 +269,7 @@ img{
 }
 /*---------------------------------------------------------------------------------------- Footer */
 footer{
+    background-color: var(--second);
     position: relative;
     width:100%;
     list-style: none;

@@ -23,3 +23,4 @@ function dateGen(){
     $('#date').text(date)
 }
 dateGen();
+
