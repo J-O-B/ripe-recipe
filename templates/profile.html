@@ -21,13 +21,61 @@
             <div class="row">
                 <div class="col s12 m5 offset-m1 light-blue">
                     <h3>My Recipes:</h3>
-                    
+                        <div class="col s8">
+                            <p>Name:</p>
+                        </div>
+                        <div class="col s4">
+                            <p>Rating:</p>
+                        </div>
                         {% for recipe in myrecipes %}
-                            {% if (recipe.created_by == session["user"]) and 
-                                  (myrecipes != "") %}
-                                <ul>
-                                    <li>{{ recipe.recipe_name|capitalize }}</li>
-                                </ul>
+                            {% if (recipe.created_by == session["user"]) and (myrecipes != "") %}
+                                <div class="col s8">
+                                    {{ recipe.recipe_name|capitalize }}
+                                </div>
+                                <div class="col s4">
+                                    {% set x = recipe.rating %}
+                                    {% if x == "1" %}
+                                        
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+
+                                    {% elif x == "2" %}
+                                       
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                 
+                                    {% elif x == "3" %}
+                                
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                  
+                                    {% elif x == "4" %}
+                                 
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                
+                                    {% elif x == "5" %}
+                                   
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    {% endif %}
+                                </div>
+                                
                             {% else %}
                                 <h5>There seems to be no recipes created by you</h5>
                             {% endif %}
