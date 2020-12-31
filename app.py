@@ -26,6 +26,34 @@ def home():
     return render_template("home.html", home=home)
 
 
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+
+    userCookie = session["user"]
+    if userCookie == "admin":
+        userCookie = True
+    else:
+        userCookie = False
+
+    admin = mongo.db.users.find_one(
+            {"admin": True})
+    
+    if userCookie and admin:
+        return render_template(
+            "admin_panel.html",  userCookie=userCookie, admin=admin)
+
+    else:
+        message = "noAccess"
+        return render_template('error.html', message=message)
+
+
+@app.route("/error/<message>", methods=["GET", "POST"])
+def error(message):
+    if message == "noAccess":
+        reason = "There seems to be a problem with your credentials."
+    return render_template("error.html", message=message, reason=reason)
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
