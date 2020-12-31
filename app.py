@@ -210,10 +210,14 @@ def my_profile():
     user = mongo.db.users.find_one(
             {"username": session["user"]})
 
+    messages = mongo.db.messages.find(
+            {"message_for": session["user"]})
+
     myrecipes = mongo.db.recipes.find(
             {"created_by": session["user"]})
 
-    return render_template("profile.html", user=user, myrecipes=myrecipes)
+    return render_template(
+        "profile.html", messages=messages, user=user, myrecipes=myrecipes)
 
 
 @app.route("/store")

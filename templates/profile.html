@@ -75,8 +75,17 @@
                         </form>
                     </div> 
                 </div>
-                <div class="col s12 m5 offset-m1 light-blue center-align">
-                    If possible, a message board here
+                <div class="col s12 m5 offset-m1 light-blue">
+                    <h3 class="center-align">
+                        Messages For You:
+                    </h3>
+                    <hr class="custom-short-div">
+                    {% for message in messages %}
+                        <p class="col s10 offset-s1">
+                            Message From {{ message.message_from }} on {{ message.date }}<br>
+                            {{ message.message_text }}
+                        </p>
+                    {% endfor %}
                 </div>
             </div>
 
