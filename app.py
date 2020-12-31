@@ -160,8 +160,27 @@ def user(user):
     recipes = mongo.db.recipes.find(
             {"created_by": user})
 
+    messages = mongo.db.messages.find(
+            {"message_for": user})
+
+    if request.method == "POST":
+        user = request.form.get("user")
+        today = date.today()
+        now = today.strftime("%b-%d-%Y")
+        messages = mongo.db.messages.find(
+            {"message_for": user})
+
+        newMessage = {
+            "message_from": session["user"],
+            "message_for": request.form.get("from"),
+            "message_text": request.form.get("message"),
+            "date": now,
+        }
+
+        mongo.db.messages.insert_one(newMessage)
+
     return render_template(
-        "user.html", recipes=recipes, user=user, userDB=userDB)
+     "user.html", recipes=recipes, user=user, userDB=userDB, messages=messages)
 
 
 @app.route("/main", methods=["GET", "POST"])
