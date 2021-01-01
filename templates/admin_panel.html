@@ -1,24 +1,29 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-
+    <h1>{% if query.admin == True %}</h1>    
     <div class="row">
         <div class="col s12 center-align">
-            Welcome To The Admin Panel
+            <h2>Welcome To The Admin Panel</h2>
+            <hr>
+            <p>{{ x }}</p>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
-            <div class="col s6">
+            <div class="col s6 card red lighten-4">
                 Open Tickets:
             </div>
-            <div class="col s6">
+            <div class="col s6 card green lighten-2">
                 Closed Tickets:
             </div>
-            <div class="col s12">
+            <div class="col s12 card">
                 Recipe Delete Requests:
             </div>
         </div>
     </div>
+    {% else %}
+        <h1>Whoopsy</h1>
+    {% endif %}
 
 {% endblock %}

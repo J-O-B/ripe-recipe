@@ -26,32 +26,38 @@ def home():
     return render_template("home.html", home=home)
 
 
-@app.route("/admin", methods=["GET", "POST"])
+@app.route("/admin")
 def admin():
+    """
+    First check for session cookie, if true, user is logged in,
+    Store session cookie to a var and search the users database.
+    Match a record with the current user, and check for admin privilages.
+    """
+    if session["user"]:
+        user = session["user"]
+        x = True
 
-    userCookie = session["user"]
-    if userCookie == "admin":
-        userCookie = True
+        query = mongo.db.users.find_one(
+            {"username": user,
+             "admin": x})
+        if query:
+            return render_template("admin_panel.html", query=query)
+        else:
+            return redirect(url_for('error', reason=0))
+
+    return render_template("admin_panel.html")
+
+
+@app.route("/error/<reason>")
+def error(reason):
+
+    if not reason == 0:
+        message = ("There seems to be a problem with your credentials"
+                   + "Please contact an admin for support")
     else:
-        userCookie = False
+        message = "Oh Snap! Something seems to have gone wrong!"
 
-    admin = mongo.db.users.find_one(
-            {"admin": True})
-    
-    if userCookie and admin:
-        return render_template(
-            "admin_panel.html",  userCookie=userCookie, admin=admin)
-
-    else:
-        message = "noAccess"
-        return render_template('error.html', message=message)
-
-
-@app.route("/error/<message>", methods=["GET", "POST"])
-def error(message):
-    if message == "noAccess":
-        reason = "There seems to be a problem with your credentials."
-    return render_template("error.html", message=message, reason=reason)
+    return render_template("error.html", message=message)
 
 
 @app.route("/login", methods=["GET", "POST"])
