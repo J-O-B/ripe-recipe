@@ -6,14 +6,16 @@
             <h1 class="center-align black-text text-lighten-2 border round-border">Edit Recipe</h1>
         </div>
     </div>
-    
     {% for recipes in recipe %}
+
 <!--Card to hold the signup form-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('newrecipe') }}">
+        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('editrecipe', name=recipes.recipe_name, recipe_id=recipes._id) }}">
             <div class="card-panel light-blue lighten-4 round-corners">
                 <div class="row">
                     <div class="input-field col m10 offset-m1">
+<!--Get Recipe ID-->
+                        <input class="hidden" type="text" name="id" id="id" value="recipes._id">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
 <!--Category-->
                         <select name="category" id="category">
@@ -127,7 +129,7 @@
                         </div>
                         <div class="input-field col s10 offset-s1 m6"> 
                             <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                            <input id="ingredients" name="ingredients" type="text" minlength="5" maxlength="500" class="validate">
+                            <input id="ingredients" name="ingredients" placeholder="{{ recipes.ingredients }}" type="text" minlength="5" maxlength="500" class="validate">
                             <label class="black-text" for="ingredients">New Ingredients:</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
@@ -140,7 +142,7 @@
                         </div>
                         <div class="input-field col s10 offset-s1 m6">
                             <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                            <input id="description" name="description" type="text" minlength="5" maxlength="500" class="validate" required>
+                            <input id="description" name="description" type="text" placeholder="{{ recipes.description }}" minlength="5" maxlength="500" class="validate">
                             <label class="black-text" for="description">New Description of Recipe:</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
@@ -148,7 +150,7 @@
 
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="instructions" name="instructions" type="text" minlength="5" maxlength="1500" class="validate" required>
+                        <input id="instructions" name="instructions" type="text" placeholder="{{ recipes.instructions }}" minlength="5" maxlength="1500" class="validate">
                         <label class="black-text" for="instructions">Instructions after each step use the minus (-)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
@@ -206,7 +208,7 @@
                 </div>
     {% endfor %}  
                 <div class="row">
-                    <button type="submit" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
+                    <button type="submit" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow" required>
                         Submit Recipe <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>

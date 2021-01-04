@@ -85,6 +85,14 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    # remove user from session cookie
+    flash("You have been signed out. We hope To See You Again Soon!")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -118,11 +126,38 @@ def signup():
 
 @app.route("/edit-recipe/<name>", methods=["GET", "POST"])
 def editrecipe(name):
-
-    recipe = mongo.db.recipes.find(
+    if request.method == "POST":
+        submit = {
+                "category_name": request.form.get("category"),
+                "recipe_name": request.form.get("recipe_name"),
+                "serves": request.form.get("serves"),
+                "prep_time": request.form.get("prep_time"),
+                "cooking_time": request.form.get("cook_time"),
+                "difficulty": request.form.get("difficulty"),
+                "pic_url": request.form.get("recipe_pic"),
+                "description": request.form.get("description"),
+                "ingredients": request.form.get("ingredients"),
+                "instructions": request.form.get("instructions"),
+                "tags": request.form.get("tags"),
+                "kcal": request.form.get("kcal"),
+                "fat": request.form.get("fat"),
+                "saturates": request.form.get("saturates"),
+                "carbs": request.form.get("carbs"),
+                "sugars": request.form.get("sugar"),
+                "fibre": request.form.get("fibre"),
+                "protein": request.form.get("protein"),
+                "salt": request.form.get("salt"),
+            }
+        recipe = mongo.db.recipes.find(
             {"recipe_name": name})
 
-    return render_template("edit_recipe.html", recipe=recipe)
+        mongo.db.recipes.update(
+         {"recipe_name": name}, submit)
+
+        return redirect(url_for('recipes'))
+
+    return render_template(
+        "edit_recipe.html", recipe=recipe)
 
 
 @app.route("/newrecipe", methods=["GET", "POST"])

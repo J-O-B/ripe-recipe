@@ -84,7 +84,7 @@
                                 <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
                             </div>
                             <div class="col s2 center-align">
-                                <a href="#test4" class="secondary-nav">Logout</a>
+                                <a href="{{ url_for('logout') }}" class="secondary-nav">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                     <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
                 </div>
                 <div class="center-align secondary-nav">
-                    <a href="#test4" class="secondary-sub-nav text-shadow">Logout</a>
+                    <a href="{{ url_for('logout') }}" class="secondary-sub-nav text-shadow">Logout</a>
                 </div>
         {% else %}
                 <div class="center-align secondary-nav">
