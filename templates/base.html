@@ -196,11 +196,11 @@
                 <h3>Links</h3>
                 <hr class="custom-short-div">
                 <ul>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Signup</a></li>
-                    <li><a href="#">Add Recipe</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('signup') }}">Signup</a></li>
+                    <li><a href="{{ url_for('newrecipe') }}">Add Recipe</a></li>
                     <li><a href="#">Edit Recipe</a></li>
-                    <li><a href="#">Top Recipes</a></li>
+                    <li><a href="{{ url_for('admin') }}">Admin</a></li>
                 </ul>
             </div>
             <div class="col s10 offset-s1 m4 black-text center-align footer-content">

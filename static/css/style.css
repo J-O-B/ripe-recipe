@@ -22,6 +22,12 @@ body{
     min-height:100vh;
 }
 
+::placeholder{
+    color: black;
+    opacity: 1;
+    font-style: italic;
+}
+
 h1,
 h2,
 h3{

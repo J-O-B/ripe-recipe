@@ -116,6 +116,15 @@ def signup():
     return render_template("signup.html")
 
 
+@app.route("/edit-recipe/<name>", methods=["GET", "POST"])
+def editrecipe(name):
+
+    recipe = mongo.db.recipes.find(
+            {"recipe_name": name})
+
+    return render_template("edit_recipe.html", recipe=recipe)
+
+
 @app.route("/newrecipe", methods=["GET", "POST"])
 def newrecipe():
     if request.method == "POST":
