@@ -7,126 +7,176 @@
                 <source src="{{ url_for('static', filename='vid/hero-video.webm') }}" type="video/webm" alt="HTML5 background video">
             </video>
         </div>
+        
         <div class="header-content">
-            <div class="col m8 s10 see-through">
-                <h2 class="center-align">
-                    Welcome To Ripe Recipes
-                </h2>
-                <hr class="custom-short-div">
-                <h3 class="center-align">
-                    The Culinary Social Platform
-                </h3>
+            {% if not session["user"] %}
+            <div class="col s6 center-align welcome-note">
+                <h2>Welcome To</h2>
+                <h1>Ripe Recipes</h1>
+                <div class="row">
+                    <div class="col s3 offset-s3">
+                        <a href="" class="btn-large green">Login</a>
+                    </div>
+                    <div class="col s3">
+                        <a href="" class="btn-large pink">Sign Up</a>
+                    </div>
+                </div>
             </div>
+            {% else %}
+            <div class="col s6 center-align welcome-note">
+                <h2>Welcome Back</h2>
+                <h1>{{ session["user"]|capitalize }}</h1>
+                <div class="row">
+                    <div class="col s3 offset-s3">
+                        <a href="" class="btn-large green">Profile</a>
+                    </div>
+                    <div class="col s3">
+                        <a href="" class="btn-large pink">Recipes</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </section>
     
 {% endblock %} 
 
 {% block main_content %}
-    <section class="contain">
-        <div class="row" id="home-cards">
-            <div class="col m4 s10 offset-s1 box">
-                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                    <h3 class="name">Community</h3>
-                    <hr class="custom-short-div line">
-                    <div class="circle"></div>
-                    <i class="fas fa-globe-europe icon"></i>
-                    <br><br>
-                    <p>Our Community Contains Users From Across The Globe</p>
-                </div> 
-            </div>
-            <div class="col m4 s10 offset-s1 box">
-                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                    <h3 class="name">Free</h3>
-                    <hr class="custom-short-div line">
-                    <i class="fas fa-comment-dollar icon"></i>
-                    <br><br>
-                    <p>Our Services Are Absolutely Free! For All Users!</p>
-                </div> 
-            </div>
-            <div class="col m4 s10 offset-s1 box">
-                <div class="col s10 offset-s1 grey lighten-2 center-align round-corners home-cards">
-                    <h3 class="name">Recipes</h3>
-                    <hr class="custom-short-div line">
-                    <i class="far fa-list-alt icon"></i>
-                    <br><br>
-                    <p>Our Database Contains Only User Generated Recipes.</p>   
-                </div> 
-            </div>
+<!--Quick Access-->
+    <div class="row">
+        <div class="col s12 center-align">
+            <h1 class="why-ripe">Why Ripe?</h1>
         </div>
-    </section>
+    </div>
 
-    <!--First Row-->
-    <div class="row">
-        <div class="col s12 m5 offset-m1 home-cards item1">
-            <div class="col s12 center-align">
-                <h3>Social</h3>
-                <hr class="custom-short-div card1">
-                <p class="card1">
-                    Ripe is an online cookbook with a twist. Based on our common interest in the culinary arts, Ripe 
-                    aims to bring like minded food and drink enthusiasts from all over the world together in their 
-                    shared love for food and drinks!                        
-                </p>
+        <!--First Row-->
+        <div id="wheel">
+            <div class="row">
+                <div class="col s12 m5 offset-m1 home-cards" id="social">
+                    <div class="col s12 center-align">
+                        <h3>Social</h3>
+                        <hr class="custom-short-div">
+                        <button class="btn green lighten-2 view-more">View More</button>
+                    </div>
+                </div>
+                <div class="col s12 m5 home-cards" id="membership">
+                    <div class="col s12 center-align">
+                        <h3>Free Membership</h3>
+                        <hr class="custom-short-div">
+                        <button class="btn green lighten-2 view-more">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!--Second Row-->
+            <div class="row">
+                <div class="col s12 m4 home-cards center-align" id="profiles">
+                    <h3>User Profiles</h3>
+                    <hr class="custom-short-div">
+                    <button class="btn green lighten-2 view-more">View More</button>
+                </div>
+                <div  class="col s12 m4 home-cards center-align">
+                    <img id="home-card-logo" src="{{ url_for('static', filename='/img/logo.png') }}" alt="Ripe Recipes Logo">
+                </div>
+                <div class="col s12 m4 home-cards center-align" id="board">
+                    <h3>The Chopping Board</h3>
+                    <hr class="custom-short-div">
+                    <button class="btn green lighten-2 view-more">View More</button>
+                </div>
+            </div>
+            <!--Spacer for medium and larger devices-->
+            <div class="row margin-top show-on-medium-and-up"></div>
+            <!--Third Row-->
+            <div class="row">
+                <div class="col s12 m5 offset-m1 home-cards" id="rating">
+                    <div class="col s12 center-align">
+                        <h3>Ratings</h3>
+                        <hr class="custom-short-div">
+                        <button class="btn green lighten-2 view-more">View More</button>
+                    </div>
+                </div>
+                <div class="col s12 m5 home-cards" id="store">
+                    <div class="col s12 center-align">
+                        <h3>The Ripe Store</h3>
+                        <hr class="custom-short-div">
+                        <button class="btn green lighten-2 view-more">View More</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col s12 m5 home-cards item2">
+
+        <!--Expanded Divs-->
+        <div class="row" id="expand">
             <div class="col s12 center-align">
-                <h3>Free Membership</h3>
-                <hr class="custom-short-div card2">
-                <p class="card2">
-                    As our focus remains entirely around user centric philosophy, our services are and will remain free to use. 
-                    At Ripe, our users always come first, and ultimately, it is our users who have the power to steer our shared 
-                    aims, goals, and future targets.
-                </p> 
+                <div class="social">
+                    <h3>Social</h3>
+                    <div class="col s10 offset-s1 m6">
+                        <p>
+                            Ripe is an online cookbook with a twist. Based on our common interest in the culinary arts, Ripe 
+                            aims to bring like minded food and drink enthusiasts from all over the world together in their 
+                            shared love for food and drinks!                        
+                        </p>
+                    </div>
+                    <div class="col s10 offset-s1 m6 expand-img">
+                        <img src="{{ url_for('static', filename='/img/social.jpg')}}" alt="Ripe Recipes Social">
+                    </div>
+                </div>
+                <div class="membership">
+                    <h3>Members</h3>
+                    <div class="col s10 offset-s1 m6 expand-img">
+                        <img src="{{ url_for('static', filename='/img/world.png')}}" alt="Ripe Recipe community">
+                    </div>
+                    <div class="col s10 offset-s1 m6">
+                        <p>
+                            As our focus remains entirely around user centric philosophy, our services are and will remain free to use. 
+                            At Ripe, our users always come first, and ultimately, it is our users who have the power to steer our shared 
+                            aims, goals, and future targets.
+                        </p>
+                    </div>
+                </div>
+                <div class="profiles">
+                    <h3>Profiles</h3>
+                    <div class="col s10 offset-s1 m6">
+                        <p>
+                            As a member of Ripe, you will get your very own profile page. On this page, users will be able to view all of 
+                            your recipes, view your favorite recipes as well as leave messages for you on your very own chopping board!  
+                        </p>
+                    </div>
+                    <div class="col s10 offset-s1 m6 expand-img">
+                        <img src="{{ url_for('static', filename='/img/profiles.png')}}" alt="Ripe Recipe User Profiles">
+                    </div>
+                </div>
+                <div class="board">
+                    <h3>Chopping Board</h3>
+                    <div class="col s10 offset-s1 m6">
+                        <p>
+                            As a social platform, our users can communicate with one another through a messaging system known as 
+                            the chopping board. Once navigating to a users profile page, you can leave a message for them should 
+                            you wish to do so. Simply add your message and click submit to add your message.                     
+                        </p>
+                    </div>
+                    <div class="col s10 offset-s1 m6 expand-img">
+                        <img src="{{ url_for('static', filename='/img/message.jpg')}}" alt="Ripe Recipe Messaging">
+                    </div>
+                    
+                </div>
+                <div class="rating">
+                    <h3>Ratings</h3>
+                    <p>
+                        For each new member, or new recipe, an initial score of stars is applied. Once users rate recipes, this 
+                        score may rise or fall, depending on user ratings.
+                    </p>
+                </div>
+                <div class="store">
+                    <h3>Store</h3>
+                    <p>
+                        The Ripe Store was created to help our members source only the best in culinary utensils and accessorise.<br>
+                        Our product line is aimed to offer unbeatable value, quality, and customer satisfaction.                      
+                    </p>
+                </div>
+                <button id="back-to-main" class="btn-large">Back</button>
             </div>
         </div>
-    </div>
-    <!--Second Row-->
-    <div class="row">
-        <div class="col s12 m4 home-cards center-align item3">
-            <h3>User Profiles</h3>
-            <hr class="custom-short-div card3">
-            <p class="card3">
-                As a member of Ripe, you will get your very own profile page. On this page, users will be able to view all of 
-                your recipes, view your favorite recipes as well as leave messages for you on your very own chopping board!  
-            </p>
-        </div>
-        <div  class="col s12 m4 home-cards center-align">
-            <img id="home-card-logo" src="{{ url_for('static', filename='/img/logo.png') }}" alt="Ripe Recipes Logo">
-        </div>
-        <div class="col s12 m4 home-cards center-align item4">
-            <h3>The Chopping Board</h3>
-            <hr class="custom-short-div card4">
-            <p class="card4">
-                As a social platform, our users can communicate with one another through a messaging system known as 
-                the chopping board. Once navigating to a users profile page, you can leave a message for them should 
-                you wish to do so. Simply add your message and click submit to add your message.                     
-            </p>
-        </div>
-    </div>
-    <!--Third Row-->
-    <div class="row">
-        <div class="col s12 m5 offset-m1 home-cards item5">
-            <div class="col s12 center-align">
-                <h3>Ratings</h3>
-                <hr class="custom-short-div card5">
-                <p class="card5">
-                    For each new member, or new recipe, an initial score of stars is applied. Once users rate recipes, this 
-                    score may rise or fall, depending on user ratings.
-                </p>
-            </div>
-        </div>
-        <div class="col s12 m5 home-cards item6">
-            <div class="col s12 center-align">
-                <h3>The Ripe Store</h3>
-                <hr class="custom-short-div card6">
-                <p class="card6">
-                    The Ripe Store was created to help our members source only the best in culinary utensils and accessorise.<br>
-                    Our product line is aimed to offer unbeatable value, quality, and customer satisfaction.                      
-                </p>
-            </div>
-        </div>
-    </div>
+    
                     
                 
                 

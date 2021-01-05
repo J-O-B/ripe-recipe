@@ -14,8 +14,9 @@
 
 /*----------------------------------------------------------------- Global CSS */
 body{
-    background: var(--second);
+    background-image: url(../img/wood.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: var(--black);
@@ -24,6 +25,7 @@ body{
 
 ::placeholder{
     color: black;
+    /*Opacity 1 for firefox users*/
     opacity: 1;
     font-style: italic;
 }
@@ -80,11 +82,23 @@ img{
     border-radius: 50%;
 }
 .soft-corners{
-    border-radius: 15%;
+    border-radius: 5px;
 }
 .margin-top{
-    margin-top:250px;
+    margin-top:150px;
 }
+.border-shadow{
+    -webkit-box-shadow: 3px 3px 5px 5px #000;
+    -moz-box-shadow: 3px 3px 5px 5px #000;
+    box-shadow: 3px 3px 5px 5px #000;
+    transition: all 1s ease-in-out;
+}
+.border-shadow:hover{
+    -moz-box-shadow: inset 1px 1px 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow: inset 5px 5px 10px #000000;
+}
+/*--------------------------------------------------------------- Alignment */
 .flex-justify{
     display: flex;
     align-items: center;
@@ -110,10 +124,13 @@ img{
     padding:0;
     position: relative;
     top:0;
-    height:60vh;
+    height:80vh;
     width:99vw;
     overflow: hidden;
     margin-bottom:50px;
+    -webkit-box-shadow: 0 45px 55px 1px #fff;  
+    -moz-box-shadow: 0 45px 55px 1px #fff;  
+    box-shadow: 0 20px 55px 25px #fff;
 }
 .video-container{
     position: absolute;
@@ -132,36 +149,59 @@ img{
     z-index: 1;
     position: absolute; 
     left: 0; 
-    right: 0;
-    top:10%;
-    height:300px;
+    top:0;
+    height:100%;
     max-height: 100%;
-    margin: auto;
-    width: 600px;
-    max-width: 95vw;
-    background: rgba(245,41,135, 0.5);
-    border-radius: 30%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+.welcome-note{
+    margin-top:25%;
+}
+.why-ripe{
+    font-size: 500%;
+}
+#wheel h3{
+    font-size: 300%;
 }
 
-#home-cards i{
-    font-size: 200%;
-    border-radius: 50%;
-    text-shadow: 1px 1px var(--first);
+.home-cards a{
+    text-decoration: none;
+    color:#000;
 }
 
 .home-cards{
     font-size: large;
+    font-weight: bolder;
     margin-bottom: 20px;
     height:300px;
     text-decoration: none;
     color:#000;
-    text-shadow: 2px 2px var(--second), 1px 1px var(--first);
+    text-shadow: 2px 2px 8px var(--second);
 }
 #home-card-logo{
     width:100%;
     height:auto;
 }
-
+#expand h3{
+    font-size: 500%;
+    margin-bottom:50px;
+}
+#expand p{
+    margin-top:10%;
+    line-height: 3;
+    font-size: 125%;
+    text-shadow: 5px 5px 20px #000;
+}
+.expand-img{
+    max-width: 100%;
+    box-shadow: 2px 2px 10px 10px rgb(8, 8, 8), inset 2px 2px 20px 50px rgba(0,0,0,1);
+    transform: rotate(5deg);
+    opacity: 0.8;
+}
+.expand-img img{
+    position: relative;
+}
 /*-----------------------------------------------------------------Navbar */
 .fa-bars{
     font-size: 300%;
