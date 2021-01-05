@@ -192,8 +192,8 @@ img{
 }
 /*---------------------------------------------------------------------------------------- Recipes */
 .recipe-pic{
-    height:100px;
-    width:100px;
+    width:100%;
+    overflow: hidden;
     border-radius: 30%;
 }
 .category-card{
