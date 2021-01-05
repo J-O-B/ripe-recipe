@@ -2,24 +2,23 @@
 $(document).ready(function(){
     // Side Navbar
     $('.sidenav').sidenav();
+
     // Time Picker In Forms
     $('.timepicker').timepicker();
+
     // Select Function In Forms
     $('select').formSelect();
+
     // Carousel Functionality
     $('.carousel').carousel();
-    //Homepage divs
-    $('.social').hide();
-    $('.membership').hide();
-    $('.profiles').hide();
-    $('.board').hide();
-    $('.rating').hide();
-    $('.store').hide();
-    $('#expand').hide();
-    $('.view-more').hide();
 
-    //on off toggle
-    var io = this.io ^= 1;
+    // Homepage States
+    $('.welcome-card').fadeIn(3000);
+    $('.about-ripe-expanded').hide();
+    $('#firstCard').hide();
+    $('#secondCard').hide();
+    $('#thirdCard').hide();
+
   });
 
   // Full Width Slider 
@@ -37,86 +36,52 @@ function dateGen(){
 dateGen();
 
 // Homepage info section
-$('#social').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#social').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.social').show();
-    })
-})
-$('#social').mouseleave(function(){
-    $('.view-more').hide(500);
-})
 
-$('#membership').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#membership').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.membership').show();
-    })
-})
-$('#membership').mouseleave(function(){
-    $('.view-more').hide(500);
-})
+$('#about-ripe').click(function(){
+    // Initial View
+    $('.welcome-card').fadeOut(1000);
+    $('.about-ripe-expanded').fadeIn(1000);
+    // track where user is using variable:
+    var x = 1;
+    cards(1);
+});
 
-$('#profiles').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#profiles').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.profiles').show();
-    })
-})
-$('#profiles').mouseleave(function(){
-    $('.view-more').hide(500);
-})
+function cards(x){
+    $('#firstCard').hide();
+    $('#secondCard').hide();
+    $('#thirdCard').hide();
 
-$('#board').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#board').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.board').show();
-    })
-})
-$('#board').mouseleave(function(){
-    $('.view-more').hide(500);
-})
-
-$('#rating').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#rating').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.rating').show();
-    })
-})
-$('#rating').mouseleave(function(){
-    $('.view-more').hide(500);
-})
-
-$('#store').mouseenter(function(){
-    $('.view-more', this).show(500);
-    $('#store').click(function(){
-        $('#wheel').hide(1000);
-        $('#expand').show();
-        $('.store').show();
-    })
-})
-$('#store').mouseleave(function(){
-    $('.view-more').hide(500);
-})
-
-//back button
-$('#back-to-main').click(function(){
-    $('#expand').toggle(1500);
-    $('#wheel').toggle(1500);
-    $('.social').hide();
-    $('.membership').hide();
-    $('.profiles').hide();
-    $('.board').hide();
-    $('.rating').hide();
-    $('.store').hide();
-})
+    if (x == 1){
+        $('#firstCard').show();
+        $('.next').click(function(){
+            x=2;
+            cards(x);
+        });
+        $('.previous').click(function(){
+            x = 3;
+            cards(x);
+        });
+    }
+    else if (x == 2){
+        $('#secondCard').show();
+        $('.next').click(function(){
+            x=3;
+            cards(x);
+        });
+        $('.previous').click(function(){
+            x = 1;
+            cards(x);
+        });
+    }
+    else if (x == 3){
+        $('#thirdCard').show();
+        $('.next').click(function(){
+            x=1;
+            cards(x);
+        });
+        $('.previous').click(function(){
+            x = 2;
+            cards(x);
+        });
+    }
+}

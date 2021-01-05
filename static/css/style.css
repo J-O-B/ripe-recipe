@@ -25,7 +25,7 @@ body{
 
 ::placeholder{
     color: black;
-    /*Opacity 1 for firefox users*/
+    /* Opacity 1 for firefox users */
     opacity: 1;
     font-style: italic;
 }
@@ -119,88 +119,25 @@ img{
     text-shadow: var(--third);
 }
 /*-----------------------------------------------------------------Homepage */
-#hero{
-    margin:0;
-    padding:0;
-    position: relative;
-    top:0;
-    height:80vh;
-    width:99vw;
-    overflow: hidden;
-    margin-bottom:50px;
-    -webkit-box-shadow: 0 45px 55px 1px #fff;  
-    -moz-box-shadow: 0 45px 55px 1px #fff;  
-    box-shadow: 0 20px 55px 25px #fff;
-}
-.video-container{
-    position: absolute;
-    z-index: 0;
-    top:0;
-    left:0;
-}
-.video-container video{
-    width:99vw;
-    display: block;
-}
-.video-bg{
-    position: relative;
-}
-.header-content{
-    z-index: 1;
-    position: absolute; 
-    left: 0; 
-    top:0;
-    height:100%;
-    max-height: 100%;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.3);
-}
-.welcome-note{
-    margin-top:25%;
-}
-.why-ripe{
+
+.welcome{
     font-size: 500%;
 }
-#wheel h3{
-    font-size: 300%;
+.welcome-card img{
+    height:250px;
 }
-
-.home-cards a{
-    text-decoration: none;
-    color:#000;
-}
-
-.home-cards{
-    font-size: large;
-    font-weight: bolder;
-    margin-bottom: 20px;
-    height:300px;
-    text-decoration: none;
-    color:#000;
-    text-shadow: 2px 2px 8px var(--second);
-}
-#home-card-logo{
-    width:100%;
-    height:auto;
-}
-#expand h3{
-    font-size: 500%;
-    margin-bottom:50px;
-}
-#expand p{
-    margin-top:10%;
-    line-height: 3;
-    font-size: 125%;
-    text-shadow: 5px 5px 20px #000;
-}
-.expand-img{
+.about-ripe-expanded img{
+    margin-top:5%;
+    min-height:250px;
+    max-height: 350px;
     max-width: 100%;
-    box-shadow: 2px 2px 10px 10px rgb(8, 8, 8), inset 2px 2px 20px 50px rgba(0,0,0,1);
-    transform: rotate(5deg);
-    opacity: 0.8;
+    opacity: 0.7;
+    z-index:-1;
 }
-.expand-img img{
-    position: relative;
+.about-ripe-expanded p{
+    font-size: 125%;
+    line-height: 3;
+    z-index: 2;
 }
 /*-----------------------------------------------------------------Navbar */
 .fa-bars{
@@ -315,7 +252,6 @@ img{
 }
 /*---------------------------------------------------------------------------------------- Footer */
 footer{
-    background-color: var(--second);
     position: relative;
     width:100%;
     list-style: none;
@@ -324,6 +260,6 @@ footer{
     min-height: 180px;
 }
 footer a{
-    color:black;
+    color:#000;
     text-decoration: none;
 }
