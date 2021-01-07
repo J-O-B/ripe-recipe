@@ -34,6 +34,6 @@ dateGen();
 
 $('#about-ripe').click(function(){
     // Initial View
-    $('.about-ripe-expanded').fadeIn(1000);
+    $('.about-ripe-expanded').show(3000);
     
 });
