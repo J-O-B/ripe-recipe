@@ -124,8 +124,10 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route("/edit-recipe/<name>", methods=["GET", "POST"])
+@app.route("/edit/<name>", methods=["GET", "POST"])
 def editrecipe(name):
+    name = name
+
     if request.method == "POST":
         submit = {
                 "category_name": request.form.get("category"),
@@ -148,16 +150,15 @@ def editrecipe(name):
                 "protein": request.form.get("protein"),
                 "salt": request.form.get("salt"),
             }
-        recipe = mongo.db.recipes.find(
+        name = request.form.get("recipe_name")
+        if request.form.get("submit"):
+            mongo.db.recipes.update(submit)
+
+    recipe = mongo.db.recipes.find(
             {"recipe_name": name})
 
-        mongo.db.recipes.update(
-         {"recipe_name": name}, submit)
-
-        return redirect(url_for('recipes'))
-
     return render_template(
-        "edit_recipe.html", recipe=recipe)
+            "edit_recipe.html", recipe=recipe)
 
 
 @app.route("/newrecipe", methods=["GET", "POST"])
@@ -175,8 +176,8 @@ def newrecipe():
             "description": request.form.get("description").lower(),
             "ingredients": request.form.get("ingredients").lower(),
             "instructions": request.form.get("instructions").lower(),
-            "rating": "3",
-            "rating_count": "1",
+            "rating": 3,
+            "rating_count": 3,
             "created_by": session['user'].lower(),
             "tags": request.form.get("tags").lower(),
             "kcal": request.form.get("kcal"),
@@ -231,7 +232,7 @@ def selected(name):
 
 @app.route("/user/<user>", methods=["GET", "POST"])
 def user(user):
-    user = request.form.get("user")
+    user = user
     userDB = mongo.db.users.find(
         {"username": request.form.get("user")})
 
@@ -242,20 +243,20 @@ def user(user):
             {"message_for": user})
 
     if request.method == "POST":
-        user = request.form.get("user")
         today = date.today()
         now = today.strftime("%b-%d-%Y")
-        messages = mongo.db.messages.find(
-            {"message_for": user})
 
         newMessage = {
-            "message_from": session["user"],
-            "message_for": request.form.get("from"),
-            "message_text": request.form.get("message"),
-            "date": now,
-        }
+                "message_from": session["user"],
+                "message_for": request.form.get("from"),
+                "message_text": request.form.get("message"),
+                "date": now,
+            }
 
-        mongo.db.messages.insert_one(newMessage)
+        mongo.db.messages.insert(newMessage)
+        return render_template(
+                "user.html", recipes=recipes,
+                user=user, userDB=userDB, messages=messages)
 
     return render_template(
      "user.html", recipes=recipes, user=user, userDB=userDB, messages=messages)

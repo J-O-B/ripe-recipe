@@ -3,107 +3,68 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align black-text text-lighten-2 border round-border">Edit Recipe</h1>
+            <h1 class="center-align black-text text-lighten-2 border">Edit Recipe</h1>
         </div>
     </div>
+
     {% for recipes in recipe %}
-
-<!--Card to hold the signup form-->
+<!--Card to hold the recipe form-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('editrecipe', name=recipes.recipe_name, recipe_id=recipes._id) }}">
-            <div class="card-panel light-blue lighten-4 round-corners">
+        <form class="col s12 m8 offset-m2" method="POST">
+            <div class="card-panel light-blue lighten-4 soft-corners">
                 <div class="row">
+                    <input name="id" id="id" type="text" value="{{ recipes._id }}" class="hidden">
                     <div class="input-field col m10 offset-m1">
-<!--Get Recipe ID-->
-                        <input class="hidden" type="text" name="id" id="id" value="recipes._id">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-<!--Category-->
                         <select name="category" id="category">
-                            {% if recipes.category_name =="starter" %}
-                            <option value="starter" selected>Starter</option>
-                            <option value="main">Main</option>
-                            <option value="dessert">Dessert</option>
-                            <option value="other">Other</option>
-
-                            {% elif recipes.category_name =="main" %}
-                            <option value="starter">Starter</option>
-                            <option value="main" selected>Main</option>
-                            <option value="dessert">Dessert</option>
-                            <option value="other">Other</option>
-
-                            {% elif recipes.category_name =="dessert" %}
-                            <option value="starter">Starter</option>
-                            <option value="main">Main</option>
-                            <option value="dessert" selected>Dessert</option>
-                            <option value="other">Other</option>
-
-                            {% elif recipes.category_name =="other" %}
                             <option value="starter">Starter</option>
                             <option value="main">Main</option>
                             <option value="dessert">Dessert</option>
-                            <option value="other" selected>Other</option>
-                            {% endif %}
+                            <option value="drink">Drinks</option>
                         </select>
                         <label for="category" class="black-text">Select A Recipe Category</label>
                         <span class="helper-text" data-error="Please Select A Difficulty Level" data-success="Input Correct"></span>
                     </div>
-<!--Recipe Name-->
-                    <div class="input-field col l5 offset-l1 m10 offset-m1 black-text">
+
+                    <div class="input-field col l5 offset-l1 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="recipe_name" name="recipe_name" type="text" placeholder="{{ recipes.recipe_name }}" minlength="5" maxlength="50" class="validate">
+                        <input id="recipe_name" value="{{ recipes.recipe_name }}" name="recipe_name" type="text" minlength="5" maxlength="50" class="validate">
                         <label class="black-text" for="recipe_name">Recipe Name</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
-<!--Serves-->
                     <div class="input-field col l5 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="serves" name="serves" type="number" placeholder="{{ recipes.serves }}" minlength="1" maxlength="3" pattern="^[0-9]{1,3}$" class="validate">
+                        <input id="serves" value="{{ recipes.serves }}" name="serves" type="text" minlength="1" maxlength="4" pattern="^[0-9]{1,4}$" class="validate">
                         <label class="black-text" for="serves">Serves</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
 
-<!--Prep Time-->
                     <div class="input-field col l5 offset-l1 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="prep_time" name="prep_time" type="number" placeholder="{{ recipes.prep_time }} minutes" minlength="1" maxlength="3" pattern="^[0-9]{1,3}$" class="validate">
-                        <label class="black-text" for="prep_time">Prep Time (number only)</label>
+                        <input id="prep_time" value="{{ recipes.prep_time }}" name="prep_time" type="text" minlength="1" maxlength="3" pattern="^[0-9]{1,3}$" class="validate">
+                        <label class="black-text" for="prep_time">Prep Time</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
-
-<!--Cooking Time-->
+                    
                     <div class="input-field col l5 m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="cook_time" name="cook_time" type="number" placeholder="{{ recipes.cooking_time }} minutes" minlength="1" maxlength="5" pattern="^[0-9]{1,5}$" class="validate">
-                        <label class="black-text" for="cook_time">Cooking Time (number only)</label>
+                        <input id="cook_time" value="{{ recipes.cooking_time}}" name="cook_time" type="text" minlength="1" maxlength="5" pattern="^[0-9]{1,5}$" class="validate">
+                        <label class="black-text" for="cook_time">Cooking Time</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
 
-<!--Difficulty Input-->
                     <div class="input-field col m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
                         <select name="difficulty" id="difficulty">
-                            {% if recipes.difficulty == "easy" %}
-                            <option value="easy" selected>Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-
-                            {% elif recipes.difficulty == "medium" %}
-                            <option value="easy">Easy</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="hard">Hard</option>
-
-                            {% elif recipes.difficulty == "hard" %}
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
-                            <option value="hard" selected>Hard</option>
-                            {% endif %}  
+                            <option value="hard">Hard</option>
                         </select>
                         <label for="difficulty" class="black-text">Select a Difficulty</label>
                         <span class="helper-text" data-error="Please Select A Difficulty Level" data-success="Input Correct"></span>
                     </div>
-
-<!--Picture Input-->       
+                    
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
                         <input id="recipe_pic" name="recipe_pic" type="text" class="validate">
@@ -111,46 +72,23 @@
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
-<!--Ingredients Input-->
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <h6><u><em>Please seperate all ingredients with a full stop "."</em></u></h6>
-                        </div>
-                        <div class="col s10 offset-s1 m6">
-                            {% set list1 = recipes.ingredients.split('.') %}
-                            <p>Current Ingredients:</p>
-                            <ul>
-                                {% for item in list1 %}
-                                    {% if item|length != 0 %}
-                                        <li>{{ item|capitalize }}.</li>
-                                    {% endif %}
-                                {% endfor %} 
-                            </ul>
-                        </div>
-                        <div class="input-field col s10 offset-s1 m6"> 
-                            <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                            <input id="ingredients" name="ingredients" placeholder="{{ recipes.ingredients }}" type="text" minlength="5" maxlength="500" class="validate">
-                            <label class="black-text" for="ingredients">New Ingredients:</label>
-                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s10 offset-s1 m6">
-                            <p>Current Description:</p>
-                            <p><em>{{ recipes.description }}</em></p>
-                        </div>
-                        <div class="input-field col s10 offset-s1 m6">
-                            <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                            <input id="description" name="description" type="text" placeholder="{{ recipes.description }}" minlength="5" maxlength="500" class="validate">
-                            <label class="black-text" for="description">New Description of Recipe:</label>
-                            <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
-                        </div>
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="ingredients" value="{{ recipes.ingredients }}" name="ingredients" type="text" minlength="5" maxlength="500" class="validate">
+                        <label class="black-text" for="ingredients">Ingredients, Seperate Ingredients With Full Stop (.)</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="instructions" name="instructions" type="text" placeholder="{{ recipes.instructions }}" minlength="5" maxlength="1500" class="validate">
+                        <input id="description" value="{{ recipes.description }}" name="description" type="text" minlength="5" maxlength="500" class="validate" required>
+                        <label class="black-text" for="description">Description of Recipe</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="instructions" value="{{ recipes.instructions }}" name="instructions" type="text" minlength="5" maxlength="1500" class="validate" required>
                         <label class="black-text" for="instructions">Instructions after each step use the minus (-)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
@@ -158,42 +96,42 @@
                     <div class="col s10 offset-s2">
                         <h5>Nutrition Information:</h5>
                         <div class="input-field col s4">
-                            <input id="kcal" name="kcal" type="number" placeholder="{{ recipes.kcal }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="kcal" value="{{ recipes.kcal }}" name="kcal" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="kcal">KCAL</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4 offset-s2">
-                            <input id="fat" name="fat" type="number" placeholder="{{ recipes.fat }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="fat" name="fat" value="{{ recipes.fat }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="fat">Fat (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4">
-                            <input id="saturates" name="saturates" type="number" placeholder="{{ recipes.saturates }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="saturates" name="saturates" value="{{ recipes.saturates }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="saturates">Saturates (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4 offset-s2">
-                            <input id="carbs" name="carbs" type="number" placeholder="{{ recipes.carbs }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="carbs" name="carbs"  value="{{ recipes.carbs }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="carbs">Carbs (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4">
-                            <input id="sugar" name="sugar" type="number" placeholder="{{ recipes.sugar }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="sugar" name="sugar"  value="{{ recipes.sugars }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="sugar">Sugar (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4 offset-s2">
-                            <input id="fibre" name="fibre" type="number" placeholder="{{ recipes.fibre }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="fibre" name="fibre" value="{{ recipes.fibre }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="fibre">Fibre (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4">
-                            <input id="protein" name="protein" type="number" placeholder="{{ recipes.protein }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="protein" name="protein" value="{{ recipes.protein }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="protein">Protein (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
                         <div class="input-field col s4 offset-s2">
-                            <input id="salt" name="salt" type="number" placeholder="{{ recipes.salt }}" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
+                            <input id="salt" name="salt" value="{{ recipes.salt }}" type="number" minlength="1" maxlength="10" pattern="^[0-9]{1,10}$" class="validate">
                             <label class="black-text" for="salt">Salt (grams)</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                         </div>
@@ -201,20 +139,24 @@
 
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
-                        <input id="tags" name="tags" type="text" placeholder="{{ recipes.tags }}" minlength="5" maxlength="500" class="validate" required>
+                        <input id="tags" name="tags" value="{{ recipes.tags }}" type="text" minlength="5" maxlength="500" class="validate" required>
                         <label class="black-text" for="tags">Tags For This Recipe (i.e "chicken")</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
                 </div>
-    {% endfor %}  
+                
                 <div class="row">
-                    <button type="submit" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow" required>
-                        Submit Recipe <i class="fas fa-sign-in-alt"></i>
+                    <button id="submit" name="submit" type="submit" method="POST" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
+                        Submit
                     </button>
                 </div>
             </div>
         </form>
     </div>
-
-
+    
+    {% endfor %}
 {% endblock %}
+
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='js/editRecipe.js') }}"></script>
+    {% endblock %}

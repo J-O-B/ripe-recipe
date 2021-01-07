@@ -51,7 +51,7 @@
                 <div class="col s10 offset-s1 light-blue lighten-3 center-align">
                     <h3>Leave a message on this users chopping board:</h3>
                     {% if session["user"] %}
-                    <form method="POST" action="{{ url_for('user', user=user) }}">
+                    <form method="POST">
                         <!--Initial Bug But Fixed By Forcing Inputs To These Fields-->
                         <input class="hidden" type="text" name="from" id="from" value="{{ session['user'] }}">
                         <input class="hidden" name="user" id="user" value="{{ user }}">
@@ -64,16 +64,32 @@
                     {% elif not session["user"] %}
                         <h5>Please Log In To Leave A Message - <a href="{{ url_for('login') }}">Login</a></h5>
                     {% endif %}
+
+                    <!--Start Messages-->
                     <div class="col s12 message-board">
                         <div class="col s10 offset-s1 light-blue lighten-2">
-                            {% for message in messages %}
-                                {% if message.message_for == user %}
-                                    <p class="col s10 offset-s1">
-                                        Message From {{ message.message_from }} on {{ message.date }}<br>
-                                        {{ message.message_text }}
-                                    </p>
-                                {% endif %}
+                            <h3>Messages For {{ user|capitalize }}</h3>
+                            {% for x in messages %}
+                                {{ x.message_text }}
                             {% endfor %}
+
+
+
+                            <!---{% for x in messages %}-->
+                            <div class="row">
+                                <div class="col s6 center-align">
+                                    From: {{ messages.message_from }}
+                                </div>
+                                <div class="col s6 center-align">
+                                    Sent On: {{ messages.date }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s10 offset-s1">
+                                    <p>{{ messages.message_text }}</p>
+                                </div>
+                            </div>
+                            <!---{% endfor %}--->
                         </div>
                     </div>
                 </div>
