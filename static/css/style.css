@@ -127,18 +127,44 @@ img{
     height:250px;
 }
 .about-ripe-expanded img{
-    margin-top:5%;
+    margin-top:10%;
     min-height:250px;
     max-height: 350px;
     max-width: 100%;
-    opacity: 0.7;
+    opacity: 0.5;
     z-index:-1;
+    transition: all 1s ease-in-out;
 }
 .about-ripe-expanded p{
-    font-size: 125%;
-    line-height: 3;
+    font-size: 115%;
+    line-height: 1.5;
     z-index: 2;
 }
+#firstCard a,
+#secondCard a,
+#thirdCard a{
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: underline;
+    color: #000;
+}
+#firstCard,
+#secondCard,
+#thirdCard{
+    background-color: rgba(248, 248, 248, 0.3);
+    border-radius: 15%;
+    margin-bottom:20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: all 1.5s ease-in-out;
+}
+#firstCard:hover,
+#secondCard:hover,
+#thirdCard:hover{
+    opacity: 1;
+    box-shadow: inset 2px 2px 10px 5px #000;
+}
+
 /*-----------------------------------------------------------------Navbar */
 .fa-bars{
     font-size: 300%;

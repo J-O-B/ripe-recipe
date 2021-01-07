@@ -37,18 +37,11 @@
                     It allows users to share food & drinks recipes, as well as communicate with other users via personal message boards, 
                     or through commenting on recipes.<br>
                 </p>
+                <a href="{{ url_for('about') }}" class="center btn green lighten-2">Read More...</a>
             </div>
             <div class="col s4 center-align">
                 <img src="{{ url_for('static', filename='/img/question.png') }}" alt="Confused Question Mark">
             </div>
-            <div class="row">
-            <div class="col s6 m3 offset-m3 left-align">
-                <button class="btn-large red previous">Previous</button>
-            </div>
-            <div class="col s6 m3 right-align">
-                <button class="btn-large green next">Next</button>
-            </div>
-        </div>
         </div>
 
         <!--Second card-->
@@ -70,15 +63,8 @@
                     <li>Create and Edit Recipes</li>
                     <li>Post Comments On & Rate Others Recipes</li>
                 </ul>
+                <a href="{{ url_for('signup') }}" class="center btn green lighten-2">Sign Up</a>
             </div>
-            <div class="row">
-            <div class="col s6 m3 offset-m3 left-align">
-                <button class="btn-large red previous">Previous</button>
-            </div>
-            <div class="col s6 m3 right-align">
-                <button class="btn-large green next">Next</button>
-            </div>
-        </div>
         </div>
 
         <!--third Card-->
@@ -94,19 +80,11 @@
                     products we promte via our store are really the best of the best. <br>
                     Shop With Peace Of Mind:
                 </p>
-                <a href="{{ url_for('store') }}" class="btn-large green lighten2">Ripe Store</a>
+                <a href="{{ url_for('store') }}" class="center btn green lighten-2">Ripe Store</a>
             </div>
             <div class="col s4 center-align">
                 <img src="{{ url_for('static', filename='/img/store.png') }}" alt="Ripe Store Commerce">
             </div>
-            <div class="row">
-            <div class="col s6 m3 offset-m3 left-align">
-                <button class="btn-large red previous">Previous</button>
-            </div>
-            <div class="col s6 m3 right-align">
-                <button class="btn-large green next">Next</button>
-            </div>
-        </div>
         </div>
     </div>
     
