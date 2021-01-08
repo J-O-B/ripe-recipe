@@ -127,6 +127,8 @@ def signup():
 @app.route("/edit/<id>", methods=["GET", "POST"])
 def editrecipe(id):
     id = id
+    recipe = mongo.db.recipes.find(
+            {"_id": ObjectId(id)})
 
     if request.method == "POST":
 
@@ -155,10 +157,12 @@ def editrecipe(id):
             "salt": request.form.get("salt"),
             }
         if request.form.get("submit") == "1":
+            name = request.form.get("recipe_name").lower()
             mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
 
-    recipe = mongo.db.recipes.find(
-            {"_id": ObjectId(id)})
+            flash("Your Recipe Has Been Updated!")
+
+            return render_template("selected.html", recipe=recipe, name=name)
 
     return render_template(
             "edit_recipe.html", recipe=recipe)
