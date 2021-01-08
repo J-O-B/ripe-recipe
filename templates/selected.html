@@ -81,7 +81,7 @@
                     <h3 class="It Looks Like You Are The Creator Of This Recipe!"></h3>
                     
                     <div class="col s3 offset-s2">
-                        <form  method="POST" action="{{ url_for('editrecipe', name=recipes.recipe_name) }}">
+                        <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
                             <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
                             <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
                                     View More

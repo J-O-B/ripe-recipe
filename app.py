@@ -124,38 +124,41 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route("/edit/<name>", methods=["GET", "POST"])
-def editrecipe(name):
-    name = name
+@app.route("/edit/<id>", methods=["GET", "POST"])
+def editrecipe(id):
+    id = id
 
     if request.method == "POST":
+
         submit = {
-                "category_name": request.form.get("category"),
-                "recipe_name": request.form.get("recipe_name"),
-                "serves": request.form.get("serves"),
-                "prep_time": request.form.get("prep_time"),
-                "cooking_time": request.form.get("cook_time"),
-                "difficulty": request.form.get("difficulty"),
-                "pic_url": request.form.get("recipe_pic"),
-                "description": request.form.get("description"),
-                "ingredients": request.form.get("ingredients"),
-                "instructions": request.form.get("instructions"),
-                "tags": request.form.get("tags"),
-                "kcal": request.form.get("kcal"),
-                "fat": request.form.get("fat"),
-                "saturates": request.form.get("saturates"),
-                "carbs": request.form.get("carbs"),
-                "sugars": request.form.get("sugar"),
-                "fibre": request.form.get("fibre"),
-                "protein": request.form.get("protein"),
-                "salt": request.form.get("salt"),
+            "category_name": request.form.get("category"),
+            "recipe_name": request.form.get("recipe_name"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "cooking_time": request.form.get("cook_time"),
+            "difficulty": request.form.get("difficulty"),
+            "pic_url": request.form.get("recipe_pic"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "instructions": request.form.get("instructions"),
+            "rating": request.form.get("rating"),
+            "rating_count": request.form.get("rating_count"),
+            "created_by": session['user'],
+            "tags": request.form.get("tags"),
+            "kcal": request.form.get("kcal"),
+            "fat": request.form.get("fat"),
+            "saturates": request.form.get("saturates"),
+            "carbs": request.form.get("carbs"),
+            "sugars": request.form.get("sugar"),
+            "fibre": request.form.get("fibre"),
+            "protein": request.form.get("protein"),
+            "salt": request.form.get("salt"),
             }
-        name = request.form.get("recipe_name")
-        if request.form.get("submit"):
-            mongo.db.recipes.update(submit)
+        if request.form.get("submit") == "1":
+            mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
 
     recipe = mongo.db.recipes.find(
-            {"recipe_name": name})
+            {"_id": ObjectId(id)})
 
     return render_template(
             "edit_recipe.html", recipe=recipe)

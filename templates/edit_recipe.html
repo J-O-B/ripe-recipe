@@ -13,6 +13,9 @@
         <form class="col s12 m8 offset-m2" method="POST">
             <div class="card-panel light-blue lighten-4 soft-corners">
                 <div class="row">
+                    <!--Hidden inputs to feed back-->
+                    <input type="number" id="rating" name="rating" value="{{ recipes.rating }}" class="hidden">
+                    <input type="number" id="rating_count" name="rating_count" value="{{ recipes.rating_count }}" class="hidden">
                     <input name="id" id="id" type="text" value="{{ recipes._id }}" class="hidden">
                     <div class="input-field col m10 offset-m1">
                         <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
