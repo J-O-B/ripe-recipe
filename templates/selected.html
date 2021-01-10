@@ -28,50 +28,58 @@
 
                     <!--Rating Count-->
                     {% set x = recipes.rating|int %}
-                    {% if x == 1 %}
-                        <p><strong>Rating: </strong><span class="center-align">
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span></p>
-                    {% elif x == 2 %}
-                        <p><strong>Rating: </strong><span class="center-align">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span></p>
-                    {% elif x == 3 %}
-                        <p><strong>Rating: </strong><span class="center-align">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span></p>
-                    {% elif x == 4 %}
-                        <p><strong>Rating: </strong><span class="center-align">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span></p>
-                    {% elif x == 5 %}
-                        <p><strong>Rating: </strong><span class="center-align">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span></p>
-                    {% endif %}
+                    
+                    <form method="POST">
+                        <input type="number" id="rating-info" value="{{ x|int }}" class="hidden">
+                        <input type="number" id="count" value="{{ recipes.rating_count|int }}" class="hidden">
+                        <p><strong>Rating: </strong>
+                        {% if x == 1 %}
+                            <span class="center-align">
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star2"></i></button>
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star3"></i></button>
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star4"></i></button>
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star5"></i></button>
+                            </span>
+                        {% elif x == 2 %}
+                            <span class="center-align">
+                                <button class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button class="see-through"><i class="far fa-star star3"></i></button>
+                                <button class="see-through"><i class="far fa-star star4"></i></button>
+                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                            </span>
+                        {% elif x == 3 %}
+                            <span class="center-align">
+                                <button class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button class="see-through"><i class="far fa-star star4"></i></button>
+                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                            </span>
+                        {% elif x == 4 %}
+                            <span class="center-align">
+                                <button class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                            </span>
+                        {% elif x == 5 %}
+                            <span class="center-align">
+                                <button type="submit" value="1" name="rating" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" value="2" name="rating" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" value="3" name="rating" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" value="4" name="rating" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" value="5" name="rating" class="see-through"><i class="fas fa-star star5"></i></button>
+                            </span>
+                        {% endif %}
+                            </p>
+                        </form>
+                        <p>Based On: {{ recipes.rating_count }} Votes</p>
                     </div>
                     <!--Alignment Reset-->
-                    <div class="col s12"></div>
+                    <div class="row"></div>
                 </div>
             </div>
 

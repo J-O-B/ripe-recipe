@@ -37,3 +37,39 @@ $('#about-ripe').click(function(){
     $('.about-ripe-expanded').fadeIn(3000);
 });
 
+$('.star1').mouseenter(function(){
+    $('.star2').css("color", "white");
+    $('.star3').css("color", "white");
+    $('.star4').css("color", "white");
+    $('.star5').css("color", "white");
+});
+$('.star1').mouseleave(function(){
+    $('.star2').css("color", "black");
+    $('.star3').css("color", "black");
+    $('.star4').css("color", "black");
+    $('.star5').css("color", "black");
+});
+$('.star2').mouseenter(function(){
+    $('.star3').css("color", "white");
+    $('.star4').css("color", "white");
+    $('.star5').css("color", "white");
+});
+$('.star2').mouseleave(function(){
+    $('.star3').css("color", "black");
+    $('.star4').css("color", "black");
+    $('.star5').css("color", "black");
+});
+$('.star3').mouseenter(function(){
+    $('.star4').css("color", "white");
+    $('.star5').css("color", "white");
+});
+$('.star3').mouseleave(function(){
+    $('.star4').css("color", "black");
+    $('.star5').css("color", "black");
+});
+$('.star4').mouseenter(function(){
+    $('.star5').css("color", "white");
+});
+$('.star4').mouseleave(function(){
+    $('.star5').css("color", "black");
+});

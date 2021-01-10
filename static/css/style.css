@@ -41,6 +41,7 @@ h3{
 }
 .see-through{
     background: transparent;
+    border: none;
 }
 img{
     max-width: 90vw;
@@ -251,6 +252,17 @@ img{
     padding:15px 15px 15px 25px;
     width:90%;
 }
+/*---------------------------------------------------------------------------------------- Selected Recipe Page */
+.star1:hover,
+.star2:hover,
+.star3:hover,
+.star4:hover,
+.star5:hover{
+    cursor: pointer;
+}
+
+}
+
 
 /*---------------------------------------------------------------------------------------- Store */
 
