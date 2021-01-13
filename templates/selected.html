@@ -29,49 +29,55 @@
                     <!--Rating Count-->
                     {% set x = recipes.rating|int %}
                     
-                    <form method="POST">
+                    <form onsubmit="return false;" method="POST" action="{{ url_for('selected', name=recipes.recipe_name) }}">
                         <input type="number" id="rating-info" value="{{ x|int }}" class="hidden">
                         <input type="number" id="count" value="{{ recipes.rating_count|int }}" class="hidden">
                         <p><strong>Rating: </strong>
+                            <label class="black-text" for="rating">Click To Rate:</label><br>
                         {% if x == 1 %}
                             <span class="center-align">
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="fas fa-star star1"></i></button>
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star2"></i></button>
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star3"></i></button>
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star4"></i></button>
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="far fa-star star5"></i></button>
+                                <input type="number" name="rating" id="rating">
+                                <button type="submit" id="rating1" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" id="rating2" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" id="rating3" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" id="rating4" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" id="rating5" class="see-through"><i class="fas fa-star star5"></i></button>
                             </span>
                         {% elif x == 2 %}
                             <span class="center-align">
-                                <button class="see-through"><i class="fas fa-star star1"></i></button>
-                                <button class="see-through"><i class="fas fa-star star2"></i></button>
-                                <button class="see-through"><i class="far fa-star star3"></i></button>
-                                <button class="see-through"><i class="far fa-star star4"></i></button>
-                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                                <input type="number" name="rating" id="rating">
+                                <button type="submit" id="rating1" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" id="rating2" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" id="rating3" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" id="rating4" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" id="rating5" class="see-through"><i class="fas fa-star star5"></i></button>
                             </span>
                         {% elif x == 3 %}
                             <span class="center-align">
-                                <button class="see-through"><i class="fas fa-star star1"></i></button>
-                                <button class="see-through"><i class="fas fa-star star2"></i></button>
-                                <button class="see-through"><i class="fas fa-star star3"></i></button>
-                                <button class="see-through"><i class="far fa-star star4"></i></button>
-                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                                <input type="number" name="rating" id="rating">
+                                <button type="submit" id="rating1" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" id="rating2" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" id="rating3" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" id="rating4" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" id="rating5" class="see-through"><i class="fas fa-star star5"></i></button>
                             </span>
                         {% elif x == 4 %}
                             <span class="center-align">
-                                <button class="see-through"><i class="fas fa-star star1"></i></button>
-                                <button class="see-through"><i class="fas fa-star star2"></i></button>
-                                <button class="see-through"><i class="fas fa-star star3"></i></button>
-                                <button class="see-through"><i class="fas fa-star star4"></i></button>
-                                <button class="see-through"><i class="far fa-star star5"></i></button>
+                                <input type="number" name="rating" id="rating">
+                                <button type="submit" id="rating1" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" id="rating2" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" id="rating3" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" id="rating4" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" id="rating5" class="see-through"><i class="fas fa-star star5"></i></button>
                             </span>
                         {% elif x == 5 %}
                             <span class="center-align">
-                                <button type="submit" value="1" name="rating" class="see-through"><i class="fas fa-star star1"></i></button>
-                                <button type="submit" value="2" name="rating" class="see-through"><i class="fas fa-star star2"></i></button>
-                                <button type="submit" value="3" name="rating" class="see-through"><i class="fas fa-star star3"></i></button>
-                                <button type="submit" value="4" name="rating" class="see-through"><i class="fas fa-star star4"></i></button>
-                                <button type="submit" value="5" name="rating" class="see-through"><i class="fas fa-star star5"></i></button>
+                                <input type="number" name="rating" id="rating">
+                                <button type="submit" id="rating1" class="see-through"><i class="fas fa-star star1"></i></button>
+                                <button type="submit" id="rating2" class="see-through"><i class="fas fa-star star2"></i></button>
+                                <button type="submit" id="rating3" class="see-through"><i class="fas fa-star star3"></i></button>
+                                <button type="submit" id="rating4" class="see-through"><i class="fas fa-star star4"></i></button>
+                                <button type="submit" id="rating5" class="see-through"><i class="fas fa-star star5"></i></button>
                             </span>
                         {% endif %}
                             </p>

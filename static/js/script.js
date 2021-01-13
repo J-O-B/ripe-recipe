@@ -14,6 +14,9 @@ $(document).ready(function(){
 
     // Homepage States
     $('.about-ripe-expanded').hide();
+
+    // Rating Field
+    $('#rating').hide();
   });
 
   // Full Width Slider 
@@ -37,39 +40,45 @@ $('#about-ripe').click(function(){
     $('.about-ripe-expanded').fadeIn(3000);
 });
 
-$('.star1').mouseenter(function(){
-    $('.star2').css("color", "white");
-    $('.star3').css("color", "white");
-    $('.star4').css("color", "white");
-    $('.star5').css("color", "white");
+// Initial Star Color 
+function getRating(){
+    var rate = $('#rating-info').val();
+    console.log(rate);
+
+    if (rate == 1){
+        $('.star2').css("color", "white");
+        $('.star3').css("color", "white");
+        $('.star4').css("color", "white");
+        $('.star5').css("color", "white");
+    }else if (rate == 2){
+        $('.star3').css("color", "white");
+        $('.star4').css("color", "white");
+        $('.star5').css("color", "white");
+    }else if (rate == 3){
+        $('.star4').css("color", "white");
+        $('.star5').css("color", "white");
+    }else if (rate == 4){
+        $('.star5').css("color", "white");
+    }
+}
+getRating();
+
+// On Click Values Of Rating Stars:
+$('#rating1').click(function(){
+    $("#rating").val('1');
 });
-$('.star1').mouseleave(function(){
-    $('.star2').css("color", "black");
-    $('.star3').css("color", "black");
-    $('.star4').css("color", "black");
-    $('.star5').css("color", "black");
+$('#rating2').click(function(){
+    $("#rating").val('2');
 });
-$('.star2').mouseenter(function(){
-    $('.star3').css("color", "white");
-    $('.star4').css("color", "white");
-    $('.star5').css("color", "white");
+$('#rating3').click(function(){
+    $("#rating").val('3');
 });
-$('.star2').mouseleave(function(){
-    $('.star3').css("color", "black");
-    $('.star4').css("color", "black");
-    $('.star5').css("color", "black");
+$('#rating3').click(function(){
+    $("#rating").val('3');
 });
-$('.star3').mouseenter(function(){
-    $('.star4').css("color", "white");
-    $('.star5').css("color", "white");
+$('#rating4').click(function(){
+    $("#rating").val('4');
 });
-$('.star3').mouseleave(function(){
-    $('.star4').css("color", "black");
-    $('.star5').css("color", "black");
-});
-$('.star4').mouseenter(function(){
-    $('.star5').css("color", "white");
-});
-$('.star4').mouseleave(function(){
-    $('.star5').css("color", "black");
+$('#rating5').click(function(){
+    $("#rating").val('5');
 });

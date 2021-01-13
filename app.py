@@ -230,27 +230,13 @@ def selected(name):
     The selected page is a general page which can run all recipe types,
     on page logic will change
     """
-    name = request.form.get("name")
+    name = name
     recipe = mongo.db.recipes.find(
-        {"recipe_name": request.form.get("name")})
+        {"recipe_name": name})
 
     if request.method == "POST":
         userrating = request.form.get("rating")
-        currentrating = request.form.get("rating-info")
         print(userrating)
-
-        if userrating == 1:
-            newRating = 1
-            newCount = 1 + 1
-            new = {
-                "rating": newRating,
-                "rating_count": newCount
-            }
-
-            mongo.db.recipes.update(
-                {"recipe_name": name},
-                {$set:
-                {"rating": newRating, "rating_count": newCount}})
 
     return render_template("selected.html", recipe=recipe, name=name)
 
