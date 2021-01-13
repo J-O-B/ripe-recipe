@@ -64,20 +64,17 @@ getRating();
 
 // On Click Values Of Rating Stars:
 $('#rating1').click(function(){
-    $("#rating").val('1');
+    $(this).val('1');
 });
 $('#rating2').click(function(){
-    $("#rating").val('2');
+    $(this).val('2');
 });
 $('#rating3').click(function(){
-    $("#rating").val('3');
-});
-$('#rating3').click(function(){
-    $("#rating").val('3');
+    $(this).val('3');
 });
 $('#rating4').click(function(){
-    $("#rating").val('4');
+    $(this).val('4');
 });
 $('#rating5').click(function(){
-    $("#rating").val('5');
+    $(this).val('5');
 });

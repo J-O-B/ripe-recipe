@@ -157,12 +157,11 @@ def editrecipe(id):
             "salt": request.form.get("salt"),
             }
         if request.form.get("submit") == "1":
-            name = request.form.get("recipe_name").lower()
             mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
 
             flash("Your Recipe Has Been Updated!")
 
-            return render_template("selected.html", recipe=recipe, name=name)
+            return render_template("selected.html", recipe=recipe, id=id)
 
     return render_template(
             "edit_recipe.html", recipe=recipe)
@@ -236,40 +235,36 @@ def selected(id):
 
     if request.method == "POST":
 
-        newRating = request.form.get("rating")
-        currentCount = 0
-        count = (currentCount + 1)
-
-        submit = {
-            "category_name": request.form.get("category"),
+        update = {
+            "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "serves": request.form.get("serves"),
             "prep_time": request.form.get("prep_time"),
-            "cooking_time": request.form.get("cook_time"),
+            "cooking_time": request.form.get("cooking_time"),
             "difficulty": request.form.get("difficulty"),
-            "pic_url": request.form.get("recipe_pic"),
+            "pic_url": request.form.get("pic_url"),
             "description": request.form.get("description"),
             "ingredients": request.form.get("ingredients"),
             "instructions": request.form.get("instructions"),
-            "rating": newRating,
-            "rating_count": count,
-            "created_by": session['user'],
+            "rating": request.form.get("newRating"),
+            "rating_count": request.form.get("newCount"),
+            "created_by": request.form.get("created_by"),
             "tags": request.form.get("tags"),
             "kcal": request.form.get("kcal"),
             "fat": request.form.get("fat"),
             "saturates": request.form.get("saturates"),
             "carbs": request.form.get("carbs"),
-            "sugars": request.form.get("sugar"),
+            "sugars": request.form.get("sugars"),
             "fibre": request.form.get("fibre"),
             "protein": request.form.get("protein"),
-            "salt": request.form.get("salt"),
-            }
-        if request.form.get("rating") == "1":
+            "salt": request.form.get("salt")
+        }
+        if request.form.get("rating") == "5":
+            mongo.db.recipes.update({"_id": ObjectId(id)}, update)
 
-            flash("Thanks! Your Rating Has Been Noted")
+            flash("Your Recipe Has Been Updated!")
 
-            return render_template(
-                "selected.html", recipe=recipe, id=id)
+            return render_template("selected.html", recipe=recipe, id=id)
 
     return render_template("selected.html", recipe=recipe, id=id)
 
