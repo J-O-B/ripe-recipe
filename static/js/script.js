@@ -44,7 +44,6 @@ $('#about-ripe').click(function(){
 function getRating(){
     var rate = $('#rating-info').val();
     console.log(rate);
-
     if (rate == 1){
         $('.star2').css("color", "white");
         $('.star3').css("color", "white");

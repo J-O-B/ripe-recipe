@@ -10,7 +10,7 @@
     <div class="row">
         {% for starters in starter %}
         <div class="col s12 m5 offset-m1 grey lighten-2 soft-corners border center-align">
-            <form  method="POST" action="{{ url_for('selected', name=starters.recipe_name) }}">
+            <form  method="POST" action="{{ url_for('selected', id=starters._id) }}">
                 <!--image col-->
                 <div class="col s5">
                     <img class ="recipe-pic" src="{{ starters.pic_url }}" alt="Recipe Picture">

@@ -224,21 +224,54 @@ def starter():
     return render_template("starter.html", starter=starter)
 
 
-@app.route("/recipe/<name>", methods=["GET", "POST"])
-def selected(name):
+@app.route("/recipe/<id>", methods=["GET", "POST"])
+def selected(id):
     """
     The selected page is a general page which can run all recipe types,
     on page logic will change
     """
-    name = name
+    id = id
     recipe = mongo.db.recipes.find(
-        {"recipe_name": name})
+            {"_id": ObjectId(id)})
 
     if request.method == "POST":
-        userrating = request.form.get("rating")
-        print(userrating)
 
-    return render_template("selected.html", recipe=recipe, name=name)
+        newRating = request.form.get("rating")
+        currentCount = 0
+        count = (currentCount + 1)
+
+        submit = {
+            "category_name": request.form.get("category"),
+            "recipe_name": request.form.get("recipe_name"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "cooking_time": request.form.get("cook_time"),
+            "difficulty": request.form.get("difficulty"),
+            "pic_url": request.form.get("recipe_pic"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "instructions": request.form.get("instructions"),
+            "rating": newRating,
+            "rating_count": count,
+            "created_by": session['user'],
+            "tags": request.form.get("tags"),
+            "kcal": request.form.get("kcal"),
+            "fat": request.form.get("fat"),
+            "saturates": request.form.get("saturates"),
+            "carbs": request.form.get("carbs"),
+            "sugars": request.form.get("sugar"),
+            "fibre": request.form.get("fibre"),
+            "protein": request.form.get("protein"),
+            "salt": request.form.get("salt"),
+            }
+        if request.form.get("rating") == "1":
+
+            flash("Thanks! Your Rating Has Been Noted")
+
+            return render_template(
+                "selected.html", recipe=recipe, id=id)
+
+    return render_template("selected.html", recipe=recipe, id=id)
 
 
 @app.route("/user/<user>", methods=["GET", "POST"])
