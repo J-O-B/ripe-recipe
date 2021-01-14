@@ -119,6 +119,9 @@ img{
     background-color: var(--first);
     text-shadow: var(--third);
 }
+.comments-div{
+    width:75%;
+}
 /*-----------------------------------------------------------------Homepage */
 
 .welcome{
@@ -260,12 +263,15 @@ img{
 .star5:hover{
     cursor: pointer;
 }
-#recipe-comment{
-    margin-top: 15px;
+
+#recipe-comments{
+    padding-top: 55px;
 }
+
 #rating-comment>option{
     font-size: larger;
     color:black;
+    text-align: center;
 }
 
 

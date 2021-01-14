@@ -78,3 +78,7 @@ $('#rating4').click(function(){
 $('#rating5').click(function(){
     $(this).val('5');
 });
+
+$('#leaveComment').click(function(){
+    $(this).val(1);
+});

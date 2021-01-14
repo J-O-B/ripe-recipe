@@ -231,21 +231,22 @@ def selected(id):
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
 
-    messages = mongo.db.messages.find(
-            {"message_for": recipe})
+    messages = mongo.db.comments.find(
+            {"message_for": id})
 
-    if request.method == "POST":
+    if (request.method == "POST"):
         today = date.today()
         now = today.strftime("%b-%d-%Y")
 
         newMessage = {
                 "message_from": session["user"],
-                "message_for": request.form.get("from"),
-                "message_text": request.form.get("message"),
+                "message_for": id,
+                "message_text": request.form.get("recipe-comment"),
+                "rating": request.form.get("rating-comment"),
                 "date": now,
             }
-
-        mongo.db.messages.insert(newMessage)
+        if request.form.get("leaveComment") == "1":
+            mongo.db.comments.insert(newMessage)
 
     return render_template("selected.html", recipe=recipe, messages=messages)
 
