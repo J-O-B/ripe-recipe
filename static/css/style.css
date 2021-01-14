@@ -64,12 +64,15 @@ img{
     visibility: hidden;
 }
 
-/*------------Borders--------*/
+/*------------Borders & Margins--------*/
 .border{
     -webkit-box-shadow: 3px 3px 5px 6px var(--third);  
     -moz-box-shadow: 3px 3px 5px 6px var(--third);  
     box-shadow: 3px 3px 5px 6px var(--third); 
     transition: all 1s ease-in-out;
+}
+.margin-bottom{
+    margin-bottom: 50px;
 }
 
 .round-border{
@@ -317,4 +320,40 @@ footer{
 footer a{
     color:#000;
     text-decoration: none;
+}
+/*---------------------------------------------------------------------------------------- Pagination */
+#page-navi{
+    width:100%;
+    margin: 40px auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding:0;
+    overflow: hidden;
+}
+#page-navi li{
+    list-style: none;
+    display: inline;
+}
+#page-navi li a{
+    display: inline-block;
+    position: relative;
+    padding: 8px 10px;
+    margin-right: 10px;
+    border: 1px solid red;
+    text-decoration: none;
+    background: blue;
+    -webkit-transition: background 2s linear;
+    transition: background 2s linear;
+    border-radius: 3px;
+    color: #fff;
+}
+#page-navi li:last-child a{
+    margin-right: 0px;
+}
+#page-navi li a.current,
+#page-navi li a.disable,
+#page-navi li a.hover{
+    background: var(--third);
+    color: #fff;
+    border-bottom: 3px solid var(--first);
 }

@@ -216,9 +216,12 @@ def search():
 
 @app.route("/starter", methods=["GET", "POST"])
 def starter():
+    howMany = mongo.db.recipes.find({
+        "category_name": "starter"
+    }).count()
     starter = mongo.db.recipes.find({"category_name": "starter"})
 
-    return render_template("starter.html", starter=starter)
+    return render_template("starter.html", starter=starter, howMany=howMany)
 
 
 @app.route("/recipe/<id>", methods=["GET", "POST"])
