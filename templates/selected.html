@@ -120,7 +120,8 @@
             </div>
             <!--Comments Section-->
             <div class="row blue lighten-2 round-corners">
-                {% if session["user"] %}
+                <!--Pagination Hook-->
+                    {% if session["user"] %}
                 <!--Leave A Message-->
                     <form class="col s10 offset-s1" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
                         <div class="row white round-corners">
@@ -172,46 +173,59 @@
                         <button class="btn-large green lighten-2 col s12" type="submit" value="0" name="leaveComment" id="leaveComment">Submit Comment <i class="fas fa-share-square"></i></button>
                     </form>
                 {% endif %}
-                {% for message in messages %}
-                <div class="row">
-                    <div class="col s10 offset-s1">
-                        <div class="col s12 m4">
-                            <p>Message Left: <span>{{ message.date }}</span></p>
-                            <p>Message From: <span>{{ message.message_from|capitalize }}</span></p>
-                            <p>Rating: 
-                                {% if message.rating == "1" %}
-                                <span>&#10031;</span>
-                                {% elif message.rating == "2" %}
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                {% elif message.rating == "3" %}
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                {% elif message.rating == "4" %}
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                {% elif message.rating == "5" %}
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                <span>&#10031;</span>
-                                {% endif %}
-                            </p> 
+                <!--Comments Wrapper-->
+                <div id="wrapper">
+                    <!--Comment Contents-->
+                    <div class="contents">
+                        {% for message in messages %}
+                        <div class="row">
+                            <div class="col s10 offset-s1">
+                                <div class="col s12 m4">
+                                    <p>Message Left: <span>{{ message.date }}</span></p>
+                                    <p>Message From: <span>{{ message.message_from|capitalize }}</span></p>
+                                    <p>Rating: 
+                                        {% if message.rating == "1" %}
+                                        <span>&#10031;</span>
+                                        {% elif message.rating == "2" %}
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        {% elif message.rating == "3" %}
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        {% elif message.rating == "4" %}
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        {% elif message.rating == "5" %}
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        {% endif %}
+                                    </p> 
+                                </div>
+                                <div class="col s12 m8">
+                                    <h6>Comment:</h6>
+                                    <p>{{ message.message_text }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s12 m8">
-                            <h6>Comment:</h6>
-                            <p>{{ message.message_text }}</p>
-                        </div>
+                        <hr class="comments-div">
+                        {% endfor %}
                     </div>
                 </div>
-                <hr class="comments-div">
-                {% endfor %}
+
+                
             </div>
         {% endfor %}
 
         
+{% endblock %}
+
+{% block scripts %}
+    <!--Pagination Script-->
+    <script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
 {% endblock %}
