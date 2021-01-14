@@ -77,7 +77,7 @@ img{
     background: linear-gradient(90deg, var(--third), var(--second), var(--third));
 }
 .round-corners{
-    border-radius: 30%;
+    border-radius: 10%;
 }
 .round-image{
     border-radius: 50%;
@@ -260,8 +260,14 @@ img{
 .star5:hover{
     cursor: pointer;
 }
-
+#recipe-comment{
+    margin-top: 15px;
 }
+#rating-comment>option{
+    font-size: larger;
+    color:black;
+}
+
 
 
 /*---------------------------------------------------------------------------------------- Store */
