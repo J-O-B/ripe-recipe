@@ -53,6 +53,18 @@ $('#close-messenger').click(function(){
     $('#messenger').hide();
     $('#open-messenger').show();
 })
+$('.IMreply').click(function(){
+    replyTo = $('.IMreply').val();
+    console.log(replyTo)
+});
 
-
-
+// Submit button value to 1 "Send"
+$('#submit').click(function(){
+        $(this).val(1);
+        console.log($(this).val())
+        return false
+    })
+$('#seeRecipe').click(function(){
+        $(this).val(1);
+        return false
+    })

@@ -26,10 +26,10 @@
                             {% if x.recipe_name != "" %}
                                 <ul>
                                     <li>
-                                        <form  method="POST" action="{{ url_for('selected', name=x.recipe_name) }}">
+                                        <form method="POST" action="{{ url_for('selected', id=x._id) }}">
                                             <h5>{{ x.recipe_name|capitalize }}</h5>
                                             <input class="hidden" name="name" id="name" value="{{ x.recipe_name }}">
-                                            <button type="submit" value="{{ x.recipe_name }}" class="col s12 btn green accent-3 black-text soft-corners">
+                                            <button type="submit" name="seeRecipe" id="seeRecipe" value="0" class="col s12 btn green accent-3 black-text soft-corners">
                                                     View Recipe
                                             </button>
                                         </form>
@@ -57,7 +57,7 @@
                         <input class="hidden" name="user" id="user" value="{{ user }}">
                         <!--Data For Database-->
                         <input type="textbox" name="message" id="message" minlength="1" maxlength="250" placeholder="Enter Your Message for {{ user|capitalize }}" class="col s11" required>
-                        <button type="submit" class="col s1 btn green" value="message">
+                        <button type="submit" class="col s1 btn green" value="0">
                             Send
                         </button>
                     </form>

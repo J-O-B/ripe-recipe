@@ -16,7 +16,7 @@
     <title>Ripe Recipes</title>
 </head>
 <body>
-
+    <div id="page-contain">
     <!--Check for home variable to render different template style-->
     <header>
             <nav class="nav-extended nav-bg">
@@ -156,14 +156,16 @@
                             <span id="close-messenger"><i class="fas fa-times"></i></span>
                         </div>
                     </div>
-                    {% for items in msg %}
-                    <div class="col s12 white" id="msg">
-                        <p>Message From: <span id="messageFrom">{{ items.message_from }}</span><br>Sent On: {{ items.date}}</p>
-                        <p>Message: {{ items.message_text }}</p>
-                        <button class="IMreply green">Reply</button>
-                        <hr class="comments-div">
+                    <div class="col s12  white" id="msg">
+                        {% for items in msg %}
+                        <div class="col s12 message-contain">
+                            <p>Message From: <span id="messageFrom">{{ items.message_from }}</span><br>Sent On: {{ items.date}}</p>
+                            <p>Message: {{ items.message_text }}</p>
+                            <button value="{{ items.message_from }}" class="IMreply green">Reply</button>
+                            <hr class="comments-div">
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
     {% endif %}
@@ -246,5 +248,6 @@
     <!--Page Optional Scripts-->
     {% block scripts %}
     {% endblock %}
+    </div>
 </body>
 </html>

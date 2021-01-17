@@ -20,10 +20,14 @@ mongo = PyMongo(app)
 
 
 def messenger():
-    user = session["user"]
-    messages = mongo.db.messages.find(
-            {"message_for": user})
-    return messages
+    try:
+        user = session["user"]
+        messages = mongo.db.messages.find(
+                {"message_for": user})
+        return messages
+    except:
+        messages = 0
+        return messages
 
 
 @app.route("/")
@@ -245,26 +249,28 @@ def starter():
     }).count()
     starter = mongo.db.recipes.find({"category_name": "starter"})
 
+    if request.form.get('submit') == "1":
+        id = request.form.get("id")
+        return redirect(url_for("selected", id=id))
+
     return render_template("starter.html",
                            starter=starter, howMany=howMany, msg=msg)
 
 
 @app.route("/recipe/<id>", methods=["GET", "POST"])
 def selected(id):
-    msg = messenger()
     """
     The selected page is a general page which can run all recipe types,
     on page logic will change
     """
-    id = id
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
 
     messages = mongo.db.comments.find(
             {"message_for": id})
+    if (request.method == "POST"):
 
-    if request.form.get("leaveComment") == 1:
-        if (request.method == "POST"):
+        if request.form.get("leaveComment") == "1":
             today = date.today()
             now = today.strftime("%b-%d-%Y")
 
@@ -279,7 +285,7 @@ def selected(id):
             mongo.db.comments.insert(newMessage)
 
     return render_template("selected.html",
-                           recipe=recipe, messages=messages, msg=msg)
+                           id=id, recipe=recipe, messages=messages)
 
 
 @app.route("/user/<user>", methods=["GET", "POST"])
@@ -287,7 +293,7 @@ def user(user):
     msg = messenger()
     user = user
     userDB = mongo.db.users.find(
-        {"username": request.form.get("user")})
+        {"username": user})
 
     recipes = mongo.db.recipes.find(
             {"created_by": user})
@@ -296,20 +302,25 @@ def user(user):
             {"message_for": user})
 
     if request.method == "POST":
-        today = date.today()
-        now = today.strftime("%b-%d-%Y")
+        if request.form.get("submit") == 15:
 
-        newMessage = {
-                "message_from": session["user"],
-                "message_for": request.form.get("from"),
-                "message_text": request.form.get("message"),
-                "date": now,
-            }
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
 
-        mongo.db.messages.insert(newMessage)
-        return render_template(
-                "user.html", recipes=recipes,
-                user=user, userDB=userDB, messages=messages)
+            newMessage = {
+                    "message_from": session["user"],
+                    "message_for": request.form.get("from"),
+                    "message_text": request.form.get("message"),
+                    "date": now,
+                }
+
+            mongo.db.messages.insert(newMessage)
+            return render_template(
+                    "user.html", recipes=recipes,
+                    user=user, userDB=userDB, messages=messages, msg=msg)
+
+        if request.form.get("seeRecipe") == 15:
+            return "hello"
 
     return render_template(
      "user.html",
