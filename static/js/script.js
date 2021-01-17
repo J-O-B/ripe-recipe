@@ -23,6 +23,10 @@ $(document).ready(function(){
 
     // Messenger Box Visibility
     $('#messenger').hide();
+    $('#reply').hide();
+
+    // Modal Init
+    $('.modal').modal();
 });
  // Date Generator
 function dateGen(){
@@ -54,9 +58,16 @@ $('#close-messenger').click(function(){
     $('#open-messenger').show();
 })
 $('.IMreply').click(function(){
-    replyTo = $('.IMreply').val();
-    console.log(replyTo)
+    $('#title').text("Reply To")
+    replyTo = $('#messageFrom').text();
+    $('#msg').toggle();
+    $('#reply').toggle();
+    $('#sendTo').attr("value", replyTo); 
 });
+$('#sendReply').click(function(){
+    $(this).val(1);
+});
+
 
 // Submit button value to 1 "Send"
 $('#submit').click(function(){
