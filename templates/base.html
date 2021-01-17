@@ -141,6 +141,29 @@
             </div>
     </header>
 
+<!--Instant Messenger-->
+    {% if session["user"] %}
+    <section class="instant-msg" id="instant-msg">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 red center-align">
+                <p>Messenger <i class="fas fa-comment-dots"></i></p>
+            </div>
+        </div>
+    </section> 
+
+        <div id="instant-msg-open">
+            <div class="blue">
+                <h3>Your Messages:</h3>
+                {% for message in messages %}
+                        <p >
+                            Message From {{ message.message_from }} on {{ message.date }}<br>
+                            {{ message.message_text }}
+                        </p>
+                    {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
 <!--Flash Message Feedback-->
     <section>
         {% with messages = get_flashed_messages() %}
@@ -162,8 +185,9 @@
         {% endblock %}
     </main>
 
+
 <!--Footer Block-->
-    <footer>
+    <footer id="footer">
         <!--Empty Row To Ensure No Interference With Footer Layout-->
         <div class="row"></div>
         

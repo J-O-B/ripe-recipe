@@ -39,3 +39,16 @@ $('#about-ripe').click(function(){
 $('#leaveComment').click(function(){
     $(this).val(1);
 });
+
+// Instant Messenger
+function messenger(){
+    var cursor = mongo.db.users.find({"username": session["user"]});
+    cursor.forEach(function(users){
+        var id = users._id;
+
+    }) 
+};
+
+// Stop overlap footer
+
+

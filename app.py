@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 @app.route("/home")
 def home():
     home = True
+
     return render_template("home.html", home=home)
 
 

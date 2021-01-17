@@ -31,7 +31,7 @@ body{
     font-weight: 500;
     color: var(--black);
     min-height: 100vh;
-    width:99vw;
+    max-width: 99vw;
 }
 
 ::placeholder{
@@ -373,4 +373,20 @@ footer a{
     background: var(--third);
     color: #fff;
     border-bottom: 3px solid var(--first);
+}
+
+/*---------------------------------------------------------------------------------------- Messenger */
+#instant-msg i{
+    font-size: 150%;
+    font-weight: 700;
+}
+
+#instant-msg-open{
+    position: fixed;
+    bottom:0;
+    left:0;
+    height:200px;
+    width:500px;
+    overflow-y: scroll;
+    z-index:100;
 }
