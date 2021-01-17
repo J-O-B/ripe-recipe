@@ -7,14 +7,17 @@
             <h4 class="center-align black-text text-lighten-2 border round-border"><strong>{{ recipes.recipe_name|capitalize }}</strong></h4>
         </div>
     </div>
+
+        <!--Wrapper-->
+        <div class="row">
             <!--Top Section-->
             <div class="row">
                 <div class="col s10 offset-s1 m4 grey lighten-2 top-recipe-card border soft-corners">
                     <!--Recipe Image-->
                     <img class="recipe-image soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
                 </div>
-                <div class="col s10 offset-s1 m8 top-recipe-card">
-                    <!--Left Block-->
+                <div class="col s10 offset-s1 m8 top-recipe-card margin-bottom">
+                    <!--Left Block--> 
                     <div class="col m6 s12 left-block">
                         <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
                         <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
@@ -31,8 +34,7 @@
             <!-- If the current user created the recipe -->
             {% if recipes.created_by == session["user"] %}
                 <div class="row">
-                    <h3 class="It Looks Like You Are The Creator Of This Recipe!"></h3>
-                    
+                    <h5 class="center">It Looks Like You Are The Creator Of This Recipe!</h5>
                     <div class="col s3 offset-s2">
                         <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
                             <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
@@ -47,7 +49,7 @@
                 </div>
             {% endif %}
             <!--Nutrition Row-->
-            <div class="row">
+            <div class="row haze">
                 <div class="col s10 offset-s1 center-align">
                     <h3>Nutrition</h3>
                     <hr class="custom-short-div">
@@ -79,7 +81,7 @@
                     </div>
 
             <!--Bottom Section-->
-            <div class="row">
+            <div class="row haze">
                 <div class="col s10 offset-s1 m6">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
@@ -108,6 +110,9 @@
                         </ol>     
                 </div>
             </div>
+        </div>
+
+            <!--Created By Link-->
             <div class="row">
                 <div class="col s10 offset-s1">
                     <form  method="POST" action="{{ url_for('user', user=recipes.created_by) }}">
@@ -119,13 +124,13 @@
                 </div>
             </div>
             <!--Comments Section-->
-            <div class="row blue lighten-2 round-corners">
+            <div class="row blue lighten-2 round-corners comments">
                 <!--Pagination Hook-->
                     {% if session["user"] %}
                 <!--Leave A Message-->
-                    <form class="col s10 offset-s1" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
-                        <div class="row white round-corners">
-                            <div class="input-field col s12">
+                    <form class="col s12 haze" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
+                        <div class="row">
+                            <div class="input-field col s10 offset-s1">
                                 <div class="col s1">
                                     <i class="fas fa-comments"></i>
                                 </div>
@@ -134,7 +139,7 @@
                                     <label for="recipe-comment">Recipe Comment</label>
                                 </div>
                             </div>
-                            <div class="input-field col s12">
+                            <div class="input-field col s10 offset-s1">
                                 <div class="col s1">
                                     <i class="fas fa-star"></i>
                                 </div>
@@ -170,8 +175,17 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-large green lighten-2 col s12" type="submit" value="0" name="leaveComment" id="leaveComment">Submit Comment <i class="fas fa-share-square"></i></button>
+                        <button class="btn-large green lighten-2 col s12" type="submit" value="0" name="leaveComment" id="leaveComment">
+                            Submit Comment <i class="fas fa-share-square"></i>
+                        </button>
                     </form>
+                {% endif %}
+
+                {% if not session["user"] %}
+                <div class="row center-align">
+                    <h4>Please Login To Leave A Comment</h4>
+                    <hr class="custom-short-div">
+                </div>
                 {% endif %}
                 <!--Comments Wrapper-->
                 <div id="wrapper">

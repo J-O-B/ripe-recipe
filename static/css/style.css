@@ -11,6 +11,16 @@
   --third: rgb(234,128,252);
   --black: rgb(0,0,0);
 }
+.good{
+    background: rgb(21, 255, 0);
+    color:#000;
+}
+.bad{
+    background: rgb(218, 5, 5);
+}
+.haze{
+    background: rgba(248, 248, 248, 0.3);
+}
 
 /*----------------------------------------------------------------- Global CSS */
 body{
@@ -20,7 +30,8 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: var(--black);
-    min-height:100vh;
+    min-height: 100vh;
+    width:99vw;
 }
 
 ::placeholder{
@@ -62,6 +73,9 @@ img{
 }
 .hidden{
     visibility: hidden;
+}
+.comments{
+    overflow:hidden;
 }
 
 /*------------Borders & Margins--------*/
@@ -158,11 +172,11 @@ img{
 #firstCard,
 #secondCard,
 #thirdCard{
+    height:100%;
     background-color: rgba(248, 248, 248, 0.3);
     border-radius: 15%;
     margin-bottom:20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
     transition: all 1.5s ease-in-out;
 }
 #firstCard:hover,
@@ -274,6 +288,7 @@ img{
 #rating-comment>option{
     font-size: larger;
     color:black;
+    font-weight: 800;
     text-align: center;
 }
 
@@ -323,8 +338,10 @@ footer a{
 }
 /*---------------------------------------------------------------------------------------- Pagination */
 #page-navi{
+    display: flex;
+    justify-content: center;
     width:100%;
-    margin: 40px auto;
+    margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 10px;
     padding:0;

@@ -33,26 +33,31 @@ def admin():
     Store session cookie to a var and search the users database.
     Match a record with the current user, and check for admin privilages.
     """
-    if session["user"]:
+    try:
         user = session["user"]
         x = True
 
         query = mongo.db.users.find_one(
             {"username": user,
              "admin": x})
+
         if query:
             return render_template("admin_panel.html", query=query)
+
         else:
             return redirect(url_for('error', reason=0))
 
-    return render_template("admin_panel.html")
+        return render_template("admin_panel.html")
+
+    except:
+        return redirect(url_for('error', reason=0))
 
 
 @app.route("/error/<reason>")
 def error(reason):
-
-    if not reason == 0:
-        message = ("There seems to be a problem with your credentials"
+    reason = int(reason)
+    if reason == 0:
+        message = ("There seems to be a problem with your credentials" + "\n"
                    + "Please contact an admin for support")
     else:
         message = "Oh Snap! Something seems to have gone wrong!"
@@ -237,18 +242,19 @@ def selected(id):
     messages = mongo.db.comments.find(
             {"message_for": id})
 
-    if (request.method == "POST"):
-        today = date.today()
-        now = today.strftime("%b-%d-%Y")
+    if request.form.get("leaveComment") == 1:
+        if (request.method == "POST"):
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
 
-        newMessage = {
-                "message_from": session["user"],
-                "message_for": id,
-                "message_text": request.form.get("recipe-comment"),
-                "rating": request.form.get("rating-comment"),
-                "date": now,
-            }
-        if request.form.get("leaveComment") == "1":
+            newMessage = {
+                    "message_from": session["user"],
+                    "message_for": id,
+                    "message_text": request.form.get("recipe-comment"),
+                    "rating": request.form.get("rating-comment"),
+                    "date": now,
+                }
+
             mongo.db.comments.insert(newMessage)
 
     return render_template("selected.html", recipe=recipe, messages=messages)
@@ -319,8 +325,13 @@ def my_profile():
     myrecipes = mongo.db.recipes.find(
             {"created_by": session["user"]})
 
+    numOfRecipes = mongo.db.recipes.find(
+            {"created_by": session["user"]}).count()
+
     return render_template(
-        "profile.html", messages=messages, user=user, myrecipes=myrecipes)
+        "profile.html",
+        messages=messages, user=user,
+        myrecipes=myrecipes, numOfRecipes=numOfRecipes)
 
 
 @app.route("/store")
