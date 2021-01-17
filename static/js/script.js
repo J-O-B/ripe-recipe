@@ -20,6 +20,9 @@ $(document).ready(function(){
         fullWidth: true,
         indicators: true,
     });
+
+    // Messenger Box Visibility
+    $('#messenger').hide();
 });
  // Date Generator
 function dateGen(){
@@ -41,14 +44,15 @@ $('#leaveComment').click(function(){
 });
 
 // Instant Messenger
-function messenger(){
-    var cursor = mongo.db.users.find({"username": session["user"]});
-    cursor.forEach(function(users){
-        var id = users._id;
+$('#open-messenger').click(function(){
+    $('#open-messenger').hide();
+    $('#messenger').show();
+});
 
-    }) 
-};
+$('#close-messenger').click(function(){
+    $('#messenger').hide();
+    $('#open-messenger').show();
+})
 
-// Stop overlap footer
 
 

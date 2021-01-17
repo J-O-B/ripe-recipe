@@ -1,5 +1,9 @@
-name = session["user"]
-id = mongo.db.users.find({"_id": ()},
-            {"username": name})
-messages = mongo.db.comments.find(
-            {"message_for": id})
+"""def messenger():
+    try:
+        user = session["user"]
+        messages = mongo.db.messages.find(
+                {"message_for": user})
+        return messages
+    except:
+        error = "Error"
+        return error"""

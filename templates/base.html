@@ -143,27 +143,30 @@
 
 <!--Instant Messenger-->
     {% if session["user"] %}
-    <section class="instant-msg" id="instant-msg">
         <div class="row">
-            <div class="col s12 m8 offset-m2 red center-align">
-                <p>Messenger <i class="fas fa-comment-dots"></i></p>
+            <div id="open-messenger">
+                <span><i class="fas fa-comment-dots"></i></span>
             </div>
         </div>
-    </section> 
-
-        <div id="instant-msg-open">
-            <div class="blue">
-                <h3>Your Messages:</h3>
-                {% for message in messages %}
-                        <p >
-                            Message From {{ message.message_from }} on {{ message.date }}<br>
-                            {{ message.message_text }}
-                        </p>
+           <div class="row">
+                <div class="col s12 m2" id="messenger">
+                    <div class="col s12 green lighten-4" id="title">
+                        <h5>Messages:</h5>
+                        <div class="close">
+                            <span id="close-messenger"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    {% for items in msg %}
+                    <div class="col s12 white" id="msg">
+                        <p>Message From: <span id="messageFrom">{{ items.message_from }}</span><br>Sent On: {{ items.date}}</p>
+                        <p>Message: {{ items.message_text }}</p>
+                        <button class="IMreply green">Reply</button>
+                        <hr class="comments-div">
+                    </div>
                     {% endfor %}
+                </div>
             </div>
-        </div>
     {% endif %}
-
 <!--Flash Message Feedback-->
     <section>
         {% with messages = get_flashed_messages() %}
