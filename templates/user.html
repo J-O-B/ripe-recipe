@@ -3,15 +3,15 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align black-text text-lighten-2 border round-border">{{ user|capitalize }}'s Profile:</h1>
+            <h1 class="center-align black-text border haze">{{ user|capitalize }}'s Profile:</h1>
         </div>
     </div>
         {% for x in userDB %}
             <div class="row">
-                <div class="col s12 m3 offset-m1 light-blue prof-top-card">
+                <div class="col s12 m3 offset-m1 haze prof-top-card">
                         <img id="prof_pic" src="{{ x.prof_pic }}" alt="Picture of {{ x.username }}">
                 </div>
-                <div class="col s12 m7 offset-m1 light-blue prof-top-card">
+                <div class="col s12 m7 offset-m1 haze prof-top-card">
                     <div class="col s10">
                         <h2>{{ x.username|capitalize }}</h2>
                         <p>{{ x.bio }}</p>
@@ -20,13 +20,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m5 offset-m1 light-blue">
+                <div class="col s12 m5 offset-m1 haze center-align">
                     <h3>{{ user|capitalize }}'s Recipes:</h3>
                         {% for x in recipes %}
                             {% if x.recipe_name != "" %}
                                 <ul>
                                     <li>
-                                        <a class="waves-effect waves-light btn modal-trigger" href="#{{ x.recipe_name }}">{{ x.recipe_name|capitalize }}</a>
+                                        <a class="btn modal-trigger" href="#{{ x.recipe_name }}">{{ x.recipe_name|capitalize }}</a>
                                     </li>
                                 </ul>
                                 <div id="{{ x.recipe_name }}" class="modal">
@@ -47,14 +47,14 @@
                         {% endfor %}
                 </div>
                 <div class="col spacer"></div>
-                <div class="col s12 m5 offset-m1 light-blue">
+                <div class="col s12 m5 offset-m1 haze">
                     <h3>{{ user|capitalize }}'s Favorites:</h3>
                 </div>
             </div>
 
             <!--Social Wall-->
             <div class="row">
-                <div class="col s10 offset-s1 light-blue lighten-3 center-align">
+                <div class="col s10 offset-s1 haze center-align">
                     <h3>Leave a message on this users chopping board:</h3>
                     {% if session["user"] %}
                     <form method="POST">

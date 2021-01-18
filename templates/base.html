@@ -148,37 +148,40 @@
                 <span><i class="fas fa-comment-dots"></i></span>
             </div>
         </div>
-           <div class="row">
-                <div class="col s12 m2" id="messenger">
-                    <div class="col s12 green lighten-4" >
-                        <h5 id="title">Messages:</h5>
-                        <div class="close">
-                            <span id="close-messenger"><i class="fas fa-times"></i></span>
-                        </div>
+        <div class="row">
+            <div class="col s12 m2" id="messenger">
+                <div class="col s12 green lighten-4" >
+                    <h5 id="title">Messages: <span id="nameInsert"></span></h5>
+                    <div class="close">
+                        <span id="close-messenger"><i class="fas fa-times"></i></span>
                     </div>
-                    <div class="col s12  white" id="msg">
-                        {% for items in msg %}
-                        <div class="col s12 message-contain">
-                            <p>Message From: <span id="messageFrom">{{ items.message_from }}</span><br>Sent On: {{ items.date}}</p>
-                            <p>Message: {{ items.message_text }}</p>
-                            <button value="{{ items.message_from }}" class="IMreply green">Reply</button>
-                            <hr class="comments-div">
-                        </div>
-                        {% endfor %}
+                </div>
+                <div class="col s12 white" id="msg">
+                    {% for items in msg %}
+                    <div class="col s12 message-contain">
+                        <p>Message From: <span id="messageFrom">{{ items.message_from }}</span><br>Sent On: {{ items.date}}</p>
+                        <p>Message: {{ items.message_text }}</p>
+                        <button value="{{ items.message_from }}" class="IMreply green">Reply</button>
+                        <hr class="comments-div">
                     </div>
-                    <div class="col s12  white" id="reply">
-                        <div class="col s12 message-contain">
-                            <form method="POST">
-                                <input type="text" name="sendTo" id="sendTo" class="hidden">
-                                <input type="text" rows="2" name="messageReply" id="messageReply">
-                                <button type="submit" class="btn-large red" name="sendReply" id="sendReply" value="0">
-                                    Send Reply
-                                </button>
-                            </form>
-                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col s12  white" id="reply">
+                    <div class="col s12 message-contain">
+                        <form method="POST">
+                            <input type="text" name="sendTo" id="sendTo" class="hidden">
+                            <input type="text" rows="2" name="messageReply" id="messageReply">
+                            <button type="submit" class="btn-large red" name="sendReply" id="sendReply" value="0">
+                                Send Reply
+                            </button>
+                            <button type="submit" class="btn-large red" name="closeReply" id="closeReply">
+                                Cancel
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
     {% endif %}
 <!--Flash Message Feedback-->
     <section>

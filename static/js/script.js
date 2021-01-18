@@ -58,8 +58,8 @@ $('#close-messenger').click(function(){
     $('#open-messenger').show();
 })
 $('.IMreply').click(function(){
-    $('#title').text("Reply To")
-    replyTo = $('#messageFrom').text();
+    var replyTo = $('#messageFrom').text();
+    $('#title').text("Reply:")
     $('#msg').toggle();
     $('#reply').toggle();
     $('#sendTo').attr("value", replyTo); 
@@ -67,7 +67,10 @@ $('.IMreply').click(function(){
 $('#sendReply').click(function(){
     $(this).val(1);
 });
-
+$('#closeReply').click(function(){
+    $('#messenger').hide();
+    $('#open-messenger').show();
+})
 
 // Submit button value to 1 "Send"
 $('#submit').click(function(){

@@ -391,17 +391,34 @@ footer a{
     background-color: red;
     width:50px;
     height:50px;
+    z-index: 99999;
 }
 
 #messenger{
     position: fixed;
+    padding:0;
     bottom:0;
     left:0;
+    max-height: 500px;
+    overflow-y: auto;
     z-index: 99999;
+}
+#messenger::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+#messenger::-webkit-scrollbar-track {
+  background: var(--first);        /* color of the tracking area */
+}
+
+#messenger::-webkit-scrollbar-thumb {
+  background-color: var(--second);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid var(--third);  /* creates padding around scroll thumb */
 }
 .msg{
     position: relative;
-    overflow-y: scroll;
+    height: 400px;
 }
 .message-contain{
     position: relative;
@@ -416,9 +433,11 @@ footer a{
     position: relative
 }
 #close-messenger{
-    background-color: red;
-    height:20px;
-    width:20px;
+    background-color: var(--third);
+    text-align: center;
+    font-size: 200%;
+    height:40px;
+    width:40px;
     z-index: 9999;
 }
 .close{
