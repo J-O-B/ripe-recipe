@@ -3,55 +3,62 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align pink-text text-lighten-2 border round-border">Browse Recipes</h1>
+            <h1 class="center-align black-text text-lighten-2">Browse Recipes</h1>
         </div>
     </div>
 
+    <!--Cards-->
     <div class="row">
-        <a href="{{ url_for('starter') }}">
-            <div class="col s12 m6 center-align category-card center-align border">
-                        <img src="{{ url_for('static', filename='img/starter.jpg') }}">
-                    <div class="card-content">
-                        <h3 class="card-title">Starters</h3>
-                        <p>
-                            <i class="far fa-eye"></i> Browse our starters
-                        </p>
-                    </div>
+        <div class="col s12 m6 center-align outer-box">
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='img/starter.jpg') }}" alt="Starter Recipes">
+                </div>
+                <div class="card-contents">
+                    <a href="{{ url_for('starter') }}" class="card-content">
+                        <button class="btn-large col s6 offset-s3">Starters</button>
+                    </a>
+                </div>
             </div>
-        </a>
-        <a href="{{ url_for('main') }}">
-            <div class="col s12 m6 center-align category-card center-align border">
-                        <img src="{{ url_for('static', filename='img/main.jpg') }}">
-                    <div class="card-content">
-                        <h3 class="card-title">Mains</h3>
-                        <p>
-                            <i class="far fa-eye"></i> Browse our mains
-                        </p>
+        </div>
+        <div class="col s12 m6 center-align outer-box">
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='img/main.jpg') }}" alt="Main Course Recipes">
+                </div>
+                <a href="{{ url_for('main') }}" class="card-content">
+                    <div class="card-contents">
+                        <button class="btn-large col s6 offset-s3">Mains</button>
                     </div>
+                </a>
             </div>
-        </a>
-        <a href="{{ url_for('dessert') }}">
-            <div class="col s12 m6 center-align category-card center-align border">
-                        <img src="{{ url_for('static', filename='img/dessert.jpg') }}">
-                    <div class="card-content">
-                        <h3 class="card-title">Desserts</h3>
-                        <p>
-                            <i class="far fa-eye"></i> Browse our desserts
-                        </p>
-                    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 center-align outer-box">
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='img/dessert.jpg') }}" alt="Dessert Recipes">
+                </div>
+                <div class="card-contents">
+                    <a href="{{ url_for('dessert') }}" class="card-content">
+                        <button class="btn-large col s6 offset-s3">Desserts</button>
+                    </a>
+                </div>
             </div>
-        </a>
-        <a href="{{ url_for('drink') }}">
-            <div class="col s12 m6 center-align category-card center-align border">
-                        <img src="{{ url_for('static', filename='img/drink.jpg') }}"> 
-                    <div class="card-content">
-                        <h3 class="card-title">Drinks</h3>
-                        <p>
-                            <i class="far fa-eye"></i> Browse our drinks
-                        </p>
-                    </div>
+        </div>
+        <div class="col s12 m6 center-align outer-box">
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='img/drink.jpg') }}" alt="Drink Recipes">
+                </div>
+                <div class="card-contents">
+                    <a href="{{ url_for('drink') }}" class="card-content">
+                        <button class="btn-large col s6 offset-s3">Drinks</button>
+                    </a>
+                </div>
             </div>
-        </a>
+        </div>
     </div>
 
 

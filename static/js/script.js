@@ -13,7 +13,7 @@ $(document).ready(function(){
     $('.carousel').carousel();
 
     // Homepage States
-    $('.about-ripe-expanded').hide();
+    $('.about-ripe-expanded').fadeIn(3000);
   
     // Full Width Slider 
     $('.carousel-slider').carousel({
@@ -37,12 +37,13 @@ function dateGen(){
 dateGen();
 
 // Homepage info section
-
+/*
 $('#about-ripe').click(function(){
     // Initial View
     $('.about-ripe-expanded').fadeIn(3000);
-});
+});*/
 
+// Comment on recipe submit button
 $('#leaveComment').click(function(){
     $(this).val(1);
 });
