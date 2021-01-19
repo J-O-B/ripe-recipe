@@ -1,0 +1,12 @@
+1- Ticketing system with mongo hookup.
+
+2- Store Goods
+    2.a) Adding to a cart
+    2.b) Removing from cart
+
+3- Advert banners with math random to auto change banners
+
+4- Search functionality
+
+5- Contact us form & hookup
+
