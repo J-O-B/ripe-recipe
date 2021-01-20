@@ -63,24 +63,37 @@ def admin():
     """
     msg = messenger()
     messenger()
-    try:
-        user = session["user"]
-        x = True
 
-        query = mongo.db.users.find_one(
-            {"username": user,
-             "admin": x})
+    count = mongo.db.tickets.count()
 
-        if query:
-            return render_template("admin_panel.html", query=query, msg=msg)
+    Queries = mongo.db.tickets.find()
 
+    """
+    Update Ticket
+    """
+    if request.method == "POST":
+        if request.form.get("ticket_opened") == "0":
+            closedBy = "Admin"
         else:
-            return redirect(url_for('error', reason=0, msg=msg))
+            closedBy = ""
 
-        return render_template("admin_panel.html")
+        updated = {
+                "query_type": request.form.get("query-type"),
+                "details": request.form.get("details"),
+                "submit_by": request.form.get("submit_by"),
+                "user_id": request.form.get("user_id"),
+                "ticket_opened": request.form.get("ticket_opened"),
+                "reply": request.form.get("reply"),
+                "open_ticket": request.form.get("open_ticket"),
+                "closed_by": closedBy
+        }
+        mongo.db.tickets.update_one(
+            {"_id": ObjectId(request.form.get("query_id"))}, updated)
+        flash("Ticket Updated")
+        return redirect(url_for("admin"))
 
-    except:
-        return redirect(url_for('error', reason=0, msg=msg))
+    return render_template("admin_panel.html",
+                           msg=msg, Queries=Queries, count=count)
 
 
 @app.route("/error/<reason>", methods=["GET", "POST"])
@@ -379,6 +392,24 @@ def my_profile():
 
     numOfRecipes = mongo.db.recipes.find(
             {"created_by": session["user"]}).count()
+
+    if request.method == "POST":
+        today = date.today()
+        now = today.strftime("%b-%d-%Y")
+        ticket = {
+                "query_type": request.form.get("query-type"),
+                "details": request.form.get("textbox"),
+                "submit_by": request.form.get("userName"),
+                "user_id": request.form.get("userID"),
+                "ticket_opened": now,
+                "reply": "",
+                "open_ticket": "1",
+                "closed_by": ""
+            }
+        mongo.db.tickets.insert(ticket)
+        flash("Ticket Open: Monitor The Ticketing Section For Response")
+
+        return redirect(url_for('my_profile'))
 
     return render_template(
         "profile.html",

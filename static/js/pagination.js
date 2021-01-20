@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#tab').pagination({
-        items: 10,
+        items: 6,
         contents: 'contents',
         previous: 'Previous',
         next: 'Next',

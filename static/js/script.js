@@ -76,10 +76,15 @@ $('#closeReply').click(function(){
 // Submit button value to 1 "Send"
 $('#submit').click(function(){
         $(this).val(1);
-        console.log($(this).val())
         return false
     })
 $('#seeRecipe').click(function(){
         $(this).val(1);
         return false
     })
+
+
+// Open A Ticket From Profile:
+$('#openTicket').click(function(){
+    $('#openTicket').val(1);
+})

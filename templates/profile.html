@@ -84,6 +84,7 @@
                         {% endfor %}
                 </div>
                 <div class="col spacer"></div>
+<!--Saved Recipe Section-->
                 <div class="col s12 m5 offset-m1 haze">
                     <h3>Saved Recipes:</h3>
                     {% for recipe in myrecipes %}
@@ -98,15 +99,15 @@
                     {% endfor %}
                 </div>
             </div>
-            <!--Admin Contact-->
+<!--Admin Contact / Ticketing System-->
             <div class="row">
                 <div class="col s12 m5 offset-m1 haze center-align">
                     <h3>Help Center</h3>
                     <h6>Open A Ticket And Let Us Know</h6>
                     <div class="row">
-                        <form>
+                        <form method="POST" action="{{ url_for('my_profile') }}">
                             <div class="input-field col s10 offset-s1">
-                                <select id="query-type" name="query-type">
+                                <select id="query-type" name="query-type" required>
                                     <i class="fas fa-question prefix"></i> 
                                     <option value="account">Account Issue</option>
                                     <option value="profile">Profile Issue</option>
@@ -118,34 +119,60 @@
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
                                     <i class="fas fa-info prefix left"></i>
-                                    <textarea id="textbox" name="textbox" rows="6" class="materialize-textarea black-text"></textarea>
+                                    <textarea id="textbox" name="textbox" class="materialize-textarea black-text" required></textarea>
                                     <label for="textbox" class="black-text">Enter Details Of Issue Here...</label>
                                 </div>
+                                {% for data in user %}
+                                <input type="text" class="hidden" name="userName" id="userName" value="{{ user.username }}">
+                                <input type="text" class="hidden" name="userID" id="userID" value="{{ user._id }}">
+                                {% endfor %}
                             </div>
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <button type="submit" class="col s12 btn-large green lighten-2">Submit Query</button>
+                                    <button type="submit" value="0" name="openTicket" id="openTicket" class="col s12 btn-large green lighten-2">Submit Query</button>
                                 </div>
                             </div>
                         </form>
                     </div> 
                 </div>
+
+<!--User Messages Section-->
                 <div class="col s12 m5 offset-m1 haze">
                     <h3 class="center-align">
                         Messages For You:
                     </h3>
                     <hr class="custom-short-div">
-                    {% for message in messages %}
-                        <p class="col s10 offset-s1">
-                            Message From {{ message.message_from }} on {{ message.date }}<br>
-                            {{ message.message_text }}
-                        </p>
-                    {% endfor %}
+
+                    <!--Pagination Wrapper-->
+                    <div class="row" id="wrapper">
+                        <div class="contents col s12">
+                            {% for message in messages %}
+                            <div class="row">
+                                <p class="col s10 offset-s1">
+                                    Message From {{ message.message_from }} on {{ message.date }}<br>
+                                    <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
+                                </p>
+                                <div id="{{ message.message_text[:30] }}" class="modal">
+                                    <div class="modal-content">
+                                        <p>{{ message.message_text }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
-
 
     
 
 
+{% endblock %}
+
+{% block scripts %}
+    <!--Pagination Script-->
+    <script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
 {% endblock %}
