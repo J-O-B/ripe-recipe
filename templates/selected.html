@@ -3,21 +3,31 @@
 
     {% for recipes in recipe %}
     {% set name = recipes.created_by %}
-    <div class="row">
-        <div class="col s12 m6 offset-m3">
-            <h4 class="center-align black-text text-lighten-2 border round-border"><strong>{{ recipes.recipe_name|capitalize }}</strong></h4>
-        </div>
-    </div>
 
         <!--Wrapper-->
-        <div class="row">
+        <div class="wrap top-recipe-card">
             <!--Top Section-->
-            <div class="row">
-                <div class="col s10 offset-s1 m4 grey lighten-2 top-recipe-card border soft-corners">
-                    <!--Recipe Image-->
-                    <img class="recipe-image soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
+            <div class="row top-recipe-inner">
+                <div class="row">
+                    <div class="col s12 m6 offset-m3 recipe-title">
+                        <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
+                    </div>
                 </div>
-                <div class="col s10 offset-s1 m8 top-recipe-card margin-bottom">
+                <div class="col s10 offset-s1 m4 grey lighten-2 recipe-image">
+                    <!--Recipe Image-->
+                    <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
+                        <img class="soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
+                    </a>
+                </div>
+                <div id="{{ recipes.recipe_name }}" class="modal">
+                    <div class="modal-content center-align haze">
+                        <img class="modal-picture" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
+                    </div>
+                    <div class="modal-footer">
+                    <a href="#!" class="modal-close btn-flat">Close</a>
+                    </div>
+                </div>
+                <div class="col s10 offset-s1 m8 margin-bottom">
                     <!--Left Block--> 
                     <div class="col m6 s12 left-block">
                         <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
@@ -31,7 +41,7 @@
                         <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
                     </div>
                 </div>
-
+            </div>
             <!-- If the current user created the recipe -->
             {% if recipes.created_by == session["user"] %}
                 <div class="row">
