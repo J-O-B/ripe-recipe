@@ -198,6 +198,15 @@
         {% endwith %}
     </section>
 
+<!--Advertising Bar-->
+    <div class="row">
+        <div class="col s12 advert-box center-align">
+            <a href="{{ url_for('store') }}">
+                <img class="ad-img" src="{{ ad }}" alt="Advert For Ripe Recipes Store">
+            </a>
+        </div>
+    </div>
+
 <!--Main Content Block-->
     <main class="container">
         {% block main_content %}

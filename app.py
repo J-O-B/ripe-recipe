@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import numpy as np
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
@@ -173,7 +174,7 @@ def signup():
         # Put the new user into "session" cookie
         session['user'] = request.form.get("username")
         flash("Congratulations, You Are Now Part Of The Ripe Family!")
-    return render_template("signup.html", msg=msg)
+    return render_template("signup.html", msg=msg, ad=ad)
 
 
 @app.route("/edit/<id>", methods=["GET", "POST"])
