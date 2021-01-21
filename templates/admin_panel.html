@@ -14,21 +14,20 @@
             <p>Open Queries In <span class="green">Green</span> | Closed Queries In <span class="red">Red</span></p>
         </div>
 <!--For Loop-->
-    {% for X in range(count) %}
+
         {% for ticket in Queries %}
 
             {% if ticket.open_ticket == "1" %}
             <!--Overview Info-->
             <div class="col s10 green lighten-2">
-                <h1>{{ X }}</h1>
                 <p>Ticket Type: {{ ticket.query_type }} | Ticket From: {{ ticket.submit_by }}</p>
             </div>
             <div class="col s2 green lighten-2">
                 <!--Modal Trigger-->
-                <a class="btn modal-trigger" href="#open{{ X }}">View More</a>
+                <a class="btn modal-trigger" href="#open{{ ticket._id }}">View More</a>
             </div>
             <!-- Modal Structure -->
-                <div id="open{{ X }}" class="modal">
+                <div id="open{{ ticket._id }}" class="modal">
                     <div class="modal-content">
                         <h4>User Generated Ticket:</h4>
                         <hr>
@@ -36,6 +35,8 @@
                         <p>From: {{ ticket.submit_by }}</p>
                         <p>Details: {{ ticket.details }}</p>
                         <p>Opened On: {{ ticket.ticket_opened }}</p>
+                        <p>Latest Comment: {{ ticket.reply }}</p>
+                        
                         <form method="POST" class="replyForm">
                             <input type="text" name="query_id" id="query_id" class="hidden" value="{{ ticket._id }}">
                             <input type="text" name="query-type" id="query-type" class="hidden" value="{{ ticket.query_type }}">
@@ -43,7 +44,8 @@
                             <input type="text" name="submit_by" id="submit_by" class="hidden" value="{{ ticket.submit_by }}">
                             <input type="text" name="user_id" id="user_id" class="hidden" value="{{ ticket.user_id }}">
                             <input type="text" name="ticket_opened" id="ticket_opened" class="hidden" value="{{ ticket.ticket_opened }}">
-                            <textarea type="text" name="reply" id="reply" rows="5">Type Reply Here...</textarea>
+                            <input type="text" class="col s12 red" rows="5" name="replyTicket" id="replyTicket" placeholder="Type Reply Here...">
+                            <label for="reply">Reply To Ticket</label>
                             <label for="open_ticket">Open / Close Ticket</label>
                             <select name="open_ticket" id="open_ticket" class="center-align">
                                 <option selected value="1">Open</option>
@@ -83,8 +85,8 @@
                     </div>
                 </div>
             {% endif %}
-            {% endfor %}
-        {% endfor %}
+    {% endfor %}
+
     </div>
                         
 

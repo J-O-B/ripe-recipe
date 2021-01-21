@@ -25,6 +25,9 @@ $(document).ready(function(){
     $('#messenger').hide();
     $('#reply').hide();
 
+    // User Ticket Form
+    $('#edit-user-ticket').hide();
+
     // Modal Init
     $('.modal').modal();
 });
@@ -71,20 +74,31 @@ $('#sendReply').click(function(){
 $('#closeReply').click(function(){
     $('#messenger').hide();
     $('#open-messenger').show();
+});
+$('.deleteMessage').click(function(){
+    $(this).val("1");
 })
+
+
+
 
 // Submit button value to 1 "Send"
 $('#submit').click(function(){
         $(this).val(1);
         return false
-    })
+    });
 $('#seeRecipe').click(function(){
         $(this).val(1);
         return false
-    })
+    });
 
 
 // Open A Ticket From Profile:
 $('#openTicket').click(function(){
-    $('#openTicket').val(1);
-})
+    $(this).val(1);
+});
+
+// Editing A Ticket:
+$('#submitEdit').on(click, function(){
+    $(this).val(1);
+});

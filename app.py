@@ -36,13 +36,18 @@ def messenger():
                     "message_text": request.form.get("messageReply"),
                     "date": now,
                 }
-
             mongo.db.messages.insert(newMessage)
+
+            if request.form.get("deleteMessage") == 1:
+
+                return redirect('store')
+
+            return
+
         return messages
 
     except:
-        messages = 0
-        return messages
+        pass
 
 
 @app.route("/")
@@ -84,11 +89,11 @@ def admin():
                 "submit_by": request.form.get("submit_by"),
                 "user_id": request.form.get("user_id"),
                 "ticket_opened": request.form.get("ticket_opened"),
-                "reply": request.form.get("reply"),
+                "reply": request.form.get("replyTicket"),
                 "open_ticket": request.form.get("open_ticket"),
                 "closed_by": closedBy
         }
-        mongo.db.tickets.update_one(
+        mongo.db.tickets.update(
             {"_id": ObjectId(request.form.get("query_id"))}, updated)
         flash("Ticket Updated")
         return redirect(url_for("admin"))
@@ -381,6 +386,7 @@ def drink():
 
 @app.route("/myprofile", methods=["GET", "POST"])
 def my_profile():
+    messenger()
     msg = messenger()
     """
     Load In Databases
@@ -401,20 +407,44 @@ def my_profile():
             {"submit_by": session["user"]})
 
     if request.method == "POST":
-        today = date.today()
-        now = today.strftime("%b-%d-%Y")
-        ticket = {
-                "query_type": request.form.get("query-type"),
-                "details": request.form.get("textbox"),
-                "submit_by": request.form.get("userName"),
-                "user_id": request.form.get("userID"),
-                "ticket_opened": now,
-                "reply": "",
+        # If the user is editing a ticket
+
+        if request.form.get("open_ticket") == "0":
+            mongo.db.tickets.remove(
+                {"_id": ObjectId(request.form.get("query_id"))})
+            flash("Ticket Deleted")
+
+        elif request.form.get("open_ticket") == "1":
+            update = {
+                "query_type": request.form.get("querytype"),
+                "details": request.form.get("details"),
+                "submit_by": request.form.get("submit_by"),
+                "user_id": request.form.get("user_id"),
+                "ticket_opened": request.form.get("ticket_opened"),
+                "reply": request.form.get("replyTicket"),
                 "open_ticket": "1",
                 "closed_by": ""
             }
-        mongo.db.tickets.insert(ticket)
-        flash("Ticket Open: Monitor The Ticketing Section For Response")
+            mongo.db.tickets.update(
+                {"_id": ObjectId(request.form.get("query_id"))}, update)
+            flash("Ticket Edited")
+
+        # If a user is creating a new ticket
+        elif request.form.get("openTicket") == "1":
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
+            ticket = {
+                    "query_type": request.form.get("query-type"),
+                    "details": request.form.get("textbox"),
+                    "submit_by": request.form.get("userName"),
+                    "user_id": request.form.get("userID"),
+                    "ticket_opened": now,
+                    "reply": "",
+                    "open_ticket": "1",
+                    "closed_by": ""
+                }
+            mongo.db.tickets.insert(ticket)
+            flash("Ticket Open: Monitor The Ticketing Section For Response")
 
         return redirect(url_for('my_profile'))
 
