@@ -382,6 +382,9 @@ def drink():
 @app.route("/myprofile", methods=["GET", "POST"])
 def my_profile():
     msg = messenger()
+    """
+    Load In Databases
+    """
     user = mongo.db.users.find_one(
             {"username": session["user"]})
 
@@ -393,6 +396,9 @@ def my_profile():
 
     numOfRecipes = mongo.db.recipes.find(
             {"created_by": session["user"]}).count()
+
+    myTickets = mongo.db.tickets.find(
+            {"submit_by": session["user"]})
 
     if request.method == "POST":
         today = date.today()
@@ -415,7 +421,8 @@ def my_profile():
     return render_template(
         "profile.html",
         messages=messages, user=user,
-        myrecipes=myrecipes, numOfRecipes=numOfRecipes, msg=msg)
+        myrecipes=myrecipes, numOfRecipes=numOfRecipes,
+        msg=msg, myTickets=myTickets)
 
 
 @app.route("/store", methods=["GET", "POST"])
