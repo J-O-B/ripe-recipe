@@ -111,9 +111,9 @@ function randomAd(){
     if (randomNum == 0){
         $('#advert').prepend(`<img id="adImg" src="static/img/adverts/ad1.jpg" alt="Ripe Recipe Store">`);
     }else if (randomNum == 1){
-        $('#advert').prepend(`<img id="adImg" src="static/img/drink.jpg" alt="Ripe Recipe Store">`);
+        $('#advert').prepend(`<img id="adImg" src="static/img/adverts/ad2.jpg" alt="Ripe Recipe Store">`);
     }else if (randomNum == 2){
-        $('#advert').prepend(`<img id="adImg" src="static/img/dessert.jpg" alt="Ripe Recipe Store">`);
+        $('#advert').prepend(`<img id="adImg" src="static/img/adverts/ad1.jpg" alt="Ripe Recipe Store">`);
     }
 }
 randomAd();
