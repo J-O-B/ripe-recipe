@@ -20,44 +20,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-def messenger():
-    try:
-        user = session["user"]
-        messages = mongo.db.messages.find(
-                {"message_for": user})
-        if request.method == "POST":
-
-            today = date.today()
-            now = today.strftime("%b-%d-%Y")
-
-            newMessage = {
-                    "message_from": session["user"],
-                    "message_for": request.form.get("sendTo").lower(),
-                    "message_text": request.form.get("messageReply"),
-                    "date": now,
-                }
-            mongo.db.messages.insert(newMessage)
-
-            if request.form.get("deleteMessage") == 1:
-
-                return redirect('store')
-
-            return
-
-        return messages
-
-    except:
-        pass
-
-
 @app.route("/")
 @app.route("/home", methods=["GET", "POST"])
 def home():
     home = True
-    msg = messenger()
-    messenger()
 
-    return render_template("home.html", home=home, msg=msg)
+    return render_template("home.html", home=home)
 
 
 @app.route("/admin", methods=["GET", "POST"])
@@ -67,8 +35,6 @@ def admin():
     Store session cookie to a var and search the users database.
     Match a record with the current user, and check for admin privilages.
     """
-    msg = messenger()
-    messenger()
 
     count = mongo.db.tickets.count()
 
@@ -99,25 +65,23 @@ def admin():
         return redirect(url_for("admin"))
 
     return render_template("admin_panel.html",
-                           msg=msg, Queries=Queries, count=count)
+                           Queries=Queries, count=count)
 
 
 @app.route("/error/<reason>", methods=["GET", "POST"])
 def error(reason):
     reason = int(reason)
-    msg = messenger()
     if reason == 0:
         message = ("There seems to be a problem with your credentials" + "\n"
                    + "Please contact an admin for support")
     else:
         message = "Oh Snap! Something seems to have gone wrong!"
 
-    return render_template("error.html", message=message, msg=msg)
+    return render_template("error.html", message=message)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    msg = messenger()
     if request.method == "POST":
         # Check for valid user in database
         existing_user = mongo.db.users.find_one(
@@ -129,30 +93,28 @@ def login():
               existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for('my_profile', msg=msg))
+                return redirect(url_for('my_profile'))
             else:
                 # If password is wrong
                 flash("Username and/or Password Incorrect")
-                return redirect(url_for("login", msg=msg))
+                return redirect(url_for("login"))
         else:
             # username doesn't exist
             flash("Username and/or Password Incorrect")
-            return redirect(url_for("login", msg=msg))
-    return render_template("login.html", msg=msg)
+            return redirect(url_for("login"))
+    return render_template("login.html")
 
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
-    msg = messenger()
     # remove user from session cookie
     flash("You have been signed out. We hope To See You Again Soon!")
     session.pop("user")
-    return redirect(url_for("login", msg=msg))
+    return redirect(url_for("login"))
 
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    msg = messenger()
     if request.method == "POST":
         # Check if username already exists
         existing_user = mongo.db.users.find_one(
@@ -160,7 +122,7 @@ def signup():
 
         if existing_user:
             flash("Username Already Exists")
-            return redirect(url_for("signup", msg=msg))
+            return redirect(url_for("signup"))
 
         register = {
             "username": request.form.get("username").lower(),
@@ -179,12 +141,11 @@ def signup():
         # Put the new user into "session" cookie
         session['user'] = request.form.get("username")
         flash("Congratulations, You Are Now Part Of The Ripe Family!")
-    return render_template("signup.html", msg=msg, ad=ad)
+    return render_template("signup.html")
 
 
 @app.route("/edit/<id>", methods=["GET", "POST"])
 def editrecipe(id):
-    msg = messenger()
     id = id
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
@@ -221,15 +182,15 @@ def editrecipe(id):
             flash("Your Recipe Has Been Updated!")
 
             return render_template("selected.html",
-                                   recipe=recipe, id=id, msg=msg)
+                                   recipe=recipe, id=id)
 
     return render_template(
-            "edit_recipe.html", recipe=recipe, msg=msg)
+            "edit_recipe.html", recipe=recipe)
 
 
 @app.route("/newrecipe", methods=["GET", "POST"])
 def newrecipe():
-    msg = messenger()
+
     if request.method == "POST":
 
         newrecipe = {
@@ -260,26 +221,25 @@ def newrecipe():
         # Need to update users my_recipes here
 
         flash("Thanks For Your Recipe, It's Been Added To The Database")
-        return redirect(url_for('recipes', msg=msg))
-    return render_template("add_recipe.html", msg=msg)
+        return redirect(url_for('recipes'))
+    return render_template("add_recipe.html")
 
 
 @app.route("/recipes", methods=["GET", "POST"])
 def recipes():
-    msg = messenger()
+
     recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes, msg=msg)
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    msg = messenger()
-    return render_template("search.html", msg=msg)
+
+    return render_template("search.html")
 
 
 @app.route("/starter", methods=["GET", "POST"])
 def starter():
-    msg = messenger()
     howMany = mongo.db.recipes.find({
         "category_name": "starter"
     }).count()
@@ -290,7 +250,7 @@ def starter():
         return redirect(url_for("selected", id=id))
 
     return render_template("starter.html",
-                           starter=starter, howMany=howMany, msg=msg)
+                           starter=starter, howMany=howMany)
 
 
 @app.route("/recipe/<id>", methods=["GET", "POST"])
@@ -326,7 +286,6 @@ def selected(id):
 
 @app.route("/user/<user>", methods=["GET", "POST"])
 def user(user):
-    msg = messenger()
     user = user
     userDB = mongo.db.users.find(
         {"username": user})
@@ -357,37 +316,34 @@ def user(user):
 
     return render_template(
      "user.html",
-     recipes=recipes, user=user, userDB=userDB, messages=messages, msg=msg)
+     recipes=recipes, user=user, userDB=userDB, messages=messages)
 
 
 @app.route("/main", methods=["GET", "POST"])
 def main():
-    msg = messenger()
+
     main = mongo.db.recipes.find({"category_name": "main"})
 
-    return render_template("main.html", main=main, msg=msg)
+    return render_template("main.html", main=main)
 
 
 @app.route("/dessert", methods=["GET", "POST"])
 def dessert():
-    msg = messenger()
+
     dessert = mongo.db.recipes.find({"category_name": "dessert"})
 
-    return render_template("dessert.html", dessert=dessert, msg=msg)
+    return render_template("dessert.html", dessert=dessert)
 
 
 @app.route("/drink", methods=["GET", "POST"])
 def drink():
-    msg = messenger()
     drink = mongo.db.recipes.find({"category_name": "drink"})
 
-    return render_template("drink.html", drink=drink, msg=msg)
+    return render_template("drink.html", drink=drink)
 
 
 @app.route("/myprofile", methods=["GET", "POST"])
 def my_profile():
-    messenger()
-    msg = messenger()
     """
     Load In Databases
     """
@@ -452,31 +408,27 @@ def my_profile():
         "profile.html",
         messages=messages, user=user,
         myrecipes=myrecipes, numOfRecipes=numOfRecipes,
-        msg=msg, myTickets=myTickets)
+        myTickets=myTickets)
 
 
 @app.route("/store", methods=["GET", "POST"])
 def store():
-    msg = messenger()
-    return render_template("store.html", msg=msg)
+    return render_template("store.html")
 
 
 @app.route("/about", methods=["GET", "POST"])
 def about():
-    msg = messenger()
-    return render_template("about.html", msg=msg)
+    return render_template("about.html")
 
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    msg = messenger()
-    return render_template("contact.html", msg=msg)
+    return render_template("contact.html")
 
 
 @app.route("/cart", methods=["GET", "POST"])
 def cart():
-    msg = messenger()
-    return render_template("cart.html", msg=msg)
+    return render_template("cart.html")
 
 
 if __name__ == "__main__":

@@ -141,7 +141,6 @@
             </div>
     </header>
 
-
 <!--Flash Message Feedback-->
     <section>
         {% with messages = get_flashed_messages() %}
@@ -160,8 +159,8 @@
 <!--Advertising Bar-->
     <div class="row">
         <div class="col s12 advert-box center-align">
-            <a href="{{ url_for('store') }}">
-                <img class="ad-img" src="{{ ad }}" alt="Advert For Ripe Recipes Store">
+            <a href="{{ url_for('store') }}" id="advert">
+                
             </a>
         </div>
     </div>

@@ -75,11 +75,9 @@ $('#closeReply').click(function(){
     $('#messenger').hide();
     $('#open-messenger').show();
 });
-$('.deleteMessage').click(function(){
-    $(this).val("1");
-})
-
-
+$('#deleteMessage').click(function(){
+    $(this).val(1);
+});
 
 
 // Submit button value to 1 "Send"
@@ -99,6 +97,23 @@ $('#openTicket').click(function(){
 });
 
 // Editing A Ticket:
-$('#submitEdit').on(click, function(){
+$('#submitEdit').click(function(){
     $(this).val(1);
 });
+
+
+// Randomize advert:
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function randomAd(){
+    randomNum = getRandomInt(3)
+    if (randomNum == 0){
+        $('#advert').prepend(`<img id="adImg" src="static/img/adverts/ad1.jpg" alt="Ripe Recipe Store">`);
+    }else if (randomNum == 1){
+        $('#advert').prepend(`<img id="adImg" src="static/img/drink.jpg" alt="Ripe Recipe Store">`);
+    }else if (randomNum == 2){
+        $('#advert').prepend(`<img id="adImg" src="static/img/dessert.jpg" alt="Ripe Recipe Store">`);
+    }
+}
+randomAd();
