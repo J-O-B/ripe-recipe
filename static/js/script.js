@@ -11,9 +11,6 @@ $(document).ready(function(){
 
     // Carousel Functionality
     $('.carousel').carousel();
-
-    // Homepage States
-    $('.about-ripe-expanded').fadeIn(3000);
   
     // Full Width Slider 
     $('.carousel-slider').carousel({
@@ -31,7 +28,8 @@ $(document).ready(function(){
     // Modal Init
     $('.modal').modal();
 });
- // Date Generator
+
+// Date Generator
 function dateGen(){
     var d = new Date();
     var date = d.getFullYear();
@@ -40,11 +38,7 @@ function dateGen(){
 dateGen();
 
 // Homepage info section
-/*
-$('#about-ripe').click(function(){
-    // Initial View
-    $('.about-ripe-expanded').fadeIn(3000);
-});*/
+
 
 // Comment on recipe submit button
 $('#leaveComment').click(function(){
@@ -129,6 +123,15 @@ $(function(){
         window.setInterval(function(){
             $('#advert').attr('src',dataArray[thisId]);
             thisId++; //increment data array id
-            if (thisId==3) thisId=0; //repeat from start
-        },5000);        
+            if (thisId==2) thisId=0; //repeat from start
+        },15000);        
     });
+
+$('.close-advert').click(function(){
+    $('#advert-row').fadeOut(1000);
+});
+
+$('#view-more-info').click(function(){
+    
+    $("html, body").animate({ scrollTop: $('#title1').offset().top }, 1000);
+})

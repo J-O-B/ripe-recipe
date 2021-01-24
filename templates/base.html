@@ -16,138 +16,137 @@
     <title>Ripe Recipes</title>
 </head>
 <body>
+    {% if home %}
+        {% block home_content %}
+        {% endblock %}
+    {% endif %}
+
     <div id="page-contain">
     <!--Check for home variable to render different template style-->
-    <header>
-            <nav class="nav-extended nav-bg">
-                <div class="row">
-                    <div class="nav-wrapper nav-logo">
-                        <div class="col s4">
-                            <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image for Ripe Recipe">
-                        </div>
-                        <div class="col s4">
-                            <h3 class="center-align pink-text text-lighten-2 hide-on-med-and-up">Ripe Recipes</h3>
-                        </div>
-                        <div class="col s4">
-                            <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                        </div>
-                        
-                        <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
-
-                                <div class="col l1 m1 s1">
-                                </div>
-
-                                <div class="col l2 m2 s2">
-                                    <a href="{{ url_for('recipes') }}"><h3><i class="far fa-eye"></i> View</h3></a>
-                                </div>
-
-                                <div class="col l2 m2 s2">
-                                    <a href="{{ url_for('search') }}"><h3><i class="fas fa-search"></i> Search</h3></a>
-                                </div>
-
-                                <div class="col l2 m2 s2 nav-logo">
-                                    <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Image"></a>
-                                </div>
-
-                                <div class="col l2 m2 s2">
-                                    <a href="{{ url_for('store') }}"><h3><i class="fas fa-store"></i> Store</h3></a>
-                                </div>
-
-                                <div class="col l2 m2 s2">
-                                    <a href="{{ url_for('about') }}"><h3><i class="far fa-address-card"></i> About</h3></a>
-                                </div>
-
-                                <div class="col l1 m1 s1">
-                                    <a href="{{ url_for('cart') }}"><h3><i class="fas fa-shopping-basket"></i></h3></a>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                {% if session["user"] %}
-                <div class="no-margin row hide-on-small-only">
-                    <div class="custom-nav nav-content">
-                        <div class="tabs tabs-transparent custom-nav">
-                            <div class="col s3 center-align">
-                                <a href="{{ url_for('my_profile') }}" class="secondary-nav">My Profile</a>
+    {% if not home %}
+        <header>
+                <nav class="nav-extended nav-bg">
+                    <div class="row">
+                        <div class="nav-wrapper nav-logo">
+                            <div class="col s4">
+                                <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image for Ripe Recipe">
                             </div>
-                            <div class="col s3 center-align">
-                                <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Add Recipe</a>
+                            <div class="col s4">
+                                <h3 class="center-align pink-text text-lighten-2 hide-on-med-and-up">Ripe Recipes</h3>
                             </div>
-                            <div class="col s3 center-align">
-                                <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
+                            <div class="col s4">
+                                <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                             </div>
-                            <div class="col s3 center-align">
-                                <a href="{{ url_for('logout') }}" class="secondary-nav">Logout</a>
+                            
+                            <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
+
+                                    <div class="col l1 m1 s1">
+                                    </div>
+
+                                    <div class="col l2 m2 s2">
+                                        <a href="{{ url_for('recipes') }}"><h3><i class="far fa-eye"></i> View</h3></a>
+                                    </div>
+
+                                    <div class="col l2 m2 s2">
+                                        <a href="{{ url_for('search') }}"><h3><i class="fas fa-search"></i> Search</h3></a>
+                                    </div>
+
+                                    <div class="col l2 m2 s2 nav-logo">
+                                        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Image"></a>
+                                    </div>
+
+                                    <div class="col l2 m2 s2">
+                                        <a href="{{ url_for('store') }}"><h3><i class="fas fa-store"></i> Store</h3></a>
+                                    </div>
+
+                                    <div class="col l2 m2 s2">
+                                        <a href="{{ url_for('about') }}"><h3><i class="far fa-address-card"></i> About</h3></a>
+                                    </div>
+
+                                    <div class="col l1 m1 s1">
+                                        <a href="{{ url_for('cart') }}"><h3><i class="fas fa-shopping-basket"></i></h3></a>
+                                    </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {% else %}
-                <div class="no-margin row hide-on-small-only">
-                    <div class="nav-content">
-                        <div class="tabs tabs-transparent ">
-                            <div class="col s6 offset-s3 flex-justify">
-                                <a href="{{ url_for('contact') }}" class="secondary-nav">Contact</a>
-                                <a href="{{ url_for('login') }}" class="secondary-nav">Login</a>
-                                <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
+                    <hr>
+                    {% if session["user"] %}
+                    <div class="no-margin row hide-on-small-only">
+                        <div class="custom-nav nav-content">
+                            <div class="tabs tabs-transparent custom-nav">
+                                <div class="col s3 center-align">
+                                    <a href="{{ url_for('my_profile') }}" class="secondary-nav">My Profile</a>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <a href="{{ url_for('newrecipe') }}" class="secondary-nav">Add Recipe</a>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <a href="{{ url_for('contact') }}" class="secondary-nav">Contact Us</a>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <a href="{{ url_for('logout') }}" class="secondary-nav">Logout</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {% endif %}
-            </nav>
+                    {% else %}
+                    <div class="no-margin row hide-on-small-only">
+                        <div class="nav-content">
+                            <div class="tabs tabs-transparent ">
+                                <div class="col s6 offset-s3 flex-justify">
+                                    <a href="{{ url_for('contact') }}" class="secondary-nav">Contact</a>
+                                    <a href="{{ url_for('login') }}" class="secondary-nav">Login</a>
+                                    <a href="{{ url_for('signup') }}" class="secondary-nav">Signup</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </nav>
 
-            <div class="sidenav custom-sidenav nav-bg" id="sidenav">
-                <h3 class="center-align pink-text text lighten-4">Ripe Recipes Menu:</h3>
-                <hr class="custom-short-div">
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('recipes') }}" class="secondary-nav">View Recipes</a>
+                <div class="sidenav custom-sidenav nav-bg" id="sidenav">
+                    <h3 class="center-align pink-text text lighten-4">Ripe Recipes Menu:</h3>
+                    <hr class="custom-short-div">
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('recipes') }}" class="secondary-nav">View Recipes</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('search') }}" class="secondary-nav">Search Recipes</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('about') }}" class="secondary-nav">About RipeRecipe</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('store') }}" class="secondary-nav">Store</a>
+                    </div>
+                    <hr class="custom-short-div">
+            {% if session['user'] %}       
+                    <div class="center-align secondary-nav">
+                        <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav text-shadow">Add Recipe</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('logout') }}" class="secondary-sub-nav text-shadow">Logout</a>
+                    </div>
+            {% else %}
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('login') }}" class="secondary-sub-nav text-shadow">Login</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('signup') }}" class="secondary-sub-nav text-shadow">Signup</a>
+                    </div>
+            {% endif %}
                 </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('search') }}" class="secondary-nav">Search Recipes</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('about') }}" class="secondary-nav">About RipeRecipe</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('store') }}" class="secondary-nav">Store</a>
-                </div>
-                <hr class="custom-short-div">
-        {% if session['user'] %}       
-                <div class="center-align secondary-nav">
-                    <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav text-shadow">Add Recipe</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('logout') }}" class="secondary-sub-nav text-shadow">Logout</a>
-                </div>
-        {% else %}
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('login') }}" class="secondary-sub-nav text-shadow">Login</a>
-                </div>
-                <div class="center-align secondary-nav">
-                    <a href="{{ url_for('signup') }}" class="secondary-sub-nav text-shadow">Signup</a>
-                </div>
-        {% endif %}
-            </div>
-    </header>
-
-<!--Breadcrumbs-->
-    <div>
-        {%- for breadcrumb in breadcrumbs -%}
-            <a href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
-            {{ '/' if not loop.last }}
-        {%- endfor -%}
-    </div>
+        </header>
+    {% endif %}
 
 <!--Flash Message Feedback-->
     <section>
@@ -166,11 +165,14 @@
 
 <!--Advertising Bar-->
     {% if not home %}
-    <div class="row">
-        <div class="col s12 advert-box center-align">
+    <div class="row" id="advert-row">
+        <div class="col s12 m8 offset-m2 advert-box center-align">
             <a href="{{ url_for('store') }}">
                 <img id="advert" src="../static/img/adverts/ad2.jpg" alt="Ripe Store Advert">
             </a>
+            <div class="close-advert">
+                <i class="fas fa-times"></i>
+            </div>
         </div>
     </div>
     {% endif %}
@@ -183,6 +185,7 @@
 
 
 <!--Footer Block-->
+{% if not session["user"] and not home %}
     <footer id="footer">
         <!--Empty Row To Ensure No Interference With Footer Layout-->
         <div class="row"></div>
@@ -229,6 +232,7 @@
             </div>
         </div>
     </footer>
+{% endif %}
 
     <!--jQuery Script-->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>

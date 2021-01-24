@@ -33,13 +33,28 @@
     </div>
     
     <!--Results Display-->
-    <h3 class="center-align">Matching results for the term "{{ search }}"</h3>
-    {% for results in find %}
-        <div class="row">
-            <div class="col s10 offset-s1 border">
-                <h3>{{ results.recipe_name }}</h3>
-            </div>
+    <h4 class="center-align">Matching results for the term "{{ search }}"...</h4>
+    <div class="row" id="wrapper">
+        <div class="contents col s12">
+            {% for results in find %}
+                <div class="row haze search-results">
+                    <div class="col s4 center-align">
+                        <p><strong>{{ results.recipe_name|capitalize }}</strong></p>
+                    </div>
+                    <div class="col s5">
+                        <p>{{ results.description[:50]|capitalize }}...</p>
+                    </div>
+                    <div class="col s3">
+                        <p><a href="{{ url_for('selected', id=results._id) }}">View More</a></p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <!--Pagination Script-->
+    <script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
 {% endblock %}

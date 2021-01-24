@@ -1,102 +1,39 @@
 {% extends "base.html" %}
-{% block main_content %}
+{% block home_content %}
 
-    <div class="row margin-top center welcome-card">
-        <div class="col s12 m6 offset-m1 center-align">
-            <h1 class="welcome">Welcome To Ripe Recipes</h1>
-            <hr class="custom-short-div">
-            <p>
-                <em>
-                    The Social Media Food Network! 
-                </em>
-            </p>
-
-            {% if not session['user'] %} 
-            <!--If a the user is not recognised-->
-            <div class="row">
-                <div class="col s6 center-align">
-                    <a href="{{ url_for('signup') }}" class="btn col s12 good">Sign Up</a>
-                </div>
-                <div class="col s6 center-align">
-                    <a href="{{ url_for('login') }}" class="btn col s12 bad margin-bottom">Login</a>
-                </div>
+<!--Fullpage Wrapper-->
+    <div class="home-wrapper">
+        <div class="row welcome-card">
+            <div class="col s12 m6 welcome-message center-align">
+                <h1>Welcome To Ripe</h1>
+                <h3>The Culinary Social Platform</h3>
+                <button class="btn col s4 offset-s1 center-align">
+                    Login
+                </button>
+                <button class="btn col s4 offset-s2 center-align">
+                    Signup
+                </button>
             </div>
-            {% endif %}
-        </div>
-        <div class="col s12 m4 center-align">
-            <img src="{{ url_for('static', filename='/img/logo.png') }}" alt="Ripe Recipe Logo Image">
-        </div>
-    </div>
-
-<!--About Ripe Recipe Cards-->
-    <div class="row about-ripe-expanded">
-        <!--First Card-->
-        <div class="col s12" id="firstCard">
-            <div class="col s6 offset-s1">
-                <h2>What Is Ripe?</h2>
-                <hr class="short-custom-div">
-                <p>
-                    Ripe is a platform for cooking enthusiasts from around the world to connect through their shared interest in food & drinks.
-                </p>
-                <p>
-                    Ripe is a website which allows users, who sign-up for free profiles, to connect with friends or people 
-                    they don't know, online.<br> 
-                    It allows users to share food & drinks recipes, as well as communicate with other users via personal message boards, 
-                    or through commenting on recipes.<br>
-                </p>
-                <a href="{{ url_for('about') }}" class="right btn green lighten-2">Read More...</a>
-            </div>
-            <div class="col s4 center-align">
-                <img src="{{ url_for('static', filename='/img/question.png') }}" alt="Confused Question Mark">
+            <div class="col s12 m6 welcome-image">
+                <img src="{{ url_for('static', filename='img/logo.png') }}">
             </div>
         </div>
-
-        <!--Second card-->
-        <div class="col s12" id="secondCard">
-            <div class="col s4 offset-s1 center-align">
-                <img src="{{ url_for('static', filename='/img/world.png') }}" alt="Ripe Global Community">
-            </div>
-            <div class="col s6">
-                <h2>Why Join Ripe?</h2>
-                <hr class="short-custom-div">
-                <p>
-                    As a member of Ripe, you will unlock all the features Ripe has to offer, as well as promotional offers for 
-                    the Ripe Store.
-                </p>
-                <ul>
-                    <strong><em>Features Include:</em></strong>
-                    <li>Discounts In The Ripe Store*</li>
-                    <li>Create Friendships With Others In The Ripe Community</li>
-                    <li>Create and Edit Recipes</li>
-                    <li>Post Comments On & Rate Others Recipes</li>
-                </ul>
-                <a href="{{ url_for('signup') }}" class="left btn green lighten-2">Sign Up</a>
-            </div>
-        </div>
-
-        <!--third Card-->
-        <div class="col s12" id="thirdCard">
-            <div class="col s6 offset-s1">
-                <h2>The Ripe Store</h2>
-                <hr class="short-custom-div">
-                <p>
-                    Although our main goal is to connect users from around the world. The Ripe Store was added to our 
-                    platform to help our users. With so many kitchen goods on the market, it can be hard to find products 
-                    that perform as well as they are marketed.<br>
-                    Here at Ripe, we offer products that have a long history of customer satisfaction. This means that the 
-                    products we promte via our store are really the best of the best. <br>
-                    Shop With Peace Of Mind:
-                </p>
-                <a href="{{ url_for('store') }}" class="right btn green lighten-2">Ripe Store</a>
-            </div>
-            <div class="col s4 center-align">
-                <img src="{{ url_for('static', filename='/img/store.png') }}" alt="Ripe Store Commerce">
+        <div class="row view-more-info">
+            <div class="col s12 center-align">
+                <button id="view-more-info" class="btn-large">
+                    <h5>
+                        What Is Ripe?<br>
+                        <i class="fas fa-chevron-circle-down"></i>
+                    </h5>
+                </button>
             </div>
         </div>
     </div>
-    
-    
-                    
-                
+<!--More Info Cards-->
+    <div class="row more-info-cards">
+        
+    </div>
+            
+        
                 
 {% endblock %} 
