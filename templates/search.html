@@ -9,28 +9,37 @@
                     <p>
                         <em>To search for a recipe, you can look for keywords, such as "Chicken"</em> 
                     </p>
-                    <form>
+                    <form action="{{ url_for('search') }}" method="POST">
                         <div class="input-field col s10 offset-s1">
                             <i class="far fa-question-circle prefix black-text text-lighten-2"></i>
                             <input id="search" name="search" type="text" minlength="1" maxlength="100" class="validate" required>
-                            <label class="black-text" for="search">Search For ...</label>
+                            <label class="black-text" for="search">
+                                Search For ...</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
                         <div class="row">
-                            <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
-                                Search <i class="fas fa-search"></i>
+                            <button type="submit" value="0" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                                <i class="fas fa-search prefix"></i> Search
                             </button>
                         </div>
                     </form>
                 </div>
                 <div class="card-action">
-                    <p>Don't want to search? You can also browse all recipes, or browse by category:</p>
+                    <p>Don't want to search? You can also browse all recipes:</p>
                     <a href="{{ url_for('recipes') }}"><strong class="black-text text-shadow">Browse Recipes</strong></a>
-                    <a href="{{ url_for('search') }}"><strong class="black-text text-shadow">Search For Recipe</strong></a>
                 </div>
             </div>
         </div>
     </div>
-
+    
+    <!--Results Display-->
+    <h3 class="center-align">Matching results for the term "{{ search }}"</h3>
+    {% for results in find %}
+        <div class="row">
+            <div class="col s10 offset-s1 border">
+                <h3>{{ results.recipe_name }}</h3>
+            </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}

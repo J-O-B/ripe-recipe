@@ -104,7 +104,7 @@ $('#submitEdit').click(function(){
 
 // Randomize advert:
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * Math.floor(max));
 }
 function randomAd(){
     randomNum = getRandomInt(3)
@@ -117,3 +117,18 @@ function randomAd(){
     }
 }
 randomAd();
+$(function(){
+        //prepare Your data array with img urls
+        var dataArray=new Array();
+        dataArray[0]=`../static/img/adverts/ad1.jpg`;
+        dataArray[1]=`../static/img/adverts/ad2.jpg`;
+
+        //start with id=0 after 5 seconds
+        var thisId=0;
+
+        window.setInterval(function(){
+            $('#advert').attr('src',dataArray[thisId]);
+            thisId++; //increment data array id
+            if (thisId==3) thisId=0; //repeat from start
+        },5000);        
+    });

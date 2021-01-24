@@ -32,52 +32,11 @@
                         {% for recipe in myrecipes %}
                             {% if (recipe.created_by == session["user"]) and (myrecipes != "") %}
                                 <div class="col s8">
-                                    {{ recipe.recipe_name|capitalize }}
+                                    <p>{{ recipe.recipe_name|capitalize }}</p>
                                 </div>
                                 <div class="col s4">
-                                    {% set x = recipe.rating %}
-                                    {% if x == "1" %}
-                                        
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-
-                                    {% elif x == "2" %}
-                                       
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                 
-                                    {% elif x == "3" %}
-                                
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                  
-                                    {% elif x == "4" %}
-                                 
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                
-                                    {% elif x == "5" %}
-                                   
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                    {% endif %}
-                                </div>
-                                
+                                    <p><a href="{{ url_for('selected', id=recipe._id) }}">View More</a></p>
+                                </div>                                
                             {% else %}
                                 <h5>There seems to be no recipes created by you</h5>
                             {% endif %}

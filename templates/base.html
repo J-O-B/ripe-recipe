@@ -141,6 +141,14 @@
             </div>
     </header>
 
+<!--Breadcrumbs-->
+    <div>
+        {%- for breadcrumb in breadcrumbs -%}
+            <a href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
+            {{ '/' if not loop.last }}
+        {%- endfor -%}
+    </div>
+
 <!--Flash Message Feedback-->
     <section>
         {% with messages = get_flashed_messages() %}
@@ -157,13 +165,15 @@
     </section>
 
 <!--Advertising Bar-->
+    {% if not home %}
     <div class="row">
         <div class="col s12 advert-box center-align">
-            <a href="{{ url_for('store') }}" id="advert">
-                
+            <a href="{{ url_for('store') }}">
+                <img id="advert" src="../static/img/adverts/ad2.jpg" alt="Ripe Store Advert">
             </a>
         </div>
     </div>
+    {% endif %}
 
 <!--Main Content Block-->
     <main class="container">

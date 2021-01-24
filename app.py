@@ -235,7 +235,10 @@ def recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
 
-    return render_template("search.html")
+    search = request.form.get("search")
+    find = mongo.db.recipes.find({"$text": {"$search": search}})
+
+    return render_template("search.html", find=find, search=search)
 
 
 @app.route("/starter", methods=["GET", "POST"])
