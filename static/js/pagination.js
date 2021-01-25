@@ -11,10 +11,13 @@ $(document).ready(function() {
 // Pagination Code From: https://www.youtube.com/watch?v=tMfOyPvMspI
 !function(e){
     e.fn.pagination=function(a){
-        function t(t){var s=e("."+r.contents+".current").children().length,
-        l=Math.ceil(s/r.items),
-        o='<ul id="page-navi">\t<li><a href="#" class="previos">'+r.previous+"</a></li>";
-        for(i=0;i<l;i++)o+='\t<li><a href="#">'+(i+1)+"</a></li>";o+='\t<li><a href="#" class="next">'+r.next+"</a></li></ul>";
+        function t(t){
+            var s= e("."+r.contents+".current").children().length,
+            l=Math.ceil(s/r.items),
+            o='<ul id="page-navi">\t<li><a href="#" class="previos">' + r.previous + "</a></li>";
+            for (i=0;i<l;i++)
+            o += '\t<li><a href="#">' + (i+1) + "</a></li>";
+            o += '\t<li><a href="#" class="next">' + r.next + "</a></li></ul>";
         var c=t;0==t?(c=parseInt(e("#page-navi li a.current").html()))-1!=0&&c--:t==l+1&&(c=parseInt(e("#page-navi li a.current").html()))+1!=l+1&&c++,t=c,0==s&&(o=""),
         e("#page-navi").remove(),
         "top"==r.position?e("."+r.contents+".current").before(o):e("."+r.contents+".current").after(o),

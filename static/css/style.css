@@ -94,10 +94,9 @@ img{
 
 /*------------Borders & Margins--------*/
 .border{
-    -webkit-box-shadow: 3px 3px 5px 6px var(--third);  
-    -moz-box-shadow: 3px 3px 5px 6px var(--third);  
-    box-shadow: 3px 3px 5px 6px var(--third); 
-    transition: all 1s ease-in-out;
+    -webkit-box-shadow: 3px 3px 5px 6px #000;  
+    -moz-box-shadow: 3px 3px 5px 6px #000;  
+    box-shadow: 3px 3px 5px 6px var#000; 
 }
 .margin-bottom{
     margin-bottom: 50px;
@@ -214,12 +213,9 @@ img{
     border-radius: 30%;
     overflow: hidden;
 }
-.home-video{
-    max-width:560px;
-    max-height:360px;
-}
 .view-more-info{
     position: relative;
+    z-index: 99;
 }
 .more-info-cards{
     color:white;
@@ -334,6 +330,15 @@ img{
 }
 .prof-top-card{
     height:300px;
+}
+#myRecipes,
+#savedRecipes,
+#ticketWrap{
+    max-width: 100%;
+    max-height:225px;
+    overflow-y: scroll;
+    scrollbar-face-color: red;
+    scrollbar-track-color: blue;
 }
 /*---------------------------------------------------------------------------------------- Recipes */
 
@@ -485,7 +490,10 @@ img{
     font-weight: 800;
     text-align: center;
 }
-
+.save-recipe{
+    background: #000;
+    color: var(--second);
+}
 
 
 /*---------------------------------------------------------------------------------------- Store */

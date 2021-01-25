@@ -82,13 +82,20 @@ $('#deleteMessage').click(function(){
 // Submit button value to 1 "Send"
 $('#submit').click(function(){
         $(this).val(1);
-        return false
     });
 $('#seeRecipe').click(function(){
         $(this).val(1);
-        return false
     });
-
+$('#saveRecipe').click(function(){
+    $(this).val(1);
+})
+$('#delete').click(function(){
+    $(this).val(1);
+})
+$('#newMessage').click(function(){
+    $(this).val(1);
+    $(this).val(0);
+})
 
 // Open A Ticket From Profile:
 $('#openTicket').click(function(){

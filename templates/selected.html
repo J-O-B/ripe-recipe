@@ -39,6 +39,20 @@
                     <div class="col m6 s12 right-block">
                         <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
                         <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
+                        {% if session["user"] %}
+                        <a class="btn modal-trigger" href="#save-recipe">Save This Recipe</a>
+                        {% endif %}
+                    </div>
+                    <div id="save-recipe" class="modal">
+                        <div class="modal-content save-recipe center-align">
+                            <h3>Are You Sure You Would Like To Save This Recipe?</h3>
+                            <form method="POST">
+                                <input type="text" value="{{ recipes.recipe_name }}" name="recipeName" id="recipeName" class="hidden">
+                                <input type="text" value="{{ recipes._id }}" name="recipeID" id="recipeID" class="hidden">
+                                <button type="submit" name="saveRecipe" id="saveRecipe" class="btn">Yes</button>
+                            </form>
+                            <button class="btn modal-close">No</button>
+                        </div>
                     </div>
                 </div>
             </div>

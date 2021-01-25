@@ -131,10 +131,8 @@ def signup():
             "prof_pic": request.form.get("prof_pic"),
             "bio": request.form.get("bio").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "fav_recipes": "",
-            "chef_rating": "3",
-            "num_of_ratings": "1",
-            "purchased_items": "",
+            "fav_recipes": [],
+            "cart_items": [],
         }
         mongo.db.users.insert_one(register)
 
@@ -270,6 +268,7 @@ def selected(id):
 
     messages = mongo.db.comments.find(
             {"message_for": id})
+
     if (request.method == "POST"):
 
         if request.form.get("leaveComment") == "1":
@@ -285,6 +284,17 @@ def selected(id):
                 }
 
             mongo.db.comments.insert(newMessage)
+        if request.form.get("saveRecipe") == "1":
+            user = session["user"]
+            update = [
+                request.form.get("recipeName"),
+                request.form.get("recipeID")
+            ]
+            mongo.db.users.find_one_and_update(
+                {'username': user},
+                {"$push":
+                    {'fav_recipes': update}})
+            flash("You have saved this recipe")
 
     return render_template("selected.html",
                            id=id, recipe=recipe, messages=messages)
@@ -302,27 +312,30 @@ def user(user):
     messages = mongo.db.messages.find(
             {"message_for": user})
 
-    if request.method == "POST":
+    if request.form.get("newMessage") == "1":
+        if request.method == "POST":
 
-        today = date.today()
-        now = today.strftime("%b-%d-%Y")
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
 
-        newMessage = {
-                "message_from": session["user"],
-                "message_for": request.form.get("from"),
-                "message_text": request.form.get("message"),
-                "date": now,
-            }
+            newMessage = {
+                    "message_from": session["user"],
+                    "message_for": request.form.get("from"),
+                    "message_text": request.form.get("message"),
+                    "date": now,
+                }
 
-        if request.form.get("submit") == 1:
             mongo.db.messages.insert(newMessage)
 
-        if request.form.get("seeRecipe") == 15:
-            return "hello"
+    if request.form.get("delete") == "1":
+        if request.method == "POST":
+            mongo.db.messages.remove(
+                {"_id": ObjectId(request.form.get("messageID"))})
 
     return render_template(
      "user.html",
-     recipes=recipes, user=user, userDB=userDB, messages=messages)
+     recipes=recipes, user=user, userDB=userDB, messages=messages,
+     favRecipes=favRecipes)
 
 
 @app.route("/main", methods=["GET", "POST"])
@@ -367,6 +380,8 @@ def my_profile():
 
     myTickets = mongo.db.tickets.find(
             {"submit_by": session["user"]})
+    if not myTickets:
+        myTickets = False
 
     if request.method == "POST":
         # If the user is editing a ticket
