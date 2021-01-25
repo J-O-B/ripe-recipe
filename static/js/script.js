@@ -3,6 +3,9 @@ $(document).ready(function(){
     // Side Navbar
     $('.sidenav').sidenav();
 
+    // Homepage Initial Display
+    $('.more-info-cards').hide();
+
     // Time Picker In Forms
     $('.timepicker').timepicker();
 
@@ -131,7 +134,8 @@ $('.close-advert').click(function(){
     $('#advert-row').fadeOut(1000);
 });
 
+// View More Info Homepage
 $('#view-more-info').click(function(){
-    
-    $("html, body").animate({ scrollTop: $('#title1').offset().top }, 1000);
+    $('.more-info-cards').show();
+    $("html, body").animate({ scrollTop: $('.first-card').offset().top }, 1500);
 })

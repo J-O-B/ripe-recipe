@@ -3,37 +3,100 @@
 
 <!--Fullpage Wrapper-->
     <div class="home-wrapper">
-        <div class="row welcome-card">
-            <div class="col s12 m6 welcome-message center-align">
-                <h1>Welcome To Ripe</h1>
-                <h3>The Culinary Social Platform</h3>
-                <button class="btn col s4 offset-s1 center-align">
-                    Login
-                </button>
-                <button class="btn col s4 offset-s2 center-align">
-                    Signup
-                </button>
+        <!--Main Section-->
+        <div class="glass"></div>
+            <div class="row welcome-card">
+                <div class="col s12 m6 welcome-message center-align">
+                    <h1>Welcome To Ripe</h1>
+                    <h3>The Culinary Social Platform</h3>
+                    <button class="btn col s4 offset-s1 center-align">
+                        Login
+                    </button>
+                    <button class="btn col s4 offset-s2 center-align">
+                        Signup
+                    </button>
+                </div>
+                <div class="col s12 m6 welcome-image">
+                    <img src="{{ url_for('static', filename='img/home.png') }}">
+                </div>
             </div>
-            <div class="col s12 m6 welcome-image">
-                <img src="{{ url_for('static', filename='img/logo.png') }}">
+            <div class="row view-more-info">
+                <div class="col s12 center-align">
+                    <button id="view-more-info" class="btn-large">
+                        <h5>
+                            What Is Ripe?<br>
+                            <i class="fas fa-chevron-circle-down"></i>
+                        </h5>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="row view-more-info">
-            <div class="col s12 center-align">
-                <button id="view-more-info" class="btn-large">
-                    <h5>
-                        What Is Ripe?<br>
-                        <i class="fas fa-chevron-circle-down"></i>
-                    </h5>
-                </button>
-            </div>
-        </div>
-    </div>
+
 <!--More Info Cards-->
-    <div class="row more-info-cards">
-        
-    </div>
-            
+        <div class="row more-info-cards center-align">
+            <div class="row">
+                <div class="col s10 offset-s1 first-card">
+                    <div class="col s12 m7">
+                        <h2>About Ripe</h2>
+                        <p>
+                            The Culinary Social Platform.
+                        </p>
+                        <hr class="custom-short-div">
+                        <p>
+                            Ripe is an online platform where users from around the world can connect, and share their 
+                            recipes with the world. At Ripe, we bring like minded individuals together, through our shared 
+                            passion for culinary arts.
+                        </p>
+                        <a href="{{ url_for('about') }}" class="col s6 offset-s3 btn center-align">Read More...</a>
+                    </div>
+                    <div class="col s12 m5">
+                        <img src="{{ url_for('static', filename='img/question.png') }}" alt="About Ripe Recipes">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 offset-s1 second-card">
+                    <div class="col s12 m5">
+                        <a href="{{ url_for('signup') }}">
+                            <img src="{{ url_for('static', filename='img/signup.png') }}" alt="Sign Up For Ripe">
+                        </a>
+                    </div>
+                    <div class="col s12 m7">
+                        <h2>Pricing</h2>
+                        <hr class="custom-short-div">
+                        <p>
+                            Our services are completel free! If you would like to have full access to Ripe, as well as 
+                            unlock some discounts at the Ripe store, then sign up today and become a valued member of 
+                            the Ripe family.
+                        </p>
+                        <a href="{{ url_for('signup') }}" class="col s6 offset-s3 btn center-align">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 offset-s1 third-card">
+                    <div class="col s12 m7">
+                        <h2>About Ripe</h2>
+                        <p>
+                            The Culinary Social Platform.
+                        </p>
+                        <hr class="custom-short-div">
+                        <p>
+                            Both regular users and Ripe members have access to our user developed recipe database that covers
+                            recipes within their respective categories: Starters, Mains, Desserts, and Drinks. 
+                        </p>
+                        <p>
+                            As a user, you will only be granted read only access to our website, and use of the Ripe store, 
+                            however, should you wish to join the Ripe community, you will have access to all of our features, and 
+                            perks. This includes direct access to our database, as well as discounts at the Ripe Store.
+                        </p>
+                    </div>
+                    <div class="col s12 m5">
+                        <img src="{{ url_for('static', filename='img/question.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
         
                 
 {% endblock %} 
