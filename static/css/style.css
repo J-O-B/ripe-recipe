@@ -177,7 +177,7 @@ img{
 .welcome-card{
     position: relative;
     opacity: 1;
-    z-index: 999999;
+    z-index: 99;
     width:100%;
     text-shadow: 2px 2px 50px rgb(250, 0, 0);
     color:white;
@@ -199,24 +199,57 @@ img{
     overflow: hidden;
 }
 .welcome-image img{
-    height:100%;
+    max-height:100%;
+    max-width: 50vw;
 }
 .view-more-info{
     position: relative;
-    height:150%;
 }
 .more-info-cards{
-    position: relative;
+    z-index: 99;
     font-size: 120%;
     background: linear-gradient(235deg, rgba(0,0,0,0.5) 20%, rgba(255,255,255,0.5))
 }
-.more-info-cards img{
-    max-height:300px;
+#signup2{
+    display:none;
 }
+.more-info-cards img{
+    padding-top: 5%;
+    width:250px;
+}
+@media screen and (max-width: 768px){
+    .more-info-cards img{
+        padding-top: 30%;
+        width:150px;
+    }
+    #signup1{
+        display:none;
+    }
+    #signup2{
+        display: contents;
+    }
+}
+.second-card img{
+    padding-top:25%;
+}
+
 .first-card,
 .second-card,
 .third-card{
-    height:300px;
+    position: relative;
+}
+
+.first-card:hover img,
+.third-card:hover img{
+    transition: all 1s ease-in-out;
+    transform: translateX(-100px);
+}
+.second-card:hover img{
+    transition: all 1s ease-in-out;
+    transform: translateX(50px);
+}
+#view-less-info{
+    position: relative;
 }
 /*-----------------------------------------------------------------Navbar */
 .fa-bars{

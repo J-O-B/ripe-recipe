@@ -139,3 +139,7 @@ $('#view-more-info').click(function(){
     $('.more-info-cards').show();
     $("html, body").animate({ scrollTop: $('.first-card').offset().top }, 1500);
 })
+$('#view-less-info').click(function(){
+    $("html, body").animate({ scrollTop: $('.welcome-card').offset().top }, 2500);
+    $('.more-info-cards').hide(2000);
+})

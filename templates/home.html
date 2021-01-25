@@ -9,14 +9,39 @@
                 <div class="col s12 m6 welcome-message center-align">
                     <h1>Welcome To Ripe</h1>
                     <h3>The Culinary Social Platform</h3>
-                    <button class="btn col s4 offset-s1 center-align">
+<!--If Member-->
+                    {% if session["user"] %}
+                    <div class="row">
+                        <a href="{{ url_for('recipes') }}" class="btn col s4 offset-s4 center-align">
+                            View Recipes
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="{{ url_for('my_profile') }}" class="btn col s4 offset-s4 center-align">
+                            Profile
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="{{ url_for('search') }}" class="btn col s4 offset-s4 center-align">
+                            Search
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="{{ url_for('store') }}" class="btn col s4 offset-s4 center-align">
+                            Store
+                        </a>
+                    </div>
+<!--If Not Member-->
+                    {% elif not session["user"] %}
+                    <a href="{{ url_for('login') }}" class="btn col s4 offset-s1 center-align">
                         Login
-                    </button>
-                    <button class="btn col s4 offset-s2 center-align">
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn col s4 offset-s2 center-align">
                         Signup
-                    </button>
+                    </a>
+                    {% endif %}
                 </div>
-                <div class="col s12 m6 welcome-image">
+                <div class="col s12 m6 welcome-image center-align">
                     <img src="{{ url_for('static', filename='img/home.png') }}">
                 </div>
             </div>
@@ -46,7 +71,7 @@
                             recipes with the world. At Ripe, we bring like minded individuals together, through our shared 
                             passion for culinary arts.
                         </p>
-                        <a href="{{ url_for('about') }}" class="col s6 offset-s3 btn center-align">Read More...</a>
+                        <a href="{{ url_for('about') }}" class="col s6 offset-s3 btn light-blue center-align">Read More...</a>
                     </div>
                     <div class="col s12 m5">
                         <img src="{{ url_for('static', filename='img/question.png') }}" alt="About Ripe Recipes">
@@ -55,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col s10 offset-s1 second-card">
-                    <div class="col s12 m5">
+                    <div class="col s12 m5" id="signup1">
                         <a href="{{ url_for('signup') }}">
                             <img src="{{ url_for('static', filename='img/signup.png') }}" alt="Sign Up For Ripe">
                         </a>
@@ -68,31 +93,42 @@
                             unlock some discounts at the Ripe store, then sign up today and become a valued member of 
                             the Ripe family.
                         </p>
-                        <a href="{{ url_for('signup') }}" class="col s6 offset-s3 btn center-align">Sign Up</a>
+                        <a href="{{ url_for('signup') }}" class="col s6 offset-s3 btn light-blue center-align">Sign Up</a>
+                    </div>
+                    <div class="col s12 m5" id="signup2">
+                        <a href="{{ url_for('signup') }}">
+                            <img src="{{ url_for('static', filename='img/signup.png') }}" alt="Sign Up For Ripe">
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col s10 offset-s1 third-card">
                     <div class="col s12 m7">
-                        <h2>About Ripe</h2>
-                        <p>
-                            The Culinary Social Platform.
-                        </p>
+                        <h2>The Ripe Store</h2>
                         <hr class="custom-short-div">
                         <p>
-                            Both regular users and Ripe members have access to our user developed recipe database that covers
-                            recipes within their respective categories: Starters, Mains, Desserts, and Drinks. 
+                            The Ripe Store is a customer orientated store with industry leading products. Products 
+                            listed on the Ripe Store have a long history of customer satisfaction. Shop with peace 
+                            of mind, only at the Ripe Store!
                         </p>
-                        <p>
-                            As a user, you will only be granted read only access to our website, and use of the Ripe store, 
-                            however, should you wish to join the Ripe community, you will have access to all of our features, and 
-                            perks. This includes direct access to our database, as well as discounts at the Ripe Store.
-                        </p>
+                        <a href="{{ url_for('store') }}" class="col s6 offset-s3 btn light-blue center-align">Ripe Store</a>
                     </div>
                     <div class="col s12 m5">
-                        <img src="{{ url_for('static', filename='img/question.png') }}" alt="">
+                        <a href="{{ url_for('store') }}">
+                            <img src="{{ url_for('static', filename='img/store.png') }}" alt="The Ripe Store">
+                        </a>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button id="view-less-info" class="btn-large">
+                        <h5>
+                            Close Information<br>
+                            <i class="fas fa-chevron-circle-up"></i>
+                        </h5>
+                    </button>
                 </div>
             </div>
         </div>
