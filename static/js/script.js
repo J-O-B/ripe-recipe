@@ -4,7 +4,11 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
 
     // Homepage Initial Display
+    $('.glass').hide();
+    $('.welcome-card').hide();
+    $('.welcome-image').hide();
     $('.more-info-cards').hide();
+    animate();
 
     // Time Picker In Forms
     $('.timepicker').timepicker();
@@ -39,8 +43,6 @@ function dateGen(){
     $('#date').text(date)
 }
 dateGen();
-
-// Homepage info section
 
 
 // Comment on recipe submit button
@@ -139,9 +141,14 @@ $('#view-more-info').click(function(){
     $('.logo-home').hide(1000);
     $('.more-info-cards').show(2000);
     $("html, body").animate({ scrollTop: $('.first-card').offset().top }, 1500);
-})
+});
 $('#view-less-info').click(function(){
     $("html, body").animate({ scrollTop: $('.welcome-card').offset().top }, 2500);
     $('.more-info-cards').hide(2000);
     $('.logo-home').show(2000);
-})
+});
+function animate(){
+    $('.glass').fadeIn(2000);
+    $('.welcome-card').show(3000);
+    $('.welcome-image').fadeIn(4000);
+}

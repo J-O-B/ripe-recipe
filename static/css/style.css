@@ -214,6 +214,10 @@ img{
     border-radius: 30%;
     overflow: hidden;
 }
+.home-video{
+    max-width:560px;
+    max-height:360px;
+}
 .view-more-info{
     position: relative;
 }
