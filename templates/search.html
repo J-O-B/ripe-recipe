@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block main_content %}
-
 <!--Card to hold the search form-->
-    <div class="row center-align">
-        <div class="col s12 m6 offset-m3 center">
-            <div class="card light-blue lighten-4 center-align">
-                <div class="card-content black-text">
+    <div class="row center-align" id="searchBox">
+        <div class="col s12 m8 offset-m2 center">
+            <div class="col s12 card haze border center-align black-text">
                     <p>
                         <em>To search for a recipe, you can look for keywords, such as "Chicken"</em> 
                     </p>
@@ -18,13 +16,12 @@
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
                         <div class="row">
-                            <button type="submit" value="0" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                            <button type="submit" id="searchRecipe" value="0" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
                                 <i class="fas fa-search prefix"></i> Search
                             </button>
                         </div>
                     </form>
-                </div>
-                <div class="card-action">
+                <div class="col s12 card-action" id="suggestion">
                     <p>Don't want to search? You can also browse all recipes:</p>
                     <a href="{{ url_for('recipes') }}"><strong class="black-text text-shadow">Browse Recipes</strong></a>
                 </div>
@@ -33,7 +30,9 @@
     </div>
     
     <!--Results Display-->
-    <h4 class="center-align">Matching results for the term "{{ search }}"...</h4>
+    {% if find %}
+    <h4 class="center-align" id="searchTitle">Matching results for the term "{{ search }}"...</h4>
+    {% endif %}
     <div class="row" id="wrapper">
         <div class="contents col s12">
             {% for results in find %}
