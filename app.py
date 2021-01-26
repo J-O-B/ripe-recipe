@@ -24,7 +24,6 @@ mongo = PyMongo(app)
 @app.route("/home", methods=["GET", "POST"])
 def home():
     home = True
-
     return render_template("home.html", home=home)
 
 
@@ -334,8 +333,7 @@ def user(user):
 
     return render_template(
      "user.html",
-     recipes=recipes, user=user, userDB=userDB, messages=messages,
-     favRecipes=favRecipes)
+     recipes=recipes, user=user, userDB=userDB, messages=messages)
 
 
 @app.route("/main", methods=["GET", "POST"])
