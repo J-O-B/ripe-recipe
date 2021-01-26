@@ -665,18 +665,24 @@ footer a{
     position: relative;
     margin-top:20px;
     margin-bottom:20px;
+    margin-left:0;
+    margin-right:0;
     padding:0;
-    height:700px;
     max-width: 100vw;
     overflow: hidden;
 }
-#adImg{
-    height:600px;
+#adImgSide{
+    width:200px;
+    height:600px;  
+}
+#adImgTop{
+    width:60%;
+    height:200px;
 }
 .close-advert{
     position: absolute;
     top:0;
-    right:2.7%;
+    right:20.5%;
     background-color: red;
     height:30px;
     width: 30px;
