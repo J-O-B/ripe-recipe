@@ -230,14 +230,14 @@ def newrecipe():
             "fibre": request.form.get("fibre"),
             "protein": request.form.get("protein"),
             "salt": request.form.get("salt"),
-        }
+            }
 
         mongo.db.recipes.insert_one(newrecipe)
 
         # Need to update users my_recipes here
-
         flash("Thanks For Your Recipe, It's Been Added To The Database")
         return redirect(url_for('recipes'))
+
     return render_template("add_recipe.html")
 
 

@@ -13,6 +13,7 @@ $(document).ready(function(){
     $('#previewCard').hide();
     $('#eleventhAddCard').hide();
     $('#spacer').hide();
+    $('#userImg').hide();
 });
 
 // Record As We Go Along
@@ -155,7 +156,7 @@ $('#showTenthCard').click(function(){
 
     $('#previewType').text(`${type}`);
     $('#previewName').text(`${name}`);
-    $('#previewDescription').html(`Description: ${updDesc}`);
+    $('#previewDescription').html(`${updDesc}`);
     $('#previewServes').text(`${serve}`);
     $('#previewPrep').text(`${prep}`);
     if ($('#category').val() != "drink"){
@@ -164,18 +165,20 @@ $('#showTenthCard').click(function(){
     $('#previewDifficulty').text(`${diff}`);
     $('#previewIngredients').html(`${updIng}`);
     $('#previewInstructions').html(`${updIns}`);
-    $('#previewNutrition').html(`<br>KCAL: ${kcal}, Fat: ${fat}, Saturates: ${sat}, Carbs: ${carb}, Sugar: ${sug}, Fibre: ${fib}, Protein: ${pro}, Salt: ${salt}`);
+    $('#previewNutrition').html(`KCAL: ${kcal}, Fat: ${fat}, Saturates: ${sat}, Carbs: ${carb}<br> Sugar: ${sug}, Fibre: ${fib}, Protein: ${pro}, Salt: ${sal}`);
     $('#previewTags').text(`${tag}`);
     $("#previewImg").attr("src", pic);
-    $('#submitRecipe').click(function(){
-        $('#addNewRecipe').attr("method", "POST").attr("action", "{{ url_for('recipes') }}");
-        $(this).attr("type", "submit");
-    });
     };
 });
 
-
-
+ $('#submitRecipe').click(function(){
+        $(this).val(1);
+    });
+ $('#renderImage').click(function(){
+        var url =  $('#recipe_pic').val();
+        $('#userImg').attr("src", url);
+        $('#userImg').show();
+    });
 
 // Previous Buttons:
 

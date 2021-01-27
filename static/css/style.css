@@ -139,7 +139,7 @@ img{
 .flashes h4{
     font-size:200%;
     line-height: 2;
-    color: var(--first);
+    color: var(--third);
     border-radius: 20%;
 }
 /*---------------------------------------------------------------- Divs */
@@ -460,6 +460,31 @@ nav.nav-extended .nav-wrapper {
     z-index:99;
 }
 /*---------------------------------------------------------------------------------------- Add Recipe Page */
+#addHeading{
+    margin-top:50px;
+    border-radius: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#addRecipeIntro{
+    border-radius: 30%;
+    font-size: 130%;
+}
+#userImg{
+    height:150px;
+}
+#previewPic{
+    overflow: hidden;
+    height:450px;
+    width:100%;
+}
+#showPic{
+    max-width: 100%;
+    overflow: hidden;
+}
+#previewImg{
+    max-width:100%;
+}
 #firstAddCard,
 #secondAddCard,
 #thirdAddCard,
@@ -469,20 +494,27 @@ nav.nav-extended .nav-wrapper {
 #seventhAddCard,
 #eigthAddCard,
 #ninthAddCard,
-#tenthAddCard{
+#previewCard{
+    box-sizing: border-box;
+    box-shadow: inset 5px 5px 100px rgba(3, 3, 3, 0.9), 1px 1px 100px rgba(3, 3, 3, 0.9);
+    border-radius: 5%;
     min-height: 500px;
     padding-top:10%;
 }
-#firstAddCard button,
-#secondAddCard button,
-#thirdAddCard button,
-#fourthAddCard button,
-#fifthAddCard button,
-#sixthAddCard button,
-#seventhAddCard button,
-#eigthAddCard button,
-#ninthAddCard button,
-#tenthAddCard button{
+#previewCard{
+    background-color: var(--second);
+}
+#firstAddCard a,
+#secondAddCard a,
+#thirdAddCard a,
+#fourthAddCard a,
+#fifthAddCard a,
+#sixthAddCard a,
+#seventhAddCard a,
+#eigthAddCard a,
+#ninthAddCard a,
+#previewCard a,
+#submitRecipe{
     margin-top: 10%;
 }
 
