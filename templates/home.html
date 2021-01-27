@@ -13,7 +13,7 @@
                 <div class="col s12 m6 welcome-message center-align">
                     <h1>Welcome To Ripe</h1>
                     <h3>The Culinary Social Platform</h3>
-<!--If Member-->
+                    <!--If Member-->
                     {% if session["user"] %}
                     <div class="row">
                         <a href="{{ url_for('recipes') }}" class="btn col s4 offset-s4 center-align">
@@ -35,12 +35,28 @@
                             Store
                         </a>
                     </div>
-<!--If Not Member-->
+                    <!--If Not Member-->
                     {% elif not session["user"] %}
-                    <a href="{{ url_for('login') }}" class="btn col s4 offset-s1 center-align">
+                    <a href="#login" class="btn modal-trigger col s4 offset-s1 center-align">
                         Login
                     </a>
-                    <a href="{{ url_for('login') }}" class="btn col s4 offset-s2 center-align">
+                    <!--Login Modal-->
+                    <div id="login" class="modal black">
+                        <div class="modal-content">
+                            <div class="row login-modal">
+                                <h3>Login To Ripe Recipe</h3>
+                                <form method="POST">
+                                    <input class="input-field col s10 offset-s1 white" type="text" name="username" id="username" placeholder="Username" required>
+                                    <input class="input-field col s10 offset-s1 white" type="password" name="password" id="password" placeholder="Password" required>
+                                    <button class="btn col s6 offset-s3" type="submit" value="Submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer black">
+                            <a href="#!" class="modal-close green btn-flat">Close</a>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('signup') }}" class="btn col s4 offset-s2 center-align">
                         Signup
                     </a>
                     {% endif %}

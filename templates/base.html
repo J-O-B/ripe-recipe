@@ -16,6 +16,18 @@
     <title>Ripe Recipes</title>
 </head>
 <body>
+    {% block login %}
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Test</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+    {% endblock %}
     {% if home %}
         {% block home_content %}
         {% endblock %}

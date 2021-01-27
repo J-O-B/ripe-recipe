@@ -162,21 +162,6 @@ function randomAd(){
         }
     }
 }
-$(function(){
-        //prepare Your data array with img urls
-        var dataArray=new Array();
-        dataArray[0]=`../static/img/adverts/ad1.jpg`;
-        dataArray[1]=`../static/img/adverts/ad2.jpg`;
-
-        //start with id=0 after 5 seconds
-        var thisId=0;
-
-        window.setInterval(function(){
-            $('#advert').attr('src',dataArray[thisId]);
-            thisId++; //increment data array id
-            if (thisId==2) thisId=0; //repeat from start
-        },15000);        
-    });
 
 $('.close-advert').click(function(){
     $('#advert-row').fadeOut(1000);

@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-<!--Admin Contact / Ticketing System-->
+    <!--Admin Contact / Ticketing System-->
             <div class="row">
                 <!--Input Ticket-->
                 <div class="col s12 m5 offset-m1 haze border center-align">
@@ -105,21 +105,19 @@
                         </p>
                         <div id="ticketWrap">
                             {% for tickets in myTickets %}
-                            {% if tickets.query_type|length == 0 %}
-                                <h1>TESTING</h1>
-            
-                            {% elif tickets.reply|length == 0 %}
-                                <div class="row red">
+           
+                            {% if tickets.reply|length == 0 %}
+                                <div class="row red border">
                             {% else %}
-                                <div class="row green">
+                                <div class="row green border">
                             {% endif %}
                                     <div class="col s5 center-align">
                                         <p>Ticket Opened On: <br>{{ tickets.ticket_opened }}</p>
                                     </div>
-                                    <div class="col s5 center-align">
+                                    <div class="col s5 offset-s2 center-align">
                                         <p>Ticket Query Type: <br>{{ tickets.query_type }}</p>
                                     </div>
-                                    <div class="col s2 center-align">
+                                    <div class="col s6 offset-s3 center-align">
                                         <a class="btn modal-trigger" href="#{{ tickets._id }}">View</a>
                                     </div>
                                     <!-- Modal Structure -->
@@ -177,7 +175,7 @@
                             {% endfor %}
                                 </div>
                         </div>
-                </div>
+                    </div>
 <!--User Messages Section-->
                 <div class="col s12 m5 offset-m1 haze border">
                     <h3 class="center-align">

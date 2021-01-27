@@ -20,10 +20,30 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
 def home():
     home = True
+    if request.method == "POST":
+        # Check for valid user in database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # Check for valid password for that user
+            if check_password_hash(
+              existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for('my_profile'))
+            else:
+                # If password is wrong
+                flash("Username and/or Password Incorrect")
+                return redirect(url_for("home"))
+        else:
+            # username doesn't exist
+            flash("Username and/or Password Incorrect")
+            return redirect(url_for("home"))
     return render_template("home.html", home=home)
 
 
@@ -109,7 +129,7 @@ def logout():
     # remove user from session cookie
     flash("You have been signed out. We hope To See You Again Soon!")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 @app.route("/signup", methods=["GET", "POST"])

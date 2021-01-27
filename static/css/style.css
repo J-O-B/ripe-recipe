@@ -241,9 +241,6 @@ img{
     #signup2{
         display: contents;
     }
-    .logo-home{
-        display: none;
-    }
 }
 .second-card img{
     padding-top:25%;
@@ -278,6 +275,9 @@ img{
 }
 #view-less-info{
     position: relative;
+}
+.login-modal{
+    display:block;
 }
 /*-----------------------------------------------------------------Navbar */
 
@@ -355,9 +355,8 @@ nav.nav-extended .nav-wrapper {
 #ticketWrap{
     max-width: 100%;
     max-height:225px;
+    overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-face-color: red;
-    scrollbar-track-color: blue;
 }
 /*---------------------------------------------------------------------------------------- Recipes */
 
@@ -459,6 +458,32 @@ nav.nav-extended .nav-wrapper {
     position: absolute;
     bottom:10px;
     z-index:99;
+}
+/*---------------------------------------------------------------------------------------- Add Recipe Page */
+#firstAddCard,
+#secondAddCard,
+#thirdAddCard,
+#fourthAddCard,
+#fifthAddCard,
+#sixthAddCard,
+#seventhAddCard,
+#eigthAddCard,
+#ninthAddCard,
+#tenthAddCard{
+    min-height: 500px;
+    padding-top:10%;
+}
+#firstAddCard button,
+#secondAddCard button,
+#thirdAddCard button,
+#fourthAddCard button,
+#fifthAddCard button,
+#sixthAddCard button,
+#seventhAddCard button,
+#eigthAddCard button,
+#ninthAddCard button,
+#tenthAddCard button{
+    margin-top: 10%;
 }
 
 /*---------------------------------------------------------------------------------------- Selected Recipe Page */
@@ -690,4 +715,15 @@ footer a{
     height:30px;
     width: 30px;
     border-radius: 0px 0px 0px 20px;
+}
+@media screen and (min-width: 1451px){
+    .close-advert{
+        position: absolute;
+        top:0;
+        right:5%;
+        background-color: rgb(255, 255, 255);
+        height:30px;
+        width: 30px;
+        border-radius: 0px 0px 0px 20px;
+    }
 }
