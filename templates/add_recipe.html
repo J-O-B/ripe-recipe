@@ -21,7 +21,8 @@
             </p>
             <button class="btn" id="showFirstCard">Next Step</button>
         </div>
-        <form method="POST" action="{{ url_for('newrecipe') }}">
+        <form onsubmit="return false;"> 
+            <!--method="POST" action="{{ url_for('newrecipe') }}"-->
             <!--All "Pages Of Recipe Added In Divs-->
             <!--Card One-->
             <div class="col s10 offset-s1 haze center-align" id="firstAddCard">
@@ -49,7 +50,7 @@
                     <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
                     <input id="recipe_name" name="recipe_name" type="text" pattern="^[a-zA-Z0-9_.-]*{5,50}$" minlength="5" maxlength="50" class="validate">
                     <label class="black-text" for="recipe_name">Recipe Name</label>
-                    <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    <span class="helper-text" data-error="Input incorrect, Please enter 5 to 50 characters (letters & numbers)" data-success="Input Correct"></span>
                 </div>
                 <div class="input-field col l5 m10 offset-m1 s12">
                     <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
@@ -88,7 +89,7 @@
                 <div class="input-field col m10 offset-m1">
                     <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
                     <select name="difficulty" id="difficulty">
-                        <option value="easy">Easy</option>
+                        <option selected value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
                     </select>
@@ -208,15 +209,32 @@
                 <button class="btn" id="showTenthCard">Next Step</button>
             </div>
             <!--Card Ten-->
-            <div class="col s10 offset-s1 haze center-align" id="tenthAddCard">
+            <div class="col s10 offset-s1 haze center-align" id="previewCard">
+                <h3>Please Review Your Information:</h3>
+                <p id="preview">
+                    <span id="previewType"></span><br>
+                    <span id="previewName"></span><br>
+                    <span id="previewDescription"></span><br>
+                    <span id="previewServes"></span> people<br>
+                    <span id="previewPrep"></span><br>
+                    <span id="previewCook"></span><br>
+                    <span id="previewDifficulty"></span><br>
+                    <span id="previewIngredients"></span><br>
+                    <span id="previewInstructions"></span><br>
+                    <span id="previewNutrition"></span><br>
+                    <span id="previewTags"></span>
+                </p>
+                <button class="btn" id="backToTenth">Previous</button>
+                <button class="btn green">Submit</button>
+            </div>
+            <!--Card Eleven-->
+            <!--<div class="col s10 offset-s1 haze center-align" id="eleventhAddCard">
                 <div class="row">
-                    <button type="submit" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
+                    <button class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
                         Submit Recipe <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
-                <button class="btn" id="backToNinth">Previous</button>
-                <button class="btn">Next Step</button>
-            </div>
+            </div>-->
         </form>
     </div>
 
