@@ -144,25 +144,38 @@ $('#showTenthCard').click(function(){
     if ($('#tags').val() == ""){
         alert("Please Add At Least One Tag To Your Recipe");
     }else{
-    tag = $('#tags').val();    
+    tag = $('#tags').val();
+
     $('#ninthAddCard').hide(1000);
     $('#previewCard').show(1000);
     // Update The Preview Screen
-    $('#previewType').text(type);
-    $('#previewName').text(name);
-    $('#previewDescription').text(desc);
-    $('#previewServes').text(serve);
-    $('#previewPrep').text(prep);
+    var updDesc = desc.replaceAll(".", ".<br>");
+    var updIng = ing.replaceAll(".", ".<br>");
+    var updIns = ins.replaceAll(".", ".<br>");
+
+    $('#previewType').text(`${type}`);
+    $('#previewName').text(`${name}`);
+    $('#previewDescription').html(`Description: ${updDesc}`);
+    $('#previewServes').text(`${serve}`);
+    $('#previewPrep').text(`${prep}`);
     if ($('#category').val() != "drink"){
-    $('#previewCook').text("Cook Time: " + cook + " minutes"); 
+    $('#previewCook').text(`Cook Time: ${cook} minutes`); 
     }else{}
-    $('#previewDifficulty').text(diff);
-    $('#previewIngredients').text(ing);
-    $('#previewInstructions').text(ins);
-    $('#previewNutrition').text(kcal + fat + sat + carb + sug + fib + pro + salt);
-    $('#previewTags').text(tag);
-    }
+    $('#previewDifficulty').text(`${diff}`);
+    $('#previewIngredients').html(`${updIng}`);
+    $('#previewInstructions').html(`${updIns}`);
+    $('#previewNutrition').html(`<br>KCAL: ${kcal}, Fat: ${fat}, Saturates: ${sat}, Carbs: ${carb}, Sugar: ${sug}, Fibre: ${fib}, Protein: ${pro}, Salt: ${salt}`);
+    $('#previewTags').text(`${tag}`);
+    $("#previewImg").attr("src", pic);
+    $('#submitRecipe').click(function(){
+        $('#addNewRecipe').attr("method", "POST").attr("action", "{{ url_for('recipes') }}");
+        $(this).attr("type", "submit");
+    });
+    };
 });
+
+
+
 
 // Previous Buttons:
 

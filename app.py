@@ -209,7 +209,6 @@ def editrecipe(id):
 def newrecipe():
 
     if request.method == "POST":
-
         newrecipe = {
             "category_name": request.form.get("category"),
             "recipe_name": request.form.get("recipe_name").lower(),

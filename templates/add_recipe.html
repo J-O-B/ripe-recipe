@@ -19,10 +19,9 @@
                 The final step will show a preview of your post, please review this, <br>
                 and make any changes prior to submitting your recipe.
             </p>
-            <button class="btn" id="showFirstCard">Next Step</button>
+            <a class="btn" id="showFirstCard">Next Step</a>
         </div>
-        <form onsubmit="return false;"> 
-            <!--method="POST" action="{{ url_for('newrecipe') }}"-->
+        <form id="addNewRecipe"> 
             <!--All "Pages Of Recipe Added In Divs-->
             <!--Card One-->
             <div class="col s10 offset-s1 haze center-align" id="firstAddCard">
@@ -39,7 +38,7 @@
                     <label for="category" class="black-text">Select A Recipe Category</label>
                     <span class="helper-text" data-error="Please Select A Difficulty Level" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="showSecondCard">Next Step</button>
+                <a class="btn" id="showSecondCard">Next Step</a>
             </div>
             <!--Card Two-->
             <div class="col s10 offset-s1 haze center-align" id="secondAddCard">
@@ -58,8 +57,8 @@
                     <label class="black-text" for="serves">Serves</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToFirst">Previous</button>
-                <button class="btn" id="showThirdCard">Next Step</button>
+                <a class="btn" id="backToFirst">Previous</a>
+                <a class="btn" id="showThirdCard">Next Step</a>
             </div>
             <!--Card Three-->
             <div class="col s10 offset-s1 haze center-align" id="thirdAddCard">
@@ -79,8 +78,8 @@
                 </div>
                 <div class="row" id="spacer">
                 </div>
-                <button class="btn" id="backToSecond">Previous</button>
-                <button class="btn" id="showFourthCard">Next Step</button>
+                <a class="btn" id="backToSecond">Previous</a>
+                <a class="btn" id="showFourthCard">Next Step</a>
             </div>
             <!--Card Four-->
             <div class="col s10 offset-s1 haze center-align" id="fourthAddCard">
@@ -103,8 +102,8 @@
                     <label class="black-text" for="recipe_pic">Picture (From URL)</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToThird">Previous</button>
-                <button class="btn" id="showFifthCard">Next Step</button>
+                <a class="btn" id="backToThird">Previous</a>
+                <a class="btn" id="showFifthCard">Next Step</a>
             </div>
             <!--Card Five-->
             <div class="col s10 offset-s1 haze center-align" id="fifthAddCard">
@@ -117,8 +116,8 @@
                     <label class="black-text" for="ingredients">Ingredients, Seperate Ingredients With Full Stop (.)</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToFourth">Previous</button>
-                <button class="btn" id="showSixthCard">Next Step</button>
+                <a class="btn" id="backToFourth">Previous</a>
+                <a class="btn" id="showSixthCard">Next Step</a>
             </div>
             <!--Card Six-->
             <div class="col s10 offset-s1 haze center-align" id="sixthAddCard">
@@ -131,8 +130,8 @@
                     <label class="black-text" for="description">Description of Recipe</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToFifth">Previous</button>
-                <button class="btn" id="showSeventhCard">Next Step</button>
+                <a class="btn" id="backToFifth">Previous</a>
+                <a class="btn" id="showSeventhCard">Next Step</a>
             </div>
             <!--Card Seven-->
             <div class="col s10 offset-s1 haze center-align" id="seventhAddCard">
@@ -145,8 +144,8 @@
                     <label class="black-text" for="instructions">Instructions after each step use the full stop (.)</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToSixth">Previous</button>
-                <button class="btn" id="showEigthCard">Next Step</button>
+                <a class="btn" id="backToSixth">Previous</a>
+                <a class="btn" id="showEigthCard">Next Step</a>
             </div>
             <!--Card Eight-->
             <div class="col s10 offset-s1 haze center-align" id="eigthAddCard">
@@ -192,8 +191,8 @@
                     <label class="black-text" for="salt">Salt (grams)</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToSeventh">Previous</button>
-                <button class="btn" id="showNinthCard">Next Step</button>
+                <a class="btn" id="backToSeventh">Previous</a>
+                <a class="btn" id="showNinthCard">Next Step</a>
             </div>
             <!--Card Nine-->
             <div class="col s10 offset-s1 haze center-align" id="ninthAddCard">
@@ -205,36 +204,32 @@
                     <label class="black-text" for="tags">Tags For This Recipe (i.e "Chicken", "Fish")</label>
                     <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                 </div>
-                <button class="btn" id="backToEigth">Previous</button>
-                <button class="btn" id="showTenthCard">Next Step</button>
+                <a class="btn" id="backToEigth">Previous</a>
+                <a class="btn" id="showTenthCard">Next Step</a>
             </div>
             <!--Card Ten-->
             <div class="col s10 offset-s1 haze center-align" id="previewCard">
                 <h3>Please Review Your Information:</h3>
                 <p id="preview">
-                    <span id="previewType"></span><br>
-                    <span id="previewName"></span><br>
-                    <span id="previewDescription"></span><br>
-                    <span id="previewServes"></span> people<br>
-                    <span id="previewPrep"></span><br>
+                    Recipe Type: <span id="previewType"></span><br>
+                    Name: <span id="previewName"></span><br>
+                    Description: <span id="previewDescription"></span><br>
+                    Serves: <span id="previewServes"></span> People<br>
+                    Prep Time: <span id="previewPrep"></span><br>
                     <span id="previewCook"></span><br>
-                    <span id="previewDifficulty"></span><br>
-                    <span id="previewIngredients"></span><br>
-                    <span id="previewInstructions"></span><br>
-                    <span id="previewNutrition"></span><br>
+                    Difficulty: <span id="previewDifficulty"></span><br>
+                    Ingredients: <span id="previewIngredients"></span><br>
+                    Instructions: <span id="previewInstructions"></span><br>
+                    Nutrition:<span id="previewNutrition"></span><br>
                     <span id="previewTags"></span>
                 </p>
-                <button class="btn" id="backToTenth">Previous</button>
-                <button class="btn green">Submit</button>
-            </div>
-            <!--Card Eleven-->
-            <!--<div class="col s10 offset-s1 haze center-align" id="eleventhAddCard">
-                <div class="row">
-                    <button class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
-                        Submit Recipe <i class="fas fa-sign-in-alt"></i>
-                    </button>
+                <div class="row center-align">
+                    <p>Image Preview:</p>
+                    <img class="col s12" id="previewImg" src="" alt="Preview Recipe Image">
                 </div>
-            </div>-->
+                <a class="btn" id="backToTenth">Previous</a>
+                <a id="submitRecipe" value="0" class="btn green">Submit</a>
+            </div> 
         </form>
     </div>
 
