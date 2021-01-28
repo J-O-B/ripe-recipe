@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h1 class="center-align black-text text-lighten-2 border">Edit {{ user["username"]|capitalize }}'s Details</h1>
+        </div>
+    </div>
+    <!--Redirect user attention if they somehow end on this page when still signed in-->
+    
+<!--Card to hold the signup form-->
+    <div class="row">
+        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('editUser') }}">
+            <div class="card-panel light-blue lighten-4 round-corners">
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                        <label class="black-text" for="username">Requested Username</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-at prefix pink-text text-lighten-2"></i>
+                        <input id="email" name="email" type="email" value="{{user['email']}}" minlength="5" class="validate" required>
+                        <label class="black-text" for="email">Email Address</label>
+                        <span class="helper-text" data-error="Input incorrect, Please Enter A Valid Email" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-utensils prefix pink-text text-lighten-2"></i>
+                        <input id="fav_food" name="fav_food" type="text" value="{{user['fav_food']}}" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                        <label class="black-text" for="fav_food">Favorite Food</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-users prefix pink-text text-lighten-2"></i>
+                        <input id="prof_pic" name="prof_pic" value="{{user['prof_pic']}}" minlength="5" type="text" class="validate">
+                        <label class="black-text" for="prof_pic">Profile Picture URL (optional)</label>
+                        <span class="helper-text" data-error="Input incorrect, Please Supply A URL Of A Profile Picture. Images Should Be No More Than 400px Wide." data-success="Input Correct"></span>
+                    </div>
+                    <div class="row">
+                        <button id="genPreview" class="btn col s6 offset-s3">
+                            Preview Picture
+                        </button>
+                        <div class="col s12" id="previewProfPic">
+                            <img id="prevPic" src="" class="center-align" alt="Preview Of Profile Picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-address-book prefix pink-text text-lighten-2"></i>
+                        <textarea id="bio" name="bio" value="{{user['bio']}}" pattern="^[a-zA-Z0-9]{5,20}$" minlength="5" class="materialize-textarea" required></textarea>
+                        <label class="black-text" for="bio">Profile Biography:</label>
+                        <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="fas fa-user-lock prefix pink-text text-lighten-2"></i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                        <label class="black-text" for="password">Password (min 5 characters) </label>
+                        <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                        Save Changes <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col s6 offset-s3 border round-border">
+            <h5 class="center-align">
+                Second Thoughts? <a href="{{ url_for('my_profile', id='{{ user._id }}') }}" class="light-blue-text text-darken-4">Back To Profile</a>
+            </h5>
+        </div>
+    </div>
+
+{% endblock %}

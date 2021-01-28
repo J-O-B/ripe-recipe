@@ -358,6 +358,10 @@ nav.nav-extended .nav-wrapper {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+/*---------------------------------------------------------------------------------------- Edit User */
+#previewProfPic img{
+    height: 200px;
+}
 /*---------------------------------------------------------------------------------------- Recipes */
 
 .outer-box{

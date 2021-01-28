@@ -6,6 +6,12 @@ $(document).ready(function(){
     // Navbar
     $('#secondNavbar').hide();
 
+    //editUser
+    $('#previewProfPic').hide();
+
+    //editForm
+    $('#editForm').hide();
+    
     // Side Navbar
     $('.sidenav').sidenav();
 
@@ -208,3 +214,17 @@ function toggleArrow(){
         $('.expandNav').val(0);
     }
 }
+
+//Profile:
+
+$('#goToEdit').click(function(){
+    if ($('#goToEdit').val() == 1){
+        $('#editForm').show();
+        $('#pass').hide();
+    }
+});
+$('#genPreview').click(function(){
+    var url = $('#prof_pic').val();
+    $('#previewProfPic').show(2000);
+    $('#prevPic').attr("src", url)
+});

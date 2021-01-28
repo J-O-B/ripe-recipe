@@ -132,6 +132,31 @@ def logout():
     return redirect(url_for("home"))
 
 
+@app.route('/editProfile', methods=["GET", "POST"])
+def editUser():
+    user = mongo.db.users.find_one(
+            {"username": session["user"]})
+    id = user["_id"]
+    if request.method == "POST":
+
+        edit = {
+            "username": request.form.get("username").lower(),
+            "email": request.form.get("email"),
+            "fav_food": request.form.get("fav_food").lower(),
+            "prof_pic": request.form.get("prof_pic"),
+            "bio": request.form.get("bio").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "fav_recipes": user["fav_recipes"],
+            "cart_items": user["cart_items"],
+        }
+        mongo.db.users.update({"_id": ObjectId(id)}, edit)
+
+        # Update "session" cookie
+        session['user'] = request.form.get("username")
+        flash("Congratulations, You Are Now Part Of The Ripe Family!")
+    return render_template("editUser.html", user=user)
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -401,6 +426,21 @@ def my_profile():
         myTickets = False
 
     if request.method == "POST":
+
+        if user:
+            # Check for valid password for that user
+            if check_password_hash(
+              user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for('editUser'))
+            else:
+                # If password is wrong
+                flash("Username and/or Password Incorrect")
+                return
+        else:
+            return
+
         # If the user is editing a ticket
 
         if request.form.get("open_ticket") == "0":
