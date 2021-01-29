@@ -151,9 +151,10 @@ def editUser():
         }
         mongo.db.users.update({"_id": ObjectId(id)}, edit)
 
+
         # Update "session" cookie
         session['user'] = request.form.get("username")
-        flash("Congratulations, You Are Now Part Of The Ripe Family!")
+        flash("Profile Successfully Updated")
     return render_template("editUser.html", user=user)
 
 
@@ -207,7 +208,7 @@ def editrecipe(id):
             "instructions": request.form.get("instructions"),
             "rating": request.form.get("rating"),
             "rating_count": request.form.get("rating_count"),
-            "created_by": session['user'],
+            "created_by": recipe['created_by'],
             "tags": request.form.get("tags"),
             "kcal": request.form.get("kcal"),
             "fat": request.form.get("fat"),
@@ -232,6 +233,8 @@ def editrecipe(id):
 
 @app.route("/newrecipe", methods=["GET", "POST"])
 def newrecipe():
+    user = mongo.db.users.find_one(
+            {"username": session["user"]})
 
     if request.method == "POST":
         newrecipe = {
@@ -245,7 +248,7 @@ def newrecipe():
             "description": request.form.get("description").lower(),
             "ingredients": request.form.get("ingredients").lower(),
             "instructions": request.form.get("instructions").lower(),
-            "created_by": session['user'].lower(),
+            "created_by": user["_id"],
             "tags": request.form.get("tags").lower(),
             "kcal": request.form.get("kcal"),
             "fat": request.form.get("fat"),
@@ -263,7 +266,7 @@ def newrecipe():
         flash("Thanks For Your Recipe, It's Been Added To The Database")
         return redirect(url_for('recipes'))
 
-    return render_template("add_recipe.html")
+    return render_template("add_recipe.html", user=user)
 
 
 @app.route("/recipes", methods=["GET", "POST"])
@@ -343,12 +346,12 @@ def selected(id):
                            id=id, recipe=recipe, messages=messages)
 
 
-@app.route("/user/<user>", methods=["GET", "POST"])
-def user(user):
-    user = user
+@app.route("/user/<id>", methods=["GET", "POST"])
+def user(id):
+    id = id
     userDB = mongo.db.users.find(
-        {"username": user})
-
+            {"_id": ObjectId(id)})
+    user = userDB["username"]
     recipes = mongo.db.recipes.find(
             {"created_by": user})
 

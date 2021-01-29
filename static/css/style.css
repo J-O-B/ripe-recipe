@@ -139,7 +139,7 @@ img{
 .flashes h4{
     font-size:200%;
     line-height: 2;
-    color: var(--third);
+    color: black;
     border-radius: 20%;
 }
 /*---------------------------------------------------------------- Divs */

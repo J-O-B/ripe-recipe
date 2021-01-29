@@ -9,13 +9,12 @@
 - [ ] Browse Recipes:
     1. [x] A user can browse Recipes
     2. [ ] A user can sort recipes -------------------------------------------------------------< needs to be done
-    3. [ ] A member can rank other recipes------------------------------------------------------< needs to be done
 
 - [x] Profile Page:
     1. Each member has a Personalized profile page with data specific to them.
     2. Members have a contact area where they can submit "tickets" to admin.
-    3. Members can track their recipe scores.
-    4. Members can edit their profile information.-----------------------------------------------< needs to be done
+    3. Members can track their recipes and saved recipes
+    4. Members can edit their profile information.
 
 - [x] Other Users Pages:
     1. As a signed in member you can view someone elses page.
