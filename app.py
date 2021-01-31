@@ -312,7 +312,7 @@ def selected(id):
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
 
-    messages = mongo.db.comments.find(
+    comment = mongo.db.comments.find(
             {"message_for": id})
 
     if (request.method == "POST"):
@@ -321,7 +321,7 @@ def selected(id):
             today = date.today()
             now = today.strftime("%b-%d-%Y")
 
-            newMessage = {
+            newComment = {
                     "message_from": session["user"],
                     "message_for": id,
                     "message_text": request.form.get("recipe-comment"),
@@ -329,7 +329,7 @@ def selected(id):
                     "date": now,
                 }
 
-            mongo.db.comments.insert(newMessage)
+            mongo.db.comments.insert(newComment)
         if request.form.get("saveRecipe") == "1":
             user = session["user"]
             update = [
@@ -343,7 +343,7 @@ def selected(id):
             flash("You have saved this recipe")
 
     return render_template("selected.html",
-                           id=id, recipe=recipe, messages=messages)
+                           id=id, recipe=recipe, comment=comment)
 
 
 @app.route("/user/<id>", methods=["GET", "POST"])
@@ -352,8 +352,28 @@ def user(id):
     userDB = mongo.db.users.find(
             {"_id": ObjectId(id)})
 
-    return render_template(
-     "user.html", userDB=userDB)
+    messages = mongo.db.messages.find(
+            {"message_for": id})
+
+    recipes = mongo.db.recipes.find(
+        {"created_by": ObjectId(id)})
+    if request.method == "POST":
+        today = date.today()
+        d1 = today.strftime("%d/%m/%Y")
+
+        newMessage = {
+            "message_from": request.form.get("from"),
+            "message_for": id,
+            "message_text": request.form.get("message"),
+            "date": d1
+        }
+        if request.form.get("newMessage") == "1":
+            mongo.db.messages.insert(newMessage)
+            return render_template("user.html",
+                                   userDB=userDB, messages=messages)
+
+    return render_template("user.html",
+                           userDB=userDB, messages=messages, recipes=recipes)
 
 
 @app.route("/main", methods=["GET", "POST"])
