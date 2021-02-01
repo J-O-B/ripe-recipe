@@ -218,18 +218,30 @@ $('#genPreview').click(function(){
 
 //Recipes
 $('#showStart').mouseover(function(){
-    $('#placeholder').hide(500);
+    $("#placeholder").hide(1000);
     $('#starters').show(1000);
-    $('#showStart').removeClass("s3").addClass("s5").addClass("border");
-    $('#showStart').removeClass("s3").addClass("s1");
-    $('#showStart').removeClass("s3").addClass("s1");
-    $('#showStart').removeClass("s3").addClass("s1");
+    $('#mains').hide(1000);
+    $('#dessert').hide(1000);
+    $('#drink').hide(1000);
 });
-$('#showStart').mouseout(function(){
+$('#showMains').mouseover(function(){
+    $("#placeholder").hide(1000);
     $('#starters').hide(1000);
-    $('#placeholder').show(500);
-    $('#showStart').removeClass("s5").removeClass("border").addClass("s3");
-    $('#showStart').removeClass("s1").addClass("s3");
-    $('#showStart').removeClass("s1").addClass("s3");
-    $('#showStart').removeClass("s1").addClass("s3");
+    $('#mains').show(1000);
+    $('#dessert').hide(1000);
+    $('#drink').hide(1000);
+});
+$('#showDessert').mouseover(function(){
+    $("#placeholder").hide(1000);
+    $('#starters').hide(1000);
+    $('#mains').hide(1000);
+    $('#dessert').show(1000);
+    $('#drink').hide(1000);
+});
+$('#showDrink').mouseover(function(){
+    $("#placeholder").hide(1000);
+    $('#starters').hide(1000);
+    $('#mains').hide(1000);
+    $('#dessert').hide(1000);
+    $('#drink').show(1000);
 });

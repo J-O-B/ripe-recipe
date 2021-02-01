@@ -82,6 +82,10 @@ h3{
     border: none;
 }
 
+.overflowHidden{
+    overflow: hidden;
+}
+
 img{
     max-width: 90vw;
 }
