@@ -386,7 +386,7 @@ nav.nav-extended .nav-wrapper {
 .prof-top-card{
     height:300px;
 }
-#myRecipes,
+#Recipes,
 #savedRecipes,
 #ticketWrap{
     max-width: 100%;
@@ -394,6 +394,22 @@ nav.nav-extended .nav-wrapper {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+.listFavorites{
+    margin:0;
+    height:35px;
+    line-height: 0.5;
+}
+.listRecipes{
+    margin:0;
+    height:35px;
+    line-height: 0.5;
+}
+#myRecipes,
+#saveRecipes{
+    height:300px;
+    overflow: hidden;
+}
+
 /*---------------------------------------------------------------------------------------- Edit User */
 #previewProfPic img{
     height: 200px;

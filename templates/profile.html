@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-        
+            <!--First Row-->
             <div class="row">
                 <div class="col s12 m3 offset-m1 haze border prof-top-card">
-                        <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
+                    <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
                 </div>
                 <div class="col s12 m7 offset-m1 haze border prof-top-card">
-                    <div class="row">
-                        <div class="col s12">
                             <a href="#editProfile" class="btn modal-trigger center-align col s4 offset-s1 green accent-2 black-text">Edit Profile</a>
                             <!--modal here-->
                             <div id="editProfile" class="modal">
@@ -49,19 +47,13 @@
                                     <p>Please Confirm Login To Proceed</p>
                                 </div>
                             </div>
-
-
-
                             <a href="" class="btn center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
                             <!--modal here-->
-
-                        </div>
-                    </div>
-                    <div class="col s10">
-                        <h2>{{ user.username|capitalize }}</h2>
-                        <p>Biography: {{ user.bio|capitalize }}</p>
-                        <p>Number Of Recipes: {{ numOfRecipes }}</p>
-                    </div>
+                        <div class="col s12">
+                            <h2>{{ user.username|capitalize }}</h2>
+                            <p>Biography: {{ user.bio|capitalize }}</p>
+                            <p>Number Of Recipes: {{ numOfRecipes }}</p>
+                        </div>    
                 </div>
             </div>
 
@@ -75,38 +67,48 @@
                         <div class="col s4">
                             <p>View Recipe:</p>
                         </div>
-                        {% for recipe in myrecipes %}
-                            {% if (recipe.created_by == session["user"]) and (myrecipes != "") %}
-                                <div class="col s8">
-                                    <p>{{ recipe.recipe_name|capitalize }}</p>
-                                </div>
-                                <div class="col s4">
-                                    <p><a class="btn" href="{{ url_for('selected', id=recipe._id) }}">View More</a></p>
-                                </div>                                
-                            {% elif myrecipes == "" %}
-                                <h5>There seems to be no recipes created by you</h5>
-                            {% endif %}
-                        {% endfor %}
+                        <div class="col s12" id="Recipes">
+                            {% for recipe in myrecipes %}
+                                {% if (recipe.created_by == session["user"]) and (myrecipes != "") %}
+                                <div class="row">
+                                    <div class="col s7 haze listRecipes">
+                                        <p>{{ recipe.recipe_name|capitalize }}</p>
+                                    </div>
+                                    <div class="col s5 haze listRecipes center-align">
+                                        <a class="btn" href="{{ url_for('selected', id=recipe._id) }}">View</a>
+                                    </div>
+                                </div>                            
+                                {% elif myrecipes == "" %}
+                                    <h5>There seems to be no recipes created by you</h5>
+                                {% endif %}
+                            {% endfor %}    
+                        </div>
                 </div>
-                <div class="col spacer"></div>
 <!--Saved Recipe Section-->
-                <div class="col s12 m5 offset-m1 haze border" id="savedRecipes">
+                <div class="col s12 m5 offset-m1 haze border" id="saveRecipes">
                     <h3 class="center-align">Saved Recipes:</h3>
-                        {% for favorites in user.fav_recipes %}
-                        <div class="row border">
-                            <div class="col s7 haze">
-                                {{ favorites[0]|capitalize }}
-                            </div>
-                            <div class="col s5 haze">
-                                {% set recipeID = favorites[1] %}
-                            <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View Recipe</a>
-                            </div>
-                        {% endfor %}
-                    </div>
+                        <div class="col s12" id="savedRecipes">
+                            <div class="col s8">
+                            <p>Name:</p>
+                        </div>
+                        <div class="col s4">
+                            <p>View Recipe:</p>
+                        </div>
+                            {% for favorites in user.fav_recipes %}
+                            <div class="row">
+                                <div class="col s7 haze listFavorites">
+                                    <p>{{ favorites[0]|capitalize }}</p>
+                                </div>
+                                <div class="col s5 haze listFavorites center-align">
+                                    {% set recipeID = favorites[1] %}
+                                    <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View</a>
+                                </div>
+                            </div>    
+                            {% endfor %}
+                        </div>
                 </div>
             </div>
-
-    <!--Admin Contact / Ticketing System-->
+            <!--Admin Contact / Ticketing System-->
             <div class="row">
                 <!--Input Ticket-->
                 <div class="col s12 m5 offset-m1 haze border center-align">
@@ -251,9 +253,6 @@
                 </div>
             </div>
         </div>
-    
-
-
 {% endblock %}
 
 {% block scripts %}
