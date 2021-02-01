@@ -9,53 +9,77 @@
 
     <!--Cards-->
     <div class="row" id="firstRow">
-        <div class="col s12 m6 center-align outer-box">
-            <div class="card-content">
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename='img/starter.jpg') }}" alt="Starter Recipes">
-                </div>
-                <div class="card-contents">
-                    <a href="{{ url_for('starter') }}" class="card-content">
-                        <button class="btn-large col s6 offset-s3">Starters</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 center-align outer-box">
-            <div class="card-content">
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename='img/main.jpg') }}" alt="Main Course Recipes">
-                </div>
-                <a href="{{ url_for('main') }}" class="card-content">
-                    <div class="card-contents">
-                        <button class="btn-large col s6 offset-s3">Mains</button>
-                    </div>
-                </a>
-            </div>
-        </div>
+        <a href="{{ url_for('starter') }}" class="btn-large col s3" id="showStart">Starters</a>
+        <a href="{{ url_for('main') }}" class="btn-large col s3" id="showMain">Mains</a>
+        <a href="{{ url_for('dessert') }}" class="btn-large col s3" id="showDessert">Desserts</a>
+        <a href="{{ url_for('drink') }}" class="btn-large col s3" id="showDrink">Drinks</a> 
     </div>
+    
     <div class="row" id="secondRow">
-        <div class="col s12 m6 center-align outer-box">
-            <div class="card-content">
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename='img/dessert.jpg') }}" alt="Dessert Recipes">
+        <div class="col s12 center-align" id="placeholder">
+            <img src="{{ url_for ('static', filename='img/logo.png') }}" alt="Ripe recipe logo">
+        </div>
+        <div class="col s12 starters" id="starters">
+            <div class="row">
+                <div class="col s12 m6">
+                    <img src="{{ url_for ('static', filename='img/starter.jpg') }}" alt="Starters">
                 </div>
-                <div class="card-contents">
-                    <a href="{{ url_for('dessert') }}" class="card-content">
-                        <button class="btn-large col s6 offset-s3">Desserts</button>
-                    </a>
+                <div class="col s12 m6 center-align">
+                    <h3>Starters</h3>
+                    <hr class="custom-short-div">
+                    <p>
+                        In this section you will find the latest starter recipes, <br>
+                        from bruschetta, to soups. There is something here for everyone!
+                    </p>
+                    <a href="{{ url_for('starter') }}" class="btn-large col s8 offset-s2">Go To Starters</a>
                 </div>
             </div>
         </div>
-        <div class="col s12 m6 center-align outer-box">
-            <div class="card-content">
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename='img/drink.jpg') }}" alt="Drink Recipes">
+        <div class="col s12 main" id="mains">
+            <div class="row">
+                <div class="col s12 m6">
+                    <img src="{{ url_for ('static', filename='img/main.jpg') }}" alt="Starters">
                 </div>
-                <div class="card-contents">
-                    <a href="{{ url_for('drink') }}" class="card-content">
-                        <button class="btn-large col s6 offset-s3">Drinks</button>
-                    </a>
+                <div class="col s12 m6 center-align">
+                    <h3>Starters</h3>
+                    <hr class="custom-short-div">
+                    <p>
+                        In this section you will find the latest starter recipes, <br>
+                        from bruschetta, to soups. There is something here for everyone!
+                    </p>
+                    <a href="{{ url_for('main') }}" class="btn-large col s8 offset-s2">Mains</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 dessert" id="dessert">
+            <div class="row">
+                <div class="col s12 m6">
+                    <img src="{{ url_for ('static', filename='img/dessert.jpg') }}" alt="Starters">
+                </div>
+                <div class="col s12 m6 center-align">
+                    <h3>Starters</h3>
+                    <hr class="custom-short-div">
+                    <p>
+                        In this section you will find the latest starter recipes, <br>
+                        from bruschetta, to soups. There is something here for everyone!
+                    </p>
+                    <a href="{{ url_for('dessert') }}" class="btn-large col s8 offset-s2">Desserts</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 drink" id="drink">
+            <div class="row">
+                <div class="col s12 m6">
+                    <img src="{{ url_for ('static', filename='img/drink.jpg') }}" alt="Starters">
+                </div>
+                <div class="col s12 m6 center-align">
+                    <h3>Starters</h3>
+                    <hr class="custom-short-div">
+                    <p>
+                        In this section you will find the latest starter recipes, <br>
+                        from bruschetta, to soups. There is something here for everyone!
+                    </p>
+                    <a href="{{ url_for('drink') }}" class="btn-large col s8 offset-s2">Drinks</a>
                 </div>
             </div>
         </div>

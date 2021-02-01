@@ -24,6 +24,11 @@ $(document).ready(function(){
     // Recipe Categories
     $('#firstRow').hide();
     $('#secondRow').hide();
+    $('#starters').hide();
+    $('#mains').hide();
+    $('#dessert').hide();
+    $('#drink').hide();
+
 
     // Time Picker In Forms
     $('.timepicker').timepicker();
@@ -67,52 +72,29 @@ dateGen();
 // Comment on recipe submit button
 $('#leaveComment').click(function(){
     $(this).val(1);
+    backToZero();
 });
-
-// Instant Messenger
-$('#open-messenger').click(function(){
-    $('#open-messenger').hide();
-    $('#messenger').show();
-});
-
-$('#close-messenger').click(function(){
-    $('#messenger').hide();
-    $('#open-messenger').show();
-})
-$('.IMreply').click(function(){
-    var replyTo = $('#messageFrom').text();
-    $('#title').text("Reply:")
-    $('#msg').toggle();
-    $('#reply').toggle();
-    $('#sendTo').attr("value", replyTo); 
-});
-$('#sendReply').click(function(){
-    $(this).val(1);
-});
-$('#closeReply').click(function(){
-    $('#messenger').hide();
-    $('#open-messenger').show();
-});
-$('#deleteMessage').click(function(){
-    $(this).val(1);
-});
-
 
 // Submit button value to 1 "Send"
 $('#submit').click(function(){
         $(this).val(1);
+        backToZero();
     });
 $('#seeRecipe').click(function(){
         $(this).val(1);
+        backToZero();
     });
 $('#saveRecipe').click(function(){
     $(this).val(1);
+    backToZero();
 })
 $('#delete').click(function(){
     $(this).val(1);
+    backToZero();
 })
 $('#newMessage').click(function(){
     $(this).val(1);
+    backToZero();
 })
 
 // Open A Ticket From Profile:
@@ -124,6 +106,8 @@ $('#openTicket').click(function(){
 $('#submitEdit').click(function(){
     $(this).val(1);
 });
+
+// By changing values, to stop this value from remaining at the new value for 
 function backToZero(){
     $('#submit').val(0);
     $('#seeRecipe').val(0);
@@ -191,7 +175,7 @@ function animate(){
     $('.welcome-image').fadeIn(4000);
     function categories(){
         $('#firstRow').show(2000);
-        $('#secondRow').fadeIn(4000);   
+        $('#secondRow').show(4000);   
     }
     function searchPage(){
         $('#searchBox').show(3000);
@@ -201,16 +185,18 @@ function animate(){
     $("html, body").animate({ scrollTop: $('#firstRow').offset().top }, 2000);
 }
 
+//Navbar to expand the lower tier of the menu
 $('.expandNav').click(function(){
     toggleArrow();
     $('#secondNavbar').toggle(1500);
 });
+//Toggle between up and down arrow (navbar)
 function toggleArrow(){
     if ($('.expandNav').val() == 0){
-        $('.expandNav').removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up");
+        $('.expandNav').removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up").css("color", "var(--first");
         $('.expandNav').val(1);
     }else if ($('.expandNav').val() == 1){
-        $('.expandNav').removeClass("fa-chevron-circle-up").addClass("fa-chevron-circle-down");
+        $('.expandNav').removeClass("fa-chevron-circle-up").addClass("fa-chevron-circle-down").css("color", "#000");
         $('.expandNav').val(0);
     }
 }
@@ -227,4 +213,23 @@ $('#genPreview').click(function(){
     var url = $('#prof_pic').val();
     $('#previewProfPic').show(2000);
     $('#prevPic').attr("src", url)
+});
+
+
+//Recipes
+$('#showStart').mouseover(function(){
+    $('#placeholder').hide(500);
+    $('#starters').show(1000);
+    $('#showStart').removeClass("s3").addClass("s5").addClass("border");
+    $('#showStart').removeClass("s3").addClass("s1");
+    $('#showStart').removeClass("s3").addClass("s1");
+    $('#showStart').removeClass("s3").addClass("s1");
+});
+$('#showStart').mouseout(function(){
+    $('#starters').hide(1000);
+    $('#placeholder').show(500);
+    $('#showStart').removeClass("s5").removeClass("border").addClass("s3");
+    $('#showStart').removeClass("s1").addClass("s3");
+    $('#showStart').removeClass("s1").addClass("s3");
+    $('#showStart').removeClass("s1").addClass("s3");
 });
