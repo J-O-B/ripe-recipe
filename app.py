@@ -330,6 +330,7 @@ def selected(id):
                 }
 
             mongo.db.comments.insert(newComment)
+
         if request.form.get("saveRecipe") == "1":
             user = session["user"]
             update = [
