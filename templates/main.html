@@ -11,34 +11,72 @@
         <div class="contents">
             <!--Populate the contents-->
             {% for mains in main %}
-            <div class="col s12 m5 offset-m1 grey lighten-2 soft-corners border center-align">
-                <form method="POST" action="{{ url_for('selected', name=mains.recipe_name, id=mains._id) }}">
-                    <!--image col-->
-                    <div class="col s5">
-                        <img class ="recipe-pic" src="{{ mains.pic_url }}" alt="Recipe Picture">
+            <div class="row">
+                <div class="col s12 haze border center-align">
+                    <div class="col s6 m2">
+                        <p>{{ mains.recipe_name|capitalize }}</p>
                     </div>
-                    <!--Name and description-->
-                    <div class="col s7">
-                        <div class="row center-align">
-                            <h5>{{ mains.recipe_name|capitalize }}</h5>
-                        </div>
-                        <div class="row center-align">
-                            <p>{{ mains.description|capitalize }}</p>
+                    <div class="col s6 m3">
+                        <p>{{ mains.description[:20]|capitalize }}...</p>
+                    </div>
+                    <div class="col s6 m2">
+                        <p>{{ mains.difficulty|capitalize }}</p>
+                    </div>
+                    <div class="col s6 m2">
+                        <p>{{ mains.tags[:30]|capitalize }}...</p>
+                    </div>
+                    <div class="col s12 m3 center-align">
+                        <!-- Modal Trigger -->
+                        <a class="btn modal-trigger" href="#{{ mains._id }}">View More</a>
+
+                        <!-- Modal Structure -->
+                        <div id="{{ mains._id }}" class="modal">
+                            <div class="modal-content">
+                                <h4>{{ mains.recipe_name|capitalize }}</h4>
+                                <hr class="custom-short-div">
+                                <p>{{ mains.description|capitalize }}</p>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>KCAL</th>
+                                        <th>Fat</th>
+                                        <th>Saturates</th>
+                                        <th>Carbs</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ mains.kcal }}</td>
+                                        <td>{{ mains.fat }}</td>
+                                        <td>{{ mains.saturates }}</td>
+                                        <td>{{ mains.carbs }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sugars</th>
+                                        <th>Fibre</th>
+                                        <th>Protein</th>
+                                        <th>Salt</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ mains.sugars }}</td>
+                                        <td>{{ mains.fibre }}</td>
+                                        <td>{{ mains.protein }}</td>
+                                        <td>{{ mains.salt }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="overflowHidden">
+                                    <img src="{{mains.pic_url}}" alt="Recipe Picture">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                {% set id = mains.id %}
+                                <a href="{{ url_for('selected', name=mains.recipe_name, id=mains._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
+                                <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s6 center-align">
-                            <em>Difficulty: <br>{{ mains.difficulty }}</em>
-                        </div>
-                        <div class="col s6 center-align">
-                            <em>Created By: <br>{{ mains.created_by }}</em>
-                        </div>
-                    </div>
-                    <input class="hidden" name="name" id="name" value="{{ mains.recipe_name }}">
-                    <button type="submit" value="{{ mains.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
-                            View More
-                    </button>
-                </form>
+                </div>
             </div>
             {% endfor %}
         </div>

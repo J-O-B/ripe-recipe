@@ -116,6 +116,8 @@ img{
     visibility: hidden;
 }
 .comments{
+    padding-top: 20px;
+    padding-bottom: 20px;
     overflow:hidden;
 }
 

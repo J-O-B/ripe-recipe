@@ -139,20 +139,23 @@
 
             <!--Created By Link-->
             <div class="row">
-                <div class="col s10 offset-s1">
-                    {{ recipes.created_by }}
-                    <h1>{{ recipes.created_by }}</h1>
-                        <a href="{{ url_for('user', id=recipes.created_by) }}" class="btn col s6 green">
-                            View User
-                        </a>   
+                <div class="col s10 offset-s1 center-align haze border">
+                    <h3>This Recipe Is From One Of Our Valued Members</h3>
+                    <p>
+                        Should you wish to view this users profile, send them a message<br>
+                        or browse their other recipes visit their profile:
+                    </p>
+                    <a href="{{ url_for('user', id=recipes.created_by) }}" class="btn col s6 offset-s3 green">
+                        View User
+                    </a>   
                 </div>
             </div>
             <!--Comments Section-->
-            <div class="row blue lighten-2 round-corners comments">
+            <div class="row comments">
                 <!--Pagination Hook-->
                     {% if session["user"] %}
                 <!--Leave A Message-->
-                    <form class="col s12 haze" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
+                    <form class="col s10 offset-s1 haze soft-corners border" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
                         <div class="row">
                             <div class="input-field col s10 offset-s1">
                                 <div class="col s1">
@@ -206,37 +209,40 @@
                 {% endif %}
 
                 {% if not session["user"] %}
-                <div class="row center-align">
+                <div class="row center-align border">
                     <h4>Please Login To Leave A Comment</h4>
                     <hr class="custom-short-div">
                 </div>
                 {% endif %}
                 <!--Comments Wrapper-->
                 <div id="wrapper">
+                    {% if comment != "" %}
+                    <h3 class="center-align">Comments:</h3>
+                    {% endif %}
                     <!--Comment Contents-->
                     <div class="contents">
-                        {% for message in messages %}
+                        {% for comments in comment %}
                         <div class="row">
                             <div class="col s10 offset-s1">
                                 <div class="col s12 m4">
-                                    <p>Message Left: <span>{{ message.date }}</span></p>
-                                    <p>Message From: <span>{{ message.message_from|capitalize }}</span></p>
+                                    <p>Message Left: <span>{{ comment.date }}</span></p>
+                                    <p>Message From: <span>{{ comment.message_from|capitalize }}</span></p>
                                     <p>Rating: 
-                                        {% if message.rating == "1" %}
+                                        {% if comment.rating == "1" %}
                                         <span>&#10031;</span>
-                                        {% elif message.rating == "2" %}
-                                        <span>&#10031;</span>
-                                        <span>&#10031;</span>
-                                        {% elif message.rating == "3" %}
+                                        {% elif comment.rating == "2" %}
                                         <span>&#10031;</span>
                                         <span>&#10031;</span>
-                                        <span>&#10031;</span>
-                                        {% elif message.rating == "4" %}
+                                        {% elif comment.rating == "3" %}
                                         <span>&#10031;</span>
                                         <span>&#10031;</span>
                                         <span>&#10031;</span>
+                                        {% elif comment.rating == "4" %}
                                         <span>&#10031;</span>
-                                        {% elif message.rating == "5" %}
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        <span>&#10031;</span>
+                                        {% elif comment.rating == "5" %}
                                         <span>&#10031;</span>
                                         <span>&#10031;</span>
                                         <span>&#10031;</span>
@@ -247,7 +253,7 @@
                                 </div>
                                 <div class="col s12 m8">
                                     <h6>Comment:</h6>
-                                    <p>{{ message.message_text }}</p>
+                                    <p>{{ comment.message_text }}</p>
                                 </div>
                             </div>
                         </div>

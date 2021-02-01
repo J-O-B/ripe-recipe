@@ -314,6 +314,8 @@ def selected(id):
 
     comment = mongo.db.comments.find(
             {"message_for": id})
+    
+    messages = 
 
     if (request.method == "POST"):
 

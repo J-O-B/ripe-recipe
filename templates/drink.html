@@ -11,34 +11,72 @@
         <div class="contents">
             <!--Populate the contents-->
             {% for drinks in drink %}
-            <div class="col s12 m5 offset-m1 grey lighten-2 soft-corners border center-align">
-                <form  method="POST" action="{{ url_for('selected', name=drinks.recipe_name, id=drinks._id) }}">
-                    <!--image col-->
-                    <div class="col s5">
-                        <img class ="recipe-pic" src="{{ drinks.pic_url }}" alt="Recipe Picture">
+            <div class="row">
+                <div class="col s12 haze border center-align">
+                    <div class="col s6 m2">
+                        <p>{{ drinks.recipe_name|capitalize }}</p>
                     </div>
-                    <!--Name and description-->
-                    <div class="col s7">
-                        <div class="row center-align">
-                            <h5>{{ drinks.recipe_name|capitalize }}</h5>
-                        </div>
-                        <div class="row center-align">
-                            <p>{{ drinks.description|capitalize }}</p>
+                    <div class="col s6 m3">
+                        <p>{{ drinks.description[:20]|capitalize }}...</p>
+                    </div>
+                    <div class="col s6 m2">
+                        <p>{{ drinks.difficulty|capitalize }}</p>
+                    </div>
+                    <div class="col s6 m2">
+                        <p>{{ drinks.tags[:30]|capitalize }}...</p>
+                    </div>
+                    <div class="col s12 m3 center-align">
+                        <!-- Modal Trigger -->
+                        <a class="btn modal-trigger" href="#{{ drinks._id }}">View More</a>
+
+                        <!-- Modal Structure -->
+                        <div id="{{ drinks._id }}" class="modal">
+                            <div class="modal-content">
+                                <h4>{{ drinks.recipe_name|capitalize }}</h4>
+                                <hr class="custom-short-div">
+                                <p>{{ drinks.description|capitalize }}</p>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>KCAL</th>
+                                        <th>Fat</th>
+                                        <th>Saturates</th>
+                                        <th>Carbs</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ drinks.kcal }}</td>
+                                        <td>{{ drinks.fat }}</td>
+                                        <td>{{ drinks.saturates }}</td>
+                                        <td>{{ drinks.carbs }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sugars</th>
+                                        <th>Fibre</th>
+                                        <th>Protein</th>
+                                        <th>Salt</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ drinks.sugars }}</td>
+                                        <td>{{ drinks.fibre }}</td>
+                                        <td>{{ drinks.protein }}</td>
+                                        <td>{{ drinks.salt }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="overflowHidden">
+                                    <img src="{{drinks.pic_url}}" alt="Recipe Picture">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                {% set id = drinks.id %}
+                                <a href="{{ url_for('selected', name=drinks.recipe_name, id=drinks._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
+                                <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s6 center-align">
-                            <em>Difficulty: <br>{{ drinks.difficulty }}</em>
-                        </div>
-                        <div class="col s6 center-align">
-                            <em>Created By: <br>{{ drinks.created_by }}</em>
-                        </div>
-                    </div>
-                    <input class="hidden" name="name" id="name" value="{{ drinks.recipe_name }}">
-                    <button type="submit" value="{{ drinks.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
-                            View More
-                    </button>
-                </form>
+                </div>
             </div>
             {% endfor %}
         </div>
