@@ -8,11 +8,9 @@
         <div class="wrap top-recipe-card">
             <!--Top Section-->
             <div class="row top-recipe-inner">
-                <div class="row">
-                    <div class="col s12 m6 offset-m3 recipe-title">
+                    <div class="col s12 m6 offset-m3 haze border soft-corners">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
-                </div>
                 <div class="col s10 offset-s1 m4 grey lighten-2 recipe-image">
                     <!--Recipe Image-->
                     <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
@@ -60,16 +58,16 @@
             {% if recipes.created_by == session["user"] %}
                 <div class="row">
                     <h5 class="center">It Looks Like You Are The Creator Of This Recipe!</h5>
-                    <div class="col s3 offset-s2">
+                    <div class="col s6 m4 offset-m1">
                         <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
                             <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
                             <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
-                                    View More
+                                    Edit Recipe
                             </button>
                         </form>
                     </div>
-                    <div class="col s3 offset-s2">
-                        <button class="btn-large red">Request Delete</button>
+                    <div class="col s6 m4 offset-m2">
+                        <button class="btn-large col s12 red">Request Delete</button>
                     </div>
                 </div>
             {% endif %}
@@ -107,7 +105,7 @@
 
             <!--Bottom Section-->
             <div class="row haze">
-                <div class="col s10 offset-s1 m6">
+                <div class="col s12 m5 offset-m1 center-align">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
                     {% set list1 = recipes.ingredients.split('.') %}
@@ -119,7 +117,7 @@
                         {% endfor %} 
                         </ul>
                 </div>
-                <div class="col s10 offset-s1 m6">
+                <div class="col s12 m5">
                     <h3 class="center-align">Instructions:</h3>
                     <hr class="custom-short-div">
                     <!--Convert instructions string into a list-->
@@ -150,24 +148,24 @@
                     </a>   
                 </div>
             </div>
+
             <!--Comments Section-->
             <div class="row comments">
-                <!--Pagination Hook-->
+                <!--User credentials-->
                     {% if session["user"] %}
                 <!--Leave A Message-->
                     <form class="col s10 offset-s1 haze soft-corners border" id="recipe-comments" method="POST" action="{{ url_for('selected', id=recipes._id) }}">
                         <div class="row">
                             <div class="input-field col s10 offset-s1">
-                                <div class="col s1">
+                                <div class="col s12">
                                     <i class="fas fa-comments prefix"></i>
-                                </div>
-                                <div class="col s11">
-                                    <input name="recipe-comment" id="recipe-comment" type="text" placeholder="Write Your Comment Here..." class="validate input-field" required>
+                                    <input name="recipe-comment" id="recipe-comment" type="text" placeholder="Write Your Comment Here..." pattern="^[a-zA-Z0-9_.-]*{5,1500}$" class="validate input-field" required>
                                     <label for="recipe-comment">Recipe Comment</label>
                                 </div>
                             </div>
                             <div class="input-field col s10 offset-s1">
                                 <div class="col s12">
+                                    <i class="fas fa-star prefix"></i>
                                     <select id="rating-comment" name="rating-comment">
                                         <option value="" disabled selected>Your Rating:</option>
                                         <option value="1">
@@ -213,8 +211,6 @@
                 {% endif %}
                 <!--Comments Wrapper-->
                 <div id="wrapper">
-                    <h1>{{comment["date"]}}</h1>
-
                     <!--Comment Contents-->
                     <div class="contents">
                         {% for X in comment %}
@@ -249,7 +245,21 @@
                                 </div>
                                 <div class="col s12 m8">
                                     <h6>Comment:</h6>
+                                    {% if not X.message_text|length >= 75 %}
                                     <p>{{ X.message_text }}</p>
+                                    {% elif X.message_text|length >= 75 %}
+                                    <p>{{ X.message_text[:75] }}...</p>
+                                        <a class="btn modal-trigger" href="#{{ X._id }}">Read Full</a>
+                                        <div id="{{ X._id }}" class="modal">
+                                            <div class="modal-content">
+                                                <h4>Full Comment:</h4>
+                                                <p>{{ X.message_text }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close btn-flat">Close</a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
