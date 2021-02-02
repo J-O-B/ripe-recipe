@@ -394,6 +394,10 @@ nav.nav-extended .nav-wrapper {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+#ticketWrap{
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .listFavorites{
     margin:0;
     height:35px;

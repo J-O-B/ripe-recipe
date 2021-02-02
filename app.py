@@ -309,6 +309,9 @@ def selected(id):
     The selected page is a general page which can run all recipe types,
     on page logic will change
     """
+    user = mongo.db.users.find_one(
+            {"username": session["user"]})
+
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
 
@@ -342,9 +345,32 @@ def selected(id):
                 {"$push":
                     {'fav_recipes': update}})
             flash("You have saved this recipe")
+        try:
+            if request.form.get(
+                   "confirm") == "yes" or request.form.get("confirm") == "Yes":
+                today = date.today()
+                now = today.strftime("%b-%d-%Y")
+                ticket = {
+                        "query_type": "request delete",
+                        "details": request.form.get("recID"),
+                        "submit_by": request.form.get("userName"),
+                        "user_id": request.form.get("userID"),
+                        "ticket_opened": now,
+                        "reply": "",
+                        "open_ticket": "1",
+                        "closed_by": ""
+                    }
+                mongo.db.tickets.insert(ticket)
+                flash("Monitor Your Ticketing Section For Response")
+                return redirect(url_for('my_profile'))
+        except:
+            return render_template("selected.html",
+                                   id=id, recipe=recipe, comment=comment,
+                                   user=user)
 
     return render_template("selected.html",
-                           id=id, recipe=recipe, comment=comment)
+                           id=id, recipe=recipe, comment=comment,
+                           user=user)
 
 
 @app.route("/user/<id>", methods=["GET", "POST"])
@@ -423,20 +449,16 @@ def my_profile():
         myTickets = False
 
     if request.method == "POST":
-
-        if user:
+        try:
             # Check for valid password for that user
             if check_password_hash(
               user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for('editUser'))
-            else:
-                # If password is wrong
-                flash("Username and/or Password Incorrect")
-                return
-        else:
-            return
+        except:
+            flash("Username and/or Password Incorrect")
+            return redirect(url_for('my_profile'))
 
         # If the user is editing a ticket
 

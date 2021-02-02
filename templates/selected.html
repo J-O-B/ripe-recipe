@@ -67,7 +67,31 @@
                         </form>
                     </div>
                     <div class="col s6 m4 offset-m2">
-                        <button class="btn-large col s12 red">Request Delete</button>
+                        <a href="#{{recipes._id}}" class="btn-large modal-trigger col s12 red">Request Delete</a>
+                        <div id="{{recipes._id}}" class="modal">
+                            <div class="modal-content">
+                                <h4>Request Delete</h4>
+                                <p>Are You Sure You Want To Delete This Recipe?</p>
+                                <p>(This Will Open Up A Deletion Ticket With An Admin)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#confirmation" class="modal-close modal-trigger col s6 red btn-flat">Proceed</a>
+                                <a href="#!" class="modal-close col s6 green btn-flat">Cancel</a>
+                            </div>
+                        </div>
+                        <div id="confirmation" class="modal">
+                            <div class="modal-content">
+                                <form method="POST" action="{{ url_for('selected', id=recipes._id) }}">
+                                    <p>Type "Yes" to confirm</p>
+                                    <input type="text" name="recID" id="recID" class="hidden">
+                                    <input type="text" name="confirm" id="confirm" >
+                                    <input type="submit" class="btn-flat modal-close col s6 offset-s3">
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close col s6 offset-s3 green btn-flat">Cancel</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {% endif %}
