@@ -333,6 +333,7 @@ nav.nav-extended .nav-wrapper {
     position: absolute;
     top:90px;
     left:50%;
+    cursor: pointer;
 }
 #expandNav i{
     position: relative;

@@ -12,10 +12,7 @@
                             <div id="editProfile" class="modal">
                                 <div class="modal-content">
                                     <form method="POST">
-                                        <div class="card-panel haze round-corners">
-                                            <div class="col s12 m6 offset-m3 center-align">
-                                                <h3>Please Confirm Your Details To Proceed</h3>
-                                            </div>
+                                        <h3>Please Confirm Your Details To Proceed</h3>
                                             <div class="row">
                                                 <div class="input-field col s10 offset-s1">
                                                     <i class="fas fa-user-cog prefix black-text text-lighten-2"></i>
@@ -32,16 +29,14 @@
                                                     <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <button type="submit" name="cancel" id="cancel" class="modal-close col s3 offset-s2 btn-large red accent-3 black-text soft-corners">
-                                                    Cancel <i class="fas fa-times-circle"></i>
-                                                </button>
-                                                <button type="submit" name="go" id="go" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
-                                                    Edit <i class="fas fa-sign-in-alt"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        
+                                            <button type="submit" name="go" id="go" class="col s5 offset-s2 btn-large green accent-3 black-text soft-corners">
+                                                Edit <i class="fas fa-sign-in-alt"></i>
+                                            </button>
+                                        </form>
+                                        <button name="cancel" id="cancel" class="modal-close col s5 btn-large red accent-3 black-text soft-corners">
+                                            Cancel <i class="fas fa-times-circle"></i>
+                                        </button>
                                 </div>
                                 <div class="modal-footer center-align">
                                     <p>Please Confirm Login To Proceed</p>
@@ -70,7 +65,7 @@
                         </div>
                         <div class="col s12" id="Recipes">
                             {% for recipe in myrecipes %}
-                                {% if (recipe.created_by == session["user"]) and (myrecipes != "") %}
+                                {% if (recipe.created_by == user["_id"]) %}
                                 <div class="row">
                                     <div class="col s7 haze listRecipes">
                                         <p>{{ recipe.recipe_name|capitalize }}</p>
@@ -193,8 +188,8 @@
                                         </div>
                                     </div>
                                     <div id="edit{{ tickets._id }}" class="modal">
-                                        <form method="POST" action="{{ url_for('my_profile') }}" class="replyForm">
-                                            <div class="modal-content">
+                                        <div class="modal-content">
+                                            <form method="POST" action="{{ url_for('my_profile') }}" class="replyForm">
                                                 <input type="text" name="query_id" id="query_id" class="hidden" value="{{ tickets._id }}">
                                                 <input type="text" name="querytype" id="querytype" class="hidden" value="{{ tickets.query_type }}">
                                                 <input type="text" name="details" id="details" class="hidden" value="{{ tickets.details }}">
@@ -207,15 +202,15 @@
                                                     <option selected value="1">Leave Ticket Open</option>
                                                     <option value="0">Close This Ticket</option>
                                                 </select>
-                                                <div class="modal-footer">
-                                                    <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
-                                                        Submit
-                                                    </button>
-                                                    <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
-                                                    <a href="#!" class="modal-close btn-flat">Close</a>
-                                                </div>
+                                                <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
+                                                    Submit
+                                                </button>
+                                                <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
+                                            </form>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close btn-flat">Close</a>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                     <hr>
                                 </div>

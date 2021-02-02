@@ -345,25 +345,25 @@ def selected(id):
                 {"$push":
                     {'fav_recipes': update}})
             flash("You have saved this recipe")
-        try:
-            if request.form.get(
-                   "confirm") == "yes" or request.form.get("confirm") == "Yes":
-                today = date.today()
-                now = today.strftime("%b-%d-%Y")
-                ticket = {
-                        "query_type": "request delete",
-                        "details": request.form.get("recID"),
-                        "submit_by": request.form.get("userName"),
-                        "user_id": request.form.get("userID"),
-                        "ticket_opened": now,
-                        "reply": "",
-                        "open_ticket": "1",
-                        "closed_by": ""
-                    }
-                mongo.db.tickets.insert(ticket)
-                flash("Monitor Your Ticketing Section For Response")
-                return redirect(url_for('my_profile'))
-        except:
+
+        if request.form.get("confirm").lower != "no":
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
+
+            ticket = {
+                    "query_type": "request delete",
+                    "details": request.form.get("recID"),
+                    "submit_by": session["user"],
+                    "user_id": request.form.get("id"),
+                    "ticket_opened": now,
+                    "reply": "",
+                    "open_ticket": "1",
+                    "closed_by": ""
+                }
+            mongo.db.tickets.insert_one(ticket)
+            flash("Monitor Your Ticketing Section For Response")
+            return redirect(url_for('my_profile'))
+        else:
             return render_template("selected.html",
                                    id=id, recipe=recipe, comment=comment,
                                    user=user)
@@ -433,20 +433,19 @@ def my_profile():
     """
     user = mongo.db.users.find_one(
             {"username": session["user"]})
+    id = user["_id"]
 
     messages = mongo.db.messages.find(
-            {"message_for": session["user"]})
+            {"message_for": id})
 
     myrecipes = mongo.db.recipes.find(
-            {"created_by": session["user"]})
+            {"created_by": id})
 
-    numOfRecipes = mongo.db.recipes.find(
-            {"created_by": session["user"]}).count()
+    numOfRecipes = mongo.db.recipes.count_documents(
+            {"created_by": id})
 
     myTickets = mongo.db.tickets.find(
-            {"submit_by": session["user"]})
-    if not myTickets:
-        myTickets = False
+            {"user_id": id})
 
     if request.method == "POST":
         try:
@@ -505,7 +504,7 @@ def my_profile():
         "profile.html",
         messages=messages, user=user,
         myrecipes=myrecipes, numOfRecipes=numOfRecipes,
-        myTickets=myTickets)
+        myTickets=myTickets, id=id)
 
 
 @app.route("/store", methods=["GET", "POST"])
