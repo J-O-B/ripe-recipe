@@ -56,7 +56,7 @@ $(document).ready(function(){
     $('.modal').modal();
  
     // Search Page
-    $('#searchBox').hide();
+    $('#searchBox').show();
    animate();
 });
 
@@ -177,18 +177,13 @@ function animate(){
         $('#firstRow').show(2000);
         $('#secondRow').show(4000);   
     }
-    function searchPage(){
-        $('#searchBox').show(3000);
-    }
     categories();
-    searchPage();
-    $("html, body").animate({ scrollTop: $('#firstRow').offset().top }, 2000);
 }
 
 //Navbar to expand the lower tier of the menu
 $('.expandNav').click(function(){
     toggleArrow();
-    $('#secondNavbar').toggle(1500);
+    $('#secondNavbar').toggle(750);
 });
 //Toggle between up and down arrow (navbar)
 function toggleArrow(){
@@ -218,30 +213,30 @@ $('#genPreview').click(function(){
 
 //Recipes
 $('#showStart').mouseover(function(){
-    $("#placeholder").hide(1000);
-    $('#starters').show(1000);
-    $('#mains').hide(1000);
-    $('#dessert').hide(1000);
-    $('#drink').hide(1000);
+    $("#placeholder").hide(500);
+    $('#starters').show(500);
+    $('#mains').hide(500);
+    $('#dessert').hide(500);
+    $('#drink').hide(500);
 });
 $('#showMains').mouseover(function(){
-    $("#placeholder").hide(1000);
-    $('#starters').hide(1000);
-    $('#mains').show(1000);
-    $('#dessert').hide(1000);
-    $('#drink').hide(1000);
+    $("#placeholder").hide(500);
+    $('#starters').hide(500);
+    $('#mains').show(500);
+    $('#dessert').hide(500);
+    $('#drink').hide(500);
 });
 $('#showDessert').mouseover(function(){
-    $("#placeholder").hide(1000);
-    $('#starters').hide(1000);
-    $('#mains').hide(1000);
-    $('#dessert').show(1000);
-    $('#drink').hide(1000);
+    $("#placeholder").hide(500);
+    $('#starters').hide(500);
+    $('#mains').hide(500);
+    $('#dessert').show(500);
+    $('#drink').hide(500);
 });
 $('#showDrink').mouseover(function(){
-    $("#placeholder").hide(1000);
-    $('#starters').hide(1000);
-    $('#mains').hide(1000);
-    $('#dessert').hide(1000);
-    $('#drink').show(1000);
+    $("#placeholder").hide(500);
+    $('#starters').hide(500);
+    $('#mains').hide(500);
+    $('#dessert').hide(500);
+    $('#drink').show(500);
 });

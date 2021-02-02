@@ -9,10 +9,10 @@
 
     <!--Cards-->
     <div class="row" id="firstRow">
-        <a href="{{ url_for('starter') }}" class="btn-large col s3" id="showStart">Starters</a>
-        <a href="{{ url_for('main') }}" class="btn-large col s3" id="showMains">Mains</a>
-        <a href="{{ url_for('dessert') }}" class="btn-large col s3" id="showDessert">Desserts</a>
-        <a href="{{ url_for('drink') }}" class="btn-large col s3" id="showDrink">Drinks</a> 
+        <a href="{{ url_for('starter') }}" class="btn-large col m3 s5" id="showStart">Starters</a>
+        <a href="{{ url_for('main') }}" class="btn-large col m3 s5 offset-s2" id="showMains">Mains</a>
+        <a href="{{ url_for('dessert') }}" class="btn-large m3 col s5" id="showDessert">Desserts</a>
+        <a href="{{ url_for('drink') }}" class="btn-large col m3 s5 offset-s2" id="showDrink">Drinks</a> 
     </div>
     
     <div class="row" id="secondRow">
@@ -73,12 +73,12 @@
                     <img src="{{ url_for ('static', filename='img/drink.jpg') }}" alt="Ripe Drink Recipes">
                 </div>
                 <div class="col s12 m6 center-align">
-                    <h3>Starters</h3>
+                    <h3>Drinks</h3>
                     <hr class="custom-short-div">
                     <p>
-                        In this section you can browse our drink recipes, <br>
+                        In this section you can browse the latest drink recipes, <br>
                         with cocktails and mocktails, there's drinks here <br>
-                        to satisfy everyone.
+                        to for everyone.
                     </p>
                     <a href="{{ url_for('drink') }}" class="btn-large col s8 offset-s2">Drinks</a>
                 </div>

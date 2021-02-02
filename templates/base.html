@@ -16,18 +16,6 @@
     <title>Ripe Recipes</title>
 </head>
 <body>
-    {% block login %}
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Test</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-    {% endblock %}
     {% if home %}
         {% block home_content %}
         {% endblock %}
@@ -188,21 +176,20 @@
     {% endif %}
 
 <!--Main Content Block-->
-
-    <main id="bodyBackground">
-        <div class="container overflowHidden">
-            {% block main_content %}
-            {% endblock %}
-        </div>
-    </main>
+    {% if not home %}
+        <main id="bodyBackground">
+            <div class="container overflowHidden">
+                {% block main_content %}
+                {% endblock %}
+            </div>
+        </main>
+    {% endif %}
 
 
 <!--Footer Block-->
 {% if not home %}
     <footer id="footer">
-        <!--Empty Row To Ensure No Interference With Footer Layout-->
-        <div class="row"></div>
-        
+        <!--Empty Row To Ensure No Interference With Footer Layout-->  
         <div class="row">
             <div class="col s10 offset-s1 m4 black-text center-align footer-content">
                 <h3>Ripe</h3>
@@ -216,7 +203,7 @@
                 </ul>
             </div>
             <div class="col s10 offset-s1 m4 black-text center-align footer-content">
-                <h3>Links</h3>
+                <h3>Manage</h3>
                 <hr class="custom-short-div">
                 <ul>
                     <li><a href="{{ url_for('login') }}">Login</a></li>

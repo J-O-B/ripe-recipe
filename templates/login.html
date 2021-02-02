@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% block main_content %}
     
+    <div class="row">
+        <div class="col s12 m6 offset-m3 center-align">
+            <h1 class="center-align black-text text-lighten-2 border soft-corners">Login</h1>
+        </div>
+        <div class="col s12 m6 offset-m3 center-align">
+            <p>Please login to access all of the features available on Ripe Recipes</p>
+        </div>
+    </div>
 <!--Card to hold the signup form-->
     <div class="row">
         <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('login') }}">
-            <div class="card-panel light-blue lighten-4 round-corners">
-                <div class="col s12 m6 offset-m3">
-                    <h1 class="center-align black-text text-lighten-2 border round-border">Login</h1>
-                </div>
+            <div class="card-panel haze border">
                 <div class="row">
                     <div class="input-field col s10 offset-s1">
                         <i class="fas fa-user-cog prefix black-text text-lighten-2"></i>
@@ -24,14 +29,14 @@
                         <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                     </div>
                 </div>
-                <div class="row">
-                    <button type="submit" class="col s3 offset-s2 btn-large red accent-3 black-text soft-corners">
-                        Cancel <i class="fas fa-times-circle"></i>
-                    </button>
-                    <button type="submit" class="col s3 offset-s2 btn-large green accent-3 black-text soft-corners">
-                        Login <i class="fas fa-sign-in-alt"></i>
-                    </button>
-                </div>
+            </div>
+            <div class="row">
+                <a href="{{ url_for('home') }}" class="col s6 offset-s3 btn-large red accent-3 black-text soft-corners">
+                    Cancel <i class="fas fa-times-circle"></i>
+                </a>
+                <button type="submit" class="col s6 offset-s3 btn-large green accent-3 black-text soft-corners">
+                    Login <i class="fas fa-sign-in-alt"></i>
+                </button>
             </div>
         </form>
     </div>

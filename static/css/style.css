@@ -24,37 +24,38 @@
 
 /*----------------------------------------------------------------- Global CSS */
 body{
-    background-color: #000;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    color: var(--black);
+    color: #000;
     min-height: 100vh;
     max-width: 100vw;
+    background: url("../img/flames.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 header,
 footer{
     margin:0;
     padding:0;
-    background-image: url("../img/wood.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 header{
-    padding-bottom:10px;
+    padding-bottom:0px;
+    margin:0;
+}
+footer{
+    background: rgba(248, 248, 248, 0.2);
 }
 .container{
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.5)20%, rgba(255,255,255,0.5)80%, rgba(255,255,255,0.0));
+    background-image: url("../img/wood.jpg"); /*linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.5)20%, rgba(255,255,255,0.5)80%, rgba(255,255,255,0.0));*/
     border-radius: 20px;
-    padding: 0 15px 30px 15px;
+    padding: 10px 15px 30px 15px;
 
 }
 #bodyBackground{
     margin:0;
     padding-bottom:20px;
     padding-top: 15px;
-    background: url("../img/flames.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgba(255,255,255,0.1);
 }
 .page-contain{
     overflow: hidden;
@@ -106,7 +107,7 @@ img{
 }
 
 .text-shadow{
-    text-shadow: 2px 2px var(--third);
+    text-shadow: 2px 2px 10px var(--second);
 }
 
 .spacer{
@@ -176,7 +177,7 @@ img{
     width: 75px;
     height: 5px;
     background-color: var(--first);
-    text-shadow: var(--third);
+    text-shadow: var(--second);
 }
 .comments-div{
     width:75%;
@@ -231,16 +232,21 @@ img{
     max-width: 50vw;
 }
 .logo-home{
-    position: fixed;
+    position: absolute;
     margin:0;
-    bottom:20px;
+    bottom:0;
     right:0;
     z-index: 1;
-    width:350px;
-    height:180px;
+    width:300px;
+    height:auto;
     background: radial-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0) 70%);
     border-radius: 30%;
     overflow: hidden;
+}
+@media screen and (max-width:705px){
+    .logo-home{
+        display: none;
+    }
 }
 .view-more-info{
     position: relative;
@@ -637,12 +643,17 @@ nav.nav-extended .nav-wrapper {
 }
 /*---------------------------------------------------------------------------------------- Footer */
 footer{
+    margin:0;
+    padding:0;
     position: relative;
     width:100%;
     list-style: none;
+    z-index: 9999;
+    min-height:180px;
 }
 .footer-content{
-    min-height: 180px;
+    margin:0;
+    padding:0;
 }
 footer a{
     color:#000;

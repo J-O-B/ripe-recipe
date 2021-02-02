@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block main_content %}
+    <div class="row">
+        <div class="col s12 m6 offset-m3 haze border center-align">
+            <h1>Search For A Recipe</h1>
+            <hr>
+        </div>
+    </div>
 <!--Card to hold the search form-->
     <div class="row center-align" id="searchBox">
-        <div class="col s12 m8 offset-m2 center">
-            <div class="col s12 card haze border center-align black-text">
+        <div class="col s12 m8 offset-m2 center-align haze border soft-corners">
                     <p>
                         <em>To search for a recipe, you can look for keywords, such as "Chicken"</em> 
                     </p>
@@ -16,7 +21,7 @@
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
                         <div class="row">
-                            <button type="submit" id="searchRecipe" value="0" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                            <button type="submit" id="searchRecipe" value="0" class="col s8 offset-s2 btn-large black-text text-shadow">
                                 <i class="fas fa-search prefix"></i> Search
                             </button>
                         </div>
@@ -25,7 +30,6 @@
                     <p>Don't want to search? You can also browse all recipes:</p>
                     <a href="{{ url_for('recipes') }}"><strong class="black-text text-shadow">Browse Recipes</strong></a>
                 </div>
-            </div>
         </div>
     </div>
     
@@ -44,7 +48,9 @@
                         <p>{{ results.description[:50]|capitalize }}...</p>
                     </div>
                     <div class="col s3">
-                        <p><a href="{{ url_for('selected', id=results._id) }}">View More</a></p>
+                        <p>
+                            <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
+                        </p>
                     </div>
                 </div>
             {% endfor %}
