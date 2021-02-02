@@ -4,36 +4,20 @@
 
             <div class="row">
                 <div class="col s12 m6 offset-m3">
-                    <h1 class="center-align pink-text text-lighten-2 border round-border">Store</h1>
+                    <h1 class="center-align border soft-corners">Store</h1>
                 </div>
             </div>
             <div class="row">
                 <h3 class="center-align">Featured Products:</h3>
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <h6 class="s12">Test</h6>
-                        <em class="s12">image</em>
-                        <p class="s12">Description</p>
-                        <em class="s12">€19.99</em>
+                <div class="carousel col s12" id="storeCarousel">
+                    {% for X in products %}
+                    <div class="carousel-item col s6 center-align">
+                        <h6 class="col s12">{{X.name}}</h6>
+                        <img src="{{X.photos[0]}}" class="col s12">
+                        <p class="col s12">{{ X.about[0][:75] }}...</p>
+                        <em class="col s12">${{ X.price}}</em>
                     </div>
-                    <div class="carousel-item">
-                        <h6 class="s12">Test</h6>
-                        <em class="s12">image</em>
-                        <p class="s12">Description</p>
-                        <em class="s12">€19.99</em>
-                    </div>
-                    <div class="carousel-item">
-                        <h6 class="s12">Test</h6>
-                        <em class="s12">image</em>
-                        <p class="s12">Description</p>
-                        <em class="s12">€19.99</em>
-                    </div>
-                    <div class="carousel-item">
-                        <h6 class="s12">Test</h6>
-                        <em class="s12">image</em>
-                        <p class="s12">Description</p>
-                        <em class="s12">€19.99</em>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             

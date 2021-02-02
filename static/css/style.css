@@ -624,7 +624,14 @@ nav.nav-extended .nav-wrapper {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-
+#storeCarousel{
+    height:500px;
+}
+#storeCarousel img{
+    height:150px;
+    width: auto;
+    margin-left: 25%;
+}
 
 /*---------------------------------------------------------------------------------------- About Page */
 

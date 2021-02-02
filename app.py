@@ -508,7 +508,9 @@ def my_profile():
 
 @app.route("/store", methods=["GET", "POST"])
 def store():
-    return render_template("store.html")
+    products = mongo.db.products.find()
+
+    return render_template("store.html", products=products)
 
 
 @app.route("/about", methods=["GET", "POST"])
