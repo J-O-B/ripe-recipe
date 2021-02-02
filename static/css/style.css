@@ -388,8 +388,7 @@ nav.nav-extended .nav-wrapper {
     height:300px;
 }
 #Recipes,
-#savedRecipes,
-#ticketWrap{
+#savedRecipes{
     max-width: 100%;
     max-height:225px;
     overflow-x: hidden;
@@ -414,7 +413,21 @@ nav.nav-extended .nav-wrapper {
     height:300px;
     overflow: hidden;
 }
-
+#thirdRowProfile{
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#myTickets,
+#myMessages{
+    height:600px;
+}
+#openTickets{
+    max-height: 400px;
+}
+#ticketWrap{
+    max-height: 400px;
+}
 /*---------------------------------------------------------------------------------------- Edit User */
 #previewProfPic img{
     height: 200px;

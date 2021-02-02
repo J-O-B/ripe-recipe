@@ -65,7 +65,7 @@
                         </div>
                         <div class="col s12" id="Recipes">
                             {% for recipe in myrecipes %}
-                                {% if (recipe.created_by == user["_id"]) %}
+                                {% if recipe.created_by|string == myId|string %}
                                 <div class="row">
                                     <div class="col s7 haze listRecipes">
                                         <p>{{ recipe.recipe_name|capitalize }}</p>
@@ -105,9 +105,9 @@
                 </div>
             </div>
             <!--Admin Contact / Ticketing System-->
-            <div class="row">
+            <div class="row" id="thirdRowProfile">
                 <!--Input Ticket-->
-                <div class="col s12 m5 offset-m1 haze border center-align">
+                <div class="col s12 m5 offset-m1 haze border center-align" id="myTickets">
                     <h3>Help Center</h3>
                     <h6>Open A Ticket And Let Us Know</h6>
                     <div class="row">
@@ -140,8 +140,48 @@
                             </div>
                         </form>
                     </div> 
-                
-                <!--Output Tickets-->
+                </div>
+<!--User Messages Section-->
+                <div class="col s12 m5 offset-m1 haze border" id="myMessages">
+                    <h3 class="center-align">
+                        Messages For You:
+                    </h3>
+                    <hr class="custom-short-div">
+                    {% if messages %}
+                    <!--Pagination Wrapper-->
+                    <div class="row" id="wrapper">
+                        <div class="contents col s12">
+                                {% for message in messages %}
+                                {% if message.message_for|string == myId|string %}
+                                    <div class="row">
+                                        <p class="col s10 offset-s1">
+                                            Message From {{ message.message_from }} on {{ message.date }}<br>
+                                            <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
+                                        </p>
+                                        <div id="{{ message.message_text[:30] }}" class="modal">
+                                            <div class="modal-content">
+                                                <p>{{ message.message_text }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close btn-flat">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% endfor %} 
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="row">
+                        <div class="col s12">
+                            <h3>There are no messages for you</h3>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        <div class="row" id="openTickets">
+            <!--Output Tickets-->
                     <div class="col s12 center-align">
                         <h3>Your Tickets</h3>
                         <p>
@@ -218,36 +258,6 @@
                                 </div>
                         </div>
                     </div>
-<!--User Messages Section-->
-                <div class="col s12 m5 offset-m1 haze border">
-                    <h3 class="center-align">
-                        Messages For You:
-                    </h3>
-                    <hr class="custom-short-div">
-
-                    <!--Pagination Wrapper-->
-                    <div class="row" id="wrapper">
-                        <div class="contents col s12">
-                            {% for message in messages %}
-                            <div class="row">
-                                <p class="col s10 offset-s1">
-                                    Message From {{ message.message_from }} on {{ message.date }}<br>
-                                    <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
-                                </p>
-                                <div id="{{ message.message_text[:30] }}" class="modal">
-                                    <div class="modal-content">
-                                        <p>{{ message.message_text }}</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 {% endblock %}
 

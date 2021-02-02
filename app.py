@@ -433,19 +433,18 @@ def my_profile():
     """
     user = mongo.db.users.find_one(
             {"username": session["user"]})
-    id = user["_id"]
+    myId = user["_id"]
 
-    messages = mongo.db.messages.find(
-            {"message_for": id})
+    messages = mongo.db.messages.find()
 
     myrecipes = mongo.db.recipes.find(
-            {"created_by": id})
+            {"created_by": myId})
 
     numOfRecipes = mongo.db.recipes.count_documents(
-            {"created_by": id})
+            {"created_by": myId})
 
     myTickets = mongo.db.tickets.find(
-            {"user_id": id})
+            {"user_id": str(myId)})
 
     if request.method == "POST":
         try:
@@ -504,7 +503,7 @@ def my_profile():
         "profile.html",
         messages=messages, user=user,
         myrecipes=myrecipes, numOfRecipes=numOfRecipes,
-        myTickets=myTickets, id=id)
+        myTickets=myTickets, myId=myId)
 
 
 @app.route("/store", methods=["GET", "POST"])
