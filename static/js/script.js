@@ -240,3 +240,8 @@ $('#showDrink').mouseover(function(){
     $('#dessert').hide(500);
     $('#drink').show(500);
 });
+
+// Store
+$('.smallProdPhotos').click(function(){
+    $(this).removeClass("s3").addClass("s10").addClass("fullSizePhoto");
+})

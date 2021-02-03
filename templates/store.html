@@ -8,105 +8,54 @@
                 </div>
             </div>
             <div class="row">
-                <h3 class="center-align">Featured Products:</h3>
-                <div class="carousel col s12" id="storeCarousel">
-                    {% for X in products %}
-                    <div class="carousel-item col s6 center-align">
-                        <h6 class="col s12">{{X.name}}</h6>
-                        <img src="{{X.photos[0]}}" class="col s12">
-                        <p class="col s12">{{ X.about[0][:75] }}...</p>
-                        <em class="col s12">${{ X.price}}</em>
+                <h3 class="center-align">Latest Products:</h3>
+                {% for product in products %}
+                <div class="col s6 m4 center-align">
+                    <div class="col s10 offset-s1 center-align">
+                        <div class="row" id="productImgPreview">
+                            <img src="{{product.photos[0]}}" class="soft-corners" alt="Product Photo">
+                        </div>
+                        <div class="row">
+                            <p>{{ product.name[:40] }}...</p>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <p>${{product.price}}</p>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <!-- Modal Trigger -->
+                            <a class="btn modal-trigger" href="#{{product._id}}">Modal</a>
+                        </div>
+                        <!-- Modal Structure -->
+                        <div id="{{product._id}}" class="modal">
+                            <div class="modal-content black">
+                                <h4 class="haze">{{product.name}}</h4>
+                                <p class="haze">${{product.price}}</p>
+                                <div class="row">
+                                    {% for images in product.photos %}
+                                    <div class="col s3 smallProdPhotos center-align">
+                                        <img src="{{images}}" alt="Product Photos">
+                                    </div>
+                                    {% endfor %}
+                                    <div class="row">
+                                        <div class="enlarged-photo">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
+                        </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
-            
-            <div class="row">
-                <h3 class="center-align">Browse All Products:</h3>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l3 m4 s10 offset-s1 spacer">
-                    <div class="s10 product-card center-align round-border">
-                        <div class="product-card-info">
-                            <h6 class="s12">Test</h6>
-                            <em class="s12">image</em>
-                            <p class="s12">Description</p>
-                            <em class="s12">€19.99</em>
-                        </div>
-                    </div>
-                </div>
-            </div> 
 
         <!--Basket-->
-        <div class="col s12 m6 offset-3 blue soft-corners center-align">
+        <div class="col s12 m6 offset-3 haze soft-corners center-align">
             <h5>Finished Shopping?</h5>
             <p>View Your Cart -placeholder for cart link-</p>
         </div>
