@@ -250,17 +250,9 @@ $('.smallProdPhotos').click(function(){
 // Product Page
 
 $('.smallProdImg').click(function(){
-    let image = $(this).html();
-    function hide(){
-        $('#largerImgDisplay').children('img').hide(4000);
-    }
-    function change(){
-        $('#largerImgDisplay').html(image);
-    }
-    function show(){
-    $('#largerImgDisplay').children('img').show(4000);
-    }
-    hide();
-    change();
-    show();
+    let image = $(this).children('img').attr("src");
+    $('#largerImgDisplay').children('img').hide(1000, function() {
+        $('#largerImgDisplay').children('img').attr("src", image);
+        $('#largerImgDisplay').children('img').show(1000);
+    });
 })

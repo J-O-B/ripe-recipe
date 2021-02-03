@@ -7,7 +7,7 @@
                 <!--images-->
                 <div class="col s12">
                     <!--Larger Image-->
-                    <div class="row border" id="largerImgDisplay">
+                    <div class="row border soft-corners" id="largerImgDisplay">
                         <img src="{{X.photos[0]}}" alt="product image">
                     </div>
                     <!--Smaller Images-->
@@ -22,26 +22,38 @@
                     </div>
                 </div>
                 <!--Price-->
-                <div class="col s12 border">
+                <div class="col s12 border soft-corners">
                     <h3>Price:</h3>
-                    <p>${{X.price}}</p>
+                    <p>$<em>{{X.price}}</em></p>
                     {% if session["user"] %}
-                        <p><i class="far fa-check-circle"></i> Members Discount 10%</p>
+                        <p><i class="far fa-check-circle"></i> <strong>Members Discount 10%</strong></p>
                         {% set newPrice = (X.price|float * 0.9)|string %}
-                        <p><strike class="red-text">${{X.price}}</strike> - <span>${{newPrice[:5]}}</span></p>
+                        <h5><strike class="red-text">${{X.price}}</strike> - <span>${{newPrice[:5]}}</span></h5>
                     {% endif %}
-                    <form>
-                        <input type="text" name="id" id="id" value="{{X._id}}" class="hidden">
-                        <a href="" class="btn">Add To Cart <i class="fas fa-cart-plus"></i></a>
-                    </form>
+                        <!--Modal Trigger-->
+                        <h4><a href="#{{X._id}}" class="btn modal-trigger">Add To Cart <i class="fas fa-cart-plus"></i></a></h4>
+                        <!--Modal-->
+                        <div id="{{X._id}}" class="modal">
+                            <div class="modal-content light-blue lighten-4">
+                                <h2>Confirmation:</h2>
+                                <hr>
+                                <h3>Add <span>{{X.name}}</span> To Cart?</h3>
+                            </div>
+                            <div class="modal-footer col s12 light-blue lighten-4">
+                                <form>
+                                    <a href="#!" class="col s6 modal-close green btn-flat center-align">Yes</a>
+                                </form>
+                                <a href="#!" class="col s6 modal-close red btn-flat center-align">No</a>
+                            </div>
+                        </div>
                 </div>
             </div>
                 
             <div class="col s12 m7 offset-m1 border">
-                <div class="col s12 border">
+                <div class="col s12 border soft-corners">
                     <h1>{{X.name}}</h1>
                 </div>
-                <div class="col s12 border">
+                <div class="col s12 soft-corners">
                         {%for item in X.about%}
                         <div class="col s10 offset-s1 center-align">
                             <p>{{item}}</p>
