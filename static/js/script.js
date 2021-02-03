@@ -243,5 +243,6 @@ $('#showDrink').mouseover(function(){
 
 // Store
 $('.smallProdPhotos').click(function(){
-    $(this).removeClass("s3").addClass("s10").addClass("fullSizePhoto");
+    var image = $(this).html();
+    $('.largeProdPhotos').html(image).addClass("overflowHidden").removeClass("hidden");
 })

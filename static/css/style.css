@@ -57,6 +57,7 @@ footer{
 }
 .modal{
     width:75vw;
+    z-index: 9999999;
 }
 #bodyBackground{
     margin:0;
@@ -629,10 +630,13 @@ nav.nav-extended .nav-wrapper {
     overflow: hidden;
 }
 .smallProdPhotos img{
-    height:75px;
+    max-height:75px;
 }
 .smallProdPhotos:hover{
     cursor: zoom-in;
+}
+.largeProdPhotos img{
+    max-height: 450px;
 }
 
 /*---------------------------------------------------------------------------------------- About Page */
