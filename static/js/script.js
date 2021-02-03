@@ -243,6 +243,24 @@ $('#showDrink').mouseover(function(){
 
 // Store
 $('.smallProdPhotos').click(function(){
-    var image = $(this).html();
+    let image = $(this).html();
     $('.largeProdPhotos').html(image).addClass("overflowHidden").removeClass("hidden");
+})
+
+// Product Page
+
+$('.smallProdImg').click(function(){
+    let image = $(this).html();
+    function hide(){
+        $('#largerImgDisplay').children('img').hide(4000);
+    }
+    function change(){
+        $('#largerImgDisplay').html(image);
+    }
+    function show(){
+    $('#largerImgDisplay').children('img').show(4000);
+    }
+    hide();
+    change();
+    show();
 })

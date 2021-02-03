@@ -523,9 +523,19 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/product/<id>", methods=["GET", "POST"])
+def product(id):
+    id = id
+    product = mongo.db.products.find(
+        {"_id": ObjectId(id)})
+    return render_template("product.html", id=id, product=product)
+
+
 @app.route("/cart", methods=["GET", "POST"])
 def cart():
-    return render_template("cart.html")
+    user = mongo.db.users.find(
+        {"username": session["user"]})
+    return render_template("cart.html", user=user)
 
 
 if __name__ == "__main__":

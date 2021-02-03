@@ -638,6 +638,20 @@ nav.nav-extended .nav-wrapper {
 .largeProdPhotos img{
     max-height: 450px;
 }
+/*---------------------------------------------------------------------------------------- Product Page */
+.smallProdImg img{
+    max-height: 35px;
+}
+.smallProdImg img:hover{
+    cursor: zoom-in;
+}
+#largerImgDisplay img{
+    height:320px;
+}
+#largerImgDisplay{
+    height:350px;
+    overflow: hidden;
+}
 
 /*---------------------------------------------------------------------------------------- About Page */
 

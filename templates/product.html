@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+        {% for X in product %}
+        <div class="row center-align">
+            <div class="col s12 m4 border">
+                <!--images-->
+                <div class="col s12">
+                    <!--Larger Image-->
+                    <div class="row border" id="largerImgDisplay">
+                        <img src="{{X.photos[0]}}" alt="product image">
+                    </div>
+                    <!--Smaller Images-->
+                    <div class="row">
+                        <!--spacer col-->
+                        <div class="col s1"></div>
+                        {% for image in X.photos %}
+                        <div class="col s2 smallProdImg">
+                            <img src="{{image}}" alt="product image">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--Price-->
+                <div class="col s12 border">
+                    <h3>Price:</h3>
+                    <p>${{X.price}}</p>
+                    {% if session["user"] %}
+                        <p><i class="far fa-check-circle"></i> Members Discount 10%</p>
+                        {% set newPrice = (X.price|float * 0.9)|string %}
+                        <p><strike class="red-text">${{X.price}}</strike> - <span>${{newPrice[:5]}}</span></p>
+                    {% endif %}
+                    <form>
+                        <input type="text" name="id" id="id" value="{{X._id}}" class="hidden">
+                        <a href="" class="btn">Add To Cart <i class="fas fa-cart-plus"></i></a>
+                    </form>
+                </div>
+            </div>
+                
+            <div class="col s12 m7 offset-m1 border">
+                <div class="col s12 border">
+                    <h1>{{X.name}}</h1>
+                </div>
+                <div class="col s12 border">
+                        {%for item in X.about%}
+                        <div class="col s10 offset-s1 center-align">
+                            <p>{{item}}</p>
+                        </div>
+                        {%endfor%}
+                </div>
+            </div>
+            
+            
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}
