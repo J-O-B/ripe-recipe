@@ -11,25 +11,110 @@
         
         <div class="col s10 offset-s1 m4 center-align haze border">
             <h3>My Cart Items:</h3>
-            <ul>
+            <div class="row" id="cart-items">
                 {% for items in user %}
                     {% for products in items.cart_items %}
-                        {% set abc = append products[2]|float %}
-                        <li>{{products[1]}}</li>
-                        <li>{{products[2]}}</li>
+                    <div class="row">
+                        <div class="col s6">
+                            <p>{{products[1]}}</p> 
+                        </div>
+                        <div class="col s6 priceHolder">
+                            <ul>
+                                <li class="prices">{{products[2]}}</li>
+                            </ul>
+                        </div>
+                    </div>
                     {% endfor %}
-                    <h2>Price = {{abc}}</h2>
                 {% endfor %}
-           </ul>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col s6">
+                    <p>Total Price: </p>
+                    <p>Members Discount: (10%)</p> 
+                    <p>New Total: </p>
+                </div>
+                <div class="col s6">
+                    <p id="totalPrice"></p>
+                    {% if session["user"] %}
+                    <p class="red-text" id="tenPercent"></p>
+                    <p id="newTotal"></p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <div class="col s10 offset-s1 m8 center-align haze border">
-            <h3>Payment Information:</h3>
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
-        </div>
+        <div class="col s12 m7 offset-m1 center-align haze border">
+            <h2>Payment Information:</h2>
+            <div class="col s6 offset-s3">
+                <h5>Accepted Payments:</h5>
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-stripe"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+            </div>
+            <div class="row haze" id="payForm">
+                    <form>
+                        <div class="row">
+                        <div class="col m6 s12">
+                            <h4>Billing Address</h4>
+                            <!--First & Last-->
+                            <div class="input-field col s7">
+                                <i class="fa fa-user prefix"></i>
+                                <input id="first_name" type="text" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input id="last_name" type="text" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                            <!--Email-->
+                            <div class="input-field col s12">
+                                <i class="fas fa-at prefix"></i>
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <!--Address-->
+                            <div class="input-field col s12">
+                                <i class="fas fa-map-marker-alt prefix"></i>
+                                <input id="address" type="text" class="validate">
+                                <label for="address">Address</label>
+                            </div>
+                            <!--City-->
+                            <div class="input-field col s12">
+                                <i class="fas fa-city prefix"></i>
+                                <input id="city" type="text" class="validate">
+                                <label for="city">City</label>
+                            </div>
+                        </div>
+                        <!--Payment Side-->
+                        <div class="col m6 s12">
+                            <h4>Payment</h4>
+                                <label class="black-text" for="cname">Name on Card</label>
+                                <input class="input-field" type="text" id="cname" name="cardname" placeholder="John More Doe">
+                                <label class="black-text" for="ccnum">Credit card number</label>
+                                <input class="input-field" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                <label class="black-text" for="expmonth">Exp Month</label>
+                                <input class="input-field" type="text" id="expmonth" name="expmonth" placeholder="September">
 
-    </div>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <label class="black-text" for="expyear">Exp Year</label>
+                                        <input class="input-field" type="text" id="expyear" name="expyear" placeholder="2018">
+                                    </div>
+                                <div class="col s6">
+                                    <label class="black-text" for="cvv">CVV</label>
+                                    <input class="input-field" type="text" id="cvv" name="cvv" placeholder="352">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <label class="black-text">
+                        <input class="input-field" type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                        </label>
+                        <input type="submit" value="Continue to checkout" class="btn">
+                    </form>
+                    </div>
+                </div>
+            </div>
 
 {% endblock %}

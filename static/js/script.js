@@ -263,3 +263,17 @@ $('.smallProdImg').click(function(){
         $('#largerImgDisplay').children('img').show(1000);
     });
 })
+
+function prices(){
+    let total = 0;
+    $('.prices').each(function(){
+        total += parseFloat($(this).text());
+        return total
+    });
+    $('#totalPrice').text("$" + total);
+    let discount = (total * 0.1).toFixed(2);
+    $('#tenPercent').text("- $" + discount);
+    let newTotal = (total * 0.9).toFixed(2);
+    $('#newTotal').text("$" + newTotal);
+}
+prices();
