@@ -96,6 +96,10 @@ $('#newMessage').click(function(){
     $(this).val(1);
     backToZero();
 })
+$('#addToCart').click(function(){
+    $(this).val(1);
+    backToZero();
+})
 
 // Open A Ticket From Profile:
 $('#openTicket').click(function(){
@@ -197,6 +201,9 @@ function toggleArrow(){
 }
 
 //Profile:
+$('#go').click(function(){
+    $(this).val(1);
+})
 
 $('#goToEdit').click(function(){
     if ($('#goToEdit').val() == 1){

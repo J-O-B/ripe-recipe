@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% block main_content %}
 
+    
     {% for recipes in recipe %}
     {% set name = recipes.created_by %}
-
+    {% set check = recipes._id|string %}
+    {% if check|length >= 1 %}
+    <h1>Long</h1>
+    {% else %}  
+    <h2>This recipe no longer exists</h2>
+    {% endif %}
         <!--Wrapper-->
         <div class="wrap top-recipe-card">
             <!--Top Section-->

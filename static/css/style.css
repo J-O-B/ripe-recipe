@@ -364,7 +364,7 @@ nav.nav-extended .nav-wrapper {
 }
 .custom-nav h3{
     color: #000;
-    text-shadow: 2px 2px 30px var(--third);
+    text-shadow: 2px 2px 30px var(--first);
     font-weight: 500;
     transition: all 1s ease-in-out;
 }
@@ -376,7 +376,7 @@ nav.nav-extended .nav-wrapper {
 
 .secondary-nav{
     color: #000;
-    text-shadow: 2px 2px var(--third);
+    text-shadow: 2px 2px 30px var(--first);
     font-weight: 500;
     font-size:110%;
 }

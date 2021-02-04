@@ -4,24 +4,32 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align pink-text text-lighten-2 border round-border">Cart</h1>
+            <h1 class="center-align border haze soft-corners">Cart</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col s10 offset-s1 m4 center-align blue border">
+        
+        <div class="col s10 offset-s1 m4 center-align haze border">
             <h3>My Cart Items:</h3>
-         
-            <li>
-
-            </li>
+            <ul>
+                {% for items in user %}
+                    {% for products in items.cart_items %}
+                        {% set abc = append products[2]|float %}
+                        <li>{{products[1]}}</li>
+                        <li>{{products[2]}}</li>
+                    {% endfor %}
+                    <h2>Price = {{abc}}</h2>
+                {% endfor %}
+           </ul>
         </div>
-        <div class="col s10 offset-s1 m8 center-align blue border">
+        <div class="col s10 offset-s1 m8 center-align haze border">
             <h3>Payment Information:</h3>
             <p>a</p>
             <p>a</p>
             <p>a</p>
             <p>a</p>
         </div>
+
     </div>
 
 {% endblock %}

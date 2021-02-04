@@ -40,8 +40,11 @@
                                 <h3>Add <span>{{X.name}}</span> To Cart?</h3>
                             </div>
                             <div class="modal-footer col s12 light-blue lighten-4">
-                                <form>
-                                    <a href="#!" class="col s6 modal-close green btn-flat center-align">Yes</a>
+                                <form method="POST" action="{{url_for('product', id=X._id)}}">
+                                    <input type="text" name="id" id="id" class="hidden" value="{{X._id}}">
+                                    <input type="text" name="name" id="name" class="hidden" value="{{X.name}}">
+                                    <input type="text" name="price" id="price" class="hidden" value="{{X.price}}">
+                                    <button type="submit" id="addToCart" name="addToCart" class="col s6 modal-close green btn-flat center-align">Yes</button>
                                 </form>
                                 <a href="#!" class="col s6 modal-close red btn-flat center-align">No</a>
                             </div>

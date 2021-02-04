@@ -447,16 +447,17 @@ def my_profile():
             {"user_id": str(myId)})
 
     if request.method == "POST":
-        try:
-            # Check for valid password for that user
-            if check_password_hash(
-              user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for('editUser'))
-        except:
-            flash("Username and/or Password Incorrect")
-            return redirect(url_for('my_profile'))
+        if request.form.get("go") == "1":
+            try:
+                # Check for valid password for that user
+                if check_password_hash(
+                  user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
+                    return redirect(url_for('editUser'))
+            except:
+                flash("Username and/or Password Incorrect")
+                return redirect(url_for('my_profile'))
 
         # If the user is editing a ticket
 
@@ -528,6 +529,21 @@ def product(id):
     id = id
     product = mongo.db.products.find(
         {"_id": ObjectId(id)})
+
+    if request.method == "POST":
+        if request.form.get("addToCart") == "1":
+            user = session["user"]
+            update = [
+                request.form.get("id"),
+                request.form.get("name"),
+                request.form.get("price")
+            ]
+            mongo.db.users.find_one_and_update(
+                {'username': user},
+                {"$push":
+                    {'cart_items': update}})
+            flash("You have saved this item to your cart")
+
     return render_template("product.html", id=id, product=product)
 
 
@@ -535,6 +551,7 @@ def product(id):
 def cart():
     user = mongo.db.users.find(
         {"username": session["user"]})
+
     return render_template("cart.html", user=user)
 
 
