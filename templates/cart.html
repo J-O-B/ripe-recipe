@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         
-        <div class="col s10 offset-s1 m4 center-align haze border">
+        <div class="col s12 m4 center-align haze border">
             <h3>My Cart Items:</h3>
             <div class="row" id="cart-items">
                 {% for items in user %}
@@ -61,56 +61,65 @@
                             <div class="input-field col s7">
                                 <i class="fa fa-user prefix"></i>
                                 <input id="first_name" type="text" class="validate">
-                                <label for="first_name">First Name</label>
+                                <label class="black-text" for="first_name">First Name</label>
                             </div>
                             <div class="input-field col s5">
                                 <input id="last_name" type="text" class="validate">
-                                <label for="last_name">Last Name</label>
+                                <label class="black-text" for="last_name">Last Name</label>
                             </div>
                             <!--Email-->
                             <div class="input-field col s12">
                                 <i class="fas fa-at prefix"></i>
                                 <input id="email" type="email" class="validate">
-                                <label for="email">Email</label>
+                                <label class="black-text" for="email">Email</label>
                             </div>
                             <!--Address-->
                             <div class="input-field col s12">
                                 <i class="fas fa-map-marker-alt prefix"></i>
                                 <input id="address" type="text" class="validate">
-                                <label for="address">Address</label>
+                                <label class="black-text" for="address">Address</label>
                             </div>
                             <!--City-->
                             <div class="input-field col s12">
                                 <i class="fas fa-city prefix"></i>
                                 <input id="city" type="text" class="validate">
-                                <label for="city">City</label>
+                                <label class="black-text" for="city">City</label>
                             </div>
                         </div>
                         <!--Payment Side-->
                         <div class="col m6 s12">
                             <h4>Payment</h4>
+                                <!--Name-->
                                 <label class="black-text" for="cname">Name on Card</label>
-                                <input class="input-field" type="text" id="cname" name="cardname" placeholder="John More Doe">
+                                <input class="input-field validate" type="text" id="cname" name="cardname" placeholder="John More Doe">
+                                <!--Card Number-->
                                 <label class="black-text" for="ccnum">Credit card number</label>
-                                <input class="input-field" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                <input class="input-field validate" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                <!--Expiry Month-->
                                 <label class="black-text" for="expmonth">Exp Month</label>
-                                <input class="input-field" type="text" id="expmonth" name="expmonth" placeholder="September">
+                                <input class="input-field validate" type="text" id="expmonth" name="expmonth" placeholder="September">
 
                                 <div class="row">
+                                    <!--Expiry-->
                                     <div class="col s6">
                                         <label class="black-text" for="expyear">Exp Year</label>
-                                        <input class="input-field" type="text" id="expyear" name="expyear" placeholder="2018">
+                                        <input class="input-field validate" type="text" id="expyear" name="expyear" placeholder="2018">
                                     </div>
-                                <div class="col s6">
-                                    <label class="black-text" for="cvv">CVV</label>
-                                    <input class="input-field" type="text" id="cvv" name="cvv" placeholder="352">
+                                    <!--CVV-->
+                                    <div class="col s6">
+                                        <label class="black-text" for="cvv">CVV</label>
+                                        <input class="input-field validate" type="text" id="cvv" name="cvv" placeholder="352">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <label class="black-text">
-                        <input class="input-field" type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                        </label>
+                        <!--Same As Shipping-->
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" checked="checked" />
+                                <span class="black-text">Payment same as shipping address</span>
+                            </label>
+                        </p>
                         <input type="submit" value="Continue to checkout" class="btn">
                     </form>
                     </div>
