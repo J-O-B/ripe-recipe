@@ -3,8 +3,10 @@
 
 
     <div class="row">
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m6 offset-m3 center-align">
             <h1 class="center-align black-text text-lighten-2 border haze">Dessert Recipes:</h1>
+            <p>Click any row to see a photo of the recipe. <br>Or click view more to view the full recipe.</p>
+            <hr class="custom-short-div">
         </div>
     </div>
     <div class="row" id="wrapper">
@@ -12,71 +14,81 @@
             <!--Populate the contents-->
             {% for desserts in dessert %}
             <div class="row">
-                <div class="col s12 haze border center-align">
-                    <div class="col s6 m2">
-                        <p>{{ desserts.recipe_name|capitalize }}</p>
-                    </div>
-                    <div class="col s6 m3">
-                        <p>{{ desserts.description[:20]|capitalize }}...</p>
-                    </div>
-                    <div class="col s6 m2">
-                        <p>{{ desserts.difficulty|capitalize }}</p>
-                    </div>
-                    <div class="col s6 m2">
-                        <p>{{ desserts.tags[:30]|capitalize }}...</p>
-                    </div>
-                    <div class="col s12 m3 center-align">
-                        <!-- Modal Trigger -->
-                        <a class="btn modal-trigger" href="#{{ desserts._id }}">View More</a>
+                 <!--Materialize-->
+                <ul class="collapsible see-through">
+                    <li>
+                        <div class="collapsible-header see-through">
+                            <div class="col s12 haze border center-align">
+                                <div class="col s6 m2">
+                                    <p>{{ desserts.recipe_name|capitalize }}</p>
+                                </div>
+                                <div class="col s6 m3">
+                                    <p>{{ desserts.description[:20]|capitalize }}...</p>
+                                </div>
+                                <div class="col s6 m2">
+                                    <p>{{ desserts.difficulty|capitalize }}</p>
+                                </div>
+                                <div class="col s6 m2">
+                                    <p>{{ desserts.tags[:30]|capitalize }}...</p>
+                                </div>
+                                <div class="col s12 m3 center-align">
+                                    <!-- Modal Trigger -->
+                                    <a class="btn modal-trigger" href="#{{ desserts._id }}">View More</a>
 
-                        <!-- Modal Structure -->
-                        <div id="{{ desserts._id }}" class="modal">
-                            <div class="modal-content">
-                                <h4>{{ desserts.recipe_name|capitalize }}</h4>
-                                <hr class="custom-short-div">
-                                <p>{{ desserts.description|capitalize }}</p>
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>KCAL</th>
-                                        <th>Fat</th>
-                                        <th>Saturates</th>
-                                        <th>Carbs</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>{{ desserts.kcal }}</td>
-                                        <td>{{ desserts.fat }}</td>
-                                        <td>{{ desserts.saturates }}</td>
-                                        <td>{{ desserts.carbs }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sugars</th>
-                                        <th>Fibre</th>
-                                        <th>Protein</th>
-                                        <th>Salt</th>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ desserts.sugars }}</td>
-                                        <td>{{ desserts.fibre }}</td>
-                                        <td>{{ desserts.protein }}</td>
-                                        <td>{{ desserts.salt }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="overflowHidden">
-                                    <img src="{{desserts.pic_url}}" alt="Recipe Picture">
+                                    <!-- Modal Structure -->
+                                    <div id="{{ desserts._id }}" class="modal">
+                                        <div class="modal-content">
+                                            <h4>{{ desserts.recipe_name|capitalize }}</h4>
+                                            <hr class="custom-short-div">
+                                            <p>{{ desserts.description|capitalize }}</p>
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>KCAL</th>
+                                                    <th>Fat</th>
+                                                    <th>Saturates</th>
+                                                    <th>Carbs</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>{{ desserts.kcal }}</td>
+                                                    <td>{{ desserts.fat }}</td>
+                                                    <td>{{ desserts.saturates }}</td>
+                                                    <td>{{ desserts.carbs }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Sugars</th>
+                                                    <th>Fibre</th>
+                                                    <th>Protein</th>
+                                                    <th>Salt</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ desserts.sugars }}</td>
+                                                    <td>{{ desserts.fibre }}</td>
+                                                    <td>{{ desserts.protein }}</td>
+                                                    <td>{{ desserts.salt }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="overflowHidden">
+                                                <img src="{{desserts.pic_url}}" alt="Recipe Picture">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            {% set id = desserts.id %}
+                                            <a href="{{ url_for('selected', name=desserts.recipe_name, id=desserts._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
+                                            <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                {% set id = desserts.id %}
-                                <a href="{{ url_for('selected', name=desserts.recipe_name, id=desserts._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
-                                <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
-                            </div>
                         </div>
-                    </div>
-                </div>
+                        <div class="collapsible-body center-align">
+                            <img src="{{desserts.pic_url}}" alt="Recipe Photo">
+                        </div>
+                    </li>
+                </ul>
             </div>
             {% endfor %}
         </div>

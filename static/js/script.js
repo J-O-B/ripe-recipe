@@ -29,6 +29,8 @@ $(document).ready(function(){
     $('#dessert').hide();
     $('#drink').hide();
 
+    // Collapsible
+    $('.collapsible').collapsible();
 
     // Time Picker In Forms
     $('.timepicker').timepicker();
@@ -218,7 +220,8 @@ $('#genPreview').click(function(){
 });
 
 
-//Recipes
+// View Recipe Page
+// Starters
 $('#showStart').mouseover(function(){
     $("#placeholder").hide(500);
     $('#starters').show(500);
