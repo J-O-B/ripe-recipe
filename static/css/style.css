@@ -58,7 +58,7 @@ footer{
 .modal{
     position: absolute;
     width:75vw;
-    z-index: 9999999;
+    z-index: 9999;
 }
 .collapsible-header{
     height:400px;
@@ -458,7 +458,18 @@ nav.nav-extended .nav-wrapper {
 #secondRow p{
     font-size: 150%;;
 }
-
+#previewRecipePic{
+    margin:0;
+    padding:0;
+    max-width:100%;
+}
+.seeMore{
+    margin-top:25px;
+}
+.front-card,
+.back-card{
+    height:450px;
+}
 /*---------------------------------------------------------------------------------------- Starter / Main / Dessert / Drink Recipes */
 .outerBox{
     margin:0;

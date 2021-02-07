@@ -288,3 +288,12 @@ function prices(){
     $('#newTotal').text("$" + newTotal);
 }
 prices();
+
+$('.front-card').mouseover(function(){
+    $(this).hide();
+    $('.back-card').show();
+})
+$('.back-card').mouseout(function(){
+    $(this).hide();
+    $('.front-card').show();
+})
