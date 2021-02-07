@@ -639,6 +639,10 @@ nav.nav-extended .nav-wrapper {
 .largeProdPhotos img{
     max-height: 450px;
 }
+#cart-items{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 /*---------------------------------------------------------------------------------------- Product Page */
 .smallProdImg img{
     max-height: 35px;
@@ -832,16 +836,14 @@ footer a{
         border-radius: 0px 0px 0px 20px;
     }
 }
-/*----------------------------------------------------------------------Store----*/
-
-#cart-items{
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
 
 /*------------------------------------------------------------------------Checkout----*/
 
 #payForm{
     padding-left:20px;
     padding-right: 20px;
+}
+/*------------------------------------------------------------------------SignUp----*/
+#previewProfPhoto{
+    max-width:100%;
 }

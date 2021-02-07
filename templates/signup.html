@@ -74,7 +74,7 @@
                         <p>This Will Be Used To Suggest Recipes & Products For You <br>And Provide More Relivant Adverts</p>
                         <div class="input-field col s10 offset-s1">
                             <i class="fas fa-utensils prefix pink-text text-lighten-2"></i>
-                            <input id="fav_food" name="fav_food" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                            <input id="fav_food" name="fav_food" type="text" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9]{5,25}$" class="validate" required>
                             <label class="black-text" for="fav_food">Favorite Food</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
@@ -89,42 +89,74 @@
                 
                 <!--Profile Pic-->
                 <div id="profPic">
-                    <div class="row">
+                    <div class="row center-align">
+                        <h3>Please Add A Photo For Your Profile</h3>
+                        <p>This Photo Will Be Used For Your Profile And Will Be Visable To Other Users.</p>
                         <div class="input-field col s10 offset-s1">
-                            <i class="fas fa-users prefix pink-text text-lighten-2"></i>
-                            <input id="prof_pic" name="prof_pic" minlength="5" type="text" class="validate">
-                            <label class="black-text" for="prof_pic">Profile Picture URL (optional)</label>
-                            <span class="helper-text" data-error="Input incorrect, Please Supply A URL Of A Profile Picture." data-success="Input Correct">Images Should Be No More Than 400px Wide.</span>
+                            <i class="fas fa-user-circle prefix pink-text text-lighten-2"></i>
+                            <input id="prof_pic" name="prof_pic" type="text" minlength="1" class="validate" required>
+                            <label class="black-text" for="prof_pic">Profile Picture URL</label>
+                            <span class="helper-text" data-error="Input incorrect, Please Supply A URL Of A Profile Picture." data-success="Input Correct"></span>
+                        </div>
+                        <div class="row center-align">
+                            <div class="col s12 center-align">
+                                <button id="prevPic" class="btn-large border green">Preview Pic</button>
+                            </div>
+                            <div class="col s12" id="previewWindow"></div>
+                        </div>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" id="prevFoodCard">Previous</button>
+                        </div>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" id="showProfBio">Next</button>
                         </div>
                     </div>
                 </div>
                 
                 <!--Biography-->
                 <div id="profBio">
-                    <div class="row">
+                    <div class="row center-align">
+                        <h3>Please Add A Short Bio For Your Profile</h3>
+                        <p>This Will Appear On Your Profile, And Will Be Visable To Other Users.</p>
                         <div class="input-field col s10 offset-s1">
                             <i class="fas fa-address-book prefix pink-text text-lighten-2"></i>
                             <textarea id="bio" name="bio" minlength="5" class="materialize-textarea" required></textarea>
                             <label class="black-text" for="bio">Profile Biography:</label>
                             <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                         </div>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" id="prevProfPic">Previous</button>
+                        </div>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" id="showPass">Next</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!--Password-->
                 <div id="profPass">
-                    <div class="row">
+                    <div class="row center-align">
+                        <h3>Please Enter Your Requested Password</h3>
+                        <p>Please Please Use A Combination Of Letters (A-Z) and Numbers (0-9)</p>
                         <div class="input-field col s10 offset-s1">
                             <i class="fas fa-user-lock prefix pink-text text-lighten-2"></i>
                             <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
                             <label class="black-text" for="password">Password (min 5 characters) </label>
                             <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                         </div>
+                        <div class="col s12">
+                            <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                                Register <i class="fas fa-sign-in-alt"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="row">
-                        <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
-                            Register <i class="fas fa-sign-in-alt"></i>
-                        </button>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" id="prevProfBio">Previous</button>
+                        </div>
+                        <div class="col s12 m6 center-align">
+                            <button class="btn" disabled>Next</button>
+                        </div>
                     </div>
                 </div>
                 <!--End Cards-->
