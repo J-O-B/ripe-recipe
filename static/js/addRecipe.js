@@ -17,26 +17,26 @@ $(document).ready(function(){
 });
 
 // Record As We Go Along
-var type = "";
-var name = "";
-var desc = "";
-var serve = "";
-var prep = "";
-var cook = "";
-var diff = "";
-var pic = "";
-var ing = "";
-var ins = "";
-var tag = "";
+let type = "";
+let name = "";
+let desc = "";
+let serve = "";
+let prep = "";
+let cook = "";
+let diff = "";
+let pic = "";
+let ing = "";
+let ins = "";
+let tag = "";
 
-var kcal = "";
-var fat = "";
-var sat = "";
-var carb = "";
-var sug = "";
-var fib = "";
-var pro = "";
-var sal = "";
+let kcal = "";
+let fat = "";
+let sat = "";
+let carb = "";
+let sug = "";
+let fib = "";
+let pro = "";
+let sal = "";
 
 // Movement Between Sections:
 //show first
@@ -150,9 +150,9 @@ $('#showTenthCard').click(function(){
     $('#ninthAddCard').hide(1000);
     $('#previewCard').show(1000);
     // Update The Preview Screen
-    var updDesc = desc.replaceAll(".", ".<br>");
-    var updIng = ing.replaceAll(".", ".<br>");
-    var updIns = ins.replaceAll(".", ".<br>");
+    let updDesc = desc.replaceAll(".", ".<br>");
+    let updIng = ing.replaceAll(".", ".<br>");
+    let updIns = ins.replaceAll(".", ".<br>");
 
     $('#previewType').text(`${type}`);
     $('#previewName').text(`${name}`);
@@ -175,7 +175,7 @@ $('#showTenthCard').click(function(){
         $(this).val(1);
     });
  $('#renderImage').click(function(){
-        var url =  $('#recipe_pic').val();
+        let url =  $('#recipe_pic').val();
         $('#userImg').attr("src", url);
         $('#userImg').show();
     });
