@@ -511,6 +511,20 @@ def my_profile():
 def store():
     products = mongo.db.products.find()
 
+    if request.method == "POST":
+        if request.form.get("addToCart") == "1":
+            user = session["user"]
+            update = [
+                request.form.get("id"),
+                request.form.get("name"),
+                request.form.get("price")
+            ]
+            mongo.db.users.find_one_and_update(
+                {'username': user},
+                {"$push":
+                    {'cart_items': update}})
+            flash("You have saved this item to your cart")
+
     return render_template("store.html", products=products)
 
 
@@ -551,6 +565,18 @@ def product(id):
 def cart():
     user = mongo.db.users.find(
         {"username": session["user"]})
+
+    if request.method == "POST":
+        id = session["user"]
+        remove = [
+                request.form.get("id"),
+                request.form.get("name"),
+                request.form.get("price")
+            ]
+        mongo.db.users.find_one_and_update(
+            {'username': id},
+            {"$pull":
+                {'cart_items': remove}})
 
     return render_template("cart.html", user=user)
 

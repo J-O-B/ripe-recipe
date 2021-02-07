@@ -106,12 +106,20 @@ $('#addToCart').click(function(){
 // Open A Ticket From Profile:
 $('#openTicket').click(function(){
     $(this).val(1);
+    backToZero();
 });
 
 // Editing A Ticket:
 $('#submitEdit').click(function(){
     $(this).val(1);
+    backToZero();
 });
+
+// Deleting an item from cart:
+$('#delete').click(function(){
+    $(this).val(1);
+    backToZero();
+})
 
 // By changing values, to stop this value from remaining at the new value for 
 function backToZero(){

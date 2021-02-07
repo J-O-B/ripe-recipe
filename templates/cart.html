@@ -18,10 +18,18 @@
                         <div class="col s6">
                             <p>{{products[1]}}</p> 
                         </div>
-                        <div class="col s6 priceHolder">
+                        <div class="col s4 priceHolder">
                             <ul>
                                 <li class="prices">{{products[2]}}</li>
                             </ul>
+                        </div>
+                        <div class="col s2 left">
+                            <form method="POST">
+                                <input type="text" name="id" id="id" class="hidden" value="{{products[0]}}">
+                                <input type="text" name="name" id="name" class="hidden" value="{{products[1]}}">
+                                <input type="text" name="price" id="price" class="hidden" value="{{products[2]}}">
+                                <p><button type="submit" name="delete" id="delete" class="btn"><i class="far fa-times-circle"></i></button></p>
+                            </form>
                         </div>
                     </div>
                     {% endfor %}
@@ -42,9 +50,11 @@
                     {% endif %}
                 </div>
             </div>
+            <div class="row">
+                <a href="{{ url_for('store') }}" class="btn">Back To Store</a>
+            </div>
         </div>
         <div class="col s12 m7 offset-m1 center-align haze border">
-            <h2>Payment Information:</h2>
             <div class="col s6 offset-s3">
                 <h5>Accepted Payments:</h5>
                 <i class="fab fa-cc-visa"></i>
@@ -88,7 +98,7 @@
                         </div>
                         <!--Payment Side-->
                         <div class="col m6 s12">
-                            <h4>Payment</h4>
+                            <h4>Card Details</h4>
                                 <!--Name-->
                                 <label class="black-text" for="cname">Name on Card</label>
                                 <input class="input-field validate" type="text" id="cname" name="cardname" placeholder="John More Doe">
@@ -120,10 +130,11 @@
                                 <span class="black-text">Payment same as shipping address</span>
                             </label>
                         </p>
-                        <input type="submit" value="Continue to checkout" class="btn">
+                        <button id="checkout" class="btn" disabled>Continue to checkout</button>
                     </form>
-                    </div>
-                </div>
+                    <p class="red-text haze border"><em><strong>***Please Note That Payments Are Not Accepted At This Time***</strong></em></p>
             </div>
+        </div>
+    </div>
 
 {% endblock %}
