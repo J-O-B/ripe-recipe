@@ -56,8 +56,15 @@ footer{
     background-repeat: no-repeat;
 }
 .modal{
+    position: absolute;
     width:75vw;
     z-index: 9999999;
+}
+.collapsible-header{
+    height:400px;
+}
+.collapsible-body{
+    overflow: hidden;
 }
 #bodyBackground{
     margin:0;

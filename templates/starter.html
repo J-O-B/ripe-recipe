@@ -13,83 +13,84 @@
         <div class="contents">
             <!--Populate the contents-->
             {% for starters in starter %}
-            <div class="row">
-                <!--Materialize-->
-                <ul class="collapsible see-through">
-                    <li>
-                        <div class="collapsible-header see-through">
-                            <div class="col s12 haze border center-align">
-                                <div class="col s6 m2">
-                                    <p>{{ starters.recipe_name|capitalize }}</p>
-                                </div>
-                                <div class="col s6 m3">
-                                    <p>{{ starters.description[:20]|capitalize }}...</p>
-                                </div>
-                                <div class="col s6 m2">
-                                    <p>{{ starters.difficulty|capitalize }}</p>
-                                </div>
-                                <div class="col s6 m2">
-                                    <p>{{ starters.tags[:30]|capitalize }}...</p>
-                                </div>
-                                <div class="col s12 m3 center-align">
-                                    <!-- Modal Trigger -->
-                                    <a class="btn modal-trigger" href="#{{ starters._id }}">View More</a>
+                <div class="col s12 m4 center-align">
+                    <!--Materialize-->
+                    <ul class="collapsible see-through">
+                        <li>
+                            <div class="collapsible-header see-through">
+                                <div class="col s12 haze border center-align">
+                                    <div class="col s12">
+                                        <h3>{{ starters.recipe_name|capitalize }}</h3>
+                                        <hr class="custom-short-div">
+                                    </div>
+                                    <div class="col s12">
+                                        <p>{{ starters.description[:70]|capitalize }}...</p>
+                                    </div>
+                                    <div class="col s12">
+                                        <p>Difficulty: {{ starters.difficulty|capitalize }}</p>
+                                    </div>
+                                    <div class="col s12">
+                                        <p>Tags: {{ starters.tags[:30]|capitalize }}...</p>
+                                    </div>
+                                    <div class="col s12 center-align">
+                                        <!-- Modal Trigger -->
+                                        <a class="btn modal-trigger" href="#{{ starters._id }}">View More</a>
 
-                                    <!-- Modal Structure -->
-                                    <div id="{{ starters._id }}" class="modal">
-                                        <div class="modal-content">
-                                            <h4>{{ starters.recipe_name|capitalize }}</h4>
-                                            <hr class="custom-short-div">
-                                            <p>{{ starters.description|capitalize }}</p>
-                                            <table>
-                                                <thead>
-                                                <tr>
-                                                    <th>KCAL</th>
-                                                    <th>Fat</th>
-                                                    <th>Saturates</th>
-                                                    <th>Carbs</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>{{ starters.kcal }}</td>
-                                                    <td>{{ starters.fat }}</td>
-                                                    <td>{{ starters.saturates }}</td>
-                                                    <td>{{ starters.carbs }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Sugars</th>
-                                                    <th>Fibre</th>
-                                                    <th>Protein</th>
-                                                    <th>Salt</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ starters.sugars }}</td>
-                                                    <td>{{ starters.fibre }}</td>
-                                                    <td>{{ starters.protein }}</td>
-                                                    <td>{{ starters.salt }}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="overflowHidden">
-                                                <img src="{{starters.pic_url}}" alt="Recipe Picture">
+                                        <!-- Modal Structure -->
+                                        <div id="{{ starters._id }}" class="modal">
+                                            <div class="modal-content">
+                                                <h4>{{ starters.recipe_name|capitalize }}</h4>
+                                                <hr class="custom-short-div">
+                                                <p>{{ starters.description|capitalize }}</p>
+                                                <table>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>KCAL</th>
+                                                        <th>Fat</th>
+                                                        <th>Saturates</th>
+                                                        <th>Carbs</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>{{ starters.kcal }}</td>
+                                                        <td>{{ starters.fat }}</td>
+                                                        <td>{{ starters.saturates }}</td>
+                                                        <td>{{ starters.carbs }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sugars</th>
+                                                        <th>Fibre</th>
+                                                        <th>Protein</th>
+                                                        <th>Salt</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{ starters.sugars }}</td>
+                                                        <td>{{ starters.fibre }}</td>
+                                                        <td>{{ starters.protein }}</td>
+                                                        <td>{{ starters.salt }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="overflowHidden">
+                                                    <img src="{{starters.pic_url}}" alt="Recipe Picture">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            {% set id = starters.id %}
-                                            <a href="{{ url_for('selected', name=starters.recipe_name, id=starters._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
-                                            <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                                            <div class="modal-footer">
+                                                {% set id = starters.id %}
+                                                <a href="{{ url_for('selected', name=starters.recipe_name, id=starters._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
+                                                <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="collapsible-body center-align">
-                            <img src="{{starters.pic_url}}" alt="Recipe Photo">
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                            <div class="collapsible-body col s12 center-align">
+                                <img src="{{starters.pic_url}}" alt="Recipe Photo">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             {% endfor %}
         </div> 
     </div>
