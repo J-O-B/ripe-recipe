@@ -191,70 +191,70 @@
                             {% for tickets in myTickets %}
            
                             {% if tickets.reply|length == 0 %}
-                                <div class="row red border">
+                            <div class="row red border">
                             {% else %}
-                                <div class="row green border">
+                            <div class="row green border">
                             {% endif %}
-                                    <div class="col s5 center-align">
-                                        <p>Ticket Opened On: <br>{{ tickets.ticket_opened }}</p>
+                                <div class="col s5 center-align">
+                                    <p>Ticket Opened On: <br>{{ tickets.ticket_opened }}</p>
+                                </div>
+                                <div class="col s5 offset-s2 center-align">
+                                    <p>Ticket Query Type: <br>{{ tickets.query_type }}</p>
+                                </div>
+                                <div class="col s6 offset-s3 center-align">
+                                    <a class="btn modal-trigger" href="#{{ tickets._id }}">View</a>
+                                </div>
+                                <!-- Modal Structure -->
+                                <div id="{{ tickets._id }}" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Your Ticket:</h4>
+                                        <hr>
+                                        <p>
+                                            Type: {{ tickets.query_type }}<br>
+                                            Opened On: {{ tickets.ticket_opened }}
+                                        </p>
+                                        <p>Details: {{ tickets.details }}</p>
+                                        <hr>
+                                        {% if tickets.reply|length > 0 %}
+                                            <p>Reply To Ticket : {{ tickets.reply }}</p>
+                                        {% else %}
+                                            <p>There is no reply yet to this ticket</p>
+                                        {% endif %}
                                     </div>
-                                    <div class="col s5 offset-s2 center-align">
-                                        <p>Ticket Query Type: <br>{{ tickets.query_type }}</p>
+                                    <div class="modal-footer">
+                                        <a class="modal-close btn-flat green modal-trigger" href="#edit{{ tickets._id }}">Edit</a>
+                                        <a href="#!" class="modal-close btn-flat">Close</a>
                                     </div>
-                                    <div class="col s6 offset-s3 center-align">
-                                        <a class="btn modal-trigger" href="#{{ tickets._id }}">View</a>
-                                    </div>
-                                    <!-- Modal Structure -->
-                                    <div id="{{ tickets._id }}" class="modal">
-                                        <div class="modal-content">
-                                            <h4>Your Ticket:</h4>
-                                            <hr>
-                                            <p>
-                                                Type: {{ tickets.query_type }}<br>
-                                                Opened On: {{ tickets.ticket_opened }}
-                                            </p>
-                                            <p>Details: {{ tickets.details }}</p>
-                                            <hr>
-                                            {% if tickets.reply|length > 0 %}
-                                                <p>Reply To Ticket : {{ tickets.reply }}</p>
-                                            {% else %}
-                                                <p>There is no reply yet to this ticket</p>
-                                            {% endif %}
-                                        </div>
+                                </div>
+                                <div id="edit{{ tickets._id }}" class="modal">
+                                    <div class="modal-content">
+                                        <form method="POST" action="{{ url_for('my_profile') }}" class="replyForm">
+                                            <input type="text" name="query_id" id="query_id" class="hidden" value="{{ tickets._id }}">
+                                            <input type="text" name="querytype" id="querytype" class="hidden" value="{{ tickets.query_type }}">
+                                            <input type="text" name="details" id="details" class="hidden" value="{{ tickets.details }}">
+                                            <input type="text" name="submit_by" id="submit_by" class="hidden" value="{{ tickets.submit_by }}">
+                                            <input type="text" name="user_id" id="user_id" class="hidden" value="{{ tickets.user_id }}">
+                                            <input type="text" name="ticket_opened" id="ticket_opened" class="hidden" value="{{ tickets.ticket_opened }}">
+                                            <textarea type="text" name="replyTicket" id="replyTicket" rows="5">Add Message Here...</textarea>
+                                            <label for="open_ticket">Open / Close Ticket</label>
+                                            <select name="open_ticket" id="open_ticket" class="center-align">
+                                                <option selected value="1">Leave Ticket Open</option>
+                                                <option value="0">Close This Ticket</option>
+                                            </select>
+                                            <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
+                                                Submit
+                                            </button>
+                                            <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
+                                        </form>
                                         <div class="modal-footer">
-                                            <a class="modal-close btn-flat green modal-trigger" href="#edit{{ tickets._id }}">Edit</a>
                                             <a href="#!" class="modal-close btn-flat">Close</a>
                                         </div>
                                     </div>
-                                    <div id="edit{{ tickets._id }}" class="modal">
-                                        <div class="modal-content">
-                                            <form method="POST" action="{{ url_for('my_profile') }}" class="replyForm">
-                                                <input type="text" name="query_id" id="query_id" class="hidden" value="{{ tickets._id }}">
-                                                <input type="text" name="querytype" id="querytype" class="hidden" value="{{ tickets.query_type }}">
-                                                <input type="text" name="details" id="details" class="hidden" value="{{ tickets.details }}">
-                                                <input type="text" name="submit_by" id="submit_by" class="hidden" value="{{ tickets.submit_by }}">
-                                                <input type="text" name="user_id" id="user_id" class="hidden" value="{{ tickets.user_id }}">
-                                                <input type="text" name="ticket_opened" id="ticket_opened" class="hidden" value="{{ tickets.ticket_opened }}">
-                                                <textarea type="text" name="replyTicket" id="replyTicket" rows="5">Add Message Here...</textarea>
-                                                <label for="open_ticket">Open / Close Ticket</label>
-                                                <select name="open_ticket" id="open_ticket" class="center-align">
-                                                    <option selected value="1">Leave Ticket Open</option>
-                                                    <option value="0">Close This Ticket</option>
-                                                </select>
-                                                <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
-                                                    Submit
-                                                </button>
-                                                <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
-                                            </form>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close btn-flat">Close</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
                                 </div>
+                                <hr>
+                            </div>
                             {% endfor %}
-                                </div>
+                            </div>
                         </div>
                     </div>
         </div>
