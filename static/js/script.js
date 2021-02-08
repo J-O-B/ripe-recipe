@@ -88,7 +88,6 @@ $('#seeRecipe').click(function(){
     });
 $('#saveRecipe').click(function(){
     $(this).val(1);
-    backToZero();
 })
 $('#delete').click(function(){
     $(this).val(1);
@@ -135,13 +134,10 @@ function backToZero(){
 // Randomize advert:
 function randomAd(){
     randomNum = Math.floor(Math.random() * Math.floor(4));
-    console.log(randomNum);
     var size = screen.width;
-    
     // Large Screens Show Vertical Advert On Right
     if (size > 1450){
-        console.log("large");
-        $('#advert-row').css("position", "fixed").css("right", "10px").css("top","20%").css("height", "600px");
+        $('#advert-row').css("position", "fixed").css("right", "10px").css("top","15%").css("height", "500px").css("overflow", "hidden");
         if (randomNum == 0){
             $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd1.jpg" alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){
@@ -297,3 +293,22 @@ $('.back-card').mouseout(function(){
     $(this).hide();
     $('.front-card').show();
 })
+
+// Email Form:
+// Required code for API
+function sendMail(contactForm) {
+    emailjs.send("gmail", "john", {
+        "from_name": contactForm.name.value,
+        "from_email": contactForm.email.value,
+        "project_request": contactForm.message.value
+    })
+    .then(
+        function(response) {
+            $('#submit-text').text("Your email has been send successfully. Thank you for your message", response);
+        },
+        function(error) {
+            $('#submit-text').text("It seems like an error has occured, please feel free to try again, alternatively you can email me at: JonathanMichaelOBrien@Gmail.com", error);
+        }
+    );
+    return false;  // To block form loading a new page
+}

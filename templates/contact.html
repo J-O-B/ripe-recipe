@@ -1,14 +1,21 @@
 {% extends "base.html" %}
+{% block style %}
+<!--EmailJS Script-->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("user_qzVjfCSbvhEce7QuYTh1Y");
+        })();
+    </script>
+{% endblock %}
 {% block main_content %}
-
-
     <div class="row">
         <div class="col s12 m6 offset-m3">
             <h1 class="center-align black-text text-lighten-2 border haze">Contact Us</h1>
         </div>
     </div>
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('contact') }}" onsubmit="return sendMail(this);">
+        <form class="col s12 m8 offset-m2 round" method="POST" onsubmit="sendMail(this)">
             <div class="card-panel haze border round-corners">
                 <div class="row">
                     <div class="input-field col l5 offset-l1 m10 offset-m1">

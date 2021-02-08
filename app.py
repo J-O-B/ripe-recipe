@@ -345,23 +345,6 @@ def selected(id):
                 {"$push":
                     {'fav_recipes': update}})
             flash("You have saved this recipe")
-
-        if request.form.get("confirm").lower != "no":
-            today = date.today()
-            now = today.strftime("%b-%d-%Y")
-
-            ticket = {
-                    "query_type": "request delete",
-                    "details": request.form.get("recID"),
-                    "submit_by": session["user"],
-                    "user_id": request.form.get("id"),
-                    "ticket_opened": now,
-                    "reply": "",
-                    "open_ticket": "1",
-                    "closed_by": ""
-                }
-            mongo.db.tickets.insert_one(ticket)
-            flash("Monitor Your Ticketing Section For Response")
             return redirect(url_for('my_profile'))
         else:
             return render_template("selected.html",

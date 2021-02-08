@@ -4,12 +4,6 @@
     
     {% for recipes in recipe %}
     {% set name = recipes.created_by %}
-    {% set check = recipes._id|string %}
-    {% if check|length >= 1 %}
-    <h1>Long</h1>
-    {% else %}  
-    <h2>This recipe no longer exists</h2>
-    {% endif %}
         <!--Wrapper-->
         <div class="wrap top-recipe-card">
             <!--Top Section-->
@@ -53,7 +47,7 @@
                             <form method="POST">
                                 <input type="text" value="{{ recipes.recipe_name }}" name="recipeName" id="recipeName" class="hidden">
                                 <input type="text" value="{{ recipes._id }}" name="recipeID" id="recipeID" class="hidden">
-                                <button type="submit" name="saveRecipe" id="saveRecipe" class="btn">Yes</button>
+                                <button type="submit" method="POST" name="saveRecipe" id="saveRecipe" class="btn">Yes</button>
                             </form>
                             <button class="btn modal-close">No</button>
                         </div>
@@ -204,7 +198,7 @@
                                             &#10031;
                                             &#10031;
                                         </option>
-                                        <option value="3">
+                                        <option selected value="3">
                                             &#10031;
                                             &#10031;
                                             &#10031;
@@ -241,9 +235,9 @@
                 <!--Comments Wrapper-->
                 <div id="wrapper">
                     <!--Comment Contents-->
-                    <div class="contents">
+                    <ul class="paginationTable">
                         {% for X in comment %}
-                        <div class="row haze soft-corners">
+                        <li class="tableItem"><div class="row soft-corners">
                             <div class="col s10 offset-s1">
                                 <div class="col s12 m4">
                                     <p>Message Left: <span>{{ X.date }}</span></p>
@@ -292,9 +286,9 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="comments-div">
+                        <hr class="comments-div"></li>
                         {% endfor %}
-                    </div>
+                    </ul>
                 </div>
             </div>
     {% endfor %}
