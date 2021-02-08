@@ -334,6 +334,11 @@ img{
 .nav-bg{
     background:rgba(248, 248, 248, 0.3);
 }
+@media screen and (max-width:375px){
+    .nav-bg{
+    background:rgba(179,229,252, 0.7);
+    }
+}
 
 .nav-logo img{
     height:95px;

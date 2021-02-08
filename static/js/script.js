@@ -137,7 +137,7 @@ function randomAd(){
     var size = screen.width;
     // Large Screens Show Vertical Advert On Right
     if (size > 1450){
-        $('#advert-row').css("position", "fixed").css("right", "10px").css("top","15%").css("height", "500px").css("overflow", "hidden");
+        $('#advert-row').css("position", "fixed").css("right", "10px").css("top","16.2%").css("height", "500px").css("overflow", "hidden");
         if (randomNum == 0){
             $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd1.jpg" alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){
