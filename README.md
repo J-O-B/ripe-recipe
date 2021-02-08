@@ -1,16 +1,10 @@
 # Milestone Project Three
 
 ## Ripe Recipe
-![Blocks Away](assets/readme/main-menu.jpg)
+![Blocks Away](assets/readme/welcome.jpg)
 
-Welcome to my second milestone project! As I feel very confident with business style web design, and will be completing this style for projects 3 and 4 
-I wanted to undertake a project that is very different from anything I have coded before and would test my JavaScript skills, and show variation in what I 
-as a developer am capable of creating. This is why I chose to create a game for this project. 
-
-Based on the style of the gaming classic Tetris, Blocks Away is a browser based JavaScript game packed with interactive features, from sound effects, to 
-transitions, user selected settings, score tracking and more.
-
-For this project, I wanted to try and recreate the 8-bit era, which you will notice in both the audio and styling of the page. 
+Welcome to Ripe Recipe, a recipes database with some social media crossovers. This project is packed full of features,
+is fully responsive, and features both a recipes database, as well as a store for users to use.
 
 Further specific information on this project can be found below:
 
@@ -40,46 +34,41 @@ Further specific information on this project can be found below:
     3. [Acknowledgments](#Acknowledgments)
 
 ## **Description**
-This JavaScript game is based on the retro classic Tetris. A player's objective is to fill rows with blocks. Each complete row will clear that line, and add points
-to the scoreboard.
+Ripe is a user focussed website that allows users to browse recipes and products. By signing up to Ripe, a user will gain access to discounts on products 
+in the Ripe store and will also unlock several features such as leaving comments, having a personal profile, saving their favorite recipes, and more.
 
-For each line that is cleared, a player will earn 10 points. Once a player transitions to the game over screen, this game will calculate if there is a new high score or 
-not, and if so this value will be saved to local browser storage which will allow a user return to the game even days later and still have track of their high score*.
+An admin panel is available to members with administrative privileges. This panel allows for unrestricted access to the database, as well as respond 
+to "tickets" opened by users. 
 
-*Once a users cookies are deleted, the users saved high score will also be deleted. This will result in a top score of "0" when a player loads the game.
+### **The Ripe Concept**
+The original plan for Ripe started with a simple website which would allow users to browse through a database of recipes.
 
-### **Game Concept**
-The original concept for this game only contained ones and zeros. I would implement a table, which would be full of 0's, then I could add 1's in certain cells to 
-make it look like "blocks". If the top row had a 1 contained in that row then it would be game over. Similarly, if any row below "row 0" was full of 1's this row could 
-be replaced with 0's (clearing the line) and allocating a score for the player. 
+Although this would be great for the user, the goals of the Ripe "management" is to sell products via an online store. 
 
-Only later I thought that instead of looking for specific 1's or 0's, I could condense this into looking for "!0", this allows me to use different numbers in the strings 
-which can be assigned different colors for styling. Essentially if "(x == 0).... else if (x == 1)" became "if (x != 0)". 
+The concept of Ripe started to mold into that of a crossover between a social media platform and a recipe database. This 
+was down to the fact that social media platforms offer their users a service, and in return promote adverts. This is the concept 
+that was chosen for this project.
 
-By defining preset strings that look like shapes, I could use math random to call these known strings when needed.
+With this model, a user of the website will come across adverts for the Ripe store. Non members may be inclined to sign up for the service due to discounts 
+offered to Ripe members. 
 
-The only section I was initially unsure how to implement was the rotation of blocks. The original plan for this was to have an IF statement, so if a player pressed 
-a button, I would actually replace the string. This would have meant creating strings for each possible 'state' of the blocks. Luckily I found the idea of transposing 
-an array and this process can be done for me by the computer.
-
-As I was initially unsure I would be able to complete this game, given my experience, I originally created a simple boilerplate with nothing more than the canvas. This 
-allowed me to focus 100% of my efforts on the game, and its functions. Only when I had a minimum viable product did I add some form of page features, such as a current score.
+As users sign up with an email, the future growth of Ripe could include email marketing. Saved recipes, as well as other data saved to user profiles, 
+means that user specific "targetted advertising" and promotions could be expanded in the future.
 
 ---------------
 ## **UX**
 
-As with all projects, creating a great UX design was the cornerstone of this project. The design I have used, means that anyone who has a history of playing 
-video games will immediately be familiar with the layout, as well as being easy enough that those who are not familiar with video game menu's will be capable of 
-navigating easily between all the individual sections.
+This project aims to promote a mix of playful, yet professional dessign. A full breakdown on the 5 planes of UX are listed below.
 
 ### 5 Planes of UX:
 #### 1. Strategy:
-> The strategy for this project is to produce a game where users can have fun playing. 
+> The strategy for this project is to produce a recipe database that users can browse and also promote products via an online store. 
 > 
-> As players will be diverse and hold different skill levels, this game must have challenging but not impossible difficulties to allow all users 
-enjoy the game.
+> As users will want different recipes, different categories must be made available (Starters, Mains, Desserts, Drinks)
 >
-> As this project will probably be contained on my Portfolio in the future, a contact form and links to my social media will be available.
+> Users must be able to search for recipes based on keywords.
+>
+> 
 > 
 
 To expand further on strategy, I have included some user stories. They can be found in the [user stories](#User-Stories) section.
