@@ -64,198 +64,172 @@ This project aims to promote a mix of playful, yet professional dessign. A full 
 #### 1. Strategy:
 > The strategy for this project is to produce a recipe database that users can browse and also promote products via an online store. 
 > 
-> As users will want different recipes, different categories must be made available (Starters, Mains, Desserts, Drinks)
+> Users will be able to browse recipes by category (starters, mains, desserts, or drinks).
 >
-> Users must be able to search for recipes based on keywords.
+> Users will be able to search for recipes.
 >
-> 
-> 
+> Users will be able to create a profile and edit that profile.
+>
+> Users will be able to communicate with other users.
+>
+> Users will be able to save recipes for future reference.
 
 To expand further on strategy, I have included some user stories. They can be found in the [user stories](#User-Stories) section.
 
 #### 2. Scope:
 
 *Functional Requirements:*
-> 1. A player must be able to fully control the blocks within the game.
-> 2. Game logic must limit the movement of blocks to the area within the game 'board'.
-> 3. Game logic must recognize when a row is complete, then delete this row.
-> 4. Game logic must recognize when a block lands on the bottom of the board, or another block, when this happens we must merge these objects.
-> 5. A player must be able to start or stop audio.
-> 6. A player must be able to see a score.
-> 7. Difficulty must increase as a game progresses to make the game more interesting & competitive.
-> 8. Finally, the game must offer different starting difficulties to make the game fun for players of all abilities.
+> 1. A user must be capable of signing up to Ripe.
+> 2. A user must be capable of editing and deleting their profile.
+> 3. A user must be capable of adding a recipe to the database. 
+> 4. A user must be able to communicate with other users.
+> 5. A user must be able to leave comments on recipes.
+> 6. A user must be able to add items to their basket.
+> 7. A user must be able to view the items in their basket, and see a total price.
+> 8. An admin must have unrestricted access to all data, with the exception of a users password.
+> 9. An admin must be able to see, and reply to "tickets" to address any user needs.
+> 10. An admin must be able to delete users and recipes.
+
 
 *Content Requirements:*
-> 1. Details of how to play the game, such as controls (to include the difference for desktop and mobile).
-> 2. Information on the optimal devices to play the game.
-> 3. Attribution for media and sounds as per their usage agreements.
-> 4. Feedback areas to notify users and give feedback, such as clicking the sound button should then have text "sound selected off".
+> 1. Content must be relevant to specific recipes.
+> 2. Recipes must have the option to show nutritional data.
+> 3. Users must have a dashboard where they can see all of their information. (Profile page)
 
 #### 3. Structure:
-> * A user interface that functions as a game menu.
+> * A standard navigation menu available across the entire website. With exceptions:
+>   1. A user not logged in will see links that promote logging in or signing up.
+>   2. A logged in user will see the full range of links available.
+>   3. The homepage, whether logged in or not will provide a short list of key links to jump directly to a specific area of the website.
 >
 > * Each screen should provide a limited amount, but quality information to a user to decrease information overload and promote good UX.
 >
-> * A game screen should be sized to allow mobile users see the entire board and controls on one screen without the need to scroll or zoom 
-during a game.
+> * All content should be contained in blocks that allow for distinction between certain areas. 
 
 #### 4. Skeleton:
-> As I wanted to develop a website around the game, rather than design a game around a website I created wireframes that were quite basic.
-> As I wanted to emulate games from the 1990's era, I created wireframes after looking at pictures of retro SNES, and GameBoy menu screens. 
+> As this project is centered around a recipe and product database, I decided to mold a website around a required database, rather than the 
+> other way around.
+>
+> Key areas were defined for the operation of this website, these areas are:
+>   1. Store.
+>   2. Profile / User Pages.
+>   3. Recipe Pages.
+>   4. Admin Panel.
 > 
-> As this project will appear the same across all devices, one set of wireframes was used to implement this project.
+> Initial wireframes were created, but through the evolution of this project, several designs have been changed, either due to designs not 
+> fitting with the surrounding pages, or due to new features being added.
 >
 > You can view the wireframes for this project [here](#Wireframes)
 
 
 #### 5. Surface:
->  In an attempt to recreate an 8-bit era, use a font that looks like an 8-bit font.
+> As this project is a user centric project, the surface plane was very important. Certain subtle additions have been added 
+> in an attempt to promote good design. As some of the forms can be quite long, JavaScript was used to break down these forms 
+> into small chunks, to make the process seem like an easier task. 
 >
->  Build the main screen whereby a user can simply access a subsection, before returning to the main screen.
->
->  Allow user inputs to change the state of the code, for example turning audio on or off, selecting the difficulty, etc.
+> Feedback via Python's Flash function provides users with specific positive feedback.
 
 
 ### <ins>**_Logo_**</ins>
-Although there is no logo for this game, the welcome video starts off using the logo of John O'Brien (me).
+The logo for this project is based simply on a photo that was available via [Pixabay](https://pixabay.com)
 
 ### <ins>**_Wireframes_**</ins>
 You can view the wireframe designs [here](assets/readme/wireframes.pdf)
 
-As this project will maintain the same style regardless of the viewing device, I have added one set of wireframes. Due to the fact that I was 
-trying to recreate game screens from the 1990s era, I relied a lot on images of what these menus looked like, rather than try to recreate a 
-proven and well designed menu screen. 
+The wireframes for this project served as an initial design idea. As more features developed designs have been altered, or 
+changed completely.
 
 
 ### <ins>**_User Stories_**</ins>
 
-Being a web game the following user stories specific to this project are: 
+Being a recipe database and store the following user stories specific to this project are: 
 
 | **As the creator I want to:** |
 | ------------------------------------------------------- |
-|1. *Have fun playing the game.* |
-|2. *Create a program I have never created before.* |
-|3. *Expand my JavaScript and jQuery skills.* |
-|4. *Allow players to contact me with feedback* |
+|1. *Allow users view products.* |
+|2. *Allow users to grow the recipe database.* |
 
 | **As a user I want to:** |
 | ------------------------------------------------------- |
-|1. *Play a fun game.* |
-|2. *See instructions on how to play the game.* |
-|3. *Be capable of changing settings to my liking.* |
-|4. *See who created the game.* |
-|5. *Contact the creator.* |
+|1. *Find recipes.* |
+|2. *Browse for random recipes.* |
+|3. *Save recipes for future reference.* |
+|4. *Get discounts from the store.* |
+|5. *Contact admins with issues.* |
+|6. *Contact other users, or comment on recipes.* |
 
 
 ### <ins>**_Information Architectures_**</ins>
 For this project, I wanted to use a design that meets UX design goals as well as functioning in a similar way to what 
 users would expect. 
 
-A lot of users have probably played a video game with a basic navigation menu, so I chose to follow a similar structure to allow users 
-to see this menu as something easy for them to navigate through and easily access the information they choose (click) to see, my goal 
-was to create a user interface style design that a user would instantly feel familiar with.
+There really is 2 architectures at play in this project, that is for users that are members, and those who are not.
 
-The main menu buttons follow a hierarchical structure, with PLAY being the highest authority button, followed by INSTRUCTIONS, etc.
+#### *Non Members:*
+> A user who is not a member will be met by a landing page with a simple sign in, or sign up option as well as a third 
+button which will give a brief explain what Ripe is. 
+> Once inside the main structure of the website a non member will still have access to the full range of main navigation 
+links, but the dropdown menu will only show login and signup links.
 
-The page with the most content is the instructions page, in order not to overwhelm the user I have split this page into sections by using 
-visual cues including headings which differ in style from regular text, as well as dividers.
-
-By doing this a user can view the individual section of information or read through as much information as they wish before navigating 
-back to the main menu. This navigation style means a user can navigate to any screen with 1 click if on the main menu, and 2 clicks if 
-they are already in a "sub screen".
-
-All but two links on this project will only navigate from the main menu into a section, or back to the main menu. The only exceptions to 
-this rule is the "email" button on the social page, which will navigate to the "contact form", and the "yes" button on the game over screen, 
-which will restart a new game. 
+#### *Members:*
+> A user who is a member (and has a browser cookie) will be met by a landing page with a few quick links to main sections within
+the website.
 
 ### <ins>**_Responsive Design:_**</ins>
-This project is fully responsive and has been tested on screen widths between 375px up to 3800px. 
+This project is fully responsive and has been tested on screen widths between 375px up to 3800px. For this, Materialize CSS 
+was used throughout. - [Materialize.com](http://materializecss.com/)
 
 ### <ins>**_Typography_**</ins>
-This project uses "Press Start 2P" (Google Fonts), this font is an 8-bit style font to help the design of the project.
+This project uses "Montez", and "Roboto" (Google Fonts).
 
 ### <ins>**_Colors_**</ins>
-The main color used in this project is RGB(0, 201, 10) which is the green color seen throughout this project.
+There are three primary colors used in this project:
+1. rgb(245,41,135)
+2. rgb(179,229,252)
+3. rgb(234,128,252)
 
-The other color to note is the background color of the canvas. This is a greenish-brown color, which is the same color as the old GameBoy screens.
-
-The colors for the 8 different blocks were chosen somewhat at random, which span the spectrum of colors to allow users to easily differentiate between different blocks.
 
 ### <ins>**_Icons:_**</ins>
-Although this project does not use too many icons, they do play a very important role in the game. The button controls which allow 
-tablet and mobile users to control the blocks in this game use easy-to-understand icons instead of text. 
+Icons are used throughout this website, and are used in an attempt to increase UX design where possible. Icons in use have been taken 
+from [Font Awsome](http://fontawesome.com/)
 
 --------------------
 ## **Features**
 
 ### <ins>**_Existing Features:_**</ins>
 
-Currently, this project has several features which include:
-
-Sound Effects:
-
-* Sound effect features are scattered around this project and contained within the game itself. If the sound is selected on, menu selections to enter a section will 
-play a specific noise, once in an area, if a user selects to return to the main menu a different noise is played.
-
-* Within the game, if the sound is selected ON, the main menu audio will change to the game song, a 'thud' noise is played each time a block lands, and a zap noise 
-is played when a line break is detected. When a user has lost the game, the game song will pause, and game over music will play. On returning to a new game the game song 
-will play again. 
-
-Popup Intro:
-
-* A popup window that holds an into video, as well as a description of the game, means a user can tell what this page is before even moving past this screen.
-
-Main Menu:
-
-* The main menu of this project is interactive, with hover events and event listeners for mouse or touchscreen inputs.
-
-Settings Screen:
-
-* The settings screen is interactive, and supplies feedback to a user. For example on clicking the "Sound: ON" a user will see the change of text, they will also see the global 
-sound button (top right) change to the selected setting, and will hear the music starting. 
-
-High Score:
-
-* On starting this game, the game will check for a stored high score. If a high score exists in a user's browser, then that score will be displayed. If no high score is 
-found, then a 0 is placed here. When a user loses a game, the current score will be compared to see if a new high score has been achieved, if the score is higher than the 
-saved high score, then the game will automatically replace the old high score with the new high score.
-
-Background Animation:
-
-* In the background (behind the card, and on top of the background image) animated shapes are flying.
-
-Social Card:
-
-* A 3D social card is contained on the SOCIAL page. This card reacts to a user's mouse position and reacts according to the X & Y values of the mouse position. Due to 
-styling, this animation is only available on screens larger than 769px (anything larger than an iPad).
-
-Difficulty:
-
-* A player/user can select from 3 game starting difficulties. This allows players of different skill levels to enjoy the game.
-* A progressive function within the game code, means that the game will accelerate as a user is playing, this is done by a function called "progression()" which is called 
-every time a block lands. This mode was added after I first played the game and there was no real ending unless I chose to lose. By adding this function, the game will eventually 
-overpower even the best players, which adds an element of 'competition' to the game.
+* Pagination
+* Recipe Comments
+* User Comments
+* Adding / Deleting Users 
+* Adding / Deleting Recipes 
+* Adding / Deleting Items in Cart 
+* Placeholder Checkout Form (No backend feature at this time)
+* Search Function 
+* JavaScript Interactive Forms 
+* User Feedback 
 
 #### *Implemented but removed:*
 
-Speech Recognition:
+Instant messenger:
 
-* This project originally contained speech recognition which allowed a user to navigate, press buttons, fill out the contact form and play (i.e move a block left by saying "left") 
-using their voice. This feature however only worked on Chrome and was causing bugs when viewed on different browsers, so the decision was made to remove this feature.
-I now have a thorough understanding of this so I plan on implementing this as soon as it is more readily available on other browsers.
+An instant messenger feature was added but removed. 
 
 
 ### <ins>**_Future Features:_**</ins>
 
-One feature I did want with this project was a global high score sheet, where users (if good enough) would have their score and a username pinned to a 'global' 
-scoreboard. Unfortunately at this time, I do not know how to implement this, so I chose to wait until I fully understand this process before implementing it 
-in this game.
+A helper bot to help customers with product orders and store FAQ.
+
+Automated email marketing. 
     
 ------------------
 ## **Technologies Used**
 
-Blocks Away uses HTML, CSS, and JavaScript with the addition of Bootstrap and jQuery. To allow for functionality of the contact form, an email API from EmailJS has been 
-used.
+This project uses HTML, CSS, JavaScript, jQuery, Python and MongoDB. 
+
+Front end ------------------------------------------------------------- Back end
+
+HTML, CSS --- JavaScript/jQuery--------Python------------MongoDB
 
 ---------------------
 ## **Testing**
@@ -268,66 +242,32 @@ This project has passed through several phases of testing, these phases include:
 
 3. [JS Hint](https://jshint.com/) to check all JavaScript. 
 
-> I originally planned to use Jasmine testing for this project, however, there seems to be issues around Jasmine testing and Canvas which was proving to be limiting 
-the progress on this project. As a result, I changed the strategy to a more real-time testing program, this included testing the results of single and multiple functions 
-through dev tools and console.log. Details of these methods are below:
+> Testing was important in this project, with multiple forms located on pages. A recurring bug seemed to be the submission of multiple forms at once. To fix this problem 
+jQuery was used to change a submit buttons value, this paired with an if statement in Python gave the desired outcome.
 
-**Console.Log:** During the creation of this code, logging the results of each function was key. As this project relies on ALL functions to operate correctly, without fail 
-it was imperative that all functions needed to supply a correct answer or value promptly.
+**Console.Log:** 
 
-**Dev Tools:** While creating this game, I took note of all function names, variables, and objects. With this sheet, I was able to open a game and check different parameters 
-at different times of a game. This also allowed me to force in parameters to check certain results. For example halfway through a game when a user would normally be "alive" 
-I would give "alive" a value of "false", with this variable set, I know the outcome should be that the game essentially "pauses". 
+As forms use a change in value as part of a submission plan. Console log was used to ensure the correct outcome when clicking on submit buttons.
 
-Testing through playing: Knowing the outcome I wanted, I tested certain scenarios whilst "playing" the game. This included aspects such as trying to position a block off the 
-board. 
+**Dev Tools:** 
 
-Browser testing: This project was tested in Chrome, Internet Explorer, Safari, Firefox & Microsoft Edge. Although older (now obsolete) browsers do not seem to support jQuery 
-fully, all newer browsers do not have the same problems.
+As a means to testing visual problems, dev tools was used to identify and fix styling issues.
+Dev tools was also used to improve features such as accessability, SEO, and performance where possible.
 
-Device Testing: This game was tested on iPad, iPhone X, & Samsung Galaxy divices. This is where 2 bugs were found on IOS devices, one relating to older versions of Safari, 
-the other related to double tapping a controller button. This is what allowed me to add features to improve user experience across multiple devices.
-
-Finally, I wanted to make this project as fast and accessible as possible, for this I used Dev tools again.
-
-![Lighthouse](assets/readme/lighthouse.jpg)
 
 ### **Bugs**:
 
-Multiple bugs were found in the creation of this project.
+Auto Submit Forms:
 
-Older Safari & Internet Explorer Bug: 
+> On multiple occasions I came across a bug that was automatically submitting forms on page load.
 
-> The JavaScript in this project does not run on older versions of Safari & Internet explorer but has been tested on newer versions of Safari & Microsoft Edge with no faults. 
-The problem seems to be with ".click" and ".on("click,...)". As the problem seems to be with outdated browsers, it seems as though these browsers have since fixed the problem 
-themselves through updates in newer versions.
+* Fix: This problem was solved by using an if statement in Python, paired with a ".click()" function in jQuery. This means that 
+on clicking submit a forms submit button will be given the value of "1". This will then satisfy the IF statement in Python and submit 
+the form. 
 
-* Fix: This is a widespread problem with older browsers and has been updated for newer, active browser versions. For example Internet explorer has now been deemed 
-as obsolete by Microsoft and replaced by Edge. As this code works on up to date browsers, I have not solved this bug as it seems as though it is bigger and more widespread 
-than just my code.
+> Updating a record was deleting all other fields. (MongoDB)
 
-IOS Bug: (Double Tap Zoom)
-
-> Although several mobile devices have this feature, it was discovered on an iPhone. While playing the game, if a user wanted to rapidly press a keypad button, the zoom 
-> function of the phone would start and make the game very difficult to play. 
-
-* Fix: To fix this problem, I have added the css "touch-action: manipulation" to the game keypad. This disables the 'double tap zoom' on mobile and tablet devices.
-
-Unwanted Navigation:
-
-> Probably one of the most strange problems I have come across was this bug. On the Social page, there is a button at the bottom of the card labeled Email. Connected to this 
-> button is an event that will bring the user to the contact form if clicked. On testing, this button was displaying the "Settings" page when clicked, I was unable to find any 
-> reference to why this was happening.
-
-* Fix: To fix this problem I have specifically added code to stop the settings screen from showing on email button clicks. 
-
-Rotation Of Blocks:
-
-> When I first made this game, I was unable to rotate the blocks. One way I considered was creating different strings for each possible rotation of a block, then when a 
-user pressed a button I would replace the block with an entirely new string.
-
-* Fix: To solve this issue, I found a fix in transposing a 2d array. I have referenced this part specifically in my code. 
-
+* Fix: One fix for this bug was to suppy all of the previous information back into MongoDB. 
 
 --------------------
 ## **Deployment**
@@ -366,36 +306,23 @@ This project, although pieced together by myself, incorporates images, video, so
     
 
 ### <ins>**_Media:_**</ins>
-**Background Image** - [Pixabay Stock & Royalty Free Image](https://pixabay.com/illustrations/render-dark-blocks-shape-3d-977857/)
+1. Smoke - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/abstract-smoke-background-swirl-69124/)
+2. Fire - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/flames-black-red-yellow-fire-1645399/)
+3. Logo - [Pixabay Stock & Royalty Free Image](https://pixabay.com/vectors/chef-cook-wink-perfect-uniform-29205/)
+4. Recipe Photos - Recipes added by admin originate from BBC good food and can be found by searching for the name of recipe.
+5. Wood - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/wood-floor-backdrop-background-1866667/)
 
-**Intro Video** - [Video Snippets From Pixabay](https://pixabay.com/)
-    1. [Flying Blocks](https://pixabay.com/videos/tetris-building-blocks-city-future-5179/)
-    2. [Television 1](https://pixabay.com/videos/television-broadcasting-satellite-29483/)
-    3. [Television 2](https://pixabay.com/videos/tv-screen-media-monitor-retro-16880/)
-    4. [Particles](https://pixabay.com/videos/particles-disco-light-colorful-6436/)
-    5. [Glitch 1](https://pixabay.com/videos/glitch-monogram-data-code-retro-36784/)
-    6. [Glitch 2](https://pixabay.com/videos/glitch-hack-computer-secret-37946/)
-    7. [Spotlights](https://pixabay.com/videos/light-overlay-leak-flare-lens-37145/)
+**Intro Video** 
+* Video Created With Video Snippets From [Pixabay](https://pixabay.com/)
 * Video Created Using [Blender](https://www.blender.org/)
 
-**Sound Effects** - [ZapSplat.com](https://ZapSplat.com)
-
-* Background Music: "New Hope",
-
-* Game Music: "SawSquareNoise",
-
-* Game Over Sound: General game sounds, game over noises
-
-* Back Sound: General game sounds, menu navigation.
-
-
 ### <ins>**_Content:_**</ins>
-All text content is my own.
+> All text content is my own, with the exception of recipes added by "Admin" and product descriptions which originate from 
+both BBC Good Food, and Amazon.
 
 ### <ins>**Code:**</ins>
->**Social Card** - ["Dev Ed" YouTube](https://www.youtube.com/watch?v=XK7T3mY1V-w&t=1855s)
->
->**Animated Background** - [Free Frontend](https://freefrontend.com/css-animated-backgrounds)
+> Pagination code prior to editing was posted on [Stack Overflow](https://stackoverflow.com/questions/6726896/how-to-make-jquery-pagination)
+
 
 *I have used W3 Schools and StackOverflow when I did not achieve a result, references to some of these codes are also contained in notes in my scripts.*
 
