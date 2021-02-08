@@ -9,11 +9,11 @@
             <hr class="custom-short-div">
         </div>
     </div>
-    <div class="row" id="wrapper">
-        <div class="contents">
+    <div class="row">
+        <ul class="paginationTable">
             <!--Populate the contents-->
             {% for starters in starter %}
-            <div class="flip-card col s12 m4">
+            <li class="tableItem"><div class="flip-card col s12 m4">
                 <div class="flip-card-inner col s12">
                     <div class="flip-card-front col s12 soft-corners">
                         <img src="{{starters.pic_url}}" id="previewRecipePic" alt="Recipe Photo">
@@ -89,9 +89,16 @@
                     <a href="{{ url_for('selected', name=starters.recipe_name, id=starters._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
                     <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
                 </div>
-            </div>
+            </div></li>
             {% endfor %}
-        </div> 
+        </ul>
+        <div class="col s12 center-align">
+            <div id="pagination-container">
+                <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+            </div> 
+        </div>
+
     </div>
     <div class="row">
         <div class="col s10 offset-s1 center-align">

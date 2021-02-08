@@ -90,7 +90,7 @@
                             <p>View Recipe:</p>
                         </div>
                             {% for favorites in user.fav_recipes %}
-                            <div class="row">
+                                <div class="row">
                                 <div class="col s7 haze listFavorites">
                                     <p>{{ favorites[0]|capitalize }}</p>
                                 </div>
@@ -98,7 +98,7 @@
                                     {% set recipeID = favorites[1] %}
                                     <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View</a>
                                 </div>
-                            </div>    
+                                </div>   
                             {% endfor %}
                         </div>
                 </div>
@@ -148,11 +148,12 @@
                     <hr class="custom-short-div">
                     {% if messages %}
                     <!--Pagination Wrapper-->
-                    <div class="row" id="wrapper">
+                    <div class="row">
                         <div class="contents col s12">
+                            <ul class="paginationTable">
                                 {% for message in messages %}
                                 {% if message.message_for|string == myId|string %}
-                                    <div class="row">
+                                    <li class="tableItem"><div class="row">
                                         <p class="col s10 offset-s1">
                                             Message From {{ message.message_from }} on {{ message.date }}<br>
                                             <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
@@ -165,9 +166,16 @@
                                                 <a href="#!" class="modal-close btn-flat">Close</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div></li>
                                 {% endif %}
                                 {% endfor %} 
+                            </ul>
+                            <div class="col s12 center-align">
+                                <div id="pagination-container">
+                                    <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                                    <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+                                </div> 
+                            </div>
                         </div>
                     </div>
                     {% else %}
