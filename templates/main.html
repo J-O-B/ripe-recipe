@@ -9,89 +9,96 @@
             <hr class="custom-short-div">
         </div>
     </div>
-    <div class="row" id="wrapper">
-        <div class="contents">
+    <div class="row">
+        <ul class="paginationTable">
             <!--Populate the contents-->
             {% for mains in main %}
-            <div class="row">
-                <!--Materialize-->
-                <ul class="collapsible see-through">
-                    <li>
-                        <div class="collapsible-header see-through">           
-                            <div class="col s12 haze border center-align">
-                                <div class="col s6 m2">
-                                    <p>{{ mains.recipe_name|capitalize }}</p>
+            <li class="tableItem"><div class="flip-card col s12 m4">
+                <div class="flip-card-inner col s12">
+                    <div class="flip-card-front col s12 soft-corners">
+                        <img src="{{mains.pic_url}}" id="previewRecipePic" alt="Recipe Photo">
+                        <div class="col s12 titleLayer">
+                            <h3>{{ mains.recipe_name|capitalize }}</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back col s12 soft-corners">
+                        <div class="col s12 center-align haze border recipeHolder">
+                            <div class="col s12 center-align seeMore">
+                                <!-- Modal Trigger -->
+                                <a class="btn modal-trigger col s5" href="#{{ mains._id }}">Preview</a>
+                                <a href="{{ url_for('selected', name=mains.recipe_name, id=mains._id) }}" class="btn col s6 offset-s1">View Full</a>
+                            </div>
+                            <div class="col s12 center-align">
+                                <div class="col s12">
+                                    <h6>{{ mains.recipe_name|capitalize }}</h6>
+                                    <hr class="custom-short-div">
                                 </div>
-                                <div class="col s6 m3">
-                                    <p>{{ mains.description[:20]|capitalize }}...</p>
+                                <div class="col s12">
+                                    <p>{{ mains.description[:70]|capitalize }}...</p>
                                 </div>
-                                <div class="col s6 m2">
-                                    <p>{{ mains.difficulty|capitalize }}</p>
-                                </div>
-                                <div class="col s6 m2">
-                                    <p>{{ mains.tags[:30]|capitalize }}...</p>
-                                </div>
-                                <div class="col s12 m3 center-align">
-                                    <!-- Modal Trigger -->
-                                    <a class="btn modal-trigger" href="#{{ mains._id }}">View More</a>
-
-                                    <!-- Modal Structure -->
-                                    <div id="{{ mains._id }}" class="modal">
-                                        <div class="modal-content">
-                                            <h4>{{ mains.recipe_name|capitalize }}</h4>
-                                            <hr class="custom-short-div">
-                                            <p>{{ mains.description|capitalize }}</p>
-                                            <table>
-                                                <thead>
-                                                <tr>
-                                                    <th>KCAL</th>
-                                                    <th>Fat</th>
-                                                    <th>Saturates</th>
-                                                    <th>Carbs</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>{{ mains.kcal }}</td>
-                                                    <td>{{ mains.fat }}</td>
-                                                    <td>{{ mains.saturates }}</td>
-                                                    <td>{{ mains.carbs }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Sugars</th>
-                                                    <th>Fibre</th>
-                                                    <th>Protein</th>
-                                                    <th>Salt</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ mains.sugars }}</td>
-                                                    <td>{{ mains.fibre }}</td>
-                                                    <td>{{ mains.protein }}</td>
-                                                    <td>{{ mains.salt }}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="overflowHidden">
-                                                <img src="{{mains.pic_url}}" alt="Recipe Picture">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            {% set id = mains.id %}
-                                            <a href="{{ url_for('selected', name=mains.recipe_name, id=mains._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
-                                            <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
-                                        </div>
-                                    </div>
+                                <div class="col s12">
+                                    <p>Tags: {{ mains.tags[:30]|capitalize }}...</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="collapsible-body center-align">
-                            <img src="{{mains.pic_url}}" alt="Recipe Photo">
-                        </div>
-                    </li>
-                </ul>
+                    </div> 
+                </div>
             </div>
+            <!-- Modal Structure -->
+            <div id="{{ mains._id }}" class="modal">
+                <div class="modal-content center-align">
+                    <h4>{{ mains.recipe_name|capitalize }}</h4>
+                    <hr class="custom-short-div">
+                    <p>{{ mains.description|capitalize }}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>KCAL</th>
+                                <th>Fat</th>
+                                <th>Saturates</th>
+                                <th>Carbs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ mains.kcal }}</td>
+                                <td>{{ mains.fat }}</td>
+                                <td>{{ mains.saturates }}</td>
+                                <td>{{ mains.carbs }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sugars</th>
+                                <th>Fibre</th>
+                                <th>Protein</th>
+                                <th>Salt</th>
+                            </tr>
+                            <tr>
+                                <td>{{ mains.sugars }}</td>
+                                <td>{{ mains.fibre }}</td>
+                                <td>{{ mains.protein }}</td>
+                                <td>{{ mains.salt }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="overflowHidden center-align">
+                        <img src="{{mains.pic_url}}" alt="Recipe Picture">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {% set id = mains.id %}
+                    <a href="{{ url_for('selected', name=mains.recipe_name, id=mains._id) }}" class="col s7 green lighten-2 btn-flat">View Full Recipe</a>
+                    <a href="#!" class="col s5 modal-close red lighten-3 btn-flat">Close</a>
+                </div>
+            </div></li>
             {% endfor %}
+        </ul>
+        <div class="col s12 center-align">
+            <div id="pagination-container">
+                <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+            </div> 
         </div>
+
     </div>
     <div class="row">
         <div class="col s10 offset-s1 center-align">

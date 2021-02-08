@@ -54,7 +54,8 @@ def admin():
     Store session cookie to a var and search the users database.
     Match a record with the current user, and check for admin privilages.
     """
-
+    user = mongo.db.users.find(
+        {"username": session["user"]})
     count = mongo.db.tickets.count()
 
     Queries = mongo.db.tickets.find()
@@ -84,7 +85,7 @@ def admin():
         return redirect(url_for("admin"))
 
     return render_template("admin_panel.html",
-                           Queries=Queries, count=count)
+                           Queries=Queries, count=count, user=user)
 
 
 @app.route("/error/<reason>", methods=["GET", "POST"])
@@ -127,7 +128,6 @@ def login():
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
     # remove user from session cookie
-    flash("You have been signed out. We hope To See You Again Soon!")
     session.pop("user")
     return redirect(url_for("home"))
 

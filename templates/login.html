@@ -5,11 +5,12 @@
         <div class="col s12 m6 offset-m3 center-align">
             <h1 class="center-align black-text text-lighten-2 border soft-corners">Login</h1>
         </div>
-        <div class="col s12 m6 offset-m3 center-align">
-            <p>Please login to access all of the features available on Ripe Recipes</p>
-        </div>
     </div>
-<!--Card to hold the signup form-->
+    {% if not session["user"] %}
+    <div class="row center-align">
+        <p>Please login to access all of the features available on Ripe Recipes</p>
+    </div>
+<!--Card to hold the login form-->
     <div class="row">
         <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel haze border">
@@ -48,5 +49,12 @@
             </h5>
         </div>
     </div>
-
+    {% else %}
+    <div class="row">
+        <div class="col s12 center-align">
+            <h3>It seems you are already logged in.</h3>
+            <p>Please <a href="{{url_for('logout')}}">Logout</a> Before Trying To Log In </p>
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}
