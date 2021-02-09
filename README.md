@@ -199,6 +199,7 @@ from [Font Awsome](http://fontawesome.com/)
 ### <ins>**_Existing Features:_**</ins>
 
 * Pagination
+* 
 * Recipe Comments
 * User Comments
 * Adding / Deleting Users 
@@ -208,6 +209,8 @@ from [Font Awsome](http://fontawesome.com/)
 * Search Function 
 * JavaScript Interactive Forms 
 * User Feedback 
+* Modals
+* 
 
 #### *Implemented but removed:*
 
@@ -221,6 +224,8 @@ An instant messenger feature was added but removed.
 A helper bot to help customers with product orders and store FAQ.
 
 Automated email marketing. 
+
+Functioning checkout form.
     
 ------------------
 ## **Technologies Used**
@@ -311,6 +316,10 @@ This project, although pieced together by myself, incorporates images, video, so
 3. Logo - [Pixabay Stock & Royalty Free Image](https://pixabay.com/vectors/chef-cook-wink-perfect-uniform-29205/)
 4. Recipe Photos - Recipes added by admin originate from BBC good food and can be found by searching for the name of recipe.
 5. Wood - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/wood-floor-backdrop-background-1866667/)
+6. Starters Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/dakos-tomato-olives-olive-oil-3538425/)
+7. Main Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/fry-up-paella-pan-frying-pan-fry-285360/)
+8. Desserts Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/cupcakes-dessert-frosting-food-690040/)
+9. Drinks Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/bar-beverage-cocktail-drink-glass-1839361/)
 
 **Intro Video** 
 * Video Created With Video Snippets From [Pixabay](https://pixabay.com/)
@@ -322,14 +331,16 @@ both BBC Good Food, and Amazon.
 
 ### <ins>**Code:**</ins>
 > Pagination code prior to editing was posted on [Stack Overflow](https://stackoverflow.com/questions/6726896/how-to-make-jquery-pagination)
+>
+> Card "flip" used on recipe pages originally from W3Schools prior to editing.
 
 
 *I have used W3 Schools and StackOverflow when I did not achieve a result, references to some of these codes are also contained in notes in my scripts.*
 
 ### <ins>**_Acknowledgments:_**</ins>
-I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his tips during this project.
+I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project.
 
-## *Previews*:
+## *Previews:*
 ### Main Menu:
 ![Main Menu](assets/readme/main-menu.jpg)
 
@@ -352,7 +363,3 @@ secret key from fort knox random keygen
 pictures=
 
 recipes page cards:
-starters card: https://pixabay.com/photos/dakos-tomato-olives-olive-oil-3538425/
-main card: https://pixabay.com/photos/fry-up-paella-pan-frying-pan-fry-285360/
-desserts: https://pixabay.com/photos/cupcakes-dessert-frosting-food-690040/
-drinks: https://pixabay.com/photos/bar-beverage-cocktail-drink-glass-1839361/

@@ -14,6 +14,7 @@
             <div class="row" id="cart-items">
                 {% for items in user %}
                     {% for products in items.cart_items %}
+                    
                     <div class="row">
                         <div class="col s6">
                             <p>{{products[1]}}</p> 
@@ -23,12 +24,14 @@
                                 <li class="prices">{{products[2]}}</li>
                             </ul>
                         </div>
+                        <h2>{{ products[3] }}</h2>
                         <div class="col s2 left">
                             <form method="POST">
-                                <input type="text" name="id" id="id" class="hidden" value="{{products[0]}}">
+                                <input type="text" name="id" id="id" class="hidden" value="{{products[3]}}">
                                 <input type="text" name="name" id="name" class="hidden" value="{{products[1]}}">
                                 <input type="text" name="price" id="price" class="hidden" value="{{products[2]}}">
-                                <p><button type="submit" name="delete" id="delete" class="btn"><i class="far fa-times-circle"></i></button></p>
+                                <input type="text" name="rand" id="rand" class="hidden" value="{{ products[3] }}">
+                                <p><button type="submit" name="delete" id="delete" class="see-through"><i class="far fa-times-circle red-text"></i></button></p>
                             </form>
                         </div>
                     </div>
@@ -54,7 +57,7 @@
                 <a href="{{ url_for('store') }}" class="btn">Back To Store</a>
             </div>
         </div>
-        <div class="col s12 m7 offset-m1 center-align haze border">
+        <div class="col s12 m7 offset-m1 center-align haze border" id="payDiv">
             <div class="col s6 offset-s3">
                 <h5>Accepted Payments:</h5>
                 <i class="fab fa-cc-visa"></i>

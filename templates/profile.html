@@ -41,9 +41,19 @@
                                     <p>Please Confirm Login To Proceed</p>
                                 </div>
                             </div>
-                            <a href="" class="btn center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
+                            <a href="#deleteProfile" class="btn modal-trigger center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
                             <!--modal here-->
-                            
+                            <div id="deleteProfile" class="modal">
+                                <div class="modal-content">
+                                    <h4>Warning</h4>
+                                    <p>You Are About To Delete Your Profile</p>
+                                    <p>Delete Your Profile?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close col s7 green btn-flat">No</a>
+                                    <a href="#!" class="modal-close col s4 offset-s1 green btn-flat">Yes</a>
+                                </div>
+                            </div>
                         <div class="col s12">
                             <h2>{{ user.username|capitalize }}</h2>
                             <p>Biography: {{ user.bio|capitalize }}</p>
@@ -127,10 +137,7 @@
                                     <textarea id="textbox" name="textbox" class="materialize-textarea black-text" required></textarea>
                                     <label for="textbox" class="black-text">Enter Details Of Issue Here...</label>
                                 </div>
-                                {% for data in user %}
-                                <input type="text" class="hidden" name="userName" id="userName" value="{{ user.username }}">
-                                <input type="text" class="hidden" name="userID" id="userID" value="{{ user._id }}">
-                                {% endfor %}
+                                
                             </div>
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">

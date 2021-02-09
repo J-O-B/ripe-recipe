@@ -4,7 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-import numpy as np
+import random
+import string
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
@@ -416,6 +417,7 @@ def my_profile():
     """
     user = mongo.db.users.find_one(
             {"username": session["user"]})
+
     myId = user["_id"]
 
     messages = mongo.db.messages.find()
@@ -441,7 +443,7 @@ def my_profile():
             except:
                 flash("Username and/or Password Incorrect")
                 return redirect(url_for('my_profile'))
-
+        
         # If the user is editing a ticket
 
         if request.form.get("open_ticket") == "0":
@@ -453,8 +455,8 @@ def my_profile():
             update = {
                 "query_type": request.form.get("querytype"),
                 "details": request.form.get("details"),
-                "submit_by": request.form.get("submit_by"),
-                "user_id": request.form.get("user_id"),
+                "submit_by": session["user"],
+                "user_id": myId,
                 "ticket_opened": request.form.get("ticket_opened"),
                 "reply": request.form.get("replyTicket"),
                 "open_ticket": "1",
@@ -471,8 +473,8 @@ def my_profile():
             ticket = {
                     "query_type": request.form.get("query-type"),
                     "details": request.form.get("textbox"),
-                    "submit_by": request.form.get("userName"),
-                    "user_id": request.form.get("userID"),
+                    "submit_by": session["user"],
+                    "user_id": myId,
                     "ticket_opened": now,
                     "reply": "",
                     "open_ticket": "1",
@@ -494,19 +496,21 @@ def my_profile():
 def store():
     products = mongo.db.products.find()
 
+    letters = string.ascii_lowercase
+    randomString = ''.join(random.choice(letters) for x in range(10))
+
     if request.method == "POST":
-        if request.form.get("addToCart") == "1":
-            user = session["user"]
-            update = [
-                request.form.get("id"),
-                request.form.get("name"),
-                request.form.get("price")
-            ]
-            mongo.db.users.find_one_and_update(
-                {'username': user},
-                {"$push":
-                    {'cart_items': update}})
-            flash("You have saved this item to your cart")
+        name = session["user"]
+        update = [
+            request.form.get("id"),
+            request.form.get("name"),
+            request.form.get("price"),
+        ]
+        mongo.db.users.find_one_and_update(
+            {'username': name},
+            {"$push":
+                {'cart_items': update}})
+        flash("You have saved this item to your cart")
 
     return render_template("store.html", products=products)
 
@@ -527,13 +531,16 @@ def product(id):
     product = mongo.db.products.find(
         {"_id": ObjectId(id)})
 
+    letters = string.ascii_lowercase
+    randomString = ''.join(random.choice(letters) for x in range(10))
+
     if request.method == "POST":
         if request.form.get("addToCart") == "1":
             user = session["user"]
             update = [
                 request.form.get("id"),
                 request.form.get("name"),
-                request.form.get("price")
+                request.form.get("price"),
             ]
             mongo.db.users.find_one_and_update(
                 {'username': user},
@@ -554,9 +561,10 @@ def cart():
         remove = [
                 request.form.get("id"),
                 request.form.get("name"),
-                request.form.get("price")
+                request.form.get("price"),
+
             ]
-        mongo.db.users.find_one_and_update(
+        mongo.db.users.update(
             {'username': id},
             {"$pull":
                 {'cart_items': remove}})

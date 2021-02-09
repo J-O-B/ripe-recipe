@@ -726,8 +726,14 @@ nav.nav-extended .nav-wrapper {
     max-height: 450px;
 }
 #cart-items{
+    padding-left:10px;
+    padding-right: 10px;
+    max-height: 350px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+#payDiv{
+    height:675px;
 }
 /*---------------------------------------------------------------------------------------- Product Page */
 .smallProdImg img{
