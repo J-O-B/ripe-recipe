@@ -120,7 +120,7 @@
                     <h3>Help Center</h3>
                     <h6>Open A Ticket And Let Us Know</h6>
                     <div class="row">
-                        <form method="POST" action="{{ url_for('my_profile') }}">
+                        <form action="{{ url_for('my_profile') }}">
                             <div class="input-field col s10 offset-s1">
                                 <select id="query-type" name="query-type" required>
                                     <i class="fas fa-question prefix"></i> 
@@ -141,7 +141,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <button type="submit" value="0" name="openTicket" id="openTicket" class="col s12 btn-large green lighten-2">Submit Query</button>
+                                    <button type="submit" method="POST" name="openTicket" id="openTicket" class="col s12 btn-large green lighten-2">Submit Query</button>
                                 </div>
                             </div>
                         </form>
@@ -194,9 +194,9 @@
                     {% endif %}
                 </div>
             </div>
-        <div class="row" id="openTickets">
-            <!--Output Tickets-->
-                    <div class="col s12 center-align">
+            <div class="row" id="openTickets">
+<!--Output Tickets-->
+                <div class="col s12 center-align">
                         <h3>Your Tickets</h3>
                         <p>
                             Tickets in <span class="red">Red</span> are still unresolved <br>
@@ -205,9 +205,9 @@
                         <div id="ticketWrap">
                             {% for tickets in myTickets %}
            
-                            {% if tickets.reply|length == 0 %}
+                            {% if tickets.open_ticket == 1 %}
                             <div class="row red border">
-                            {% else %}
+                            {% elif tickets.open_ticket == 0 %}
                             <div class="row green border">
                             {% endif %}
                                 <div class="col s5 center-align">
@@ -253,7 +253,7 @@
                                             <textarea type="text" name="replyTicket" id="replyTicket" rows="5">Add Message Here...</textarea>
                                             <label for="open_ticket">Open / Close Ticket</label>
                                             <select name="open_ticket" id="open_ticket" class="center-align">
-                                                <option selected value="1">Leave Ticket Open</option>
+                                                <option selected value="2">Leave Ticket Open</option>
                                                 <option value="0">Close This Ticket</option>
                                             </select>
                                             <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
@@ -271,8 +271,8 @@
                             {% endfor %}
                             </div>
                         </div>
-                    </div>
-        </div>
+                </div>
+            </div>
 {% endblock %}
 
 {% block scripts %}

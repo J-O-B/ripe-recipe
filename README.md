@@ -260,7 +260,7 @@ As a means to testing visual problems, dev tools was used to identify and fix st
 Dev tools was also used to improve features such as accessability, SEO, and performance where possible.
 
 
-### **Bugs**:
+### **Bugs & Issues**:
 
 Auto Submit Forms:
 
@@ -270,9 +270,16 @@ Auto Submit Forms:
 on clicking submit a forms submit button will be given the value of "1". This will then satisfy the IF statement in Python and submit 
 the form. 
 
+
 > Updating a record was deleting all other fields. (MongoDB)
 
 * Fix: One fix for this bug was to suppy all of the previous information back into MongoDB. 
+
+> Deleting item from cart would delete all items with matching descriptions.
+
+* Fix: Generate a random string and attach this string to each list. Therefore even adding the same product twice will 
+essentially create fields that can be differentiated between. This was chosen as a viable solution as I wanted to retain a nested list 
+style within my database.
 
 --------------------
 ## **Deployment**

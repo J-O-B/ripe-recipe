@@ -57,6 +57,7 @@ def admin():
     """
     user = mongo.db.users.find(
         {"username": session["user"]})
+
     count = mongo.db.tickets.count()
 
     Queries = mongo.db.tickets.find()
@@ -446,12 +447,12 @@ def my_profile():
 
         # If the user is editing a ticket
 
-        if request.form.get("open_ticket") == "0":
+        if request.form.get("openTicket") == "0":
             mongo.db.tickets.remove(
                 {"_id": ObjectId(request.form.get("query_id"))})
             flash("Ticket Deleted")
 
-        elif request.form.get("open_ticket") == "1":
+        elif request.form.get("openTicket") == "1":
             update = {
                 "query_type": request.form.get("querytype"),
                 "details": request.form.get("details"),
@@ -467,7 +468,7 @@ def my_profile():
             flash("Ticket Edited")
 
         # If a user is creating a new ticket
-        elif request.form.get("openTicket") == "1":
+        if request.form.get("openTicket") == "1":
             today = date.today()
             now = today.strftime("%b-%d-%Y")
             ticket = {
