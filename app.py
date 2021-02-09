@@ -443,7 +443,7 @@ def my_profile():
             except:
                 flash("Username and/or Password Incorrect")
                 return redirect(url_for('my_profile'))
-        
+
         # If the user is editing a ticket
 
         if request.form.get("open_ticket") == "0":
@@ -505,6 +505,7 @@ def store():
             request.form.get("id"),
             request.form.get("name"),
             request.form.get("price"),
+            randomString
         ]
         mongo.db.users.find_one_and_update(
             {'username': name},
@@ -541,6 +542,7 @@ def product(id):
                 request.form.get("id"),
                 request.form.get("name"),
                 request.form.get("price"),
+                randomString
             ]
             mongo.db.users.find_one_and_update(
                 {'username': user},
@@ -562,6 +564,7 @@ def cart():
                 request.form.get("id"),
                 request.form.get("name"),
                 request.form.get("price"),
+                request.form.get("rand"),
 
             ]
         mongo.db.users.update(
