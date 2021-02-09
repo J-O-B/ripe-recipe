@@ -9,107 +9,67 @@
             <hr>
         </div>
     </div>
-<!--Open Queries & Closed Queries-->
+<!--Notice-->
     <div class="row">
-        <div class="col s12">
-            <h2 class="center-align">Queries & Details:</h2>
-            <p>Open Queries In <span class="green">Green</span> | Closed Queries In <span class="red">Red</span></p>
+        <div class="col s10 offset-s1 center-align">
+            <p>Tickets in <span class="green black-text">Green</span> have been replied to.</p>
+            <p>Tickets in <span class="red black-text">Red</span> have been replied to.</p>
         </div>
-<!--For Loop-->
-
-        {% for ticket in Queries %}
-
-            {% if ticket.reply|length !=0 %}
-            <div class="row green lighten-2">
-                <!--Overview Info-->
-                <div class="col s10">
-                    <p>Ticket Type: {{ ticket.query_type }} | Ticket From: {{ ticket.submit_by }}</p>
-                </div>
-                <div class="col s2">
-                    <!--Modal Trigger-->
-                    <a class="btn modal-trigger" href="#open{{ ticket._id }}">View More</a>
-                </div>
-            </div>
-            <!-- Modal Structure -->
-                <div id="open{{ ticket._id }}" class="modal">
-                    <div class="modal-content">
-                        <h4>User Generated Ticket:</h4>
-                        <hr>
-                        <p>Type: {{ ticket.query_type }}</p>
-                        <p>From: {{ ticket.submit_by }}</p>
-                        <p>Details: {{ ticket.details }}</p>
-                        <p>Opened On: {{ ticket.ticket_opened }}</p>
-                        <p>Latest Comment: {{ ticket.reply }}</p>
-                        
-                        <form method="POST" class="replyForm">
-                            <input type="text" name="query_id" id="query_id" class="hidden" value="{{ ticket._id }}">
-                            <input type="text" name="query-type" id="query-type" class="hidden" value="{{ ticket.query_type }}">
-                            <input type="text" name="details" id="details" class="hidden" value="{{ ticket.details }}">
-                            <input type="text" name="submit_by" id="submit_by" class="hidden" value="{{ ticket.submit_by }}">
-                            <input type="text" name="user_id" id="user_id" class="hidden" value="{{ ticket.user_id }}">
-                            <input type="text" name="ticket_opened" id="ticket_opened" class="hidden" value="{{ ticket.ticket_opened }}">
-
-                            <input type="text" class="col s12 red" rows="5" name="replyTicket" id="replyTicket" placeholder="Type Reply Here...">
-                            <label for="reply">Reply To Ticket</label>
-                            <label for="open_ticket">Open / Close Ticket</label>
-                            <select name="open_ticket" id="open_ticket" class="center-align">
-                                <option selected value="1">Open</option>
-                                <option value="0">Close Ticket</option>
-                            </select>
-                            <input type="text" name="closed_by" id="closed_by" class="hidden" value="{{ ticket.closed_by }}">
-                            <div class="modal-footer">
-                                <input type="submit" value="Reply" class="btn-large green">
-                                <a href="#!" class="modal-close btn-flat">Close</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            {% elif ticket.open_ticket == "0" %}
-                <!--Overview Info-->
-            <div class="col s10 red lighten-2">
-                <h1>{{ X }}</h1>
-                <p>Ticket Type: {{ ticket.query_type }} | Ticket From: {{ ticket.submit_by }}</p>
-            </div>
-            <div class="col s2 red lighten-2">
-                <!--Modal Trigger-->
-                <a class="btn modal-trigger" href="#closed{{ X }}">View More</a>
-            </div>
-            <!-- Modal Structure -->
-                <div id="closed{{ X }}" class="modal">
-                    <div class="modal-content">
-                        <h4>User Generated Ticket:</h4>
-                        <hr>
-                        <p>Type: {{ ticket.query_type }}</p>
-                        <p>From: {{ ticket.submit_by }}</p>
-                        <p>Details: {{ ticket.details }}</p>
-                        <p>Opened On: {{ ticket.ticket_opened }}</p>
-                        <p>Reply: {{ ticket.reply }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close btn-flat">Close</a>
-                    </div>
-                </div>
-            {% endif %}
-    {% endfor %}
-
     </div>
-    {% else %} 
-    <div class="row">
-        <div class="col s12 center-align">
-            <h2><em>Whoops....</em></h2>
-            <p>It seems like you don't have the credentials to access this page</p>
-            <div class="col s8 offset-s2 center-align">
-                <p>Go Back To View:</p> 
-                <div class="row">
-                    <ul class="border col s6 offset-s3">
-                        <li><a href="{{url_for('recipes')}}" class="black-text">Browse Recipes</a></li>
-                        <li><a href="{{url_for('my_profile')}}" class="black-text">Your Profile</a></li>
-                        <li><a href="{{url_for('store')}}" class="black-text">The Ripe Store</a></li>
-                    </ul>
+<!--Tickets-->
+    {% for tickets in Queries %}
+        <!--Open Tickets-->
+        {% if tickets.reply|length == 0 %}
+        <div class="row openTickets">
+            <div class="col s6 m4 red">
+                <div class="row center-align">
+                    <h3>{{tickets.query_type|capitalize}} Issue</h3>
+                    <hr>
+                    <p>From: {{tickets.submit_by}}<br>On: {{tickets.ticket_opened}}</p>
+                </div>
+                <div class="row center-align">
+                    <a href="#{{tickets._id}}" class="btn modal-trigger col s10 offset-s1 m8 offset-m2">View</a>
+                    <!--Modal View-->
+                    <div id="{{tickets._id}}" class="modal">
+                        <div class="modal-content">
+                            <h4>{{tickets.query_type|capitalize}} Issue</h4>
+                            <p>Ticket Opened On {{tickets.ticket_opened}} By {{tickets.submit_by|capitalize}}</p>
+                            <p>Description: {{ tickets.description }}</p>
+                            <p>Reply: {{ tickets.reply }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close red btn-flat">Close</a>
+                            <a href="#edit{{tickets._id}}" class="modal-close modal-trigger green btn-flat">Edit</a>
+                        </div>
+                    </div>
+                    <!--Modal Edit-->
+                    <div id="edit{{tickets._id}}" class="modal">
+                        <div class="modal-content">
+                            <h4>Reply To Ticket:</h4>
+                            <p>Ticket Opened On {{tickets.ticket_opened}} By {{tickets.submit_by|capitalize}}</p>
+                            <p>Description: {{ tickets.description }}</p>
+                            <form method="POST">
+                                    <i class="fas fa-reply prefix"></i>
+                                    <input type="text" id="reply" name="reply" class="red validate" placeholder="abcd">
+                                    <label for="reply">First Name</label>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close red btn-flat">Close</a>
+                            <a href="#!" class="modal-close modal-trigger green btn-flat">Edit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>  
+
+        <!--Closed Tickets-->
+        {% else %}
+
+
+        {% endif %}
+    {% endfor %}
+<!--End Tickets-->
     {% endif %}
     {% endfor %}      
 

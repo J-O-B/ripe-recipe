@@ -205,9 +205,9 @@
                         <div id="ticketWrap">
                             {% for tickets in myTickets %}
            
-                            {% if tickets.open_ticket == 1 %}
+                           {% if tickets.reply|length == 0 %}
                             <div class="row red border">
-                            {% elif tickets.open_ticket == 0 %}
+                            {% else %}
                             <div class="row green border">
                             {% endif %}
                                 <div class="col s5 center-align">
@@ -269,10 +269,9 @@
                                 <hr>
                             </div>
                             {% endfor %}
-                            </div>
                         </div>
+                    </div>
                 </div>
-            </div>
 {% endblock %}
 
 {% block scripts %}

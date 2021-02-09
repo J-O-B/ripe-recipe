@@ -919,3 +919,7 @@ footer a{
 #previewProfPhoto{
     max-width:100%;
 }
+/*-------------------------------------------------------------------------Admin----*/
+.wrapEdit{
+    min-height:400px;
+}
