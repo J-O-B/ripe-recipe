@@ -61,28 +61,17 @@ def admin():
     count = mongo.db.tickets.count()
 
     Queries = mongo.db.tickets.find()
-
     """
     Update Ticket
     """
     if request.method == "POST":
-        if request.form.get("ticket_opened") == "0":
-            closedBy = "Admin"
-        else:
-            closedBy = ""
-
         updated = {
-                "query_type": request.form.get("query-type"),
-                "details": request.form.get("details"),
-                "submit_by": request.form.get("submit_by"),
-                "user_id": request.form.get("user_id"),
-                "ticket_opened": request.form.get("ticket_opened"),
-                "reply": request.form.get("replyTicket"),
-                "open_ticket": request.form.get("open_ticket"),
-                "closed_by": closedBy
+            request.form.get("replyTicket"),
         }
-        mongo.db.tickets.update(
-            {"_id": ObjectId(request.form.get("query_id"))}, updated)
+        mongo.db.tickets.find_one_and_update(
+            {"_id": ObjectId(request.form.get("query_id"))},
+            {"$push":
+                {"reply": updated}})
         flash("Ticket Updated")
         return redirect(url_for("admin"))
 
@@ -430,9 +419,26 @@ def my_profile():
             {"created_by": myId})
 
     myTickets = mongo.db.tickets.find(
-            {"user_id": str(myId)})
+            {"user_id": myId})
 
     if request.method == "POST":
+        # If a user is creating a new ticket
+        if request.form.get("newTicket") == "1":
+            today = date.today()
+            now = today.strftime("%b-%d-%Y")
+            ticket = {
+                    "query_type": request.form.get("query-type"),
+                    "details": request.form.get("detailsEnter"),
+                    "submit_by": session["user"],
+                    "user_id": myId,
+                    "ticket_opened": now,
+                    "reply": [],
+                    "open_ticket": "1",
+                    "closed_by": ""
+                }
+            mongo.db.tickets.insert(ticket)
+            flash("Ticket Open: Monitor The Ticketing Section For Response")
+
         if request.form.get("go") == "1":
             try:
                 # Check for valid password for that user
@@ -454,35 +460,13 @@ def my_profile():
 
         elif request.form.get("openTicket") == "1":
             update = {
-                "query_type": request.form.get("querytype"),
-                "details": request.form.get("details"),
-                "submit_by": session["user"],
-                "user_id": myId,
-                "ticket_opened": request.form.get("ticket_opened"),
                 "reply": request.form.get("replyTicket"),
-                "open_ticket": "1",
-                "closed_by": ""
             }
-            mongo.db.tickets.update(
-                {"_id": ObjectId(request.form.get("query_id"))}, update)
+            mongo.db.tickets.find_one_and_update(
+                {"_id": ObjectId(request.form.get("query_id"))},
+                {"$push":
+                    {"reply": update}})
             flash("Ticket Edited")
-
-        # If a user is creating a new ticket
-        if request.form.get("openTicket") == "1":
-            today = date.today()
-            now = today.strftime("%b-%d-%Y")
-            ticket = {
-                    "query_type": request.form.get("query-type"),
-                    "details": request.form.get("textbox"),
-                    "submit_by": session["user"],
-                    "user_id": myId,
-                    "ticket_opened": now,
-                    "reply": "",
-                    "open_ticket": "1",
-                    "closed_by": ""
-                }
-            mongo.db.tickets.insert(ticket)
-            flash("Ticket Open: Monitor The Ticketing Section For Response")
 
         return redirect(url_for('my_profile'))
 

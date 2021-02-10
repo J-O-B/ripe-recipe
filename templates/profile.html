@@ -120,7 +120,7 @@
                     <h3>Help Center</h3>
                     <h6>Open A Ticket And Let Us Know</h6>
                     <div class="row">
-                        <form action="{{ url_for('my_profile') }}">
+                        <form method="POST" action="{{ url_for('my_profile') }}">
                             <div class="input-field col s10 offset-s1">
                                 <select id="query-type" name="query-type" required>
                                     <i class="fas fa-question prefix"></i> 
@@ -134,14 +134,13 @@
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
                                     <i class="fas fa-info prefix left"></i>
-                                    <textarea id="textbox" name="textbox" class="materialize-textarea black-text" required></textarea>
-                                    <label for="textbox" class="black-text">Enter Details Of Issue Here...</label>
+                                    <textarea id="detailsEnter" name="detailsEnter" class="materialize-textarea black-text" required></textarea>
+                                    <label for="detailsEnter" class="black-text">Enter Details Of Issue Here...</label>
                                 </div>
-                                
                             </div>
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <button type="submit" method="POST" name="openTicket" id="openTicket" class="col s12 btn-large green lighten-2">Submit Query</button>
+                                    <input type="submit" method="POST" name="newTicket" id="newTicket" class="col s12 btn-large green lighten-2" value="Submit Query">
                                 </div>
                             </div>
                         </form>
@@ -195,7 +194,7 @@
                 </div>
             </div>
             <div class="row" id="openTickets">
-<!--Output Tickets-->
+            <!--Output Tickets-->
                 <div class="col s12 center-align">
                         <h3>Your Tickets</h3>
                         <p>

@@ -103,7 +103,7 @@ $('#addToCart').click(function(){
 })
 
 // Open A Ticket From Profile:
-$('#openTicket').click(function(){
+$('#newTicket').click(function(){
     $(this).val(1);
 });
 
