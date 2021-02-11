@@ -11,7 +11,7 @@
                     <div class="col s12 m6 offset-m3 haze border soft-corners">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
-                <div class="col s10 offset-s1 m4 grey lighten-2 recipe-image">
+                <div class="col s10 offset-s1 l4 m7 grey lighten-2 recipe-image">
                     <!--Recipe Image-->
                     <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
                         <img class="soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
@@ -25,20 +25,22 @@
                     <a href="#!" class="modal-close btn-flat">Close</a>
                     </div>
                 </div>
-                <div class="col s10 offset-s1 m8 margin-bottom">
+                <div class="col s10 offset-s1 l8 m5 margin-bottom">
                     <!--Left Block--> 
-                    <div class="col m6 s12 left-block">
+                    <div class="col l6 s12 left-block">
                         <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
                         <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
                         <p><strong>Prep Time: </strong><span class="center-align">{{ recipes.prep_time }} min</span></p>
                         <p><strong>Cooking Time: </strong><span class="center-align">{{ recipes.cooking_time }} min</span></p>
                     </div>
                     <!--Right Block-->
-                    <div class="col m6 s12 right-block">
+                    <div class="col l6 s12 right-block">
                         <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
                         <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
                         {% if session["user"] %}
-                        <a class="btn modal-trigger" href="#save-recipe">Save This Recipe</a>
+                        <a class="btn modal-trigger" href="#save-recipe">Save Recipe <i class="far fa-save"></i></a>
+                        {% else %}
+                        <p><em>Please Login To Save Recipe</em></p>
                         {% endif %}
                     </div>
                     <div id="save-recipe" class="modal">
@@ -151,7 +153,13 @@
                         {% for item in list2 %}
                             <!--Stop an empty last list item-->
                             {% if item|length != 0 %}
-                                <li>{{ item|capitalize }}.</li>
+                                <div class="row">
+                                    <li class="col s12 l8">{{ item|capitalize }}.</li>
+                                    <label class="col s12 l4 center-align">
+                                        <input type="checkbox" class="filled-in center-align" />
+                                        <span class="black-text">Completed?<br><br></span>
+                                    </label>
+                                </div>
                             {% endif %}
                         {% endfor %}     
                         </ol>     

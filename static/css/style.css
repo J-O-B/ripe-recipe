@@ -448,6 +448,14 @@ nav.nav-extended .nav-wrapper {
 #ticketWrap{
     max-height: 400px;
 }
+#userRecipes{
+    height:250px;
+    overflow-y: scroll;
+}
+#userFavorites{
+    height:250px;
+    overflow-y: scroll;
+}
 /*---------------------------------------------------------------------------------------- Edit User */
 #previewProfPic img{
     height: 200px;

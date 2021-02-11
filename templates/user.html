@@ -14,15 +14,16 @@
                 </div>
                 <div class="col s12 m7 offset-m1 haze border prof-top-card">
                     <div class="col s10">
-                        <h2>{{ x.username|capitalize }}</h2>
+                        <h2 class="center-align">{{ x.username|capitalize }}</h2>
                         <p>{{ x.bio }}</p>
-                        <p></p>
+                        <a href="#messageBoard" class="btn">Message {{ x.username|capitalize }}</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col s12 m5 offset-m1 haze border center-align">
                     <h3>{{ x.username|capitalize }}'s Recipes:</h3>
+                    <div class="row" id="userRecipes">
                         {% for x in recipes %}
                             {% if x.recipe_name != "" %}
                                 <ul>
@@ -46,19 +47,17 @@
                                 <h5>This User Does Not Yet Have Any Recipes Available.</h5>
                             {% endif %}
                         {% endfor %}
+                    </div>
                 </div>
-                <div class="col spacer"></div>
-                <div class="col s12 m5 offset-m1 haze border">
+                <div class="col s12 m5 offset-m1 haze border center-align">
                     <h3>{{ x.username|capitalize }}'s Favorites:</h3>
-                    <div class="row">                    
+                    <div class="row" id="userFavorites">                    
                         {% for list in x.fav_recipes %}
-                        <div class="col s7">
-                            <p>{{ list[0] }}</p>
-                        </div>
-                        <div class="col s5">
-                            {% set recipeID = list[1] %}
-                            <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View Recipe</a>
-                        </div>
+                        <ul>
+                            <li>
+                                <a class="btn" href="{{ url_for('selected', id=list[1]) }}">{{ list[0] }}</a>
+                            </li>
+                        </ul>
                         {% endfor %}
                     </div>
                         <div class="col s12">
@@ -70,7 +69,7 @@
             </div>
 
             <!--Social Wall-->
-            <div class="row">
+            <div class="row" id="messageBoard">
                 <div class="col s10 offset-s1 haze border center-align">
                     <h3>Leave a message on this users chopping board:</h3>
                     {% if session["user"] %}
