@@ -4,7 +4,6 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from credentials import S3_KEY, S3_SECRET, S3_BUCKET
 import random
 import string
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -19,30 +18,8 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-s3 = boto3.client(
-   "s3",
-   aws_access_key_id=S3_KEY,
-   aws_secret_access_key=S3_SECRET
-)
 
-def upload_file_to_s3(file, bucket_name, acl="public-read"):
-
-    try:
-
-        s3.upload_fileobj(
-            file,
-            bucket_name,
-            file.filename,
-            ExtraArgs={
-                "ACL": acl,
-                "ContentType": file.content_type
-            }
-        )
-
-    except Exception as e:
-        # This is a catch all exception, edit this part to fit your needs.
-        print("Something Happened: ", e)
-        return e
+from helpers import *
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
@@ -182,22 +159,53 @@ def signup():
         if existing_user:
             flash("Username Already Exists")
             return redirect(url_for("signup"))
+        else:
+            user_file = request.form.get("prof_pic")
+            if "user_file" not in request.files:
+                return "No user_file key in request.files"
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "email": request.form.get("email"),
-            "fav_food": request.form.get("fav_food").lower(),
-            "prof_pic": request.form.get("prof_pic"),
-            "bio": request.form.get("bio").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "fav_recipes": [],
-            "cart_items": [],
-        }
-        mongo.db.users.insert_one(register)
+            # B
+            file = request.files["user_file"]
 
-        # Put the new user into "session" cookie
-        session['user'] = request.form.get("username")
-        flash("Congratulations, You Are Now Part Of The Ripe Family!")
+            """
+                These attributes are also available
+
+                file.filename               # The actual name of the file
+                file.content_type
+                file.content_length
+                file.mimetype
+
+            """
+
+            # C.
+            if file.filename == "":
+                return "Please select a file"
+
+            # D.
+            if file and allowed_file(file.filename):
+                file.filename = secure_filename(file.filename)
+                output = upload_file_to_s3(file, app.config["S3_BUCKET"])
+                return str(output)
+
+            else:
+                return
+
+            if output:
+                register = {
+                    "username": request.form.get("username").lower(),
+                    "email": request.form.get("email"),
+                    "fav_food": request.form.get("fav_food").lower(),
+                    "prof_pic": output,
+                    "bio": request.form.get("bio").lower(),
+                    "password": generate_password_hash(request.form.get("password")),
+                    "fav_recipes": [],
+                    "cart_items": [],
+                }
+                mongo.db.users.insert_one(register)
+
+                # Put the new user into "session" cookie
+                session['user'] = request.form.get("username")
+                flash("Congratulations, You Are Now Part Of The Ripe Family!")
     return render_template("signup.html")
 
 
