@@ -4,13 +4,13 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from credentials import S3_KEY, S3_SECRET, S3_BUCKET
 import random
 import string
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
     import env
-
 
 app = Flask(__name__)
 
@@ -19,7 +19,30 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+s3 = boto3.client(
+   "s3",
+   aws_access_key_id=S3_KEY,
+   aws_secret_access_key=S3_SECRET
+)
 
+def upload_file_to_s3(file, bucket_name, acl="public-read"):
+
+    try:
+
+        s3.upload_fileobj(
+            file,
+            bucket_name,
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type
+            }
+        )
+
+    except Exception as e:
+        # This is a catch all exception, edit this part to fit your needs.
+        print("Something Happened: ", e)
+        return e
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
@@ -228,6 +251,7 @@ def newrecipe():
             {"username": session["user"]})
 
     if request.method == "POST":
+
         newrecipe = {
             "category_name": request.form.get("category"),
             "recipe_name": request.form.get("recipe_name").lower(),
