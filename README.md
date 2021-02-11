@@ -6,6 +6,10 @@
 Welcome to Ripe Recipe, a recipes database with some social media crossovers. This project is packed full of features,
 is fully responsive, and features both a recipes database, as well as a store for users to use.
 
+As I always want to add new challenges for each project. This project has a scope that would be extremely difficult to 
+create in "version 1" of this application. So the challenge with this project was to create a minimum viable product which 
+prioritizes the basic functionality and will encompass as many features as possible, within a given schedule.
+
 Further specific information on this project can be found below:
 
 ### Table of contents:
@@ -222,6 +226,8 @@ An instant messenger feature was added but removed.
 ### <ins>**_Future Features:_**</ins>
 
 A helper bot to help customers with product orders and store FAQ.
+
+A custom shopping list based on saved recipes.
 
 Automated email marketing. 
 

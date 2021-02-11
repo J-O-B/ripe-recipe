@@ -8,7 +8,7 @@
         <div class="wrap top-recipe-card">
             <!--Top Section-->
             <div class="row top-recipe-inner">
-                    <div class="col s12 m6 offset-m3 haze border soft-corners">
+                    <div class="col s12 m6 offset-m3 haze border soft-corners" id="selectedTitle">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
                 <div class="col s10 offset-s1 l4 m7 grey lighten-2 recipe-image">
@@ -28,10 +28,25 @@
                 <div class="col s10 offset-s1 l8 m5 margin-bottom">
                     <!--Left Block--> 
                     <div class="col l6 s12 left-block">
-                        <p><strong>Category: </strong> <span class="center-align">{{ recipes.category_name|capitalize }}</span></p>
-                        <p><strong>Name: </strong> <span class="center-align">{{ recipes.recipe_name|capitalize }}</span></p>
-                        <p><strong>Prep Time: </strong><span class="center-align">{{ recipes.prep_time }} min</span></p>
-                        <p><strong>Cooking Time: </strong><span class="center-align">{{ recipes.cooking_time }} min</span></p>
+                        <div class="col s6 center-align" id="detailsRecipe">
+                            <p class="right-align"><strong>Category:</strong></p>
+                            <hr>
+                            <p class="right-align"><strong>Name:</strong></p>
+                            <hr>
+                            <p class="right-align"><strong>Prep Time:</strong></p>
+                            <hr>
+                            <p class="right-align"><strong>Cooking Time:</strong></p>
+                        </div>
+                        <div class="col s6">
+                            <p><em>{{ recipes.category_name|capitalize }}</em></p>
+                            <hr>
+                            <p><em>{{ recipes.recipe_name|capitalize }}</em></p>
+                            <hr>
+                            <p><em>{{ recipes.prep_time }} min</em></p>
+                            <hr>
+                            <p><em>{{ recipes.cooking_time }} min</em></p>
+                        </div>
+                        
                     </div>
                     <!--Right Block-->
                     <div class="col l6 s12 right-block">
@@ -131,38 +146,75 @@
 
             <!--Bottom Section-->
             <div class="row haze">
-                <div class="col s12 m5 offset-m1 center-align">
+                <div class="col s12 m6 center-align border">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
-                    {% set list1 = recipes.ingredients.split('.') %}
-                        <ul>
-                        {% for item in list1 %}
-                            {% if item|length != 0 %}
-                                <li>{{ item|capitalize }}.</li>
-                            {% endif %}
-                        {% endfor %} 
-                        </ul>
-                </div>
-                <div class="col s12 m5">
+                    <div class="row" id="ingredientScroll">
+                        {% set list1 = recipes.ingredients.split('.') %}
+                            <ul>
+                                {% for item in list1 %}
+                                    {% if item|length != 0 %}
+                                    <div class="row spaceAround">
+                                        <div class="col s4 left">
+                                            <label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span class="black-text">Add To Shopping List</span>
+                                            </label>
+                                        </div>
+                                        <div class="col s8 right">
+                                            <li>{{ item|capitalize }}.</li> 
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {% endif %}
+                                {% endfor %} 
+                            </ul>
+                            <div class="row center-align">
+                                <a href="#shopList" class="btn modal-trigger">Add Items To Shopping List</a>
+                                <div id="shopList" class="modal">
+                                    <div class="modal-content light-blue">
+                                        <h4>Shopping List:</h4>
+                                        <hr class="custom-short-div">
+                                        <p>This feature is currently unavailable. We endevour to have this feature available soon.</p>
+                                        <p>Thank you for your understanding</p>
+                                    </div>
+                                    <div class="modal-footer light-blue">
+                                        <a href="#!" class="modal-close green lighten-2 btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+                <div class="col s12 m6 center-align border">
                     <h3 class="center-align">Instructions:</h3>
                     <hr class="custom-short-div">
-                    <!--Convert instructions string into a list-->
-                    {% set list2 = recipes.instructions.split('.') %}
-                        <ol>
-                        <!--Run through new list of instructions-->
-                        {% for item in list2 %}
-                            <!--Stop an empty last list item-->
-                            {% if item|length != 0 %}
-                                <div class="row">
-                                    <li class="col s12 l8">{{ item|capitalize }}.</li>
-                                    <label class="col s12 l4 center-align">
-                                        <input type="checkbox" class="filled-in center-align" />
-                                        <span class="black-text">Completed?<br><br></span>
-                                    </label>
-                                </div>
-                            {% endif %}
-                        {% endfor %}     
-                        </ol>     
+                    <div class="row" id="instructionScroll">
+                        <!--Convert instructions string into a list-->
+                        {% set list2 = recipes.instructions.split('.') %}
+                            <ol>
+                            <!--Run through new list of instructions-->
+                            {% for item in list2 %}
+                                <!--Stop an empty last list item-->
+                                {% if item|length != 0 %}
+                                    <div class="row">
+                                        <div class="col s12 l8">
+                                            <li>{{ item|capitalize }}.</li>
+                                        </div>
+                                        <div class="col s12 l4 center-align">
+                                            <label>
+                                                <input type="checkbox" class="filled-in center-align" />
+                                                <span class="black-text">Completed?<br><br></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}     
+                            </ol>     
+                    </div>
+                        
                 </div>
             </div>
         </div>
