@@ -3,10 +3,10 @@
 
             <!--First Row-->
             <div class="row">
-                <div class="col s12 m3 offset-m1 haze border prof-top-card">
+                <div class="col s12 m3 offset-m1 haze border prof-top-card" id="profImg">
                     <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
                 </div>
-                <div class="col s12 m7 offset-m1 haze border prof-top-card">
+                <div class="col s12 m7 offset-m1 haze border prof-top-card soft-corners">
                             <a href="#editProfile" class="btn modal-trigger center-align col s4 offset-s1 green accent-2 black-text">Edit Profile</a>
                             <!--modal here-->
                             <div id="editProfile" class="modal">
@@ -64,7 +64,7 @@
 
             <!--Second Row-->
             <div class="row">
-                <div class="col s12 m5 offset-m1 haze border" id="myRecipes">
+                <div class="col s12 m5 haze border soft-corners" id="myRecipes">
                     <h3 class="center-align">My Recipes:</h3>
                         <div class="col s8">
                             <p>Name:</p>
@@ -90,7 +90,7 @@
                         </div>
                 </div>
 <!--Saved Recipe Section-->
-                <div class="col s12 m5 offset-m1 haze border" id="saveRecipes">
+                <div class="col s12 m6 offset-m1 haze border soft-corners" id="saveRecipes">
                     <h3 class="center-align">Saved Recipes:</h3>
                         <div class="col s12" id="savedRecipes">
                             <div class="col s8">
@@ -116,7 +116,7 @@
             <!--Admin Contact / Ticketing System-->
             <div class="row" id="thirdRowProfile">
                 <!--Input Ticket-->
-                <div class="col s12 m5 offset-m1 haze border center-align" id="myTickets">
+                <div class="col s12 m5 haze border center-align soft-corners" id="myTickets">
                     <h3>Help Center</h3>
                     <h6>Open A Ticket And Let Us Know</h6>
                     <div class="row">
@@ -147,7 +147,7 @@
                     </div> 
                 </div>
 <!--User Messages Section-->
-                <div class="col s12 m5 offset-m1 haze border" id="myMessages">
+                <div class="col s12 m6 offset-m1 haze border soft-corners" id="myMessages">
                     <h3 class="center-align">
                         Messages For You:
                     </h3>

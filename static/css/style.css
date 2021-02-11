@@ -411,6 +411,18 @@ nav.nav-extended .nav-wrapper {
 .prof-top-card{
     height:300px;
 }
+#profImg{
+    position: relative;
+    height:300;
+    width:300;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#profImg img{
+    position: absolute;
+    bottom:-5;
+}
+
 #Recipes,
 #savedRecipes{
     max-width: 100%;
@@ -438,13 +450,13 @@ nav.nav-extended .nav-wrapper {
     overflow: hidden;
 }
 #thirdRowProfile{
-    overflow: hidden;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 #myTickets,
 #myMessages{
     height:600px;
+    max-width: 99%;
 }
 #openTickets{
     max-height: 400px;
