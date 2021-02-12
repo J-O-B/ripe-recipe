@@ -39,13 +39,11 @@ $(document).ready(function(){
     $('select').formSelect();
 
     // Carousel Functionality
-    $('.carousel').carousel();
-  
-    // Full Width Slider 
-    $('.carousel-slider').carousel({
-        fullWidth: true,
+    $('.carousel').carousel({        
+        fullWidth: false,
         indicators: true,
-    });
+        dragged: true,
+        duration: 100});
 
     // Messenger Box Visibility
     $('#messenger').hide();
@@ -338,3 +336,64 @@ function sendMail(contactForm) {
     );
     return false;  // To block form loading a new page
 }
+
+function aboutPage(){
+    function hide(){
+        // Initial Image
+        $('#about_image').hide(500);
+
+        //Values
+        $('#aboutData').hide(500);
+        $('#aboutDataH2').hide(1000);
+        $('#aboutDataDiv').hide(1000);
+        $('#aboutDataP').hide(1000);
+
+        //Promise
+        $('#promise').hide(500);
+        $('#promiseH2').hide(1000);
+        $('#promiseDiv').hide(1000);
+        $('#promiseP').hide(1000);
+
+        //Database
+        $('#database').hide(500);
+        $('#databaseH2').hide(1000);
+        $('#databaseDiv').hide(1000);
+        $('#databaseP').hide(1000);
+
+        //Store
+        $('#seeAboutStore').hide(500);
+        $('#seeAboutStoreH2').hide(1000);
+        $('#seeAboutStoreDiv').hide(1000);
+        $('#seeAboutStoreP').hide(1000);
+
+    }
+    $('#values').click(function(){
+        hide();
+        $('#aboutData').removeClass("hidden").show(2000);
+        $('#aboutDataH2').show(1500);
+        $('#aboutDataDiv').fadeIn(1700);
+        $('#aboutDataP').show(2000);
+    })
+    $('#ripePromise').click(function(){
+        hide();
+        $('#promise').removeClass("hidden").show(2000);
+        $('#promiseH2').show(1500);
+        $('#promiseDiv').fadeIn(1700);
+        $('#promiseP').show(2000);
+    })
+    $('#ripeDatabase').click(function(){
+        hide();
+        $('#database').removeClass("hidden").show(2000);
+        $('#databaseH2').show(1500);
+        $('#databaseDiv').fadeIn(1700);
+        $('#databaseP').show(2000);
+    })
+    $('#aboutRipeStore').click(function(){
+        hide();
+        $('#seeAboutStore').removeClass("hidden").show(2000);
+        $('#seeAboutStoreH2').show(2000);
+        $('#seeAboutStoreDiv').fadeIn(1700);
+        $('#seeAboutStoreP').show(2000);
+    })
+}
+aboutPage();

@@ -232,7 +232,7 @@ img{
     font-size: 300%;
     font-style: italic;
 }
-.welcome-image{
+.homeCarousel{
     width:100%;
     height:100%;
     overflow: hidden;
@@ -240,23 +240,6 @@ img{
 .welcome-image img{
     max-height:500px;
     max-width: 50vw;
-}
-.logo-home{
-    position: absolute;
-    margin:0;
-    bottom:0;
-    right:0;
-    z-index: 1;
-    width:300px;
-    height:auto;
-    background: radial-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0) 70%);
-    border-radius: 30%;
-    overflow: hidden;
-}
-@media screen and (max-width:705px){
-    .logo-home{
-        display: none;
-    }
 }
 .view-more-info{
     position: relative;
@@ -323,6 +306,26 @@ img{
 }
 .login-modal{
     display:block;
+}
+#aboutData,
+#promise,
+#database,
+#seeAboutStore{
+    border-radius: 25%;
+    background: radial-gradient(rgba(0,0,0,1) 60%, var(--third));
+    color:var(--first);
+    margin-top: 15%;
+    margin-bottom: 15%;
+    padding-top:25px;
+    padding-bottom: 25px;
+    overflow: hidden;
+}
+#aboutData p,
+#promise p,
+#database p,
+#seeAboutStore p{
+    width: 70%;
+    margin-left:15%;
 }
 /*-----------------------------------------------------------------Navbar */
 
@@ -800,21 +803,6 @@ nav.nav-extended .nav-wrapper {
     overflow: hidden;
 }
 
-/*---------------------------------------------------------------------------------------- About Page */
-
-.about-card{
-    height:300px;
-}
-
-.car-holder{
-    height:auto;
-}
-
-.about-video video{
-    width:90%;
-    border-radius: 5%;
-    margin:20px;
-}
 /*---------------------------------------------------------------------------------------- Footer */
 footer{
     margin:0;

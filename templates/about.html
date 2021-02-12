@@ -9,28 +9,63 @@
                         <h1>About Ripe Recipes</h1>
                         <h3>The Culinary Social Platform</h3>
                         <div class="row">
-                            <button class="btn col s8 offset-s2 center-align">
+                            <button class="btn col s8 offset-s2 center-align" id="values">
                                 Our Values
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn col s8 offset-s2 center-align">
+                            <button class="btn col s8 offset-s2 center-align" id="ripePromise">
                                 The Ripe Promise
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn col s8 offset-s2 center-align">
+                            <button class="btn col s8 offset-s2 center-align" id="ripeDatabase">
                                 Our Database
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn col s8 offset-s2 center-align">
+                            <button class="btn col s8 offset-s2 center-align" id="aboutRipeStore">
                                 The Ripe Store
                             </button>
                         </div>
                     </div>
                     <div class="col s12 l6 welcome-image center-align">
-                        <img src="{{ url_for('static', filename='img/front.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/front.png') }}" id="about_image" alt="About Image">
+                        <div class="col s10 offset-s1 hidden border" id="aboutData">
+                            <h2 id="aboutDataH2">Our Values</h2>
+                            <hr id="aboutDataDiv" class="custom-short-div">
+                            <p id="aboutDataP">
+                                At Ripe we value ALL visitors. We provide users with a free to use database of recipes and provide 
+                                discounted cooking products to our members. To unlock the full potential of Ripe, please sign up to 
+                                our service and recieve a members only discount at the Ripe Store!
+                            </p>
+                        </div>
+                        <div class="col s10 offset-s1 hidden border" id="promise">
+                            <h2 id="promiseH2">The Ripe Promise</h2>
+                            <hr id="promiseDiv" class="custom-short-div">
+                            <p id="promiseP">
+                                The Ripe promise is easy. We will continue to offer a full recipe database for our users, free of charge.
+                                To maintain such a service, we call upon our users to participate in Ripe, join our website, and help 
+                                grow the Ripe database!
+                            </p>
+                        </div>
+                        <div class="col s10 offset-s1 hidden border" id="database">
+                            <h2 id="databaseH2">The Ripe Database</h2>
+                            <hr id="databaseDiv" class="custom-short-div">
+                            <p id="databaseP">
+                                Our database is full of user generated recipes from around the world. We encourage all users to sign up to 
+                                our website and participate in the Ripe movement. We aim to grow our database to share global recipes from 
+                                all cultures, and tastes with other users. 
+                            </p>
+                        </div>
+                        <div class="col s10 offset-s1 hidden border" id="seeAboutStore">
+                            <h2 id="seeAboutStoreH2">The Ripe Store</h2>
+                            <hr id="seeAboutStoreDiv" class="custom-short-div">
+                            <p id="seeAboutStoreP">
+                                The Ripe Store is an addition to our website. Our store offers culinary products at discounted prices to all 
+                                Ripe members. Join Ripe today for FREE and get 10% off on ALL products in the Ripe Store.
+                            </p>
+                        </div>
                     </div>
                 </div>
         </div>

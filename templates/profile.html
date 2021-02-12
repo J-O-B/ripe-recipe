@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block main_content %}
 
+{% if user == "" %}
+            <div class="row">
+                <div class="col s10 offset-s1 center-align">
+                    <h2>It appears you are not logged in.</h2>
+                    <h3><a href="{{url_for('login')}}" class="black-text">Login To Ripe</a></h3>
+                </div>
+            </div>
+{% else %}
+
             <!--First Row-->
             <div class="row">
                 <div class="col s12 m3 offset-m1 haze border prof-top-card" id="profImg">
@@ -276,7 +285,9 @@
                         </div>
                     </div>
                 </div>
+{% endif %}
 {% endblock %}
+
 
 {% block scripts %}
     <!--Pagination Script-->

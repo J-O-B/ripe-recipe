@@ -414,10 +414,13 @@ def my_profile():
     """
     Load In Databases
     """
-    user = mongo.db.users.find_one(
-            {"username": session["user"]})
-
-    myId = user["_id"]
+    try:
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+        myId = user["_id"]
+    except:
+        user = ""
+        myId = ""
 
     messages = mongo.db.messages.find()
 
