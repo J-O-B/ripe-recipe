@@ -55,7 +55,7 @@
                         {% if session["user"] %}
                         <a class="btn modal-trigger" href="#save-recipe">Save Recipe <i class="far fa-save"></i></a>
                         {% else %}
-                        <p><em>Please Login To Save Recipe</em></p>
+                        <p class="center-align"><em>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Save Recipe</em></p>
                         {% endif %}
                     </div>
                     <div id="save-recipe" class="modal">
@@ -152,12 +152,13 @@
                     <div class="row" id="ingredientScroll">
                         {% set list1 = recipes.ingredients.split('.') %}
                             <ul>
+                                <form>
                                 {% for item in list1 %}
                                     {% if item|length != 0 %}
                                     <div class="row spaceAround">
                                         <div class="col s4 left">
                                             <label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in shopListCheck off" value="{{ item|capitalize }}"/>
                                                 <span class="black-text">Add To Shopping List</span>
                                             </label>
                                         </div>
@@ -167,7 +168,8 @@
                                     </div>
                                     <hr>
                                     {% endif %}
-                                {% endfor %} 
+                                {% endfor %}
+                                </form>
                             </ul>
                             <div class="row center-align">
                                 <a href="#shopList" class="btn modal-trigger">Add Items To Shopping List</a>
@@ -288,7 +290,7 @@
 
                 {% if not session["user"] %}
                 <div class="row center-align border">
-                    <h4>Please Login To Leave A Comment</h4>
+                    <h4>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Leave A Comment</h4>
                     <hr class="custom-short-div">
                 </div>
                 {% endif %}

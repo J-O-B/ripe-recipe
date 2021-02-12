@@ -196,17 +196,13 @@ img{
     width:75%;
 }
 
-/*-----------------------------------------------------------------Homepage */
-.home-wrapper{
+/*-----------------------------------------------------------------Homepage & About Page */
+
+.containAbout,
+.homeWrapper{
     position: relative;
-    padding-top:10%;
-    padding-bottom: 2%;
-    max-width: 100vw;
-    overflow-x: hidden;
-    min-height:100vh;
-    background: url("../img/smoke.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    border-radius: 5%;
+    overflow: hidden;
 }
 .glass{
     position: absolute;

@@ -59,6 +59,7 @@ $(document).ready(function(){
  
     // Search Page
     $('#searchBox').show();
+
    animate();
 });
 
@@ -112,6 +113,32 @@ $('#submitEdit').click(function(){
     $(this).val(1);
 });
 
+// Shopping List:
+function shopList(){
+
+}
+$('#shoppingList').click(function(){
+    $(this).val("Add Items To Shopping List.");
+});
+
+$('.shopListCheck').click(function(){
+    let check = $('.shopListCheck');
+    let sub = $('#shoppingList');
+    let list = []
+    
+    $('.shopListCheck').click(function(){
+        if ($(this).hasClass("off")){
+            $(this).removeClass("off").addClass("on");
+            
+        }else{
+            $(this).removeClass("on").addClass("off");
+            $(this).val() = "off"
+        }
+    })
+    console.log($(this).val());
+})
+
+
 // Deleting an item from cart:
 $('#delete').click(function(){
     $(this).val(1);
@@ -135,8 +162,8 @@ function randomAd(){
     // Large Screens Show Vertical Advert On Right
     if (size > 1450){
         $('#advert-row').css("position", "fixed").css("right", "10px").css("top","16.2%").css("height", "500px").css("overflow", "hidden");
-        let sideOne = "static/img/adverts/sideAd1.jpg";
-        let sideTwo = "static/img/adverts/sideAd2.jpg";
+        let sideOne = "/static/img/adverts/sideAd1.jpg";
+        let sideTwo = "/static/img/adverts/sideAd2.jpg";
         if (randomNum == 0){
             $('#advert-link').html(`<img id="adImgSide" src=${sideOne} alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){

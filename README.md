@@ -203,7 +203,7 @@ from [Font Awsome](http://fontawesome.com/)
 ### <ins>**_Existing Features:_**</ins>
 
 * Pagination
-* 
+* Amazon S3 interaction for file uploads
 * Recipe Comments
 * User Comments
 * Adding / Deleting Users 
@@ -212,9 +212,10 @@ from [Font Awsome](http://fontawesome.com/)
 * Placeholder Checkout Form (No backend feature at this time)
 * Search Function 
 * JavaScript Interactive Forms 
-* User Feedback 
-* Modals
-* 
+* User Feedback On Forms, Cart & Various Places Around Website
+* Modals.
+* Auto rotating advert (responsive: right side for laptop/desktop, top for tablet and phones)
+* Automated Testing (testing.py)
 
 #### *Implemented but removed:*
 

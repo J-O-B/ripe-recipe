@@ -302,8 +302,11 @@ def selected(id):
     The selected page is a general page which can run all recipe types,
     on page logic will change
     """
-    user = mongo.db.users.find_one(
-            {"username": session["user"]})
+    try:
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+    except:
+        user = ""
 
     recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
@@ -312,6 +315,10 @@ def selected(id):
             {"message_for": id})
 
     if (request.method == "POST"):
+        if request.form.get("shoppingList") == "Add Items To Shopping List.":
+            if session["user"]:
+                data = zip(request.POST.keys(), request.POST.values())
+                print(data)
 
         if request.form.get("leaveComment") == "1":
             today = date.today()
@@ -488,19 +495,27 @@ def store():
     letters = string.ascii_lowercase
     randomString = ''.join(random.choice(letters) for x in range(10))
 
-    if request.method == "POST":
+    try:
         name = session["user"]
-        update = [
-            request.form.get("id"),
-            request.form.get("name"),
-            request.form.get("price"),
-            randomString
-        ]
-        mongo.db.users.find_one_and_update(
-            {'username': name},
-            {"$push":
-                {'cart_items': update}})
-        flash("You have saved this item to your cart")
+    except:
+        name = ""
+
+    if request.method == "POST":
+        if name:
+            update = [
+                request.form.get("id"),
+                request.form.get("name"),
+                request.form.get("price"),
+                randomString
+            ]
+            mongo.db.users.find_one_and_update(
+                {'username': name},
+                {"$push":
+                    {'cart_items': update}})
+            flash("You have saved this item to your cart")
+
+        else:
+            flash("Ripe Shopping Is Currently Available To Ripe Members")
 
     return render_template("store.html", products=products)
 
@@ -544,8 +559,11 @@ def product(id):
 
 @app.route("/cart", methods=["GET", "POST"])
 def cart():
-    user = mongo.db.users.find(
-        {"username": session["user"]})
+    try:
+        user = mongo.db.users.find(
+            {"username": session["user"]})
+    except:
+        user = ""
 
     if request.method == "POST":
         id = session["user"]

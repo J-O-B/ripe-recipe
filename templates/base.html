@@ -28,7 +28,6 @@
 
     <div id="page-contain">
     <!--Check for home variable to render different template style-->
-    {% if not home %}
         <header>
                 <nav class="nav-extended nav-bg">
                     <div id="expandNav" class="hide-on-small-only"><i class="fas fa-chevron-circle-down expandNav" value="0"></i></div>
@@ -149,10 +148,8 @@
             {% endif %}
                 </div>
         </header>
-    {% endif %}
 
 <!--Advertising Bar-->
-    {% if not home %}
     <div class="row" id="advert-row">
         <div class="col s12 advert-box center-align">
             <a href="{{ url_for('store') }}" id="advert-link" class="center-align">
@@ -163,10 +160,8 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
 <!--Main Content Block-->
-    {% if not home %}
         <main id="bodyBackground">
             <!--Flash Message Feedback-->
             <section>
@@ -187,11 +182,9 @@
                 {% endblock %}
             </div>
         </main>
-    {% endif %}
 
 
 <!--Footer Block-->
-{% if not home %}
     <footer id="footer">
         <!--Empty Row To Ensure No Interference With Footer Layout-->  
         <div class="row">
@@ -235,7 +228,6 @@
             </div>
         </div>
     </footer>
-{% endif %}
 
     <!--jQuery Script-->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
