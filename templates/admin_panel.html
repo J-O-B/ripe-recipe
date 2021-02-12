@@ -22,6 +22,10 @@
         {% if tickets.reply|length == 0 %}
         <div class="row openTickets">
             <div class="col s6 m4 red">
+        {% else %}
+        <div class="row openTickets">
+            <div class="col s6 m4 green">
+        {% endif %}
                 <div class="row center-align">
                     <h3>{{tickets.query_type|capitalize}} Issue</h3>
                     <hr>
@@ -36,15 +40,24 @@
                             <p>Ticket Opened On {{tickets.ticket_opened}} By {{tickets.submit_by|capitalize}}</p>
                             <p>Description: {{ tickets.details }}</p>
                             
-                            <p>Reply:</p> 
-                            {% for x in tickets.reply %}
-                            <span>{{ x.reply }}</span>
-                            {% endfor %}
+                            {% if tickets.reply|length > 0 %}
+                            <h5>Replies:</h5>
+                            <ul>
+                                {% for X in range(tickets.reply|count) %}
+                                    <li><p>{{ tickets.reply[X] }}</p></li>
+                                    <hr>
+                                {% endfor %}
+                            </ul>
+                                            
+                            {% else %}
+                                <p>There is no reply yet to this ticket</p>
+                            {% endif %}
                         </div>
                         <div class="modal-content col s12 m6 green lighten-3">
                             <h4>Reply To Ticket:</h4>
                             <hr>
                             <form method="POST">
+                                <input type="text" name="query_id" id="query_id" value="{{tickets._id}}" class="hidden">
                                 <div class="input-field col s12">
                                     <i class="fas fa-reply prefix"></i>
                                     <textarea id="replyTicket" name="replyTicket" class="materialize-textarea"></textarea>
@@ -67,12 +80,6 @@
                 </div>
             </div>
         </div>
-
-        <!--Closed Tickets-->
-        {% else %}
-
-
-        {% endif %}
     {% endfor %}
 <!--End Tickets-->
     {% endif %}

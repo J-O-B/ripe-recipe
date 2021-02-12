@@ -22,7 +22,7 @@
     
 <!--Card to hold the signup form-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" action="{{ url_for('signup') }}">
+        <form class="col s12 m8 offset-m2 round" action="{{ url_for('signup') }}">
             <div class="card-panel haze border round-corners">
                 <div id="startSignup" class="center-align">
                     <h2>You Will Begin The <br>Signup Process For Ripe</h2>
@@ -93,16 +93,9 @@
                     <div class="row center-align">
                         <h3>Please Add A Photo For Your Profile</h3>
                         <p>This Photo Will Be Used For Your Profile And Will Be Visable To Other Users.</p>
-                        <div class="file-field input-field col s10 offset-s1">
-                            <div class="btn">
-                                <span>File</span>
-                                <input id="prof_pic" name="prof_pic" type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                        <!--<div class="input-field col s10 offset-s1">
+                        <p>To host an image, you can use any hosting provicer, please supply a full http address for the image</p>
+                        <p>Suggested: <a href="https://imgur.com" target="_blank">Imgur</a></p>
+                        <div class="input-field col s10 offset-s1">
                             <i class="fas fa-user-circle prefix pink-text text-lighten-2"></i>
                             <input id="prof_pic" name="prof_pic" type="text" minlength="1" class="validate" required>
                             <label class="black-text" for="prof_pic">Profile Picture URL</label>
@@ -113,7 +106,7 @@
                                 <button id="prevPic" class="btn-large border green">Preview Pic</button>
                             </div>
                             <div class="col s12" id="previewWindow"></div>
-                        </div>-->
+                        </div>
                         <div class="col s12 m6 center-align">
                             <button class="btn" id="prevFoodCard">Previous</button>
                         </div>
@@ -155,7 +148,7 @@
                             <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                         </div>
                         <div class="col s12">
-                            <button type="submit" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
+                            <button type="submit" id="submit" method="POST" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
                                 Register <i class="fas fa-sign-in-alt"></i>
                             </button>
                         </div>

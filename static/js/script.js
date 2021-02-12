@@ -126,7 +126,6 @@ function backToZero(){
     $('#delete').val(0);
     $('#newMessage').val(0);
     $('#openTicket').val(0);
-    $('#submitEdit').val(0);
 }
 
 // Randomize advert:
@@ -136,14 +135,16 @@ function randomAd(){
     // Large Screens Show Vertical Advert On Right
     if (size > 1450){
         $('#advert-row').css("position", "fixed").css("right", "10px").css("top","16.2%").css("height", "500px").css("overflow", "hidden");
+        let sideOne = "static/img/adverts/sideAd1.jpg";
+        let sideTwo = "static/img/adverts/sideAd2.jpg";
         if (randomNum == 0){
-            $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd1.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgSide" src=${sideOne} alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){
-            $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd2.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgSide" src=${sideTwo} alt="Ripe Recipe Store">`);
         }else if (randomNum == 2){
-            $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd1.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgSide" src=${sideOne} alt="Ripe Recipe Store">`);
         }else{
-            $('#advert-link').html(`<img id="adImgSide" src="static/img/adverts/sideAd2.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgSide" src=${sideTwo} alt="Ripe Recipe Store">`);
         }
     // Smaller Screens (iPad etc.) Show Horizontal Advert Below Navbar
     }else if (size <= 1450 && size > 500) {

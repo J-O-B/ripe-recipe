@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import random
 import string
+import boto3
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
@@ -19,7 +20,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-from helpers import *
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
@@ -61,17 +61,16 @@ def admin():
     count = mongo.db.tickets.count()
 
     Queries = mongo.db.tickets.find()
+
     """
     Update Ticket
     """
     if request.method == "POST":
-        updated = {
-            request.form.get("replyTicket"),
-        }
-        mongo.db.tickets.find_one_and_update(
-            {"_id": ObjectId(request.form.get("query_id"))},
+        id = request.form.get("query_id")
+        mongo.db.tickets.update_one(
+            {"_id": ObjectId(id)},
             {"$push":
-                {"reply": updated}})
+                {"reply": "Admin: " + request.form.get("replyTicket")}})
         flash("Ticket Updated")
         return redirect(url_for("admin"))
 
@@ -142,7 +141,6 @@ def editUser():
         }
         mongo.db.users.update({"_id": ObjectId(id)}, edit)
 
-
         # Update "session" cookie
         session['user'] = request.form.get("username")
         flash("Profile Successfully Updated")
@@ -159,53 +157,25 @@ def signup():
         if existing_user:
             flash("Username Already Exists")
             return redirect(url_for("signup"))
-        else:
-            user_file = request.form.get("prof_pic")
-            if "user_file" not in request.files:
-                return "No user_file key in request.files"
 
-            # B
-            file = request.files["user_file"]
-
-            """
-                These attributes are also available
-
-                file.filename               # The actual name of the file
-                file.content_type
-                file.content_length
-                file.mimetype
-
-            """
-
-            # C.
-            if file.filename == "":
-                return "Please select a file"
-
-            # D.
-            if file and allowed_file(file.filename):
-                file.filename = secure_filename(file.filename)
-                output = upload_file_to_s3(file, app.config["S3_BUCKET"])
-                return str(output)
-
-            else:
-                return
-
-            if output:
+        if not existing_user:
+            if request.form.get("submit") == "1":
                 register = {
                     "username": request.form.get("username").lower(),
                     "email": request.form.get("email"),
                     "fav_food": request.form.get("fav_food").lower(),
-                    "prof_pic": output,
+                    "prof_pic": request.form.get("prof_pic"),
                     "bio": request.form.get("bio").lower(),
-                    "password": generate_password_hash(request.form.get("password")),
+                    "password": generate_password_hash(
+                        request.form.get("password")),
                     "fav_recipes": [],
                     "cart_items": [],
                 }
                 mongo.db.users.insert_one(register)
-
                 # Put the new user into "session" cookie
                 session['user'] = request.form.get("username")
                 flash("Congratulations, You Are Now Part Of The Ripe Family!")
+
     return render_template("signup.html")
 
 
@@ -484,23 +454,25 @@ def my_profile():
                 return redirect(url_for('my_profile'))
 
         # If the user is editing a ticket
+        if request.form.get("submitEdit") == "1":
+            # Open Ticket Based On Form Input, 0 = close, 1 = open
+            openTicket = request.form.get("open_ticket")
+            if openTicket == "0":
+                mongo.db.tickets.remove(
+                    {"_id": ObjectId(request.form.get("query_id"))})
+                flash("Ticket Deleted")
+                return redirect(url_for('my_profile'))
 
-        if request.form.get("openTicket") == "0":
-            mongo.db.tickets.remove(
-                {"_id": ObjectId(request.form.get("query_id"))})
-            flash("Ticket Deleted")
-
-        elif request.form.get("openTicket") == "1":
-            update = {
-                "reply": request.form.get("replyTicket"),
-            }
-            mongo.db.tickets.find_one_and_update(
-                {"_id": ObjectId(request.form.get("query_id"))},
-                {"$push":
-                    {"reply": update}})
-            flash("Ticket Edited")
-
-        return redirect(url_for('my_profile'))
+            elif openTicket == "1":
+                reply = request.form.get("replyTicket")
+                update = session["user"] + " : " + reply
+                id = request.form.get("query_id")
+                mongo.db.tickets.update_one(
+                    {"_id": ObjectId(id)},
+                    {"$push":
+                        {"reply": update}})
+                flash("Ticket Edited")
+                return redirect(url_for('my_profile'))
 
     return render_template(
         "profile.html",
@@ -584,7 +556,7 @@ def cart():
                 request.form.get("rand"),
 
             ]
-        mongo.db.users.update(
+        mongo.db.users.update_one(
             {'username': id},
             {"$pull":
                 {'cart_items': remove}})

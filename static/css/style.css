@@ -56,8 +56,9 @@ footer{
     background-repeat: no-repeat;
 }
 .modal{
+    position: absolute;
     width:75vw;
-    z-index: 9999;
+    z-index: 99999;
 }
 #bodyBackground{
     margin:0;

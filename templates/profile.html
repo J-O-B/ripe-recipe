@@ -194,7 +194,7 @@
                 </div>
             </div>
             <div class="row" id="openTickets">
-            <!--Output Tickets-->
+<!--Output Tickets-->
                 <div class="col s12 center-align">
                         <h3>Your Tickets</h3>
                         <p>
@@ -204,7 +204,7 @@
                         <div id="ticketWrap">
                             {% for tickets in myTickets %}
            
-                           {% if tickets.reply|length == 0 %}
+                            {% if tickets.reply|length == 0 %}
                             <div class="row red border">
                             {% else %}
                             <div class="row green border">
@@ -222,15 +222,22 @@
                                 <div id="{{ tickets._id }}" class="modal">
                                     <div class="modal-content">
                                         <h4>Your Ticket:</h4>
-                                        <hr>
+                                        <hr class="custom-short-div">
                                         <p>
-                                            Type: {{ tickets.query_type }}<br>
+                                            Type: {{ tickets.query_type|capitalize }}<br>
                                             Opened On: {{ tickets.ticket_opened }}
                                         </p>
-                                        <p>Details: {{ tickets.details }}</p>
-                                        <hr>
+                                        <p>Details: {{ tickets.details|capitalize }}</p>
+                                        <hr class="custom-short-div">
                                         {% if tickets.reply|length > 0 %}
-                                            <p>Reply To Ticket : {{ tickets.reply }}</p>
+                                            <h5>Replies:</h5>
+                                            <ul>
+                                                {% for X in range(tickets.reply|count) %}
+                                                    <li><p>{{ tickets.reply[X] }}</p></li>
+                                                    <hr>
+                                                {% endfor %}
+                                            </ul>
+                                            
                                         {% else %}
                                             <p>There is no reply yet to this ticket</p>
                                         {% endif %}
@@ -252,14 +259,12 @@
                                             <textarea type="text" name="replyTicket" id="replyTicket" rows="5">Add Message Here...</textarea>
                                             <label for="open_ticket">Open / Close Ticket</label>
                                             <select name="open_ticket" id="open_ticket" class="center-align">
-                                                <option selected value="2">Leave Ticket Open</option>
+                                                <option selected value="1">Leave Ticket Open</option>
                                                 <option value="0">Close This Ticket</option>
                                             </select>
-                                            <button type="submit" name="submitEdit" id="submitEdit" class="btn-flat green">
-                                                Submit
-                                            </button>
-                                            <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
+                                            <input type="submit" name="submitEdit" id="submitEdit" class="btn-flat green" value="Submit">
                                         </form>
+                                        <a class="modal-close btn-flat red modal-trigger" href="#{{ tickets._id }}">Cancel</a>
                                         <div class="modal-footer">
                                             <a href="#!" class="modal-close btn-flat">Close</a>
                                         </div>
