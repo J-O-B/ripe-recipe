@@ -156,7 +156,7 @@ function backToZero(){
 // Randomize advert:
 function randomAd(){
     randomNum = Math.floor(Math.random() * Math.floor(4));
-    var size = screen.width;
+    /*var size = screen.width;
     // Large Screens Show Vertical Advert On Right
     if (size > 1450){
         $('#advert-row').css("position", "fixed").css("right", "10px").css("top","16.2%").css("height", "500px").css("overflow", "hidden");
@@ -173,8 +173,8 @@ function randomAd(){
         }
     // Smaller Screens (iPad etc.) Show Horizontal Advert Below Navbar
     }else if (size <= 1450 && size > 500) {
-        console.log("small");
-        $('#advert-row').css("height", "200px").css("width", "100vw");
+        console.log("small");*/
+        $('#advert-row').css("height", "auto").css("width", "auto");
         if (randomNum == 0){
             $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){
@@ -185,7 +185,6 @@ function randomAd(){
             $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
         }
     }
-}
 
 $('.close-advert').click(function(){
     $('#advert-row').fadeOut(1000);

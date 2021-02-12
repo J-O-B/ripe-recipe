@@ -148,19 +148,6 @@
             {% endif %}
                 </div>
         </header>
-
-<!--Advertising Bar-->
-    <div class="row" id="advert-row">
-        <div class="col s12 advert-box center-align">
-            <a href="{{ url_for('store') }}" id="advert-link" class="center-align">
-                
-            </a>
-            <div class="close-advert">
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
-    </div>
-
 <!--Main Content Block-->
         <main id="bodyBackground">
             <!--Flash Message Feedback-->
@@ -182,7 +169,14 @@
                 {% endblock %}
             </div>
         </main>
-
+<!--Advertising Bar-->
+    <div class="row" id="advert-row">
+        <div class="advert-box center-align">
+            <a href="{{ url_for('store') }}" id="advert-link" class="center-align">
+             <!--JS Banners Inserted Here-->  
+            </a>
+        </div>
+    </div>
 
 <!--Footer Block-->
     <footer id="footer">

@@ -53,7 +53,7 @@
                         <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
                         <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
                         {% if session["user"] %}
-                        <a class="btn modal-trigger" href="#save-recipe">Save Recipe <i class="far fa-save"></i></a>
+                        <a class="btn modal-trigger" href="#save-recipe">Add To Favorites <i class="far fa-save"></i></a>
                         {% else %}
                         <p class="center-align"><em>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Save Recipe</em></p>
                         {% endif %}
