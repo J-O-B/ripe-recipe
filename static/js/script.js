@@ -151,13 +151,13 @@ function randomAd(){
         console.log("small");
         $('#advert-row').css("height", "200px").css("width", "100vw");
         if (randomNum == 0){
-            $('#advert-link').html(`<img id="adImgTop" src="static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
         }else if (randomNum == 1){
-            $('#advert-link').html(`<img id="adImgTop" src="static/img/adverts/topAd2.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd2.jpg" alt="Ripe Recipe Store">`);
         }else if (randomNum == 2){
-            $('#advert-link').html(`<img id="adImgTop" src="static/img/adverts/topAd3.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd3.jpg" alt="Ripe Recipe Store">`);
         }else{
-            $('#advert-link').html(`<img id="adImgTop" src="static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
+            $('#advert-link').html(`<img id="adImgTop" src="/static/img/adverts/topAd1.jpg" alt="Ripe Recipe Store">`);
         }
     }
 }
