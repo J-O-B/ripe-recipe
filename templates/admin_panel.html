@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block main_content %}
 
+{% if user == "" %}
+    <div class="row">
+        <div class="col s10 offset-s1 center-align">
+            <h2>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Proceed</h2>
+        </div>
+    </div>
+
+{% else %}
     {% for check in user %}
     {% if check.is_admin == true %}
     <div class="row">
@@ -85,4 +93,5 @@
     {% endif %}
     {% endfor %}      
 
+{% endif %}
 {% endblock %}

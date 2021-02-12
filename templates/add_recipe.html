@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-
+    {% if user == "" %}
+    <div class="row">
+        <div class="col s10 offset-s1 center-align">
+            <h2>It appears as though you are not logged in.</h2>
+            <h3>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Add A Recipe</h3>
+        </div>
+    </div>
+    {% else %}
 <!--Page Wrapper-->
-
-
     <div class="row">
         <div class="col s12 m4 offset-m4">
             <h1 id="addHeading" class="center-align black-text text-lighten-2 border">Adding A Recipe</h1>
@@ -342,7 +347,7 @@
        </form>
     </div>
 
-
+{% endif %}
 {% endblock %}
 {% block scripts %}
     <!--Add Recipe Script-->

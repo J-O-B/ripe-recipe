@@ -55,8 +55,11 @@ def admin():
     Store session cookie to a var and search the users database.
     Match a record with the current user, and check for admin privilages.
     """
-    user = mongo.db.users.find(
-        {"username": session["user"]})
+    try:
+        user = mongo.db.users.find(
+            {"username": session["user"]})
+    except:
+        user = ""
 
     count = mongo.db.tickets.count()
 
@@ -225,8 +228,11 @@ def editrecipe(id):
 
 @app.route("/newrecipe", methods=["GET", "POST"])
 def newrecipe():
-    user = mongo.db.users.find_one(
-            {"username": session["user"]})
+    try:
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+    except:
+        user = ""
 
     if request.method == "POST":
 

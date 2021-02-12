@@ -61,6 +61,7 @@ footer{
     z-index: 99999;
 }
 #bodyBackground{
+    position: relative;
     margin:0;
     padding-bottom:20px;
     padding-top: 15px;
@@ -315,8 +316,11 @@ img{
 #database,
 #seeAboutStore{
     border-radius: 25%;
-    background: radial-gradient(rgba(0,0,0,1) 60%, var(--third));
-    color:var(--first);
+    background: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:#000;
+    text-shadow: 1px 1px 50px var(--first);
     margin-top: 15%;
     margin-bottom: 15%;
     padding-top:25px;
@@ -329,6 +333,7 @@ img{
 #seeAboutStore p{
     width: 70%;
     margin-left:15%;
+    font-size: 110%;
 }
 /*-----------------------------------------------------------------Navbar */
 
