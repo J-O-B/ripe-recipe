@@ -3,7 +3,7 @@
 <head>
     <!--SEO-->
     <meta charset="UTF-8">
-    <meta name="description" content="A free to use recipe database that is free to use.">
+    <meta name="description" content="A free to use recipe database and kitchen store that is free to use.">
     <meta name="keywords" content="Recipes, cooking, kitchen store, food">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Font Awesome-->
@@ -107,43 +107,43 @@
                 </nav>
 
                 <div class="sidenav custom-sidenav nav-bg" id="sidenav">
-                    <h3 class="center-align pink-text text lighten-4">Ripe Recipes Menu:</h3>
+                    <h3 class="center-align pink-text text-lighten-4">Ripe Recipes Menu:</h3>
                     <hr class="custom-short-div">
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('recipes') }}" class="secondary-nav">View Recipes</a>
+                        <a href="{{ url_for('recipes') }}" class="secondary-nav white-text text-shadow">View Recipes</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('search') }}" class="secondary-nav">Search Recipes</a>
+                        <a href="{{ url_for('search') }}" class="secondary-nav white-text text-shadow">Search Recipes</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('about') }}" class="secondary-nav">About RipeRecipe</a>
+                        <a href="{{ url_for('about') }}" class="secondary-nav white-text text-shadow">About RipeRecipe</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('store') }}" class="secondary-nav">Store</a>
+                        <a href="{{ url_for('store') }}" class="secondary-nav white-text text-shadow">Store</a>
                     </div>
                     <hr class="custom-short-div">
             {% if session['user'] %}       
                     <div class="center-align secondary-nav">
-                        <a href="#test1" class="secondary-sub-nav text-shadow">My Profile</a>
+                        <a href="#test1" class="secondary-sub-nav white-text">My Profile</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav text-shadow">Add Recipe</a>
+                        <a href="{{ url_for('newrecipe') }}" class="secondary-sub-nav white-text">Add Recipe</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
+                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav white-text">Contact Us</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('logout') }}" class="secondary-sub-nav text-shadow">Logout</a>
+                        <a href="{{ url_for('logout') }}" class="secondary-sub-nav white-text">Logout</a>
                     </div>
             {% else %}
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav text-shadow">Contact Us</a>
+                        <a href="{{ url_for('contact') }}" class="secondary-sub-nav white-text">Contact Us</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('login') }}" class="secondary-sub-nav text-shadow">Login</a>
+                        <a href="{{ url_for('login') }}" class="secondary-sub-nav white-text">Login</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('signup') }}" class="secondary-sub-nav text-shadow">Signup</a>
+                        <a href="{{ url_for('signup') }}" class="secondary-sub-nav white-text">Signup</a>
                     </div>
             {% endif %}
                 </div>
@@ -194,7 +194,7 @@
                     <li><a href="{{ url_for('search') }}">Search</a></li>
                 </ul>
             </div>
-            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
+            <div class="col s10 offset-s1 m4 black-text center-align footer-content soft-corners">
                 <h3>Manage</h3>
                 <hr class="custom-short-div">
                 <ul>
@@ -204,7 +204,7 @@
                     <li><a href="{{ url_for('admin') }}">Admin</a></li>
                 </ul>
             </div>
-            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
+            <div class="col s10 offset-s1 m4 black-text center-align footer-content soft-corners">
                 <h3>Ripe Social</h3>
                 <hr class="custom-short-div">
                 <ul>
@@ -217,7 +217,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s10 offset-s1 black-text center-align footer-content">
+            <div class="col s10 offset-s1 black-text center-align soft-corners">
                 <!--Span contains JS date function-->
                 © John O'Brien <span id="date"></span>
             </div>

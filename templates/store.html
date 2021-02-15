@@ -40,14 +40,24 @@
                         </div>
                         <!-- Modal Structure -->
                         <div id="{{product._id}}" class="modal">
-                            <div class="modal-content black">
-                                <h2 class="haze">{{product.name}}</h2>
-                                <div class="row center-align">
-                                    <a href="#!" class="modal-close red btn-flat">Close</a>
-                                    <a href="{{url_for('product', id=product._id)}}" class="modal-close green btn-flat">View Full</a>
+                            <div class="modal-content light-blue">
+                                
+                                <div class="row center-align haze">
+                                    <div class="col s6">
+                                        <h2>{{product.name}}</h2>
+                                        <hr>
+                                        <p>{{product.desc}}</p>
+                                        <p>Price: ${{product.price}}</p>
+                                    </div>
+                                    <div class="col s6">
+                                        <h3>View More Details?</h3>
+                                        <hr>
+                                        <a href="#!" class="modal-close red btn-flat">Close</a>
+                                        <a href="{{url_for('product', id=product._id)}}" class="modal-close green btn-flat">View Full</a>
+                                    </div>
                                 </div>
-                                <p class="haze">Price: ${{product.price}}</p>
                                 <div class="row">
+                                    <h3>Click on images to enlarge.</h3>
                                     <!--Spacer-->
                                     <div class="col s4">
                                     {% for images in product.photos %}

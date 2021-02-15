@@ -93,18 +93,18 @@
                     <!--Start Messages-->
                     <div class="col s12 message-board">
                         <div class="col s10 offset-s1 haze border">
-                            <h3>Messages For {{ user|capitalize }}</h3>
+                            <h3>Messages For {{ x.username|capitalize }}</h3>
                             {% for message in messages %}
-                            <div class="row haze border">
-                                <div class="col s6 center-align">
+                            <div class="col s12 haze border center-align margin-below">
+                                <div class="col s5 offset-s1">
                                     From: {{ message.message_from }}
                                 </div>
-                                <div class="col s6 center-align">
+                                <div class="col s5">
                                     Sent On: {{ message.date }}
                                 </div>
-                                <div class="col s12">
+                                <div class="col s10 offset-s1">
                                     <p>{{ message.message_text[:50] }}...</p>
-                                    <a class="btn col s5 modal-trigger" href="#{{ message._id }}">View Message</a>
+                                    <a class="btn col s7 offset-s1 modal-trigger" href="#{{ message._id }}">View Message</a>
                                     {% if message.message_for == session["user"] %}
                                     <form method="post">
                                         <input type="text" name="messageID" id="messageID" class="hidden" value="{{ message._id }}">
