@@ -138,7 +138,17 @@ img{
 .margin-below{
     margin-bottom: 20px;
 }
-
+.tabs{
+    height:20px;
+}
+.sr-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
 /*------------Borders & Margins--------*/
 .border{
     -webkit-box-shadow: 3px 3px 5px 6px #000;  
@@ -249,9 +259,13 @@ img{
     max-height:500px;
     max-width: 50vw;
 }
-.view-more-info{
-    position: relative;
-    z-index: 99;
+#view-more-info{
+    height:50px;
+    font-size: 115%;
+}
+#view-less-info{
+    height:50px;
+    font-size: 115%;
 }
 .more-info-cards{
     color:white;
@@ -358,26 +372,14 @@ img{
 
 .nav-logo img{
     height:95px;
-    margin-top:5px;
+    margin-top:25px;
     margin-left:25px;
 }
 nav.nav-extended .nav-wrapper {
     height: 100px;
     position: relative;
 }
-#expandNav{
-    position: absolute;
-    top:90px;
-    left:50%;
-    cursor: pointer;
-}
-#expandNav i{
-    position: relative;
-    font-size: 150%;
-    z-index: 99;
-    color: #000;
-    text-shadow: 1px 1px 10px var(--third);
-}
+
 .custom-nav{
     width:100%;    
     display:flex;

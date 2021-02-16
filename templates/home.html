@@ -8,7 +8,7 @@
             <div class="row welcome-card">
                 <div class="col s12 l6 welcome-message center-align">
                     <h1>Welcome To Ripe</h1>
-                    <h3>The Culinary Social Platform</h3>
+                    <h2>The Culinary Social Platform</h2>
                     <div class="row">
                         <a href="{{ url_for('recipes') }}" class="btn col s8 offset-s2 center-align">
                             View Recipes
@@ -47,11 +47,8 @@
             </div>
             <div class="row view-more-info">
                 <div class="col s12 center-align">
-                    <button id="view-more-info" class="btn-large">
-                        <h5>
-                            What Is Ripe?<br>
-                            <i class="fas fa-chevron-circle-down"></i>
-                        </h5>
+                    <button id="view-more-info" class="btn">
+                        <span id="moreInfo">What Is Ripe? <br><i class="fas fa-chevron-circle-down"></i></span> 
                     </button>
                 </div>
             </div>
@@ -123,11 +120,11 @@
             </div>
             <div class="row">
                 <div class="col s12 center-align">
-                    <button id="view-less-info" class="btn-large">
-                        <h5>
+                    <button id="view-less-info" class="btn">
+                        <span>
                             Close Information<br>
                             <i class="fas fa-chevron-circle-up"></i>
-                        </h5>
+                        </span>
                     </button>
                 </div>
             </div>

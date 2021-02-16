@@ -30,7 +30,6 @@
     <!--Check for home variable to render different template style-->
         <header>
                 <nav class="nav-extended nav-bg">
-                    <div id="expandNav" class="hide-on-small-only"><i class="fas fa-chevron-circle-down expandNav" value="0"></i></div>
                     <div class="row">
                         <div class="nav-wrapper nav-logo">
                             <div class="col s4">
@@ -41,39 +40,32 @@
                             </div>
                             <div class="col s4">
                                 <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                            </div>
-                            
+                            </div>                            
                             <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
-
-                                    <div class="col s2 offset-s1 center-align">
-                                        <a href="{{ url_for('recipes') }}"><h3><i class="far fa-eye"></i> View</h3></a>
-                                    </div>
-
-                                    <div class="col s2 center-align">
-                                        <a href="{{ url_for('search') }}"><h3><i class="fas fa-search"></i> Search</h3></a>
-                                    </div>
-
-                                    <div class="col s2 nav-logo center-align">
-                                        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Image"></a>
-                                    </div>
-
-                                    <div class="col s2 center-align">
-                                        <a href="{{ url_for('store') }}"><h3><i class="fas fa-store"></i> Store</h3></a>
-                                    </div>
-
-                                    <div class="col s2 center-align">
-                                        <a href="{{ url_for('about') }}"><h3><i class="far fa-address-card"></i> About</h3></a>
-                                    </div>
-
-                                    <div class="col s1 right">
-                                        <a href="{{ url_for('cart') }}"><h3><i class="fas fa-shopping-basket"></i></h3></a>
-                                    </div>
+                                <div class="col s2 offset-s1 center-align">
+                                    <a href="{{ url_for('recipes') }}"><h3><i class="far fa-eye"></i> View</h3></a>
+                                </div>
+                                <div class="col s2 center-align">
+                                    <a href="{{ url_for('search') }}"><h3><i class="fas fa-search"></i> Search</h3></a>
+                                </div>
+                                <div class="col s2 nav-logo center-align">
+                                    <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Image"></a>
+                                </div>
+                                <div class="col s2 center-align">
+                                    <a href="{{ url_for('store') }}"><h3><i class="fas fa-store"></i> Store</h3></a>
+                                </div>
+                                <div class="col s2 center-align">
+                                    <a href="{{ url_for('about') }}"><h3><i class="far fa-address-card"></i> About</h3></a>
+                                </div>
+                                <div class="col s1 right">
+                                    <a href="{{ url_for('cart') }}"><h3><i class="fas fa-shopping-basket"></i><span class="sr-only">Shopping Cart</span></h3></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     {% if session["user"] %}
-                    <div class="no-margin row hide-on-small-only" id="secondNavbar">
+                    <div class="no-margin row navSecRow hide-on-small-only" id="secondNavbar">
                         <div class="custom-nav nav-content">
                             <div class="tabs tabs-transparent custom-nav">
                                 <div class="col s3 center-align">
@@ -208,11 +200,11 @@
                 <h3>Ripe Social</h3>
                 <hr class="custom-short-div">
                 <ul>
-                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
+                    <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
                 </ul>
             </div>
         </div>

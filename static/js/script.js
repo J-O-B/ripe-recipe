@@ -3,8 +3,6 @@ $(document).ready(function(){
 
     backToZero();
     randomAd();
-    // Navbar
-    $('#secondNavbar').hide();
 
     //editUser
     $('#previewProfPic').hide();
@@ -96,7 +94,7 @@ $('#newMessage').click(function(){
     $(this).val(1);
     backToZero();
 })
-$('#addToCart').click(function(){
+$('.addToCart').click(function(){
     $(this).val(1);
     backToZero();
 })
@@ -196,21 +194,6 @@ function animate(){
     categories();
 }
 
-//Navbar to expand the lower tier of the menu
-$('.expandNav').click(function(){
-    toggleArrow();
-    $('#secondNavbar').toggle(750);
-});
-//Toggle between up and down arrow (navbar)
-function toggleArrow(){
-    if ($('.expandNav').val() == 0){
-        $('.expandNav').removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up").css("color", "var(--first");
-        $('.expandNav').val(1);
-    }else if ($('.expandNav').val() == 1){
-        $('.expandNav').removeClass("fa-chevron-circle-up").addClass("fa-chevron-circle-down").css("color", "#000");
-        $('.expandNav').val(0);
-    }
-}
 
 //Profile:
 $('#go').click(function(){
