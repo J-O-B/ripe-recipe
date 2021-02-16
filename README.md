@@ -268,7 +268,7 @@ Dev tools was also used to improve features such as accessability, SEO, and perf
 
 >**Lighthouse**
 >Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
->[Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
+>![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
 
 
 ### **Bugs & Issues**:
