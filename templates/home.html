@@ -131,19 +131,33 @@
         </div>
     </div>        
     <!--Login Modal-->
-    <div id="login" class="modal black">
+    <div id="login" class="modal light-blue">
         <div class="modal-content">
             <div class="row login-modal">
-                <h3 class="white-text center-align">Login To Ripe Recipes</h3>
-                <form method="POST">
-                    <input class="input-field col s10 offset-s1 white" type="text" name="username" id="username" placeholder="Username" required>
-                    <input class="input-field col s10 offset-s1 white" type="password" name="password" id="password" placeholder="Password" required>
-                    <button class="btn col s6 offset-s3" type="submit" value="Submit"><strong>Login <i class="fas fa-sign-in-alt"></i></strong></button>
-                </form>
+                <h2 class="white-text center-align">Login To Ripe Recipes</h2>
+                <hr class="custom-short-div">
+                <p class="black-text text-shadow center-align">Please enter your login details to proceed.</p>
+                <div class="row">
+                    <form method="POST">
+                        <div class="input-field col s8 offset-s2">
+                            <i class="fas fa-user prefix"></i>
+                            <input class="input-field validate" type="text" name="username" id="username" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9]{5,25}$" required>
+                            <label for="username" class="white-text">Username</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Please Enter Your Username</span>
+                        </div>
+                        <div class="input-field col s8 offset-s2">
+                            <i class="fas fa-lock prefix"></i>
+                            <input class="input-field validate" type="password" name="password" id="password" required>
+                            <label for="password" class="white-text">Password</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Please Enter Your Password</span>
+                        </div>
+                        <button class="btn col s6 offset-s3" type="submit" value="Submit"><strong>Login <i class="fas fa-sign-in-alt"></i></strong></button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="modal-footer black">
-            <a href="#!" class="modal-close green btn-flat">Close</a>
+        <div class="footer black center-align">
+            <a href="#!" class="modal-close green btn">Close</a>
         </div>
     </div>
         

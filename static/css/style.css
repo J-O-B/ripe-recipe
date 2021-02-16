@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 /* Import Fonts From Google Fonts */
 /* Montez - Titles */
 /* Roboto - General Text */
@@ -57,8 +64,9 @@ footer{
 }
 .modal{
     position: absolute;
-    width:75vw;
-    z-index: 99999;
+    width: 75vw;
+    max-height: 70vh;
+    z-index: 9999;
 }
 #bodyBackground{
     position: relative;
@@ -69,6 +77,34 @@ footer{
 }
 .page-contain{
     overflow: hidden;
+}
+
+::-webkit-input-placeholder{
+    color: black;
+    /* Opacity 1 for firefox users */
+    opacity: 1;
+    font-style: italic;
+}
+
+::-moz-placeholder{
+    color: black;
+    /* Opacity 1 for firefox users */
+    opacity: 1;
+    font-style: italic;
+}
+
+:-ms-input-placeholder{
+    color: black;
+    /* Opacity 1 for firefox users */
+    opacity: 1;
+    font-style: italic;
+}
+
+::-ms-input-placeholder{
+    color: black;
+    /* Opacity 1 for firefox users */
+    opacity: 1;
+    font-style: italic;
 }
 
 ::placeholder{
@@ -156,7 +192,6 @@ img{
 /*------------Borders & Margins--------*/
 .border{
     -webkit-box-shadow: 3px 3px 5px 6px #000;  
-    -moz-box-shadow: 3px 3px 5px 6px #000;  
     box-shadow: 3px 3px 5px 6px var#000;
 }
 
@@ -166,6 +201,8 @@ img{
 
 .round-border{
     border-radius: 50%;
+    background: -webkit-gradient(linear, left top, right top, from(var(--third)), color-stop(var(--second)), to(var(--third)));
+    background: -o-linear-gradient(left, var(--third), var(--second), var(--third));
     background: linear-gradient(90deg, var(--third), var(--second), var(--third));
 }
 .round-corners{
@@ -182,20 +219,25 @@ img{
 }
 .border-shadow{
     -webkit-box-shadow: 3px 3px 5px 5px #000;
-    -moz-box-shadow: 3px 3px 5px 5px #000;
     box-shadow: 3px 3px 5px 5px #000;
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 .border-shadow:hover{
-    -moz-box-shadow: inset 1px 1px 10px #000000;
    -webkit-box-shadow: inset 0 0 10px #000000;
    box-shadow: inset 5px 5px 10px #000000;
 }
 /*--------------------------------------------------------------- Alignment */
 .flex-justify{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 /*---------------------------------------------------------------- Flashes */
 .flashes h4{
@@ -304,7 +346,11 @@ img{
 .third-card{
     position: relative;
     min-height:350px;
+    background:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0.9)) , to(rgba(0, 0, 0, 0)));
+    background:-o-linear-gradient(left, rgba(0,0,0,0.9) , rgba(0, 0, 0, 0));
     background:linear-gradient(90deg, rgba(0,0,0,0.9) , rgba(0, 0, 0, 0));
+    -webkit-transition: all 3s ease-in-out;
+    -o-transition: all 3s ease-in-out;
     transition: all 3s ease-in-out;
     padding-bottom: 50px;
     border-radius: 30px 0px 0px 30px;
@@ -312,7 +358,11 @@ img{
 .second-card{
     position: relative;
     min-height:350px;
+    background:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0.0)) , to(rgba(0, 0, 0, 0.9)));
+    background:-o-linear-gradient(left, rgba(0,0,0,0.0) , rgba(0, 0, 0, 0.9));
     background:linear-gradient(90deg, rgba(0,0,0,0.0) , rgba(0, 0, 0, 0.9));
+    -webkit-transition: all 3s ease-in-out;
+    -o-transition: all 3s ease-in-out;
     transition: all 3s ease-in-out;
     padding-bottom: 50px;
     border-radius: 0px 30px 30px 0px;
@@ -320,18 +370,26 @@ img{
 
 .first-card:hover img,
 .third-card:hover img{
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
-    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+        -ms-transform: translateX(-100px);
+            transform: translateX(-100px);
 }
 .second-card:hover img{
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
-    transform: translateX(50px);
+    -webkit-transform: translateX(50px);
+        -ms-transform: translateX(50px);
+            transform: translateX(50px);
 }
 #view-less-info{
     position: relative;
 }
-.login-modal{
-    display:block;
+.login-modal hr{
+    margin-bottom: 50px;
 }
 #aboutData,
 #promise,
@@ -386,14 +444,21 @@ nav.nav-extended .nav-wrapper {
 
 .custom-nav{
     width:100%;    
+    display:-webkit-box;    
+    display:-ms-flexbox;    
     display:flex;
-    align-items: center;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 .custom-nav h3{
     color: #000;
     text-shadow: 2px 2px 30px var(--first);
     font-weight: 500;
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 .custom-nav h3:hover{
@@ -517,7 +582,8 @@ nav.nav-extended .nav-wrapper {
 .flip-card {
     background-color: transparent;
     height: 350px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    -webkit-perspective: 1000px;
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
     margin-bottom: 40px;
     overflow: hidden;
 }
@@ -534,8 +600,13 @@ nav.nav-extended .nav-wrapper {
     width: 100%;
     height: 100%;
     text-align: center;
+    -webkit-transition: -webkit-transform 0.8s;
+    transition: -webkit-transform 0.8s;
+    -o-transition: transform 0.8s;
     transition: transform 0.8s;
-    transform-style: preserve-3d;
+    transition: transform 0.8s, -webkit-transform 0.8s;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     margin:0;
     padding:0;
 }
@@ -543,7 +614,8 @@ nav.nav-extended .nav-wrapper {
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover 
 .flip-card-inner {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
@@ -567,10 +639,12 @@ nav.nav-extended .nav-wrapper {
 
 /* Style the back side */
 .flip-card-back {
+    background: -o-radial-gradient(#fff 60%, rgba(0,0,0,0) 70%);
     background: radial-gradient(#fff 60%, rgba(0,0,0,0) 70%);
     color: black;
     text-shadow: 1px 1px 10px rgb(245,41,135);
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 .titleLayer{
     position: absolute;
@@ -578,6 +652,8 @@ nav.nav-extended .nav-wrapper {
     left:0;
     right:0;
     z-index: 10;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(248, 248, 248, 0.0)), color-stop(rgba(248, 248, 248, 0.7)), to(rgba(248, 248, 248, 0.0)));
+    background: -o-linear-gradient(left, rgba(248, 248, 248, 0.0), rgba(248, 248, 248, 0.7), rgba(248, 248, 248, 0.0));
     background: linear-gradient(90deg, rgba(248, 248, 248, 0.0), rgba(248, 248, 248, 0.7), rgba(248, 248, 248, 0.0));
 }
 .titleLayer h3{
@@ -587,7 +663,8 @@ nav.nav-extended .nav-wrapper {
 .outerBox{
     margin:0;
     padding:0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     height:600px;
     max-width: 90%;
     position: relative;
@@ -606,6 +683,8 @@ nav.nav-extended .nav-wrapper {
     min-width: 100%;
     opacity: 0.5;
     padding: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 .outerBox:hover .image-box img{
@@ -621,13 +700,18 @@ nav.nav-extended .nav-wrapper {
     height:50%;
     border-radius: 30%;
     background:rgba(255,255,255,0.5);
-    box-shadow: inset 0 5px 20px rgba(0,0,0,0.3), inset 0 20px 50px rgba(0,0,0,0.6), 0 5px 20px rgba(0,0,0,0.6);
+    -webkit-box-shadow: inset 0 5px 20px rgba(0,0,0,0.3), inset 0 20px 50px rgba(0,0,0,0.6), 0 5px 20px rgba(0,0,0,0.6);
+            box-shadow: inset 0 5px 20px rgba(0,0,0,0.3), inset 0 20px 50px rgba(0,0,0,0.6), 0 5px 20px rgba(0,0,0,0.6);
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 .details:hover{
-    transform: translate3d(0, -70px, 400px);
+    -webkit-transform: translate3d(0, -70px, 400px);
+            transform: translate3d(0, -70px, 400px);
     background: rgba(255,255,255,0.9);
-    box-shadow: inset 0 5px 10px rgba(0,0,0,0.3), inset 0 20px 40px rgba(0,0,0,0.6), 1px 70px 70px rgba(0,0,0,0.9);
+    -webkit-box-shadow: inset 0 5px 10px rgba(0,0,0,0.3), inset 0 20px 40px rgba(0,0,0,0.6), 1px 70px 70px rgba(0,0,0,0.9);
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.3), inset 0 20px 40px rgba(0,0,0,0.6), 1px 70px 70px rgba(0,0,0,0.9);
 }
 .details-box{
     font-size: 115%;
@@ -675,8 +759,10 @@ nav.nav-extended .nav-wrapper {
 #eigthAddCard,
 #ninthAddCard,
 #previewCard{
-    box-sizing: border-box;
-    box-shadow: inset 5px 5px 100px rgba(3, 3, 3, 0.9), 1px 1px 100px rgba(3, 3, 3, 0.9);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-shadow: inset 5px 5px 100px rgba(3, 3, 3, 0.9), 1px 1px 100px rgba(3, 3, 3, 0.9);
+            box-shadow: inset 5px 5px 100px rgba(3, 3, 3, 0.9), 1px 1px 100px rgba(3, 3, 3, 0.9);
     border-radius: 5%;
     min-height: 500px;
     padding-top:10%;
@@ -702,8 +788,12 @@ nav.nav-extended .nav-wrapper {
 .recipe-title{
     margin-top:30px;
     margin-bottom: 30px;
-    box-sizing: border-box;
-    box-shadow: 5px 0 20px rgba(0,0,0,0.9), -5px 0 20px rgba(0,0,0,0.9),
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-shadow: 5px 0 20px rgba(0,0,0,0.9), -5px 0 20px rgba(0,0,0,0.9),
+                5px 0 50px rgba(0,0,0,0.6), -5px 0 50px rgba(0,0,0,0.6),
+                inset 5px 0 10px rgba(0,0,0,0.6), inset -5px 0 10px rgba(0,0,0,0.6);
+            box-shadow: 5px 0 20px rgba(0,0,0,0.9), -5px 0 20px rgba(0,0,0,0.9),
                 5px 0 50px rgba(0,0,0,0.6), -5px 0 50px rgba(0,0,0,0.6),
                 inset 5px 0 10px rgba(0,0,0,0.6), inset -5px 0 10px rgba(0,0,0,0.6);
     border-radius: 50%;
@@ -724,8 +814,10 @@ nav.nav-extended .nav-wrapper {
 }
 .top-recipe-card{
     margin-bottom:50px;
-    box-sizing: border-box;
-    box-shadow: 0 10px 20px rgba(0,0,0,1), 5px 10px 50px rgba(0,0,0,1), inset 0 10px 20px rgba(0,0,0,1), inset 5px 10px 50px rgba(0,0,0,1);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-shadow: 0 10px 20px rgba(0,0,0,1), 5px 10px 50px rgba(0,0,0,1), inset 0 10px 20px rgba(0,0,0,1), inset 5px 10px 50px rgba(0,0,0,1);
+            box-shadow: 0 10px 20px rgba(0,0,0,1), 5px 10px 50px rgba(0,0,0,1), inset 0 10px 20px rgba(0,0,0,1), inset 5px 10px 50px rgba(0,0,0,1);
     border-radius: 5%;
     overflow: hidden;
     background-image: URL("../img/wood.jpg");
@@ -794,6 +886,7 @@ nav.nav-extended .nav-wrapper {
     max-height:75px;
 }
 .smallProdPhotos:hover{
+    cursor: -webkit-zoom-in;
     cursor: zoom-in;
 }
 .largeProdPhotos img{
@@ -814,6 +907,7 @@ nav.nav-extended .nav-wrapper {
     max-height: 35px;
 }
 .smallProdImg img:hover{
+    cursor: -webkit-zoom-in;
     cursor: zoom-in;
 }
 #largerImgDisplay img{
@@ -854,9 +948,15 @@ footer a{
 	cursor: pointer;
 }
 #pagination-container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .customPagination:hover, 
 .paginacaoCursor:hover{
@@ -865,7 +965,7 @@ footer a{
 }
 /*---------------------------------------------------------------------------------------- Messenger */
 #open-messenger{
-    position:fixed;
+    position: fixed;
     text-align: center;
     font-size:200%;
     margin:0 auto;
@@ -909,7 +1009,7 @@ footer a{
     position: relative;
 }
 .IMreply{
-    position:absolute;
+    position: absolute;
     right:0;
     top:30%;
 }
@@ -926,7 +1026,7 @@ footer a{
     z-index: 9999;
 }
 .close{
-    position:absolute;
+    position: absolute;
     top:10px;
     right:10px;
 }

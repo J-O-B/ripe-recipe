@@ -143,7 +143,7 @@
 <!--Main Content Block-->
         <main id="bodyBackground">
             <!--Flash Message Feedback-->
-            <section>
+            <div id="flash">
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}
@@ -155,7 +155,7 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-            </section>
+            </div>
             <div class="container overflowHidden">
                 {% block main_content %}
                 {% endblock %}

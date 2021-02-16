@@ -249,10 +249,15 @@ HTML, CSS --- JavaScript/jQuery--------Python------------MongoDB
 This project has passed through several phases of testing, these phases include:
 
 1. [W3 Validator](https://validator.w3.org/) to check all HTML. 
+    1. To avoid issus and Flask, individual pages source code was added to validator in order to get valid feedback.
 
 2. [W3 'Jigsaw' Validator](https://jigsaw.w3.org/css-validator/) to check all CSS.
 
 3. [JS Hint](https://jshint.com/) to check all JavaScript. 
+
+4. [PEP 8](http://pep8online.com/) to check all Python code.
+
+5. [Autoprefixer](https://autoprefixer.github.io/) to ensure web browser compatability in CSS code.
 
 > Testing was important in this project, with multiple forms located on pages. A recurring bug seemed to be the submission of multiple forms at once. To fix this problem 
 jQuery was used to change a submit buttons value, this paired with an if statement in Python gave the desired outcome.
@@ -270,21 +275,18 @@ Dev tools was also used to improve features such as accessability, SEO, and perf
 >Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
 >![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
 
-
 ### **Bugs & Issues**:
 
-Auto Submit Forms:
-
+> Auto Submit Forms:
 > On multiple occasions I came across a bug that was automatically submitting forms on page load.
 
 * Fix: This problem was solved by using an if statement in Python, paired with a ".click()" function in jQuery. This means that 
 on clicking submit a forms submit button will be given the value of "1". This will then satisfy the IF statement in Python and submit 
 the form. 
 
-
 > Updating a record was deleting all other fields. (MongoDB)
 
-* Fix: One fix for this bug was to suppy all of the previous information back into MongoDB. 
+* Fix: One fix for this bug was to supply all of the previous information back into MongoDB. 
 
 > Deleting item from cart would delete all items with matching descriptions.
 
