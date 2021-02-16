@@ -149,6 +149,10 @@ img{
     height:1px;
     overflow:hidden;
 }
+.larger-text{
+    font-size: 120%;
+    font-weight: 700;
+}
 /*------------Borders & Margins--------*/
 .border{
     -webkit-box-shadow: 3px 3px 5px 6px #000;  

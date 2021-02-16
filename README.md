@@ -266,6 +266,10 @@ As forms use a change in value as part of a submission plan. Console log was use
 As a means to testing visual problems, dev tools was used to identify and fix styling issues.
 Dev tools was also used to improve features such as accessability, SEO, and performance where possible.
 
+>**Lighthouse**
+>Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
+>[Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
+
 
 ### **Bugs & Issues**:
 
