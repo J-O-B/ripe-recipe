@@ -58,27 +58,24 @@ def admin():
     try:
         user = mongo.db.users.find(
             {"username": session["user"]})
-
+        Queries = mongo.db.tickets.find()
+        """
+        Update Ticket
+        """
+        if request.method == "POST":
+            id = request.form.get("query_id")
+            mongo.db.tickets.update_one(
+                {"_id": ObjectId(id)},
+                {"$push":
+                    {"reply": "Admin: " + request.form.get("replyTicket")}})
+            flash("Ticket Updated")
+            return redirect(url_for("admin"))
     except:
         user = ""
-
-    count = mongo.db.tickets.count()
-
-    Queries = mongo.db.tickets.find()
-    """
-    Update Ticket
-    """
-    if request.method == "POST":
-        id = request.form.get("query_id")
-        mongo.db.tickets.update_one(
-            {"_id": ObjectId(id)},
-            {"$push":
-                {"reply": "Admin: " + request.form.get("replyTicket")}})
-        flash("Ticket Updated")
-        return redirect(url_for("admin"))
-
+        flash("Invalid Credentials")
+        return redirect(url_for('my_profile'))
     return render_template("admin_panel.html",
-                           Queries=Queries, count=count, user=user)
+                           Queries=Queries, user=user)
 
 
 @app.route("/error/<reason>", methods=["GET", "POST"])
@@ -597,4 +594,4 @@ def cart():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

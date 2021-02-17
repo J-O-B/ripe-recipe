@@ -1,93 +1,35 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-{% if user == "" %}
-    <div class="row">
-        <div class="col s10 offset-s1 center-align">
-            <h2>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Proceed</h2>
-        </div>
-    </div>
-
-{% else %}
-    {% if user.is_admin == "True" %}
-    <div class="row">
-        <div class="col s12 center-align">
-            <h2>Welcome To The Admin Panel</h2>
-            <hr>
-        </div>
-    </div>
-<!--Notice-->
-    <div class="row">
-        <div class="col s10 offset-s1 center-align">
-            <p>Tickets in <span class="green black-text">Green</span> have been replied to.</p>
-            <p>Tickets in <span class="red black-text">Red</span> have been replied to.</p>
-        </div>
-    </div>
-<!--Tickets-->
-    {% for tickets in Queries %}
-        <!--Open Tickets-->
-        {% if tickets.reply|length == 0 %}
-            <div class="row openTickets">
-                <div class="col s6 m4 red">
-        {% else %}
-            <div class="row openTickets">
-                <div class="col s6 m4 green">
-        {% endif %}
-                <div class="row center-align">
-                    <h3>{{tickets.query_type|capitalize}} Issue</h3>
-                    <hr>
-                    <p>From: {{tickets.submit_by}}<br>On: {{tickets.ticket_opened}}</p>
-                </div>
-                <div class="row center-align">
-                    <a href="#{{tickets._id}}" class="btn modal-trigger col s10 offset-s1 m8 offset-m2">View</a>
-                    <!--Modal View-->
-                    <div id="{{tickets._id}}" class="modal black">
-                        <div class="modal-content col s12 m6 red lighten-3">
-                            <h4>{{tickets.query_type|capitalize}} Issue</h4>
-                            <p>Ticket Opened On {{tickets.ticket_opened}} By {{tickets.submit_by|capitalize}}</p>
-                            <p>Description: {{ tickets.details }}</p>
-                            
-                            {% if tickets.reply|length > 0 %}
-                                <h5>Replies:</h5>
-                                <ul>
-                                    {% for X in range(tickets.reply|count) %}
-                                        <li><p>{{ tickets.reply[X] }}</p></li>
-                                        <hr>
-                                    {% endfor %}
-                                </ul>         
-                            {% else %}
-                                <p>There is no reply yet to this ticket</p>
-                            {% endif %}
-                        </div>
-                        <div class="modal-content col s12 m6 green lighten-3">
-                            <h4>Reply To Ticket:</h4>
-                            <hr>
-                            <form method="POST">
-                                <input type="text" name="query_id" id="query_id" value="{{tickets._id}}" class="hidden">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-reply prefix"></i>
-                                    <textarea id="replyTicket" name="replyTicket" class="materialize-textarea"></textarea>
-                                    <label for="replyTicket">Reply Message</label>
-                                </div>
-                                <div class="input-field col s10 offset-s1">
-                                    <select name="open_ticket" id="open_ticket" class="center-align">
-                                        <option selected value="2">Leave Ticket Open</option>
-                                        <option value="0">Close This Ticket</option>
-                                    </select>  
-                                </div>
-                                <button type="submit" class="btn">Submit</button>
-                            </form>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close red btn-flat">Close</a>
-                        </div>
-                    </div>
+    {% for x in user %}
+        {% if x.is_admin == "True" %}
+        <!--User is an admin -->
+            <div class="row center-align">
+                <div class="col m4 offset-m4 s8 offset-s2 center-align border soft-corners">
+                    <h1>Admin Panel</h1>
                 </div>
             </div>
-        </div>
+            <div class="row center-align">
+                {% for tickets in Queries %}
+                    <!--Print All Tickets-->
+                    {% if tickets.reply|length != 0 %}
+                        <!--Needs Reply-->
+                        <div class="col s6 m4 center-align border red">
+                            Ticket
+                        </div>
+                    {% elif tickets.reply|length == 0 %}
+                        <!--Replied-->
+                        <div class="col s6 m4 center-align border green">
+                            Ticket
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+<!------------------------------------------------------------------------------------------------------------->
+        {% elif x.is_admin == "" or x.is_admin != "True" %}
+        <!--User is not an admin-->
+            
+        {% endif %}
     {% endfor %}
-    {% endif %}
-<!--End Tickets-->    
-{% endif %}
+
 {% endblock %}
