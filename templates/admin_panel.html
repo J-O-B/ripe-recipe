@@ -10,18 +10,27 @@
                 </div>
             </div>
             <div class="row center-align">
+                <h2>Tickets:</h2>
+                <hr class="custom-short-div">
                 {% for tickets in Queries %}
                     <!--Print All Tickets-->
                     {% if tickets.reply|length != 0 %}
                         <!--Needs Reply-->
                         <div class="col s6 m4 center-align border red">
-                            Ticket
+                            <h3>{{tickets.query_type|capitalize}}</h3>
+                            <hr class="custom-short-div">
+                            <p>{{tickets.details[:50]|capitalize}}</p>
+                            <a href="#{{tickets._id}}" class="btn">View</a>
                         </div>
                     {% elif tickets.reply|length == 0 %}
                         <!--Replied-->
                         <div class="col s6 m4 center-align border green">
-                            Ticket
+                            <h3>{{tickets.query_type|capitalize}}</h3>
+                            <hr class="custom-short-div">
+                            <p>{{tickets.details[:50]|capitalize}}</p>
+                            <a href="#{{tickets._id}}" class="btn">View</a>
                         </div>
+
                     {% endif %}
                 {% endfor %}
             </div>
