@@ -160,24 +160,22 @@ def signup():
         if existing_user:
             flash("Username Already Exists")
             return redirect(url_for("signup"))
-
-        if not existing_user:
-            if request.form.get("submit") == "1":
-                register = {
-                    "username": request.form.get("username").lower(),
-                    "email": request.form.get("email"),
-                    "fav_food": request.form.get("fav_food").lower(),
-                    "prof_pic": request.form.get("prof_pic"),
-                    "bio": request.form.get("bio").lower(),
-                    "password": generate_password_hash(
-                        request.form.get("password")),
-                    "fav_recipes": [],
-                    "cart_items": [],
-                }
-                mongo.db.users.insert_one(register)
-                # Put the new user into "session" cookie
-                session['user'] = request.form.get("username")
-                flash("Congratulations, You Are Now Part Of The Ripe Family!")
+        else:
+            register = {
+                "username": request.form.get("username").lower(),
+                "email": request.form.get("email"),
+                "fav_food": request.form.get("fav_food").lower(),
+                "prof_pic": request.form.get("prof_pic"),
+                "bio": request.form.get("bio").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password")),
+                "fav_recipes": [],
+                "cart_items": [],
+            }
+            mongo.db.users.insert_one(register)
+            # Put the new user into "session" cookie
+            session['user'] = request.form.get("username")
+            flash("Congratulations, You Are Now Part Of The Ripe Family!")
 
     return render_template("signup.html")
 
