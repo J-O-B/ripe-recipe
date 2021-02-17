@@ -143,7 +143,7 @@
                         <p>Please Please Use A Combination Of Letters (A-Z) and Numbers (0-9)</p>
                         <div class="input-field col s10 offset-s1">
                             <i class="fas fa-user-lock prefix pink-text text-lighten-2"></i>
-                            <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$" class="validate" required>
                             <label class="black-text" for="password">Password (min 5 characters) </label>
                             <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                         </div>

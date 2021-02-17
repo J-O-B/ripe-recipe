@@ -237,11 +237,42 @@ Functioning checkout form.
 ------------------
 ## **Technologies Used**
 
-This project uses HTML, CSS, JavaScript, jQuery, Python and MongoDB. 
+This project uses multiple languages, libraries and frameworks which can be found below:
 
-Front end ------------------------------------------------------------- Back end
 
-HTML, CSS --- JavaScript/jQuery--------Python------------MongoDB
+### Languages
+> 1. HTML5
+>    1. HTML makes up the foundation of this project.
+> 2. CSS3
+>   1. CSS3 is used for all styling throught this application.
+> 3. JavaScript
+>   1. JavaScript (including jQuery) is used for all interactive forms and is used to compliment Python code regarding forms.
+> 4. Python
+>   1. Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
+
+### Frameworks, Libraries & Other
+> 1. Gitpod
+>   1. The GitPod is used to develop the project.
+> 2. Git
+>   1. The Git was used for version control to commit to Git and push to GitHub.
+> 3. GitHub
+>   1. GitHub is used to host the project.
+> 4. Google Fonts
+>   1. Google Fonts is used to provide the font roboto for all the text that is used in the project.
+> 5. Balsamiqu
+>   1. Balsamiqu is used to create the mockup designs for the project.
+> 6. Materialize
+>   1. Materialize is used for the design framework.
+> 7. MobgoDB
+>   1. MongoDB is the fully managed cloud database service used for the project.
+> 8. Heroku
+>   1. Heroki is the cloud platform to deploying the app.
+> 9. Flask
+>   1. Flask is the web framework used to provide libraries, tools and technologies for the app.
+> 10. Jinja
+>   1. Jinja is used for templating Python
+> 11. Werkzeug
+>   1. Werkzeug is used for security through password hashing
 
 ---------------------
 ## **Testing**
@@ -271,9 +302,14 @@ As forms use a change in value as part of a submission plan. Console log was use
 As a means to testing visual problems, dev tools was used to identify and fix styling issues.
 Dev tools was also used to improve features such as accessability, SEO, and performance where possible.
 
->**Lighthouse**
->Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
->![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
+**Lighthouse:**
+
+Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
+![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
+
+**Responsive Design:**
+
+To ensure responsive design I have used [Responsive Design](http://ami.responsivedesign.is/). This was used to compliment testing performed in Google dev tools.
 
 ### **Bugs & Issues**:
 
