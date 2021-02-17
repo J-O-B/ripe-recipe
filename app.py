@@ -59,6 +59,21 @@ def admin():
         user = mongo.db.users.find(
             {"username": session["user"]})
         Queries = mongo.db.tickets.find()
+
+        # Count the stats
+        userCount = mongo.db.users.count()
+        ticketCount = mongo.db.tickets.count()
+        recipeCount = mongo.db.recipes.count()
+        productCount = mongo.db.products.count()
+        commentCount = mongo.db.comments.count()
+        messageCount = mongo.db.messages.count()
+
+        userCount=userCount,
+        ticketCount=ticketCount,
+        recipeCount=recipeCount,
+        productCount=productCount,
+        commentCount=commentCount,
+        messageCount=messageCount,
         """
         Update Ticket
         """
@@ -75,7 +90,13 @@ def admin():
         flash("Invalid Credentials")
         return redirect(url_for('my_profile'))
     return render_template("admin_panel.html",
-                           Queries=Queries, user=user)
+                           Queries=Queries, user=user,
+                           userCount=userCount,
+                           ticketCount=ticketCount,
+                           recipeCount=recipeCount,
+                           productCount=productCount,
+                           commentCount=commentCount,
+                           messageCount=messageCount)
 
 
 @app.route("/error/<reason>", methods=["GET", "POST"])
@@ -594,4 +615,4 @@ def cart():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

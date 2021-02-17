@@ -9,6 +9,54 @@
                     <h1>Admin Panel</h1>
                 </div>
             </div>
+            <!--Control Panel Stats-->
+            <div class="row">
+                <div class="col m4 s12">
+                    <div class="col m10 s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Users:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{userCount[0]}}</h5>
+                    </div>
+                </div>
+                <div class="col m4 s12">
+                    <div class="col s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Recipes:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{recipeCount[0]}}</h5>
+                    </div>
+                </div>
+                <div class="col m4 s12">
+                    <div class="col m10 offset-m2 s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Products:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{productCount[0]}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m4 s12">
+                    <div class="col m10 s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Tickets:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{ticketCount[0]}}</h5>
+                    </div>
+                </div>
+                <div class="col m4 s12">
+                    <div class="col s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Comments:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{commentCount[0]}}</h5>
+                    </div>
+                </div>
+                <div class="col m4 s12">
+                    <div class="col m10 offset-m2 s10 offset-s1 center-align haze border soft-corners">
+                        <h3>Messages:</h3>
+                        <hr class="custom-short-div">
+                        <h5>{{messageCount[0]}}</h5>
+                    </div>
+                </div>
+            </div>
+            <!--Tickets Section-->
             <div class="row center-align">
                 <h2>Tickets:</h2>
                 <p>
@@ -49,14 +97,25 @@
                         <div id="edit{{tickets._id}}" class="modal">
                             <div class="modal-content green lighten-2">
                                 <h4>Edit / Reply To {{tickets.submit_by}}</h4>
-                                <p>{{tickets.details|capitalize}}</p>
-                                <hr class="custom-short-div">
-                                <p>
-                                    Reply:
-                                    {% for x in tickets.reply %}
-                                    <br>{{x}}
-                                    {% endfor %}
-                                </p>
+                                <form method="POST">
+                                    <div class="row center-align">
+                                        <input type="text" id="query{{tickets._id}}" name="query_id" value="{{tickets._id}}" class="hidden">
+                                        <p>
+                                            Reply:
+                                            {% for x in tickets.reply %}
+                                                <br>{{x}}
+                                            {% endfor %}
+                                        </p>
+                                        <div class="input-field col s8 offset-s2 white center-align">
+                                            <i class="fas fa-reply prefix"></i>
+                                            <input id="replyTicket" name="replyTicket" type="text" class="validate">
+                                            <label for="replyTicket">Reply</label>
+                                        </div>
+                                    </div>
+                                    <div class="row center-align">
+                                        <input type="submit" value="Submit" class="btn green">
+                                    </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -93,14 +152,25 @@
                         <div id="edit{{tickets._id}}" class="modal">
                             <div class="modal-content green lighten-2">
                                 <h4>Edit / Reply To {{tickets.submit_by}}</h4>
-                                <p>{{tickets.details|capitalize}}</p>
-                                <hr class="custom-short-div">
-                                <p>
-                                    Reply:
-                                    {% for x in tickets.reply %}
-                                    <br>{{x}}
-                                    {% endfor %}
-                                </p>
+                                <form method="POST">
+                                    <div class="row center-align">
+                                        <input type="text" id="query{{tickets._id}}" name="query_id" value="{{tickets._id}}" class="hidden">
+                                        <p>
+                                            Reply:
+                                            {% for x in tickets.reply %}
+                                                <br>{{x}}
+                                            {% endfor %}
+                                        </p>
+                                        <div class="input-field col s8 offset-s2 white center-align">
+                                            <i class="fas fa-reply prefix"></i>
+                                            <input id="replyTicket" name="replyTicket" type="text" class="validate">
+                                            <label for="replyTicket">Reply</label>
+                                        </div>
+                                    </div>
+                                    <div class="row center-align">
+                                        <input type="submit" value="Submit" class="btn green">
+                                    </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -112,7 +182,14 @@
 <!------------------------------------------------------------------------------------------------------------->
         {% elif x.is_admin == "" or x.is_admin != "True" %}
         <!--User is not an admin-->
-            
+        <div class="row">
+            <div class="col s6 offset-s3 center-align border red lighten-2 soft-corners">
+                <h2>Invalid Credentials</h2>
+                <p>
+                    Please <a href="{{url_for('login')}}" class="black-text">Login</a> If You Are Seeing This In Error.
+                </p>
+            </div>
+        </div>
         {% endif %}
     {% endfor %}
 
