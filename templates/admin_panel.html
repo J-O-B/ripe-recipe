@@ -27,11 +27,11 @@
     {% for tickets in Queries %}
         <!--Open Tickets-->
         {% if tickets.reply|length == 0 %}
-        <div class="row openTickets">
-            <div class="col s6 m4 red">
+            <div class="row openTickets">
+                <div class="col s6 m4 red">
         {% else %}
-        <div class="row openTickets">
-            <div class="col s6 m4 green">
+            <div class="row openTickets">
+                <div class="col s6 m4 green">
         {% endif %}
                 <div class="row center-align">
                     <h3>{{tickets.query_type|capitalize}} Issue</h3>
@@ -48,14 +48,13 @@
                             <p>Description: {{ tickets.details }}</p>
                             
                             {% if tickets.reply|length > 0 %}
-                            <h5>Replies:</h5>
-                            <ul>
-                                {% for X in range(tickets.reply|count) %}
-                                    <li><p>{{ tickets.reply[X] }}</p></li>
-                                    <hr>
-                                {% endfor %}
-                            </ul>
-                                            
+                                <h5>Replies:</h5>
+                                <ul>
+                                    {% for X in range(tickets.reply|count) %}
+                                        <li><p>{{ tickets.reply[X] }}</p></li>
+                                        <hr>
+                                    {% endfor %}
+                                </ul>         
                             {% else %}
                                 <p>There is no reply yet to this ticket</p>
                             {% endif %}
@@ -88,8 +87,7 @@
             </div>
         </div>
     {% endfor %}
-<!--End Tickets-->
-        {% endif %}
-        {% endfor %}      
+    {% endif %}
+<!--End Tickets-->    
 {% endif %}
 {% endblock %}
