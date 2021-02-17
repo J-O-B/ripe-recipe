@@ -152,12 +152,12 @@ def editUser():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    if request.method == "POST":
-        # Check if username already exists
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get('username')})
 
-        if existing_user:
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+                {"username": request.form.get('username')})
+        # Check if username exists
+        if not existing_user == "":
             flash("Username Already Exists")
             return redirect(url_for("signup"))
         else:
@@ -176,6 +176,7 @@ def signup():
             # Put the new user into "session" cookie
             session['user'] = request.form.get("username")
             flash("Congratulations, You Are Now Part Of The Ripe Family!")
+            return redirect(url_for("my_profile"))
 
     return render_template("signup.html")
 
@@ -596,4 +597,4 @@ def cart():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

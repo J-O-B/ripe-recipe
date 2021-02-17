@@ -490,9 +490,19 @@ nav.nav-extended .nav-wrapper {
 }
 /*----------------------------------------------------------------------------------------User Profile */
 #prof_pic{
+    position: relative;
     width: 75%;
     margin-top:25px;
     margin-left:25px;
+}
+#prof_pic img {
+    position: absolute;
+    bottom: -5;
+    height: 100%;
+    margin-top: 0;
+    width: 100%;
+    margin-left: 0;
+    left: 0;
 }
 .prof-top-card{
     height:300px;
@@ -504,9 +514,14 @@ nav.nav-extended .nav-wrapper {
     border-radius: 50%;
     overflow: hidden;
 }
-#profImg img{
+#profImg img {
     position: absolute;
-    bottom:-5;
+    bottom: -5;
+    height: 100%;
+    margin-top: 0;
+    width: 100%;
+    margin-left: 0;
+    left: 0;
 }
 
 #Recipes,

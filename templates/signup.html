@@ -22,7 +22,7 @@
     
 <!--Card to hold the signup form-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" action="{{ url_for('signup') }}">
+        <form method="POST" action="{{url_for('signup')}}">
             <div class="card-panel haze border round-corners">
                 <div id="startSignup" class="center-align">
                     <h2>You Will Begin The <br>Signup Process For Ripe</h2>
@@ -147,11 +147,11 @@
                             <label class="black-text" for="password">Password (min 5 characters) </label>
                             <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
                         </div>
-                        <div class="col s12">
-                            <button type="submit" id="submit" method="POST" class="col s8 offset-s2 btn-large green accent-3 black-text text-shadow">
-                                Register <i class="fas fa-sign-in-alt"></i>
-                            </button>
-                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <button type="submit" id="submitRecipe" class="btn" value="Submit" method="post">
+                            Submit
+                        </button>
                     </div>
                     <div class="row">
                         <div class="col s12 m6 center-align">
