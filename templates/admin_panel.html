@@ -11,6 +11,10 @@
             </div>
             <div class="row center-align">
                 <h2>Tickets:</h2>
+                <p>
+                    <span class="green">Green</span> Tickets Have Been Responded To<br>
+                    <span class="red">Red</span> Tickets Have Not<br>
+                </p>
                 <hr class="custom-short-div">
                 {% for tickets in Queries %}
                     <!--Print All Tickets-->
@@ -20,7 +24,43 @@
                             <h3>{{tickets.query_type|capitalize}}</h3>
                             <hr class="custom-short-div">
                             <p>{{tickets.details[:50]|capitalize}}</p>
-                            <a href="#{{tickets._id}}" class="btn">View</a>
+                            <p>{{tickets.submit_by|capitalize}}</p>
+                            <a href="#modal{{tickets._id}}" class="btn modal-trigger">View</a>
+                        </div>
+                        <!--Ticket Modal-->
+                        <div id="modal{{tickets._id}}" class="modal">
+                            <div class="modal-content red">
+                                <h4>{{tickets.query_type|capitalize}}</h4>
+                                <p>{{tickets.details|capitalize}}</p>
+                                <hr class="custom-short-div">
+                                <p>
+                                    Reply:
+                                    {% for x in tickets.reply %}
+                                    <br>{{x}}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close red btn-flat">Close</a>
+                                <a href="#edit{{tickets._id}}" class="modal-close modal-trigger green btn-flat">Edit/Reply</a>
+                            </div>
+                        </div>
+                        <!--Edit Modal-->
+                        <div id="edit{{tickets._id}}" class="modal">
+                            <div class="modal-content green lighten-2">
+                                <h4>Edit / Reply To {{tickets.submit_by}}</h4>
+                                <p>{{tickets.details|capitalize}}</p>
+                                <hr class="custom-short-div">
+                                <p>
+                                    Reply:
+                                    {% for x in tickets.reply %}
+                                    <br>{{x}}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
                         </div>
                     {% elif tickets.reply|length == 0 %}
                         <!--Replied-->
@@ -28,9 +68,44 @@
                             <h3>{{tickets.query_type|capitalize}}</h3>
                             <hr class="custom-short-div">
                             <p>{{tickets.details[:50]|capitalize}}</p>
-                            <a href="#{{tickets._id}}" class="btn">View</a>
+                            <p>{{tickets.submit_by|capitalize}}</p>
+                            <a href="#modal{{tickets._id}}" class="btn modal-trigger">View</a>
                         </div>
-
+                        <!--Ticket Modal-->
+                        <div id="modal{{tickets._id}}" class="modal">
+                            <div class="modal-content green">
+                                <h4>{{tickets.query_type|capitalize}}</h4>
+                                <p>{{tickets.details|capitalize}}</p>
+                                <hr class="custom-short-div">
+                                <p>
+                                    Reply:
+                                    {% for x in tickets.reply %}
+                                    <br>{{x}}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close red btn-flat">Close</a>
+                                <a href="#edit{{tickets._id}}" class="modal-close modal-trigger green btn-flat">Edit/Reply</a>
+                            </div>
+                        </div>
+                        <!--Edit Modal-->
+                        <div id="edit{{tickets._id}}" class="modal">
+                            <div class="modal-content green lighten-2">
+                                <h4>Edit / Reply To {{tickets.submit_by}}</h4>
+                                <p>{{tickets.details|capitalize}}</p>
+                                <hr class="custom-short-div">
+                                <p>
+                                    Reply:
+                                    {% for x in tickets.reply %}
+                                    <br>{{x}}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>
