@@ -841,7 +841,6 @@ nav.nav-extended .nav-wrapper {
 }
 .top-recipe-inner{
     padding:25px;
-    border-radius: 5%;
 }
 #selectedTitle{
     margin-bottom:50px;
@@ -856,7 +855,6 @@ nav.nav-extended .nav-wrapper {
 #recipe-comments{
     padding-top: 55px;
 }
-
 #rating-comment>option{
     font-size: larger;
     color:black;
@@ -886,6 +884,11 @@ nav.nav-extended .nav-wrapper {
 }
 #ingredientScroll li{
     width:90%;
+}
+.recipe-details{
+    height: auto;
+    padding:0;
+    margin:0;
 }
 
 /*---------------------------------------------------------------------------------------- Store */

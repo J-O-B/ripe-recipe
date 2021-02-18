@@ -7,7 +7,7 @@
         <!--Wrapper-->
         <div class="wrap top-recipe-card">
             <!--Top Section-->
-            <div class="row top-recipe-inner">
+            <div class="row top-recipe-inner haze border">
                     <div class="col s12 m6 offset-m3 haze border soft-corners" id="selectedTitle">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
@@ -25,38 +25,70 @@
                     <a href="#!" class="modal-close btn-flat">Close</a>
                     </div>
                 </div>
-                <div class="col s10 offset-s1 l8 m5 margin-bottom">
+                <div class="col s12 l8 m5 margin-bottom">
                     <!--Left Block--> 
                     <div class="col l6 s12 left-block">
-                        <div class="col s6 center-align" id="detailsRecipe">
-                            <p class="right-align"><strong>Category:</strong></p>
-                            <hr>
-                            <p class="right-align"><strong>Name:</strong></p>
-                            <hr>
-                            <p class="right-align"><strong>Prep Time:</strong></p>
-                            <hr>
-                            <p class="right-align"><strong>Cooking Time:</strong></p>
+                        <h3 class="center-align border">Details: </h3>
+                        <div class="row recipe-details">
+                            <div class="col s4 right-align">
+                                <p><strong>Name: </strong></p>
+                                <hr>
+                            </div>
+                            <div class="col s8">
+                                <p>{{recipes.recipe_name|capitalize}}</p>
+                                <hr>
+                            </div> 
                         </div>
-                        <div class="col s6">
-                            <p><em>{{ recipes.category_name|capitalize }}</em></p>
-                            <hr>
-                            <p><em>{{ recipes.recipe_name|capitalize }}</em></p>
-                            <hr>
-                            <p><em>{{ recipes.prep_time }} min</em></p>
-                            <hr>
-                            <p><em>{{ recipes.cooking_time }} min</em></p>
+                        <div class="row recipe-details">
+                            <div class="col s4 right-align">
+                                <p>Serves: </p>
+                                <hr>
+                            </div>
+                            <div class="col s8">
+                                <p>{{recipes.serves}} Person(s)</p>
+                                <hr>
+                            </div>  
                         </div>
-                        
+                        <div class="row recipe-details">
+                            <div class="col s4 right-align">
+                                <p><strong>Prep Time: </strong></p>
+                                <hr>
+                            </div>
+                            <div class="col s8">
+                                <p>{{recipes.prep_time}} minutes</p>
+                                <hr>
+                            </div>  
+                        </div>
+                        <div class="row recipe-details">
+                            <div class="col s4 right-align">
+                                <p><strong>Cooking Time: </strong></p>
+                                <hr>
+                            </div>
+                            <div class="col s8">
+                                {% if recipes.cooking_time|length == 0 %}
+                                    {% set cookTime = "No Cooking Time" %}
+                                {% else %}
+                                    {% set cookTime = recipes.cooking_time + " minutes" %}
+                                {% endif %}
+                                <p>{{cookTime}}</p>
+                                <hr>
+                            </div>  
+                        </div>
                     </div>
                     <!--Right Block-->
                     <div class="col l6 s12 right-block">
-                        <p><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
-                        <p><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
-                        {% if session["user"] %}
-                        <a class="btn modal-trigger" href="#save-recipe">Add To Favorites <i class="far fa-save"></i></a>
-                        {% else %}
-                        <p class="center-align"><em>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Save Recipe</em></p>
-                        {% endif %}
+                        <h3 class="center-align border">Description:</h3>
+                        <div class="col s12">
+                            <p class="recipe-details"><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
+                            <hr>
+                            <p class="recipe-details"><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
+                            <hr>
+                            {% if session["user"] %}
+                            <a class="btn modal-trigger col s12" href="#save-recipe">Add To Favorites <i class="far fa-save"></i></a>
+                            {% else %}
+                            <p class="center-align"><em>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Save Recipe</em></p>
+                            {% endif %}    
+                        </div>
                     </div>
                     <div id="save-recipe" class="modal">
                         <div class="modal-content save-recipe center-align">
@@ -113,7 +145,7 @@
                 </div>
             {% endif %}
             <!--Nutrition Row-->
-            <div class="row haze">
+            <div class="row haze border">
                 <div class="col s10 offset-s1 center-align">
                     <h3>Nutrition</h3>
                     <hr class="custom-short-div">
