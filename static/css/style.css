@@ -491,21 +491,13 @@ nav.nav-extended .nav-wrapper {
 /*----------------------------------------------------------------------------------------User Profile */
 #prof_pic{
     position: relative;
-    width: 75%;
-    margin-top:25px;
-    margin-left:25px;
-}
-#prof_pic img {
-    position: absolute;
-    bottom: -5;
-    height: 100%;
-    margin-top: 0;
-    width: 100%;
-    margin-left: 0;
-    left: 0;
+    width: 115%;
+    height:100%;
+    margin-left:-20px;
 }
 .prof-top-card{
     height:300px;
+    overflow: hidden;
 }
 #profImg{
     position: relative;
@@ -950,7 +942,7 @@ footer{
     margin:0;
     padding:0;
     height:250px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
 }
 footer a{
     color:#000;
