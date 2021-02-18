@@ -68,12 +68,6 @@ def admin():
         commentCount = mongo.db.comments.count()
         messageCount = mongo.db.messages.count()
 
-        userCount=userCount,
-        ticketCount=ticketCount,
-        recipeCount=recipeCount,
-        productCount=productCount,
-        commentCount=commentCount,
-        messageCount=messageCount,
         """
         Update Ticket
         """
@@ -145,11 +139,14 @@ def logout():
 
 @app.route('/editProfile', methods=["GET", "POST"])
 def editUser():
-    user = mongo.db.users.find_one(
-            {"username": session["user"]})
-    id = user["_id"]
+    try:
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+        id = user["_id"]
+    except:
+        user = ""
     if request.method == "POST":
-
+        session.pop("user")
         edit = {
             "username": request.form.get("username").lower(),
             "email": request.form.get("email"),
@@ -160,11 +157,15 @@ def editUser():
             "fav_recipes": user["fav_recipes"],
             "cart_items": user["cart_items"],
         }
+
         mongo.db.users.update({"_id": ObjectId(id)}, edit)
 
         # Update "session" cookie
+        session.pop("user")
         session['user'] = request.form.get("username")
+        # Flash Message
         flash("Profile Successfully Updated")
+        return redirect(url_for('home'))
     return render_template("editUser.html", user=user)
 
 
@@ -175,10 +176,7 @@ def signup():
         existing_user = mongo.db.users.find_one(
                 {"username": request.form.get('username')})
         # Check if username exists
-        if not existing_user == "":
-            flash("Username Already Exists")
-            return redirect(url_for("signup"))
-        else:
+        if not existing_user:
             register = {
                 "username": request.form.get("username").lower(),
                 "email": request.form.get("email"),
@@ -195,6 +193,9 @@ def signup():
             session['user'] = request.form.get("username")
             flash("Congratulations, You Are Now Part Of The Ripe Family!")
             return redirect(url_for("my_profile"))
+        else:
+            flash("Username Already Exists")
+            return redirect(url_for("signup"))
 
     return render_template("signup.html")
 
@@ -235,7 +236,6 @@ def editrecipe(id):
             mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
 
             flash("Your Recipe Has Been Updated!")
-
             return render_template("selected.html",
                                    recipe=recipe, id=id)
 
