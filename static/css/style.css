@@ -654,8 +654,8 @@ nav.nav-extended .nav-wrapper {
 
 /* Style the back side */
 .flip-card-back {
-    background: -o-radial-gradient(#fff 60%, rgba(0,0,0,0) 70%);
-    background: radial-gradient(#fff 60%, rgba(0,0,0,0) 70%);
+    background: -o-radial-gradient(var(--second) 50%, rgba(0,0,0,0) 80%);
+    background: radial-gradient(var(--second) 50%, rgba(0,0,0,0) 80%);
     color: black;
     text-shadow: 1px 1px 10px rgb(245,41,135);
     -webkit-transform: rotateY(180deg);
