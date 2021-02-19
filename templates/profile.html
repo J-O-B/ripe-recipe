@@ -16,62 +16,31 @@
                     <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
                 </div>
                 <div class="col s12 m7 offset-m1 haze border prof-top-card soft-corners">
-                            <a href="#editProfile" class="btn modal-trigger center-align col s4 offset-s1 green accent-2 black-text">Edit Profile</a>
-                            <!--modal here-->
-                            <div id="editProfile" class="modal">
-                                <div class="modal-content">
-                                    <form method="POST">
-                                        <h3>Please Confirm Your Details To Proceed</h3>
-                                            <div class="row">
-                                                <div class="input-field col s10 offset-s1">
-                                                    <i class="fas fa-user-cog prefix black-text text-lighten-2"></i>
-                                                    <input id="username" name="username" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
-                                                    <label class="black-text" for="username">Username</label>
-                                                    <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s10 offset-s1">
-                                                    <i class="fas fa-user-lock prefix black-text text-lighten-2"></i>
-                                                    <input id="password" name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
-                                                    <label class="black-text" for="password">Password</label>
-                                                    <span class="helper-text" data-error="Input incorrect" data-success="Input Correct"></span>
-                                                </div>
-                                            </div>
-                                            <button type="submit" name="go" id="go" class="col s5 offset-s2 btn-large green accent-3 black-text soft-corners">
-                                                Edit <i class="fas fa-sign-in-alt"></i>
-                                            </button>
-                                        </form>
-                                        <button name="cancel" id="cancel" class="modal-close col s5 btn-large red accent-3 black-text soft-corners">
-                                            Cancel <i class="fas fa-times-circle"></i>
-                                        </button>
-                                </div>
-                                <div class="modal-footer center-align">
-                                    <p>Please Confirm Login To Proceed</p>
-                                </div>
-                            </div>
-                            <a href="#deleteProfile" class="btn modal-trigger center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
-                            <!--modal here-->
-                            <div id="deleteProfile" class="modal">
-                                <div class="modal-content">
-                                    <h4>Warning</h4>
-                                    <p>You Are About To Delete Your Profile</p>
-                                    <hr class="custom-short-div">
-                                    <p>Delete Your Profile?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-close col s7 green btn-flat">No</a>
-                                    <a href="#!" class="modal-close col s4 offset-s1 green btn-flat">Yes</a>
-                                </div>
-                            </div>
-                        <div class="col s12">
-                            <h2>{{ user.username|capitalize }}</h2>
-                            <p>Biography: {{ user.bio|capitalize }}</p>
-                            <p>Number Of Recipes: {{ numOfRecipes }}</p>
-                        </div>    
+                    <a href="{{url_for('editUser')}}" class="btn center-align col s4 offset-s1 green accent-2 black-text">Edit Profile</a>
+                    <a href="#deleteProfile" class="btn modal-trigger center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
+                    <!--modal here-->
+                    <div id="deleteProfile" class="modal">
+                        <div class="modal-content">
+                            <h4>Warning</h4>
+                            <p>You Are About To Delete Your Profile</p>
+                            <hr class="custom-short-div">
+                            <p>Delete Your Profile?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close col s6 green btn-flat">No</a>
+                            <form method="POST">
+                                <input type="text" id="profId" name="profId" class="hidden" value="{{user._id}}">
+                                <input type="submit" id="deleteProf" name="deleteProf" value="Yes">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <h2>{{ user.username|capitalize }}</h2>
+                        <p>Biography: {{ user.bio|capitalize }}</p>
+                        <p>Number Of Recipes: {{ numOfRecipes }}</p>
+                    </div>    
                 </div>
             </div>
-
             <!--Second Row-->
             <div class="row">
                 <div class="col s12 m5 haze border soft-corners" id="myRecipes">

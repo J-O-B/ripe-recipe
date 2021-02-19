@@ -240,11 +240,10 @@ img{
         justify-content: space-around;
 }
 /*---------------------------------------------------------------- Flashes */
-.flashes h4{
-    font-size:200%;
+.flashes h2{
+    font-size:400%;
     line-height: 2;
     color: black;
-    border-radius: 20%;
 }
 /*---------------------------------------------------------------- Divs */
 .custom-short-div{

@@ -145,27 +145,31 @@ def editUser():
         id = user["_id"]
     except:
         user = ""
+
     if request.method == "POST":
-        session.pop("user")
-        edit = {
-            "username": request.form.get("username").lower(),
-            "email": request.form.get("email"),
-            "fav_food": request.form.get("fav_food").lower(),
-            "prof_pic": request.form.get("prof_pic"),
-            "bio": request.form.get("bio").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "fav_recipes": user["fav_recipes"],
-            "cart_items": user["cart_items"],
-        }
+        existing_user = mongo.db.users.find_one(
+                {"username": request.form.get('username').lower()})
+        # Check if username exists
+        if not existing_user:
+            edit = {
+                "username": request.form.get("username").lower(),
+                "email": request.form.get("email"),
+                "fav_food": request.form.get("fav_food").lower(),
+                "prof_pic": request.form.get("prof_pic"),
+                "bio": request.form.get("bio").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password")),
+                "fav_recipes": user["fav_recipes"],
+                "cart_items": user["cart_items"],
+            }
+            mongo.db.users.update({"_id": ObjectId(id)}, edit)
 
-        mongo.db.users.update({"_id": ObjectId(id)}, edit)
-
-        # Update "session" cookie
-        session.pop("user")
-        session['user'] = request.form.get("username")
-        # Flash Message
-        flash("Profile Successfully Updated")
-        return redirect(url_for('home'))
+            # Flash Message
+            session.pop("user")
+            flash("Profile Updated, Please Login With Your New Details")
+            return redirect(url_for('login'))
+        else:
+            flash("Username Already Exists")
     return render_template("editUser.html", user=user)
 
 
@@ -174,7 +178,7 @@ def signup():
 
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-                {"username": request.form.get('username')})
+                {"username": request.form.get('username').lower()})
         # Check if username exists
         if not existing_user:
             register = {
@@ -457,6 +461,10 @@ def my_profile():
             {"user_id": myId})
 
     if request.method == "POST":
+        if request.form.get("deleteProf") != "Yes":
+            profile = {"_id": request.form.get("profId")}
+            mongo.db.users.delete_one(profile)
+            return redirect(url_for('login'))
         # If a user is creating a new ticket
         if request.form.get("newTicket") == "1":
             today = date.today()
@@ -473,18 +481,6 @@ def my_profile():
                 }
             mongo.db.tickets.insert(ticket)
             flash("Ticket Open: Monitor The Ticketing Section For Response")
-
-        if request.form.get("go") == "1":
-            try:
-                # Check for valid password for that user
-                if check_password_hash(
-                  user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for('editUser'))
-            except:
-                flash("Username and/or Password Incorrect")
-                return redirect(url_for('my_profile'))
 
         # If the user is editing a ticket
         if request.form.get("submitEdit") == "1":

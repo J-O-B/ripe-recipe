@@ -141,6 +141,10 @@ $('#delete').click(function(){
     backToZero();
 })
 
+$('#deleteProf').click(function(){
+    $(this).val(1);
+})
+
 // By changing values, to stop this value from remaining at the new value for 
 function backToZero(){
     $('#submit').val(0);
