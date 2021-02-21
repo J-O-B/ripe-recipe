@@ -155,7 +155,7 @@ def editUser():
                 "username": request.form.get("username").lower(),
                 "email": request.form.get("email"),
                 "fav_food": request.form.get("fav_food").lower(),
-                "prof_pic": request.form.get("prof_pic"),
+                "prof_pic": request.form.get("edit_prof_pic"),
                 "bio": request.form.get("bio").lower(),
                 "password": generate_password_hash(
                     request.form.get("password")),

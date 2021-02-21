@@ -33,10 +33,12 @@
                     <div class="row">
                         <div class="nav-wrapper nav-logo">
                             <div class="col s4">
-                                <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image for Ripe Recipe">
+                                <a href="{{url_for('home')}}">
+                                    <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/test.png') }}" alt="Logo image for Ripe Recipe">
+                                </a>
                             </div>
                             <div class="col s4">
-                                <h3 class="center-align pink-text text-lighten-2 hide-on-med-and-up">Ripe Recipes</h3>
+                                
                             </div>
                             <div class="col s4">
                                 <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -175,37 +177,70 @@
     <footer id="footer">
         <!--Empty Row To Ensure No Interference With Footer Layout-->  
         <div class="row">
-            <div class="col s10 offset-s1 m4 black-text center-align footer-content">
-                <h2>Ripe</h2>
-                <hr class="custom-short-div">
-                <ul>
-                    <li><a href="{{ url_for('about') }}">About</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
-                    <li><a href="{{ url_for('store') }}">Store</a></li>
-                    <li><a href="{{ url_for('recipes') }}">Browse</a></li>
-                    <li><a href="{{ url_for('search') }}">Search</a></li>
-                </ul>
+            <div class="col s10 offset-s1 m4 black-text center-align">
+                <div class="col s12 m8 offset-m2 footer-content footLeft">
+                    <h2>Ripe</h2>
+                    <hr class="custom-short-div">
+                    <ul>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                        <li><a href="{{ url_for('store') }}">Store</a></li>
+                        <li><a href="{{ url_for('recipes') }}">Browse</a></li>
+                        <li><a href="{{ url_for('search') }}">Search</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col s10 offset-s1 m4 black-text center-align footer-content soft-corners">
-                <h2>Manage</h2>
-                <hr class="custom-short-div">
-                <ul>
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('signup') }}">Signup</a></li>
-                    <li><a href="{{ url_for('newrecipe') }}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('admin') }}">Admin</a></li>
-                </ul>
+            <div class="col s10 offset-s1 m4 black-text center-align">
+                <div class="col s12 m8 offset-m2 footer-content footCenter">
+                    <h2>Manage</h2>
+                    <hr class="custom-short-div">
+                    <ul>
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="{{ url_for('signup') }}">Signup</a></li>
+                        <li><a href="{{ url_for('newrecipe') }}">Add Recipe</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col s10 offset-s1 m4 black-text center-align footer-content soft-corners">
-                <h2>Ripe Social</h2>
-                <hr class="custom-short-div">
-                <ul>
-                    <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
-                    <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-                    <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
-                    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-                    <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
-                </ul>
+            <div class="col s10 offset-s1 m4 black-text center-align">
+                <div class="col s12 m8 offset-m2 footer-content">
+                    <h2>Ripe Social</h2>
+                    <hr class="custom-short-div">
+                    <!--First Line-->
+                    <div class="row">
+                        <div class="col s6 center-align">
+                            <a href="https://facebook.com" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook"></i><span class="sr-only">Link to Facebook</span>
+                            </a>
+                        </div>
+                        <div class="col s6 center-align">
+                            <a href="https://instagram.com" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i><span class="sr-only">Link for Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!--Middle Row-->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="https://twitter.com" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter-square"></i><span class="sr-only">Link for Twitter</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!--First Line-->
+                    <div class="row">
+                        <div class="col s6 center-align">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin"></i><span class="sr-only">Link for LinkedIn</span>
+                            </a>
+                        </div>
+                        <div class="col s6 center-align">
+                            <a href="https://pinterest.com" target="_blank" rel="noopener">
+                                <i class="fab fa-pinterest-square"></i><span class="sr-only">Link for Pinterest</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
