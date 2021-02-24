@@ -45,9 +45,9 @@ $('#showProfBio').click(function(){
     $('#profBio').show(1000);
 })
 $('#prevPic').click(function(){
-    let preview = $('#prof_pic').val();
+    let preview = $('#prof_pic_url').val();
     $('#previewWindow').show(1000);
-    $('#previewWindow').html(`<img src="${preview}" id="previewProfPhoto" alt="Preview Picture" class="soft-corners">`);
+    $('#previewProfPhoto').attr("src", preview)
 })
 // Bio Card
 $('#prevProfPic').click(function(){

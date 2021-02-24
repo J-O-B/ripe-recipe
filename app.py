@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import random
 import string
-import boto3
+import time
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
@@ -185,7 +185,7 @@ def signup():
                 "username": request.form.get("username").lower(),
                 "email": request.form.get("email"),
                 "fav_food": request.form.get("fav_food").lower(),
-                "prof_pic": request.form.get("prof_pic"),
+                "prof_pic": request.form.get("prof_pic_url"),
                 "bio": request.form.get("bio").lower(),
                 "password": generate_password_hash(
                     request.form.get("password")),
@@ -194,9 +194,9 @@ def signup():
             }
             mongo.db.users.insert_one(register)
             # Put the new user into "session" cookie
-            session['user'] = request.form.get("username")
             flash("Congratulations, You Are Now Part Of The Ripe Family!")
-            return redirect(url_for("my_profile"))
+
+            return redirect(url_for("login"))
         else:
             flash("Username Already Exists")
             return redirect(url_for("signup"))
@@ -461,10 +461,11 @@ def my_profile():
             {"user_id": myId})
 
     if request.method == "POST":
-        if request.form.get("deleteProf") != "Yes":
-            profile = {"_id": request.form.get("profId")}
-            mongo.db.users.delete_one(profile)
-            return redirect(url_for('login'))
+        if request.form.get("deleteProf") == "1":
+            mongo.db.users.delete_one(
+                {"_id": ObjectId(request.form.get('profId'))})
+            session.pop("user")
+            return redirect(url_for('home'))
         # If a user is creating a new ticket
         if request.form.get("newTicket") == "1":
             today = date.today()

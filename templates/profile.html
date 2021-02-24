@@ -27,10 +27,10 @@
                             <p>Delete Your Profile?</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close col s6 green btn-flat">No</a>
-                            <form method="POST">
+                            <a href="#!" class="modal-close col s6 green btn">No</a>
+                            <form method="POST" action="{{url_for('my_profile')}}">
                                 <input type="text" id="profId" name="profId" class="hidden" value="{{user._id}}">
-                                <input type="submit" id="deleteProf" name="deleteProf" value="Yes">
+                                <input class="btn red col s6" type="submit" id="deleteProf" name="deleteProf" value="Yes">
                             </form>
                         </div>
                     </div>

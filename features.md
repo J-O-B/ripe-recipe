@@ -1,77 +1,62 @@
-# Features:
-*User* - refers to a non member
-*Member* - refers to a signed in member
-*Admin* - refers to members whith admin access
+# User Stories
 
-- [x] Personalized Navigation:
-    1. User will see different links depending on logged in user or not.
+## As A User I Want To:
+> Tabs such as this identify a user story.
+**Text below each tab identifies current features to address the specific user story**
 
-- [ ] Browse Recipes:
-    1. [x] A user can browse Recipes
-    2. [ ] A user can sort recipes -------------------------------------------------------------< needs to be done
 
-- [x] Profile Page:
-    1. Each member has a Personalized profile page with data specific to them.
-    2. Members have a contact area where they can submit "tickets" to admin.
-    3. Members can track their recipes and saved recipes
-    4. Members can edit their profile information.
+> View Recipes
 
-- [x] Other Users Pages:
-    1. As a signed in member you can view someone elses page.
-    2. View their recipes.
-    3. Leave them a message on their "chopping board".
-    4. See their favorite recipes.
+**Each recipe has an individual page which contains all of the recipe details**
 
-- [x] Add A Recipe:
-    1. As a member, I can add a recipe to the database.
+> Create A Profile
 
-- [x] View Individual Recipes:
-    1. As a user or member I can view a recipe.
-    2. As a member I can rate a recipe.
-    3. As a member I can leave a comment on a recipe.
-    4. If I am the creator of a recipe, I can click to edit the recipe.
-    5. If I am the creator of a recipe, I can request to have the recipe deleted.
+**Users can create a profile via the signup page located on the main welcome screen, the top navbar and via a footer link**
 
-- [ ] Edit A Recipe:
-    1. As a member, I can edit recipes, but only ones created by me ------------------------------< needs to be done
+> Save Recipes For Future Reference
 
-- [ ] Store: 
-    1. As a user or member I can add products to my cart ----------------------------------------< needs to be done
-    2. As a user or member I can browse available products ---------------------------------------
+**On each recipe page there is a button to save recipes for future reference, this button is only available to logged in users. Users who are not logged in are prompted to login to save the recipe**
 
-- [ ] Cart:
-    1. As a user or member, I can view the products added to my cart.
-    2. As a member, I can see a discount applied to my cart.
-    3. As a user or member, I can see the total cost of my cart.
-    4. As a user or member, I can delete items from my cart.
+> Get A Shopping List Based On Saved Recipes Or Add Items From A Recipe To A Shopping List
 
-- [ ] Admin Panel:
-    1. From the admin panel I can see open tickets (submitted by members)
-    2. From the admin panel I can see closed tickets (closed by admin)
-    3. From admin panel, I can approve deletion of recipes that are requested from members
+**Placeholder buttons in place, but functionality is a possible future development**
 
-- [ ] Contact Form:
-    1. As a user or member, I can contact Ripe via a contact form.
+> Search For Recipes / Search For Recipes With Specific Ingredients
 
-- [ ] Logout:
-    1. As a signed in member I can logout.
+**Users can search for recipes using the search page**
 
-- [ ] Login:
-    1. As a registered member, I can login to my account.
+> Have Access To A Store With Cooking Related Products
 
-- [ ] About:
-    1. As a user or member, I can view an about page.
+**Users can access the store using the store link in the top navigation, footer link or link on the landing page**
 
-- [ ] Social Media:
-    1. As a user or member, I have access to links to Ripe on social media.
+> Contact Admins / Management
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+**Logged in users can contact admins / management via their profile, using a ticketing system, or via a contact form on the contact page. Users who are not logged in can contact admins or management via a contact form located on the contact page.**
+
+> View More Information About The Company / Website
+
+**Users can access basic information about Ripe on the landing page by clicking the "What is Ripe" button, or by navigating to the about page**
+
+> Edit My Profile 
+
+**Users that are logged in can edit their profile using a button located at the top right of their profile page**
+
+> Delete My Profile
+
+**Users can delete their profile by using the delete profile button located at the top right of their profile page**
+
+> Talk With Other Users
+
+**Users can talk to other Ripe members by navigating to their profile and leaving a message on their page, users who are not logged in will be prompted to login to leave a message**
+
+> Comment On And / Or Rate Recipes
+
+**Users who are logged in can comment and rate recipes, below the recipe information. Although comments are visable to everyone, users who are not logged in will be prompted to login to leave a message**
+
+> Easily Preview Recipes Without Navigating To The Full Page.
+
+**Modal popups allow users to preview basic recipe information before committing to the full recipe. A "Preview" button is located on each recipe card to show this information**
+
+> Preview Products Before Adding Them To The Cart, Or Viewing The Full Page.
+
+**Similar to the recipe previews, a user can preview products prior to adding the item to their cart, or navigating to the full page. This popup will allow users to browse through the product photos, see some basic information and finally offer an add to cart, or view full product options, as well as close the popup**

@@ -970,7 +970,7 @@ footer i{
 footer i:hover{
     color: var(--third);
     text-shadow: 2px 2px 50px #000;
-    transform: scale(2,2) rotate(20deg);
+    transform: scale(2,2) rotate(380deg);
 }
 /*---------------------------------------------------------------------------------------- Pagination */
 .customPagination, 
@@ -1088,6 +1088,7 @@ footer i:hover{
 /*------------------------------------------------------------------------SignUp----*/
 #previewProfPhoto{
     max-width:100%;
+    max-height: 300px;
 }
 /*-------------------------------------------------------------------------Admin----*/
 .wrapEdit{
