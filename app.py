@@ -300,12 +300,23 @@ def recipes():
 def search():
     try:
         search = request.form.get("search")
+
+        return redirect(url_for('results', search=search))
+
+    except:
+        return render_template("search.html")
+
+
+@app.route("/results/<search>", methods=["GET", "POST"])
+def results(search):
+    try:
+        search = search
         find = mongo.db.recipes.find({"$text": {"$search": search}})
 
         return render_template("search.html", find=find, search=search)
 
     except:
-        return render_template("search.html")
+        return redirect(url_for('search'))
 
 
 @app.route("/starter", methods=["GET", "POST"])
