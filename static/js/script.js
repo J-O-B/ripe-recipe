@@ -365,3 +365,7 @@ function aboutPage(){
     })
 }
 aboutPage();
+
+$('#globalSearch').click(function(){
+    $(this).val(1);
+})

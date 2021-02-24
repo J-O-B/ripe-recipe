@@ -98,6 +98,18 @@
                         </div>
                     </div>
                     {% endif %}
+                    <div class="no-margin row haze searchbar">
+                        <form method="POST">
+                            <div class="col m5 offset-m3 s7 offset-s1 nav-content input-field">
+                                <i class="fas fa-search prefix"></i>
+                                <input placeholder="Find Recipes" id="searchbar" name="searchbar" type="text" class="validate">
+                                <label for="searchbar" class="sr-only">Find Recipes</label>
+                            </div>
+                            <div class="col m4 s4 nav-content">
+                                <button action="{{url_for('results', search=searchbar)}}" type="submit" id="globalSearch" class="btn show-on">Search</button>
+                            </div>
+                        </form>
+                    </div>
                 </nav>
 
                 <div class="sidenav custom-sidenav nav-bg" id="sidenav">

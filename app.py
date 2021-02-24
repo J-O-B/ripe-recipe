@@ -27,8 +27,9 @@ def home():
     home = True
     if request.method == "POST":
         # Check for valid user in database
+        user = request.form.get("username").lower()
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": user})
 
         if existing_user:
             # Check for valid password for that user

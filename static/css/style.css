@@ -57,6 +57,9 @@ footer{
     border-radius: 20px;
     padding: 10px 15px 30px 15px;
 }
+.searchbar{
+    height:45px;
+}
 .smoke{
     background: url("../img/smoke.jpg");
     background-size: cover;
