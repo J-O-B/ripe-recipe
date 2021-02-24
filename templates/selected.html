@@ -40,31 +40,31 @@
                             </div> 
                         </div>
                         <div class="row recipe-details">
-                            <div class="col s4 right-align">
+                            <div class="col m4 s5 right-align">
                                 <p>Serves: </p>
                                 <hr>
                             </div>
-                            <div class="col s8">
+                            <div class="col m8 s7">
                                 <p>{{recipes.serves}} Person(s)</p>
                                 <hr>
                             </div>  
                         </div>
                         <div class="row recipe-details">
-                            <div class="col s4 right-align">
+                            <div class="col m4 s5 right-align">
                                 <p><strong>Prep Time: </strong></p>
                                 <hr>
                             </div>
-                            <div class="col s8">
+                            <div class="col m8 s7">
                                 <p>{{recipes.prep_time}} minutes</p>
                                 <hr>
                             </div>  
                         </div>
                         <div class="row recipe-details">
-                            <div class="col s4 right-align">
-                                <p><strong>Cooking Time: </strong></p>
+                            <div class="col m4 s5 right-align">
+                                <p><strong>Cook Time: </strong></p>
                                 <hr>
                             </div>
-                            <div class="col s8">
+                            <div class="col m8 s7">
                                 {% if recipes.cooking_time|length == 0 %}
                                     {% set cookTime = "No Cooking Time" %}
                                 {% else %}

@@ -171,28 +171,28 @@ function randomAd(){
 };
 
 $('.close-advert').click(function(){
-    $('#advert-row').fadeOut(1000);
+    $('#advert-row').fadeOut(500);
 });
 
 // View More Info Homepage
 $('#view-more-info').click(function(){
-    $('.logo-home').hide(1000);
-    $('.more-info-cards').show(2000);
-    $("html, body").animate({ scrollTop: $('.first-card').offset().top }, 1500);
+    $('.logo-home').hide(500);
+    $('.more-info-cards').show(1500);
+    $("html, body").animate({ scrollTop: $('.first-card').offset().top }, 1000);
 });
 $('#view-less-info').click(function(){
-    $("html, body").animate({ scrollTop: $('.welcome-card').offset().top }, 2500);
-    $('.more-info-cards').hide(2000);
-    $('.logo-home').show(2000);
+    $("html, body").animate({ scrollTop: $('.welcome-card').offset().top }, 2000);
+    $('.more-info-cards').hide(1500);
+    $('.logo-home').show(1500);
 });
 
 function animate(){
-    $('.glass').fadeIn(2000);
-    $('.welcome-card').show(3000);
-    $('.welcome-image').fadeIn(4000);
+    $('.glass').fadeIn(1000);
+    $('.welcome-card').show(1400);
+    $('.welcome-image').fadeIn(1600);
     function categories(){
-        $('#firstRow').show(2000);
-        $('#secondRow').show(4000);   
+        $('#firstRow').show(1200);
+        $('#secondRow').show(1600);   
     }
     categories();
 }
@@ -211,7 +211,7 @@ $('#goToEdit').click(function(){
 });
 $('#genPreview').click(function(){
     var url = $('#prof_pic').val();
-    $('#previewProfPic').show(2000);
+    $('#previewProfPic').show(1500);
     $('#prevPic').attr("src", url)
 });
 
@@ -257,9 +257,9 @@ $('.smallProdPhotos').click(function(){
 
 $('.smallProdImg').click(function(){
     let image = $(this).children('img').attr("src");
-    $('#largerImgDisplay').children('img').hide(1000, function() {
+    $('#largerImgDisplay').children('img').hide(500, function() {
         $('#largerImgDisplay').children('img').attr("src", image);
-        $('#largerImgDisplay').children('img').show(1000);
+        $('#largerImgDisplay').children('img').show(500);
     });
 })
 
@@ -312,60 +312,61 @@ function aboutPage(){
 
         //Values
         $('#aboutData').hide(500);
-        $('#aboutDataH2').hide(1000);
-        $('#aboutDataDiv').hide(1000);
-        $('#aboutDataP').hide(1000);
+        $('#aboutDataH2').hide(500);
+        $('#aboutDataDiv').hide(500);
+        $('#aboutDataP').hide(500);
 
         //Promise
         $('#promise').hide(500);
-        $('#promiseH2').hide(1000);
-        $('#promiseDiv').hide(1000);
-        $('#promiseP').hide(1000);
+        $('#promiseH2').hide(500);
+        $('#promiseDiv').hide(500);
+        $('#promiseP').hide(500);
 
         //Database
         $('#database').hide(500);
-        $('#databaseH2').hide(1000);
-        $('#databaseDiv').hide(1000);
-        $('#databaseP').hide(1000);
+        $('#databaseH2').hide(500);
+        $('#databaseDiv').hide(500);
+        $('#databaseP').hide(500);
 
         //Store
         $('#seeAboutStore').hide(500);
-        $('#seeAboutStoreH2').hide(1000);
-        $('#seeAboutStoreDiv').hide(1000);
-        $('#seeAboutStoreP').hide(1000);
+        $('#seeAboutStoreH2').hide(500);
+        $('#seeAboutStoreDiv').hide(500);
+        $('#seeAboutStoreP').hide(500);
 
     }
     $('#values').click(function(){
         hide();
         $('#aboutData').removeClass("hidden").show(2000);
-        $('#aboutDataH2').show(1500);
-        $('#aboutDataDiv').fadeIn(1700);
-        $('#aboutDataP').show(2000);
+        $('#aboutDataH2').show(1000);
+        $('#aboutDataDiv').fadeIn(1200);
+        $('#aboutDataP').show(1500);
     })
     $('#ripePromise').click(function(){
         hide();
         $('#promise').removeClass("hidden").show(2000);
-        $('#promiseH2').show(1500);
-        $('#promiseDiv').fadeIn(1700);
-        $('#promiseP').show(2000);
+        $('#promiseH2').show(1000);
+        $('#promiseDiv').fadeIn(1200);
+        $('#promiseP').show(1500);
     })
     $('#ripeDatabase').click(function(){
         hide();
         $('#database').removeClass("hidden").show(2000);
-        $('#databaseH2').show(1500);
-        $('#databaseDiv').fadeIn(1700);
-        $('#databaseP').show(2000);
+        $('#databaseH2').show(1000);
+        $('#databaseDiv').fadeIn(1200);
+        $('#databaseP').show(1500);
     })
     $('#aboutRipeStore').click(function(){
         hide();
         $('#seeAboutStore').removeClass("hidden").show(2000);
-        $('#seeAboutStoreH2').show(2000);
-        $('#seeAboutStoreDiv').fadeIn(1700);
-        $('#seeAboutStoreP').show(2000);
+        $('#seeAboutStoreH2').show(1500);
+        $('#seeAboutStoreDiv').fadeIn(1200);
+        $('#seeAboutStoreP').show(1500);
     })
 }
 aboutPage();
 
-$('#globalSearch').click(function(){
-    $(this).val(1);
-})
+$('#searchBox').submit(function(event){
+    let searchTerm = $('#searchbar').val();
+    $('#searchBox').attr('action', `/results/${searchTerm}`);
+});

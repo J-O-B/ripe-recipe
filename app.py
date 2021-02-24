@@ -6,7 +6,6 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import random
 import string
-import time
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 if os.path.exists("env.py"):
@@ -22,9 +21,11 @@ mongo = PyMongo(app)
 
 
 @app.route("/", methods=["GET", "POST"])
-@app.route("/home", methods=["GET", "POST"])
 def home():
     home = True
+    if request.form.get('globalSearch') == "1":
+        return redirect(url_for('store'))
+
     if request.method == "POST":
         # Check for valid user in database
         user = request.form.get("username").lower()

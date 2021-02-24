@@ -40,17 +40,30 @@
     <div class="row" id="wrapper">
         <div class="contents col s12">
             {% for results in find %}
-                <div class="row haze search-results">
-                    <div class="col s4 center-align">
+                <div class="row haze search-results border">
+                    <div class="col s3 center-align">
                         <p><strong>{{ results.recipe_name|capitalize }}</strong></p>
                     </div>
                     <div class="col s5">
                         <p>{{ results.description[:50]|capitalize }}...</p>
                     </div>
-                    <div class="col s3">
+                    <div class="col s4">
                         <p>
-                            <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
+                            <a href="#{{results._id}}" class="btn modal-trigger">View More</a>
                         </p>
+                    </div>
+                </div>
+                <!-- Modal Structure -->
+                <div id="{{results._id}}" class="modal">
+                    <div class="modal-content">
+                        <h3 class="center-align">{{ results.recipe_name|capitalize }}</h3>
+                        <p class="center-align">{{ results.description|capitalize }}</p>
+                        <hr class="custom-short-div center-align">
+                        <img class="modalRecipeImage" src="{{results.pic_url}}" alt="recipe picture">
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
+                        <a href="#" class="btn red modal-close">Close</a>
                     </div>
                 </div>
             {% endfor %}
