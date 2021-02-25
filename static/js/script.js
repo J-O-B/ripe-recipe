@@ -4,6 +4,9 @@ $(document).ready(function(){
     backToZero();
     randomAd();
 
+    $('#recipeShow').hide();
+    $('.homePagination').hide();
+
     //editUser
     $('#previewProfPic').hide();
 
@@ -37,11 +40,7 @@ $(document).ready(function(){
     $('select').formSelect();
 
     // Carousel Functionality
-    $('.carousel').carousel({        
-        fullWidth: false,
-        indicators: true,
-        dragged: true,
-        duration: 100});
+    $('.carousel').carousel();
 
     // Messenger Box Visibility
     $('#messenger').hide();
@@ -366,7 +365,37 @@ function aboutPage(){
 }
 aboutPage();
 
+// Menu Searchbox
 $('#searchBox').submit(function(event){
     let searchTerm = $('#searchbar').val();
     $('#searchBox').attr('action', `/results/${searchTerm}`);
 });
+
+// Homepage Image Slideshow
+$('#viewHome').click(function(){
+    $(".welcome-card").hide(500);
+    $.when().done(function(){
+        $('.welcome-message').hide();
+        $('#home_logo').hide();
+        $(".recipeShow").css("min-height", "100vh");
+        $('#secCol').removeClass("l6");
+        $.when().done(function(){
+            $(".welcome-card").show(500);
+            $('#recipeShow').show(1500);
+            $('.homePagination').show(1500);
+        });
+    });
+})
+
+/*
+user clicks view
+
+hide image, buttons
+
+change the css on "welcome-message" to L12
+
+display 2x2 small, 3x3 med, 4x4 large
+
+pagination
+
+*/

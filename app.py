@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 @app.route("/", methods=["GET", "POST"])
 def home():
     home = True
+    recipes = mongo.db.recipes.find()
     if request.form.get('globalSearch') == "1":
         return redirect(url_for('store'))
 
@@ -47,7 +48,7 @@ def home():
             # username doesn't exist
             flash("Username and/or Password Incorrect")
             return redirect(url_for("home"))
-    return render_template("home.html", home=home)
+    return render_template("home.html", home=home, recipes=recipes)
 
 
 @app.route("/admin", methods=["GET", "POST"])

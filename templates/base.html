@@ -29,7 +29,7 @@
     <div id="page-contain">
     <!--Check for home variable to render different template style-->
         <header>
-                <nav class="nav-extended nav-bg">
+                <nav class="nav-extended nav-bg border">
                     <div class="row">
                         <div class="nav-wrapper nav-logo">
                             <div class="col s4">
@@ -98,15 +98,15 @@
                         </div>
                     </div>
                     {% endif %}
-                    <div class="no-margin row haze searchbar">
+                    <div class="no-margin row searchbar">
                         <form id="searchBox">
                             <div class="col m3 offset-m4 s7 offset-s1 nav-content input-field">
-                                <i class="fas fa-search prefix"></i>
+                                <i id="globalSearchIcon" class="fas fa-search prefix center-align"><span class="sr-only">Search Icon</span></i>
                                 <input placeholder="Find Recipes" id="searchbar" name="searchbar" type="text" class="validate">
                                 <label for="searchbar" class="sr-only">Find Recipes</label>
                             </div>
                             <div class="col m4 s4 nav-content">
-                                <input type="submit" id="globalSearch" value="Search" class="btn show-on">
+                                <input type="submit" id="globalSearch" value="Search" class="btn-flat teal">
                             </div>
                         </form>
                     </div>

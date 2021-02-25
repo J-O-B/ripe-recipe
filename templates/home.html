@@ -10,38 +10,71 @@
                     <h1>Welcome To Ripe</h1>
                     <h2>The Culinary Social Platform</h2>
                     <div class="row">
-                        <a href="{{ url_for('recipes') }}" class="btn col s8 offset-s2 center-align">
-                            View Recipes
-                        </a>
+                        <div class="col s5 offset-s1" id="quickView">
+                            <button id="viewHome" class="btn col s12 center-align">
+                                Quick View
+                            </button>
+                        </div>
+                        <div class="col s5 offset-s1" id="srcBtn">
+                            <a href="{{ url_for('search') }}" class="btn col s12 center-align">
+                                Search
+                            </a>
+                        </div>
                     </div>
                     <div class="row">
-                        <a href="{{ url_for('my_profile') }}" class="btn col s8 offset-s2 center-align">
-                            Profile
-                        </a>
-                    </div>
-                    <div class="row">
-                        <a href="{{ url_for('search') }}" class="btn col s8 offset-s2 center-align">
-                            Search
-                        </a>
-                    </div>
-                    <div class="row">
-                        <a href="{{ url_for('store') }}" class="btn col s8 offset-s2 center-align">
-                            Store
-                        </a>
+                        <div class="col s11 offset-s1" id="strBtn">
+                            <a href="{{ url_for('store') }}" class="btn col s6 offset-s3 center-align">
+                                Store
+                            </a>
+                        </div>
                     </div>
                     <!--If Not Member-->
                     {% if not session["user"] %}
-                    <a href="#login" class="btn modal-trigger col s4 offset-s1 center-align">
-                        Login
-                    </a>
-                    <a href="{{ url_for('signup') }}" class="btn col s4 offset-s2 center-align">
-                        Signup
-                    </a>
+                    <div class="row">
+                        <div class="col s5 offset-s1" id="login-btn">
+                            <a href="#login" class="btn modal-trigger col s12 center-align">
+                                Login
+                            </a>
+                        </div>
+                        <div id="makeNewRow" class="col s5 offset-s1">
+                            <a href="{{ url_for('signup') }}" class="btn col s12 center-align">
+                                Signup
+                            </a>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
-                <div class="col s12 l6 homeImage center-align">
-                    <div class="col s10 offset-s1">
+                <div class="col s12 l6 center-align" id="secCol">
+                    <div class="col s10 offset-s1 homeImage">
                         <img id="home_logo" src="{{url_for('static', filename='img/logo.png')}}" alt="Ripe Logo">
+                    </div>
+                    <div class="contents col s12" id="recipeShow">
+                        <ul class="paginationTable homePagination">
+                            <div class="col s12 m6 offset-m3 center-align">
+                                <h2 class="center-align black-text text-lighten-2 border haze soft-corners">Quick View:</h2>
+                                <p class="center-align">
+                                    <a href="{{url_for('home')}}" class="black-text">Back To Home</a>
+                                </p>
+                                <hr class="custom-short-div">
+                            </div>
+                            {% for X in recipes %}
+                                <li class="tableItem">
+                                    <div class="col s6 m4 homeRecItem">
+                                        <div class="col s10 offset-s1 center-align">
+                                            <img class="homeRecPreview border" src="{{X.pic_url}}" alt="a">
+                                            <p>{{X.recipe_name|capitalize }}</p>
+                                            <a href="{{url_for('selected', id=X._id)}}" class="btn">View</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %} 
+                        </ul>
+                        <div class="col s12 center-align">
+                            <div id="pagination-container">
+                                <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                                <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,3 +196,8 @@
         
                 
 {% endblock %} 
+
+{% block scripts %}
+    <!--Pagination Script-->
+    <script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
+{% endblock %}
