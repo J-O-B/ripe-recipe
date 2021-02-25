@@ -146,7 +146,7 @@ changed completely.
 
 ### <ins>**_User Stories_**</ins>
 
-A full breakdown of user stories and the features created to address them are located in the **features.md** file. Below are the 
+A full breakdown of user stories and the features created to address them are located in the **user-stories-features.md** file. Below are the 
 initial, 'founding' user stories.
 
 Being a recipe database and store the following user stories specific to this project are: 
@@ -203,22 +203,35 @@ from [Font Awsome](http://fontawesome.com/)
 --------------------
 ## **Features**
 
+Due to the quantity of features available on this website, a video has been made to outline each page, and all features on those pages.
+
+PLACE YOUTUBE LINK HERE
+
 ### <ins>**_Existing Features:_**</ins>
 
 * Pagination
-* Amazon S3 interaction for file uploads
 * Recipe Comments
 * User Comments
 * Adding / Deleting Users 
 * Adding / Deleting Recipes 
 * Adding / Deleting Items in Cart 
 * Placeholder Checkout Form (No backend feature at this time)
-* Search Function 
+* Search Function (Via search bar)
 * JavaScript Interactive Forms 
 * User Feedback On Forms, Cart & Various Places Around Website
 * Modals.
-* Auto rotating advert (responsive: right side for laptop/desktop, top for tablet and phones)
-* Automated Testing (testing.py)
+* Auto rotating advert.
+* Ticketing system from users profile
+* Messaging feature on users "chopping board" (similar to facebook wall feature)
+* Comment on & rate recipes.
+* Save recipes to your personal profile.
+* Editing recipes (if you are the owner of that recipe)
+
+> **Visual Transitions**
+Due to this website being a food application, the idea of enjoying the process of making the food was considered. Hence visually appealing 
+transitions were used across the app to allow users enjoy their time browsing. Simply hiding and showing sections was too fast and didn't give 
+the wanted feel to the website. Longer transitions on the other hand would be harmful to key factors such as bounce rate. With both sides in mind, I 
+have tried to use timings that are fast enough, yet allow for the visual performance I wanted to achieve.
 
 #### *Implemented but removed:*
 

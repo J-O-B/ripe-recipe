@@ -4,6 +4,11 @@
 > Tabs such as this identify a user story.
 **Text below each tab identifies current features to address the specific user story**
 
+> As a user I want immediate access, from everywhere to search for a recipe.
+**To allow users search for a recipe, regardless of viewing device, or location on the website. A search bar was added just under the main navigation**
+
+> Have immediate access to recipes from the homepage.
+**To help counter bounce rate, a button "quick view" was added to the homepage, clicking this will refresh the homepage and display the entire recipe database using pagination**
 
 > View Recipes
 
