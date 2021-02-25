@@ -215,7 +215,7 @@ PLACE YOUTUBE LINK HERE
 * Adding / Deleting Users 
 * Adding / Deleting Recipes 
 * Adding / Deleting Items in Cart 
-* Placeholder Checkout Form (No backend feature at this time)
+* Placeholder Checkout Form (No functionality at this time)
 * Search Function (Via search bar)
 * JavaScript Interactive Forms 
 * User Feedback On Forms, Cart & Various Places Around Website
@@ -237,7 +237,7 @@ have tried to use timings that are fast enough, yet allow for the visual perform
 
 Instant messenger:
 
-An instant messenger feature was added but removed. 
+An instant messenger feature was added but removed. Code is saved in txt file.
 
 
 ### <ins>**_Future Features:_**</ins>
