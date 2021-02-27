@@ -424,17 +424,25 @@ img{
 #database p,
 #seeAboutStore p{
     width: 70%;
-    margin-left:15%;
+    margin-left: 15%;
     font-size: 110%;
 }
 .homeRecPreview{
-    max-width:100%;
-    height:auto;
-    overflow:hidden;
+    width:60%;
+    height: auto;
+    overflow: hidden;
     border-radius: 50%;
 }
 .homeRecItem{
     margin-bottom: 30px;
+}
+.homeRecItem{
+    height: 300px;
+    margin-top: 15px;
+    overflow-y: auto;
+}
+.homeRecItem img{
+    margin-top: 15px;
 }
 /*-----------------------------------------------------------------Navbar */
 
@@ -484,20 +492,18 @@ nav.nav-extended .nav-wrapper {
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
-.custom-nav h3:hover{
-    color: var(--first);
-    text-shadow: 2px 2px 50px #000;
-    font-weight: 500;
-    transform: scale(1.5,1);
-}
-
 .secondary-nav{
     color: #000;
     text-shadow: 2px 2px 30px var(--first);
     font-weight: 500;
     font-size:110%;
 }
-
+.secondary-nav:hover{
+    color: var(--first);
+    text-shadow: 2px 2px 50px #000;
+    font-weight: 500;
+    transform: scale(1.5,1);
+}
 .secondary-sub-nav{
     color: #000;
     text-shadow: 0px 0px 20px var(--third);
@@ -1134,9 +1140,15 @@ footer i:hover{
     overflow: hidden;
 }
 .searchImage img{
+    margin-top:15px;
     height:150px;
     width:150px;
     border-radius: 50%;
+}
+.search-results{
+    height:550px;
+    margin-top:15px;
+    overflow-y: auto;
 }
 /*-------------------------------------------------------------------------View Page---*/
 .searchtext{
