@@ -5,11 +5,32 @@
 
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            <h1 class="center-align black-text text-lighten-2">Browse Recipes</h1>
+            <h2 class="center-align black-text text-lighten-2">Find Your Recipe:</h2>
         </div>
     </div>
-
-    <!--Cards-->
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h3 class="center-align black-text text-lighten-2">Search</h3>
+        </div>
+        <!--Left-->
+        <div class="col s10 offset-s1 m6">
+            <h4 class="center-align">Already Know What You Want?</h4>
+        </div>
+        <!--Right-->
+        <div class="col s10 offset-s1 m6">
+            <div class="input-field col s10 offset-s1">
+                <i class="fas fa-search prefix"></i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Search</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h3 class="center-align black-text text-lighten-2">Browse</h3>
+        </div>
+    </div>
+    <!--Browse Section-->
     <div class="row" id="firstRow">
         <a href="{{ url_for('starter') }}" class="btn-large col m3 s5" id="showStart">Starters</a>
         <a href="{{ url_for('main') }}" class="btn-large col m3 s5 offset-s2" id="showMains">Mains</a>
