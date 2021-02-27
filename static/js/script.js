@@ -376,6 +376,8 @@ $('#viewSearchForm').submit(function(event){
     let searchQuery = $('#viewSearchBox').val();
     $('#viewSearchForm').attr('action', `/results/${searchQuery}`);
 });
+// Search Results
+$('#moreDetails')
 
 // Homepage Image Slideshow
 $('#viewHome').click(function(){

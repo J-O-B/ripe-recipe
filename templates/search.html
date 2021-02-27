@@ -39,34 +39,88 @@
     {% endif %}
     <div class="row" id="wrapper">
         <div class="contents col s12">
+            <ul class="paginationTable">
             {% for results in find %}
-                <div class="row haze search-results border">
-                    <div class="col s3 center-align">
-                        <p><strong>{{ results.recipe_name|capitalize }}</strong></p>
+                <li class="tableItem">
+                    <div class="col s12 m4 haze search-results border">
+                        <div class="col s12 center-align searchImage">
+                            <img src="{{results.pic_url}}" alt="Recipe Image">
+                        </div>
+                        <div class="col s12 center-align">
+                            <h3><strong>{{ results.recipe_name|capitalize }}</strong></h3>
+                        </div>
+                        <div class="col s12 detailsView">
+                            <ul class="collapsible see-through">
+                                <li>
+                                    <p class="center-align"><em>Click to expand</em></p>
+                                    <div class="collapsible-header see-through">{{ results.description[:50]|capitalize }}...</div>
+                                    <div class="collapsible-body"><span>{{ results.description|capitalize }}</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col s12">
+                            <p>
+                                <a href="#{{results._id}}" class="btn modal-trigger width100 center-align">Preview</a>
+                                <a href="{{ url_for('selected', id=results._id) }}" class="btn width100 center-align">Full</a>
+                            </p>
+                        </div>
                     </div>
-                    <div class="col s5">
-                        <p>{{ results.description[:50]|capitalize }}...</p>
+                    <!-- Modal Structure -->
+                    <div id="{{results._id}}" class="modal">
+                        <div class="modal-content">
+                            <h3 class="center-align">{{ results.recipe_name|capitalize }}</h3>
+                            <p class="center-align">{{ results.description|capitalize }}</p>
+                            <hr class="custom-short-div center-align">
+                            <div class="col s5 center-align">
+                                <img class="modalRecipeImage" src="{{results.pic_url}}" alt="recipe picture">
+                            </div>
+                            <div class="col s7 center-align">
+                                <div class="col s3 center-align">
+                                    <p><strong>KCAL</strong><br>{{ results.kcal }}</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Fat</strong><br>{{ results.fat }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Saturates</strong><br>{{ results.saturates }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Carbs</strong><br>{{ results.carbs }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Sugars</strong><br>{{ results.sugars }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Fibre</strong><br>{{ results.fibre }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Protein</strong><br>{{ results.protein }}g</p>
+                                </div>
+                                <div class="col s3 center-align">
+                                    <p><strong>Salt</strong><br>{{ results.salt }}g</p>
+                                </div>
+                                <div class="col s10 offset-s1 center-align">
+                                    <p>Prep Time : {{results.prep_time}} Minutes</p>
+                                    {%if results.cooking_time|int > 0%}
+                                    <p>Cook Time : {{results.cooking_time}} Minutes</p>
+                                    {%endif%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
+                            <a href="#" class="btn red modal-close">Close</a>
+                        </div>
                     </div>
-                    <div class="col s4">
-                        <p>
-                            <a href="#{{results._id}}" class="btn modal-trigger">View More</a>
-                        </p>
-                    </div>
-                </div>
-                <!-- Modal Structure -->
-                <div id="{{results._id}}" class="modal">
-                    <div class="modal-content">
-                        <h3 class="center-align">{{ results.recipe_name|capitalize }}</h3>
-                        <p class="center-align">{{ results.description|capitalize }}</p>
-                        <hr class="custom-short-div center-align">
-                        <img class="modalRecipeImage" src="{{results.pic_url}}" alt="recipe picture">
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
-                        <a href="#" class="btn red modal-close">Close</a>
-                    </div>
-                </div>
+                </li>
             {% endfor %}
+            </ul>
+            <div class="col s12 center-align">
+                <div id="pagination-container">
+                    <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                    <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+                </div> 
+            </div>
         </div>
     </div>
 

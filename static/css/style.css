@@ -90,7 +90,9 @@ footer{
 .page-contain{
     overflow: hidden;
 }
-
+.width100{
+    width:100%;
+}
 ::-webkit-input-placeholder{
     color: black;
     /* Opacity 1 for firefox users */
@@ -1127,6 +1129,14 @@ footer i:hover{
 .modalRecipeImage{
     max-width:100%;
     height:auto;
+}
+.searchImage{
+    overflow: hidden;
+}
+.searchImage img{
+    height:150px;
+    width:150px;
+    border-radius: 50%;
 }
 /*-------------------------------------------------------------------------View Page---*/
 .searchtext{
