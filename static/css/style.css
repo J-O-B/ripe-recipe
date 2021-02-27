@@ -428,21 +428,23 @@ img{
     font-size: 110%;
 }
 .homeRecPreview{
-    width:60%;
+    width:100%;
     height: auto;
     overflow: hidden;
+}
+.homeRecPreview img{
+    margin-top: 15px;
+    height:100px;
     border-radius: 50%;
 }
 .homeRecItem{
     margin-bottom: 30px;
 }
 .homeRecItem{
-    height: 300px;
-    margin-top: 15px;
+    height: 350px;
+    padding-top:25px;
+    padding-bottom:25px;
     overflow-y: auto;
-}
-.homeRecItem img{
-    margin-top: 15px;
 }
 /*-----------------------------------------------------------------Navbar */
 
