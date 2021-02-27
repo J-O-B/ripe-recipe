@@ -1110,7 +1110,6 @@ footer i:hover{
     max-height:200px;
 }
 /*------------------------------------------------------------------------Checkout----*/
-
 #payForm{
     padding-left:20px;
     padding-right: 20px;
@@ -1128,4 +1127,13 @@ footer i:hover{
 .modalRecipeImage{
     max-width:100%;
     height:auto;
+}
+/*-------------------------------------------------------------------------View Page---*/
+.searchtext{
+    margin-top: 15px;
+}
+#viewRecipePage h1,
+#viewRecipePage h2,
+#viewRecipePage h3{
+    text-shadow: 2px 2px 15px var(--first);
 }

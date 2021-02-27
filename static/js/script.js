@@ -371,6 +371,12 @@ $('#searchBox').submit(function(event){
     $('#searchBox').attr('action', `/results/${searchTerm}`);
 });
 
+// View Page Searchbox
+$('#viewSearchForm').submit(function(event){
+    let searchQuery = $('#viewSearchBox').val();
+    $('#viewSearchForm').attr('action', `/results/${searchQuery}`);
+});
+
 // Homepage Image Slideshow
 $('#viewHome').click(function(){
     $(".welcome-card").hide(500);
@@ -386,16 +392,3 @@ $('#viewHome').click(function(){
         });
     });
 })
-
-/*
-user clicks view
-
-hide image, buttons
-
-change the css on "welcome-message" to L12
-
-display 2x2 small, 3x3 med, 4x4 large
-
-pagination
-
-*/
