@@ -62,7 +62,10 @@ means that user specific "targetted advertising" and promotions could be expande
 ---------------
 ## **UX**
 
-This project aims to promote a mix of playful, yet professional dessign. A full breakdown on the 5 planes of UX are listed below.
+This project aims to promote a mix of playful, yet professional dessign. A full breakdown on the 5 planes of UX are listed below. To enhance user experience 
+the navigation of this website was considered in detail. Below is an image of the link structure with the amount of clicks necessary to access that page.
+
+![Navigation](assets/readme/readme-supporting-docs/page-clicks.jpg)
 
 ### 5 Planes of UX:
 #### 1. Strategy:
