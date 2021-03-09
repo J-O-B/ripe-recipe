@@ -20,6 +20,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Route Error Handling:
+@app.errorhandler(404)
+def not_found(e):
+    # error page:
+    return render_template("404.html")
+
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     home = True

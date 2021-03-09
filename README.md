@@ -229,6 +229,7 @@ PLACE YOUTUBE LINK HERE
 * Comment on & rate recipes.
 * Save recipes to your personal profile.
 * Editing recipes (if you are the owner of that recipe)
+* 404 Handling (for invalid URLs)
 
 > **Visual Transitions**
 Due to this website being a food application, the idea of enjoying the process of making the food was considered. Hence visually appealing 
@@ -252,6 +253,11 @@ A custom shopping list based on saved recipes.
 Automated email marketing. 
 
 Functioning checkout form.
+
+Non Member Cart 
+    - As I have not covered Django yet. The entire store is currently set as a "Placeholder" and although users can browse through the store, its 
+    functionality, such as adding and deleting items from their cart is available to members only. This sort of functionality will be added in my 
+    next project with incorporates Django.
     
 ------------------
 ## **Technologies Used**
@@ -271,27 +277,27 @@ This project uses multiple languages, libraries and frameworks which can be foun
 
 ### Frameworks, Libraries & Other
 > 1. Gitpod
->   1. The GitPod is used to develop the project.
+    - The GitPod is used to develop the project.
 > 2. Git
->   1. The Git was used for version control to commit to Git and push to GitHub.
+    - The Git was used for version control to commit to Git and push to GitHub.
 > 3. GitHub
->   1. GitHub is used to host the project.
+    - GitHub is used to host the project.
 > 4. Google Fonts
->   1. Google Fonts is used to provide the font roboto for all the text that is used in the project.
+    - Google Fonts is used to provide the font roboto for all the text that is used in the project.
 > 5. Balsamiqu
->   1. Balsamiqu is used to create the mockup designs for the project.
+    - Balsamiqu is used to create the mockup designs for the project.
 > 6. Materialize
->   1. Materialize is used for the design framework.
+    - Materialize is used for the design framework.
 > 7. MobgoDB
->   1. MongoDB is the fully managed cloud database service used for the project.
+    - MongoDB is the fully managed cloud database service used for the project.
 > 8. Heroku
->   1. Heroki is the cloud platform to deploying the app.
+    - Heroki is the cloud platform to deploying the app.
 > 9. Flask
->   1. Flask is the web framework used to provide libraries, tools and technologies for the app.
+    - Flask is the web framework used to provide libraries, tools and technologies for the app.
 > 10. Jinja
->   1. Jinja is used for templating Python
+    - Jinja is used for templating Python
 > 11. Werkzeug
->   1. Werkzeug is used for security through password hashing
+    - Werkzeug is used for security through password hashing
 
 ---------------------
 ## **Testing**
@@ -396,21 +402,18 @@ This project, although pieced together by myself, incorporates images, video, so
 8. Desserts Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/cupcakes-dessert-frosting-food-690040/)
 9. Drinks Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/bar-beverage-cocktail-drink-glass-1839361/)
 
-**Intro Video** 
-* Video Created With Video Snippets From [Pixabay](https://pixabay.com/)
-* Video Created Using [Blender](https://www.blender.org/)
 
 ### <ins>**_Content:_**</ins>
 > All text content is my own, with the exception of recipes added by "Admin" and product descriptions which originate from 
-both BBC Good Food, and Amazon.
+both BBC Good Food, and Amazon. Recipes have not been altered from their original, to see original versions, please copy a 
+recipe name, and search on BBC good food for the original copies.
 
 ### <ins>**Code:**</ins>
 > Pagination code prior to editing was posted on [Stack Overflow](https://stackoverflow.com/questions/6726896/how-to-make-jquery-pagination)
 >
 > Card "flip" used on recipe pages originally from W3Schools prior to editing.
 
-
-*I have used W3 Schools and StackOverflow when I did not achieve a result, references to some of these codes are also contained in notes in my scripts.*
+*I have used W3 Schools and StackOverflow when I did not achieve a result, these specific codes are referenced within pages and / or scripts through notation.*
 
 ### <ins>**_Acknowledgments:_**</ins>
 I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project.
