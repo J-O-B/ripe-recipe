@@ -191,6 +191,7 @@ was used throughout. - [Materialize.com](http://materializecss.com/)
 
 ### <ins>**_Typography_**</ins>
 This project uses "Montez", and "Roboto" (Google Fonts).
+![Fonts](/assets/readme-supporting-docs/Fonts.jpg)
 
 ### <ins>**_Colors_**</ins>
 There are three primary colors used in this project:
@@ -355,6 +356,8 @@ the form.
 essentially create fields that can be differentiated between. This was chosen as a viable solution as I wanted to retain a nested list 
 style within my database.
 
+A full list of testing can be found in the [Testing](assets/readme/testing.md)
+
 --------------------
 ## **Deployment**
 
@@ -385,6 +388,51 @@ To create a clone, follow the following steps.
         5. tickets
         6. users
 > Database Architectures Can Be Found [Here](/assets/readme/infoArc.md)
+3. Create environment variables (env.py):
+    1. Create a .gitignore file in the root directory of the project.
+    2. Create a file in the root directory called "env.py". This will contain all of your envornment variables. Your env.py file should look similar to the following:
+> Import os
+> os.environ.setdefault("IP", "<IP TO USE>")
+> os.environ.setdefault("PORT", "<PORT TO USE>")
+> os.environ.setdefault("SECRET_KEY", "<ADD YOUR SECRET KEY>")
+> os.environ.setdefault("MONGO_URI", "<ADD YOUR MONGO URI>")
+> os.environ.setdefault("MONGO_DBNAME", "<ADD YOUR DATABASE NAME>")
+
+    3. Add "env.py" to your .gitignore file.
+    4. Finally to run the app, open a terminal and type "python3 app.py" and run the application.
+
+### Deploying To Heroku
+
+To deploy our application on Heroku, we are required to have a requirements.txt file as well as a Procfile. These files will allow Heroku understand 
+what dependencies are required to run the application, as well as tell Heroku which file to run, to launch the application.
+
+#### Create a procfile:
+> Type "python app.py > Procfile"
+**This new file if opened should look something like "web: python app.py"**
+#### Create a requirements file:
+> Type "pip freeze --local > requirements.txt"
+**This new file should simply be a list of all dependencies required**
+
+#### For Deployment:
+1. Open [Heroku](http://heroku.com/).
+2. Login or signup for Heroku.
+3. Once logged in create a new app and select the desired region. 
+4. Deployment method "GitHub" (if this section is accidentally missed, you can use the tab selection within your dashboard "DEPLOY")
+5. Select "connect to GitHub" and follow the on screen instructions. Once connected to your Github:
+    1. Search for your repository using the form provided.
+6. Once you have connected your GitHub repository:
+    1. Navigate to the "Settings" tab:
+        1. Scroll to the section "Config Vars" here you will have to tell Heroku what these variables are:
+            1. Input data from env.py in the key value section:
+> E.g. Key: "IP", Value: "<IP YOU HAVE IN ENV.PY>"
+            2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
+    2. Navigate back to the "Deploy" tab:
+        1. Scroll to the "Manual Deploy" tab:
+            1. Select the branch you wish to deploy (master is default)
+            2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
+
+**Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.**
+**Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct**
 ----------------------
 ## **Credits**
 This project, although pieced together by myself, incorporates images, video, sound, and code from multiple sources. These include:
@@ -418,25 +466,19 @@ recipe name, and search on BBC good food for the original copies.
 I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project.
 
 ## *Previews:*
-### Main Menu:
-![Main Menu](assets/readme/main-menu.jpg)
+Here are a few previews of Ripe Recipes (mockups from [Am I Responsive](http://ami.responsivedesign.is/))
 
-### Settings Screen:
-![Settings](assets/readme/settings.jpg)
+### Landing Page 
+![Landing Page](/assets/readme/Front.jpg)
 
-### Social Screen:
-![Social](assets/readme/social.jpg)
+### Recipe Page
+![Recipe Page](/assets/readme/Recipe.jpg)
 
-### Game Screen:
-![Game Screen](assets/readme/game-screen.jpg)
+### Search Page With Results
+![Search Page](/assets/readme/search.jpg)
 
+### Store Page
+![Store Page](/assets/readme/store.jpg)
 
-
-secret key from fort knox random keygen
-
-
-
-
-pictures=
-
-recipes page cards:
+### Cart Page
+![Cart Page](/assets/readme/cart.jpg)
