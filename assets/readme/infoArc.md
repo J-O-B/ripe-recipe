@@ -1,4 +1,7 @@
 # Information Architecture
+
+## Database Overview Planned:
+
 The initial plan for the database and user flow has changed slightly where more efficient methods or routings were found 
 the plan for the database and website user flow are as follows:
 
@@ -62,7 +65,6 @@ The final database structure consists of one database, hosting 6 different colle
 |             | salt          |          |              |              |               |
 </div>
 
-## Database Overview Planned:
 
 Back to [Readme](../../README.md)
 
