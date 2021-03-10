@@ -358,34 +358,33 @@ style within my database.
 --------------------
 ## **Deployment**
 
-### <ins>**_Remote Deployment:_**</ins>
-To deploy this project remotely, you can follow these steps:
->1. Log Into GitHub.
->2. Navigate to my GitHub repository for this project which can be found [here](https://github.com/J-O-B/game-project).
->    
->   (Close to the top of the page, there is a navigation bar, the first item here is "<>Code", the last item is "Settings".)
->
->3. Click on settings
->4. Scroll down the page until you find the section labeled "GitHub Pages"
->5. The first item in GitHub Pages is "Source", click the associated dropdown button labeled "None". 
->6. You will now have to select the "master branch" as the source.
->7. Once you have selected "master" click the "Save" button. 
->8. The page should now refresh so you may have to scroll back down to "GitHub Pages".
->9. Now you will see a link presented which should look like this https://j-o-b.github.io/game-project/.
+### Requirements To Deploy:
+- Python3
+- Github account
+- MongoDB account
+- Heroku account
 
-### <ins>**_Cloning This Project:_**</ins>
->1. On GitHub, navigate to the main page of the repository.
->2. Above the list of files, click the download Code icon. (a down arrow with a line under it)
->3. To clone the repository using HTTPS, under "Clone with HTTPS", click the clipboard icon. To clone the repository using an SSH key, 
-> including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click the clipboard icon. 
-> To clone a repository using GitHub CLI, click Use GitHub CLI, then click the clipboard icon.
->4. Open Git Bash.
->5. Change the current working directory to the location where you want the cloned directory.
->6. Type git clone, and then paste the URL you copied earlier.
->7. Press Enter to create your local clone.
+### Cloning This Project:
+To create a clone, follow the following steps.
 
-(Further information on cloning can be found at [GitHub Docs](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+1. Log in to GitHub and go to the repository.
+2. Click on the button with the text “Code”.
+3. Click “Open with GitHub Desktop” and follow the prompts in the GitHub Desktop Application or follow the instructions from [GitHub](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to see how to clone the repository in other ways.
 
+#### To Work With Your Local Clone:
+1. Install all the requirements: Go to the workspace of your local copy. In the terminal window of your IDE type: 
+> pip3 install -r requirements.txt.
+2. Create your database in MongoDB.
+    1. Signup Or Login For [MongoDB](https://www.mongodb.com/)
+    2. Create a cluster as well as a database.
+    3. Create the following collections in the Database:
+        1. comments
+        2. messages
+        3. products
+        4. recipes
+        5. tickets
+        6. users
+> Database Architectures Can Be Found [Here](/assets/readme/infoArc.md)
 ----------------------
 ## **Credits**
 This project, although pieced together by myself, incorporates images, video, sound, and code from multiple sources. These include:
