@@ -792,9 +792,17 @@ nav.nav-extended .nav-wrapper {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+#addRecipeContainer{
+    width:100%;
+}
 #addRecipeIntro{
     border-radius: 30%;
     font-size: 130%;
+}
+#addRecipeIntro p{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 50px;
 }
 #userImg{
     height:150px;
