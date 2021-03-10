@@ -278,27 +278,27 @@ This project uses multiple languages, libraries and frameworks which can be foun
 
 ### Frameworks, Libraries & Other
 > 1. Gitpod
-    - The GitPod is used to develop the project.
+> The GitPod is used to develop the project.
 > 2. Git
-    - The Git was used for version control to commit to Git and push to GitHub.
+> The Git was used for version control to commit to Git and push to GitHub.
 > 3. GitHub
-    - GitHub is used to host the project.
+> GitHub is used to host the project.
 > 4. Google Fonts
-    - Google Fonts is used to provide the font roboto for all the text that is used in the project.
+> Google Fonts is used to provide the font roboto for all the text that is used in the project.
 > 5. Balsamiqu
-    - Balsamiqu is used to create the mockup designs for the project.
+> Balsamiqu is used to create the mockup designs for the project.
 > 6. Materialize
-    - Materialize is used for the design framework.
+> Materialize is used for the design framework.
 > 7. MobgoDB
-    - MongoDB is the fully managed cloud database service used for the project.
+> MongoDB is the fully managed cloud database service used for the project.
 > 8. Heroku
-    - Heroki is the cloud platform to deploying the app.
+> Heroki is the cloud platform to deploying the app.
 > 9. Flask
-    - Flask is the web framework used to provide libraries, tools and technologies for the app.
+> Flask is the web framework used to provide libraries, tools and technologies for the app.
 > 10. Jinja
-    - Jinja is used for templating Python
+> Jinja is used for templating Python
 > 11. Werkzeug
-    - Werkzeug is used for security through password hashing
+> Werkzeug is used for security through password hashing
 
 ---------------------
 ## **Testing**
@@ -392,10 +392,15 @@ To create a clone, follow the following steps.
     1. Create a .gitignore file in the root directory of the project.
     2. Create a file in the root directory called "env.py". This will contain all of your envornment variables. Your env.py file should look similar to the following:
 > Import os
+>
 > os.environ.setdefault("IP", "<IP TO USE>")
+>
 > os.environ.setdefault("PORT", "<PORT TO USE>")
+>
 > os.environ.setdefault("SECRET_KEY", "<ADD YOUR SECRET KEY>")
+>
 > os.environ.setdefault("MONGO_URI", "<ADD YOUR MONGO URI>")
+>
 > os.environ.setdefault("MONGO_DBNAME", "<ADD YOUR DATABASE NAME>")
 
     3. Add "env.py" to your .gitignore file.
