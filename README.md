@@ -277,27 +277,27 @@ This project uses multiple languages, libraries and frameworks which can be foun
 >   1. Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
 
 ### Frameworks, Libraries & Other
-> 1. Gitpod
+1. Gitpod
 > The GitPod is used to develop the project.
-> 2. Git
+2. Git
 > The Git was used for version control to commit to Git and push to GitHub.
-> 3. GitHub
+3. GitHub
 > GitHub is used to host the project.
-> 4. Google Fonts
+4. Google Fonts
 > Google Fonts is used to provide the font roboto for all the text that is used in the project.
-> 5. Balsamiqu
+5. Balsamiqu
 > Balsamiqu is used to create the mockup designs for the project.
-> 6. Materialize
+6. Materialize
 > Materialize is used for the design framework.
-> 7. MobgoDB
+7. MobgoDB
 > MongoDB is the fully managed cloud database service used for the project.
-> 8. Heroku
+8. Heroku
 > Heroki is the cloud platform to deploying the app.
-> 9. Flask
+9. Flask
 > Flask is the web framework used to provide libraries, tools and technologies for the app.
-> 10. Jinja
+10. Jinja
 > Jinja is used for templating Python
-> 11. Werkzeug
+11. Werkzeug
 > Werkzeug is used for security through password hashing
 
 ---------------------
