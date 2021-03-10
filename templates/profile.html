@@ -16,8 +16,8 @@
                     <img id="prof_pic" src="{{ user.prof_pic }}" alt="Picture of {{ user.username }}">
                 </div>
                 <div class="col s12 m7 offset-m1 haze border prof-top-card soft-corners">
-                    <a href="{{url_for('editUser')}}" class="btn center-align col s4 offset-s1 green accent-2 black-text">Edit Profile</a>
-                    <a href="#deleteProfile" class="btn modal-trigger center-align red col s4 offset-s2 accent-2 black-text">Delete Profile</a>
+                    <a href="{{url_for('editUser')}}" class="btn center-align col s5 green accent-2 black-text profControls">Edit Profile</a>
+                    <a href="#deleteProfile" class="btn modal-trigger center-align red col s5 offset-s2 accent-2 black-text profControls">Delete Profile</a>
                     <!--modal here-->
                     <div id="deleteProfile" class="modal">
                         <div class="modal-content">
@@ -43,8 +43,9 @@
             </div>
             <!--Second Row-->
             <div class="row">
-                <div class="col s12 m5 haze border soft-corners" id="myRecipes">
-                    <h3 class="center-align">My Recipes:</h3>
+                <div class="col s12 m6">
+                    <div class="col m11 s12 haze border soft-corners" id="myRecipes">
+                        <h3 class="center-align">My Recipes:</h3>
                         <div class="col s8">
                             <p>Name:</p>
                         </div>
@@ -67,110 +68,122 @@
                                 {% endif %}
                             {% endfor %}    
                         </div>
+                    </div>
                 </div>
 <!--Saved Recipe Section-->
-                <div class="col s12 m6 offset-m1 haze border soft-corners" id="saveRecipes">
-                    <h3 class="center-align">Saved Recipes:</h3>
-                        <div class="col s12" id="savedRecipes">
+                <div class="col s12 m6">
+                    <div class="col s12 haze border soft-corners" id="saveRecipes">
+                        <h3 class="center-align">Saved Recipes:</h3>
+                        <div class="col s12">
                             <div class="col s8">
-                            <p>Name:</p>
-                        </div>
-                        <div class="col s4">
-                            <p>View Recipe:</p>
-                        </div>
+                                <p>Name:</p>
+                            </div>
+                            <div class="col s4">
+                                <p>View Recipe:</p>
+                            </div>
+                            <div class="col s12" id="savedRecipes">
                             {% for favorites in user.fav_recipes %}
                                 <div class="row">
-                                <div class="col s7 haze listFavorites">
-                                    <p>{{ favorites[0]|capitalize }}</p>
-                                </div>
-                                <div class="col s5 haze listFavorites center-align">
+                                    <div class="col s7 haze listFavorites">
+                                        <p>{{ favorites[0]|capitalize }}</p>
+                                    </div>
+                                    <div class="col s5 haze listFavorites center-align">
                                     {% set recipeID = favorites[1] %}
-                                    <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View</a>
-                                </div>
+                                        <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View</a>
+                                    </div>
                                 </div>   
-                            {% endfor %}
+                            {% endfor %}   
+                            </div>
+                            
                         </div>
+                    </div>
                 </div>
             </div>
             <!--Admin Contact / Ticketing System-->
             <div class="row" id="thirdRowProfile">
                 <!--Input Ticket-->
-                <div class="col s12 m5 haze border center-align soft-corners" id="myTickets">
-                    <h3>Help Center</h3>
-                    <h6>Open A Ticket And Let Us Know</h6>
-                    <div class="row">
-                        <form method="POST" action="{{ url_for('my_profile') }}">
-                            <div class="input-field col s10 offset-s1">
-                                <select id="query-type" name="query-type" required>
-                                    <i class="fas fa-question prefix"></i> 
-                                    <option value="account">Account Issue</option>
-                                    <option value="profile">Profile Issue</option>
-                                    <option value="recipe">Recipe Issue</option>
-                                    <option value="other">Other Issue</option>
-                                </select>
-                                <label for="query-type" class="black-text">Query Type</label>
-                            </div>
-                            <div class="row">
+                <div class="col s12 m6">
+                    <div class="col m11 s12 haze border center-align soft-corners" id="myTickets">
+                        <h3>Help Center</h3>
+                        <h6>Open A Ticket And Let Us Know</h6>
+                        <div class="row">
+                            <form method="POST" action="{{ url_for('my_profile') }}">
                                 <div class="input-field col s10 offset-s1">
-                                    <i class="fas fa-info prefix left"></i>
-                                    <textarea id="detailsEnter" name="detailsEnter" class="materialize-textarea black-text" required></textarea>
-                                    <label for="detailsEnter" class="black-text">Enter Details Of Issue Here...</label>
+                                    <select id="query-type" name="query-type" required>
+                                        <i class="fas fa-question prefix"></i> 
+                                        <option value="account">Account Issue</option>
+                                        <option value="profile">Profile Issue</option>
+                                        <option value="recipe">Recipe Issue</option>
+                                        <option value="other">Other Issue</option>
+                                    </select>
+                                    <label for="query-type" class="black-text">Query Type</label>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s10 offset-s1">
-                                    <input type="submit" method="POST" name="newTicket" id="newTicket" class="col s12 btn-large green lighten-2" value="Submit Query">
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        <i class="fas fa-info prefix left"></i>
+                                        <textarea id="detailsEnter" name="detailsEnter" class="materialize-textarea black-text" required></textarea>
+                                        <label for="detailsEnter" class="black-text">Enter Details Of Issue Here...</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div> 
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        <input type="submit" method="POST" name="newTicket" id="newTicket" class="col s12 btn-large green lighten-2" value="Submit Query">
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>
                 </div>
+                
 <!--User Messages Section-->
-                <div class="col s12 m6 offset-m1 haze border soft-corners" id="myMessages">
-                    <h3 class="center-align">
-                        Messages For You:
-                    </h3>
-                    <hr class="custom-short-div">
-                    {% if messages %}
-                    <!--Pagination Wrapper-->
-                    <div class="row">
-                        <div class="contents col s12">
-                            <ul class="paginationTable">
-                                {% for message in messages %}
-                                {% if message.message_for|string == myId|string %}
-                                    <li class="tableItem"><div class="row">
-                                        <p class="col s10 offset-s1">
-                                            Message From {{ message.message_from }} on {{ message.date }}<br>
-                                            <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
-                                        </p>
-                                        <div id="{{ message.message_text[:30] }}" class="modal">
-                                            <div class="modal-content">
-                                                <p>{{ message.message_text }}</p>
+                <div class="col s12 m6">
+                    <div class="col s12 haze border soft-corners" id="myMessages">
+                        <h3 class="center-align">
+                            Messages For You:
+                        </h3>
+                        <hr class="custom-short-div">
+                        {% if messages %}
+                        <!--Pagination Wrapper-->
+                        <div class="row">
+                            <div class="contents col s12">
+                                <ul class="paginationTable">
+                                    {% for message in messages %}
+                                    {% if message.message_for|string == myId|string %}
+                                        <li class="tableItem"><div class="row">
+                                            <p class="col s10 offset-s1">
+                                                Message From {{ message.message_from }} on {{ message.date }}<br>
+                                                <a class="black-text modal-trigger" href="#{{ message.message_text[:30] }}">{{ message.message_text[:50] }}...</a>
+                                            </p>
+                                            <div id="{{ message.message_text[:30] }}" class="modal">
+                                                <div class="modal-content">
+                                                    <p>{{ message.message_text }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close btn-flat">Close</a>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close btn-flat">Close</a>
-                                            </div>
-                                        </div>
-                                    </div></li>
-                                {% endif %}
-                                {% endfor %} 
-                            </ul>
-                            <div class="col s12 center-align">
-                                <div id="pagination-container">
-                                    <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
-                                    <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
-                                </div> 
+                                        </div></li>
+                                    {% endif %}
+                                    {% endfor %} 
+                                </ul>
+                                <div class="col s12 center-align">
+                                    <div id="pagination-container">
+                                        <p class="paginacaoCursor center-align" id="beforePagination"> <i class="fas fa-chevron-left"></i> </p>
+                                        <p class="paginacaoCursor center-align" id="afterPagination"> <i class="fas fa-chevron-right"></i> </p>
+                                    </div> 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {% else %}
-                    <div class="row">
-                        <div class="col s12">
-                            <h3>There are no messages for you</h3>
+                        {% else %}
+                        <div class="row">
+                            <div class="col s12">
+                                <h3>There are no messages for you</h3>
+                            </div>
                         </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
                 </div>
+
             </div>
             <div class="row" id="openTickets">
 <!--Output Tickets-->

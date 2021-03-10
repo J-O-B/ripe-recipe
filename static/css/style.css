@@ -577,18 +577,20 @@ nav.nav-extended .nav-wrapper {
 }
 .listFavorites{
     margin:0;
-    height:35px;
-    line-height: 0.5;
+    height:45px;
+    line-height: 0.9;
 }
 .listRecipes{
     margin:0;
-    height:35px;
-    line-height: 0.5;
+    height:45px;
+    line-height: 0.9;
 }
 #myRecipes,
 #saveRecipes{
+    margin-top: 15px;
     height:300px;
     overflow: hidden;
+    padding:10px;
 }
 #thirdRowProfile{
     padding-top: 10px;
@@ -596,6 +598,7 @@ nav.nav-extended .nav-wrapper {
 }
 #myTickets,
 #myMessages{
+    margin-top: 15px;
     height:600px;
     max-width: 99%;
 }
@@ -612,6 +615,10 @@ nav.nav-extended .nav-wrapper {
 #userFavorites{
     height:250px;
     overflow-y: scroll;
+}
+.profControls{
+    font-size: smaller;
+    font-weight: 600;
 }
 /*---------------------------------------------------------------------------------------- Edit User */
 #previewProfPic img{
@@ -1052,6 +1059,17 @@ footer a{
 footer i{
     font-size: 150%;
     transition: all 1s ease-in-out;
+}
+@media screen and (max-width: 1015px){
+    footer i{
+        font-size: 100%;
+    }
+}
+@media screen and (max-width: 600px){
+    footer i{
+        padding-top:30px;
+        font-size: 150%;
+    }
 }
 footer i:hover{
     color: var(--third);
