@@ -272,33 +272,35 @@ This project uses multiple languages, libraries and frameworks which can be foun
 > 2. CSS3
 >   1. CSS3 is used for all styling throught this application.
 > 3. JavaScript
->   1. JavaScript (including jQuery) is used for all interactive forms and is used to compliment Python code regarding forms.
+>   1. JavaScript is used for all interactive forms and is used to compliment Python code regarding forms.
 > 4. Python
 >   1. Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
 
 ### Frameworks, Libraries & Other
 1. Gitpod
-> The GitPod is used to develop the project.
+> GitPod was used to develop the project.
 2. Git
-> The Git was used for version control to commit to Git and push to GitHub.
+> Git was used for version control to commit to Git and push to GitHub and Heroku.
 3. GitHub
-> GitHub is used to host the project.
+> GitHub is used to host the project files.
 4. Google Fonts
-> Google Fonts is used to provide the font roboto for all the text that is used in the project.
+> Google Fonts was used to provide the required fonts.
 5. Balsamiqu
-> Balsamiqu is used to create the mockup designs for the project.
+> Balsamiqu was used to create the mockup designs for the project.
 6. Materialize
-> Materialize is used for the design framework.
+> Materialize was used for the design framework.
 7. MobgoDB
-> MongoDB is the fully managed cloud database service used for the project.
+> MongoDB is the fully managed cloud database that is used for this project.
 8. Heroku
-> Heroki is the cloud platform to deploying the app.
+> Heroku is the cloud platform used for deploying this app online.
 9. Flask
 > Flask is the web framework used to provide libraries, tools and technologies for the app.
 10. Jinja
-> Jinja is used for templating Python
+> Jinja was used for templating Python
 11. Werkzeug
-> Werkzeug is used for security through password hashing
+> Werkzeug was used for password hashing in this project
+12. jQuery
+> jQuery was used throughout this project mainly to speed up programming.
 
 ---------------------
 ## **Testing**
@@ -429,15 +431,17 @@ what dependencies are required to run the application, as well as tell Heroku wh
     1. Navigate to the "Settings" tab:
         1. Scroll to the section "Config Vars" here you will have to tell Heroku what these variables are:
             1. Input data from env.py in the key value section:
+
 > E.g. Key: "IP", Value: "<IP YOU HAVE IN ENV.PY>"
+
             2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
     2. Navigate back to the "Deploy" tab:
         1. Scroll to the "Manual Deploy" tab:
             1. Select the branch you wish to deploy (master is default)
             2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
 
-**Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.**
-**Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct**
+*Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
+*Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct*
 ----------------------
 ## **Credits**
 This project, although pieced together by myself, incorporates images, video, sound, and code from multiple sources. These include:
