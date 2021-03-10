@@ -974,8 +974,13 @@ nav.nav-extended .nav-wrapper {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.cartItems{
+    margin-top: 15px;
+}
 #payDiv{
-    height:675px;
+    margin-top: 15px;
+    height:auto;
+
 }
 .prodItems{
     margin-bottom: 20px;

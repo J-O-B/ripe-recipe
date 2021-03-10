@@ -8,135 +8,141 @@
         </div>
     </div>
     <div class="row">
-        
-        <div class="col s12 m4 center-align haze border">
-            <h3>My Cart Items:</h3>
-            <div class="row" id="cart-items">
-                {% for items in user %}
-                    {% for products in items.cart_items %}
-                    
-                    <div class="row">
-                        <div class="col s6">
-                            <p>{{products[1]}}</p> 
+        <div class="col s10 offset-s1">
+            <div class="col s12 center-align haze border cartItems">
+                <h3>My Cart Items:</h3>
+                <div class="row" id="cart-items">
+                    {% for items in user %}
+                        {% for products in items.cart_items %}
+                        
+                        <div class="row">
+                            <div class="col s6">
+                                <p>{{products[1]}}</p> 
+                            </div>
+                            <div class="col s4 priceHolder">
+                                <ul>
+                                    <li class="prices">{{products[2]}}</li>
+                                </ul>
+                            </div>
+                            <div class="col s2 left">
+                                <form method="POST">
+                                    <input type="text" name="id" id="id" class="hidden" value="{{products[0]}}">
+                                    <input type="text" name="name" id="name" class="hidden" value="{{products[1]}}">
+                                    <input type="text" name="price" id="price" class="hidden" value="{{products[2]}}">
+                                    <input type="text" name="rand" id="rand" class="hidden" value="{{products[3]}}">
+                                    <p><button type="submit" name="delete" id="delete" class="see-through"><i class="far fa-times-circle red-text"></i></button></p>
+                                </form>
+                            </div>
                         </div>
-                        <div class="col s4 priceHolder">
-                            <ul>
-                                <li class="prices">{{products[2]}}</li>
-                            </ul>
-                        </div>
-                        <div class="col s2 left">
-                            <form method="POST">
-                                <input type="text" name="id" id="id" class="hidden" value="{{products[0]}}">
-                                <input type="text" name="name" id="name" class="hidden" value="{{products[1]}}">
-                                <input type="text" name="price" id="price" class="hidden" value="{{products[2]}}">
-                                <input type="text" name="rand" id="rand" class="hidden" value="{{products[3]}}">
-                                <p><button type="submit" name="delete" id="delete" class="see-through"><i class="far fa-times-circle red-text"></i></button></p>
-                            </form>
-                        </div>
-                    </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col s6">
-                    <p>Total Price: </p>
-                    <p>Members Discount: (10%)</p> 
-                    <p>New Total: </p>
                 </div>
-                <div class="col s6">
-                    <p id="totalPrice"></p>
-                    {% if session["user"] %}
-                    <p class="red-text" id="tenPercent"></p>
-                    <p id="newTotal"></p>
-                    {% endif %}
+                <hr>
+                <div class="row">
+                    <div class="col s6">
+                        <p>Total Price: </p>
+                        <p>Members Discount: (10%)</p> 
+                        <p>New Total: </p>
+                    </div>
+                    <div class="col s6">
+                        <p id="totalPrice"></p>
+                        {% if session["user"] %}
+                        <p class="red-text" id="tenPercent"></p>
+                        <p id="newTotal"></p>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <a href="{{ url_for('store') }}" class="btn">Back To Store</a>
+                <div class="row">
+                    <a href="{{ url_for('store') }}" class="btn">Back To Store</a>
+                </div>
             </div>
         </div>
-        <div class="col s12 m7 offset-m1 center-align haze border" id="payDiv">
-            <div class="col s6 offset-s3">
-                <h5>Accepted Payments:</h5>
-                <i class="fab fa-cc-visa"></i>
-                <i class="fab fa-cc-stripe"></i>
-                <i class="fab fa-cc-mastercard"></i>
-                <i class="fab fa-cc-amex"></i>
-            </div>
-            <div class="row haze" id="payForm">
-                    <form>
-                        <div class="row">
-                        <div class="col m6 s12">
-                            <h4>Billing Address</h4>
-                            <!--First & Last-->
-                            <div class="input-field col s7">
-                                <i class="fa fa-user prefix"></i>
-                                <input id="first_name" type="text" class="validate">
-                                <label class="black-text" for="first_name">First Name</label>
+    </div>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <div class="col s12 center-align haze border" id="payDiv">
+                <div class="col s6 offset-s3">
+                    <h5>Accepted Payments:</h5>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-stripe"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+                <div class="row haze" id="payForm">
+                        <form>
+                            <div class="row">
+                            <div class="col l6 s12">
+                                <h4>Billing Address</h4>
+                                <!--First & Last-->
+                                <div class="input-field col s7">
+                                    <i class="fa fa-user prefix"></i>
+                                    <input id="first_name" type="text" class="validate">
+                                    <label class="black-text" for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s5">
+                                    <input id="last_name" type="text" class="validate">
+                                    <label class="black-text" for="last_name">Last Name</label>
+                                </div>
+                                <!--Email-->
+                                <div class="input-field col s12">
+                                    <i class="fas fa-at prefix"></i>
+                                    <input id="email" type="email" class="validate">
+                                    <label class="black-text" for="email">Email</label>
+                                </div>
+                                <!--Address-->
+                                <div class="input-field col s12">
+                                    <i class="fas fa-map-marker-alt prefix"></i>
+                                    <input id="address" type="text" class="validate">
+                                    <label class="black-text" for="address">Address</label>
+                                </div>
+                                <!--City-->
+                                <div class="input-field col s12">
+                                    <i class="fas fa-city prefix"></i>
+                                    <input id="city" type="text" class="validate">
+                                    <label class="black-text" for="city">City</label>
+                                </div>
                             </div>
-                            <div class="input-field col s5">
-                                <input id="last_name" type="text" class="validate">
-                                <label class="black-text" for="last_name">Last Name</label>
-                            </div>
-                            <!--Email-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-at prefix"></i>
-                                <input id="email" type="email" class="validate">
-                                <label class="black-text" for="email">Email</label>
-                            </div>
-                            <!--Address-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-map-marker-alt prefix"></i>
-                                <input id="address" type="text" class="validate">
-                                <label class="black-text" for="address">Address</label>
-                            </div>
-                            <!--City-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-city prefix"></i>
-                                <input id="city" type="text" class="validate">
-                                <label class="black-text" for="city">City</label>
-                            </div>
-                        </div>
-                        <!--Payment Side-->
-                        <div class="col m6 s12">
-                            <h4>Card Details</h4>
-                                <!--Name-->
-                                <label class="black-text" for="cname">Name on Card</label>
-                                <input class="input-field validate" type="text" id="cname" name="cardname" placeholder="John More Doe">
-                                <!--Card Number-->
-                                <label class="black-text" for="ccnum">Credit card number</label>
-                                <input class="input-field validate" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                                <!--Expiry Month-->
-                                <label class="black-text" for="expmonth">Exp Month</label>
-                                <input class="input-field validate" type="text" id="expmonth" name="expmonth" placeholder="September">
+                            <!--Payment Side-->
+                            <div class="col l6 s12">
+                                <h4>Card Details</h4>
+                                    <!--Name-->
+                                    <label class="black-text" for="cname">Name on Card</label>
+                                    <input class="input-field validate" type="text" id="cname" name="cardname" placeholder="John More Doe">
+                                    <!--Card Number-->
+                                    <label class="black-text" for="ccnum">Credit card number</label>
+                                    <input class="input-field validate" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                    <!--Expiry Month-->
+                                    <label class="black-text" for="expmonth">Exp Month</label>
+                                    <input class="input-field validate" type="text" id="expmonth" name="expmonth" placeholder="September">
 
-                                <div class="row">
-                                    <!--Expiry-->
-                                    <div class="col s6">
-                                        <label class="black-text" for="expyear">Exp Year</label>
-                                        <input class="input-field validate" type="text" id="expyear" name="expyear" placeholder="2018">
-                                    </div>
-                                    <!--CVV-->
-                                    <div class="col s6">
-                                        <label class="black-text" for="cvv">CVV</label>
-                                        <input class="input-field validate" type="text" id="cvv" name="cvv" placeholder="352">
+                                    <div class="row">
+                                        <!--Expiry-->
+                                        <div class="col s6">
+                                            <label class="black-text" for="expyear">Exp Year</label>
+                                            <input class="input-field validate" type="text" id="expyear" name="expyear" placeholder="2018">
+                                        </div>
+                                        <!--CVV-->
+                                        <div class="col s6">
+                                            <label class="black-text" for="cvv">CVV</label>
+                                            <input class="input-field validate" type="text" id="cvv" name="cvv" placeholder="352">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--Same As Shipping-->
-                        <p>
-                            <label>
-                                <input type="checkbox" class="filled-in" checked="checked" />
-                                <span class="black-text">Payment same as shipping address</span>
-                            </label>
-                        </p>
-                        <button id="checkout" class="btn" disabled>Continue to checkout</button>
-                    </form>
-                    <p class="red-text haze border"><em><strong>***Please Note That Payments Are Not Accepted At This Time***</strong></em></p>
+                            <!--Same As Shipping-->
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span class="black-text">Payment same as shipping address</span>
+                                </label>
+                            </p>
+                            <button id="checkout" class="btn" disabled>Continue to checkout</button>
+                        </form>
+                        <p class="red-text haze border"><em><strong>***Please Note That Payments Are Not Accepted At This Time***</strong></em></p>
+                </div>
             </div>
         </div>
+
     </div>
 
 {% endblock %}
