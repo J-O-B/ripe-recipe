@@ -11,14 +11,14 @@
 <!--Card to hold the recipe form-->
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST">
-            <div class="card light-blue lighten-4">
+            <div class="card haze border soft-corners editRecipeCard">
                 <div class="row">
                     <!--Hidden inputs to feed back-->
                     <input type="number" id="rating" name="rating" value="{{ recipes.rating }}" class="hidden">
                     <input type="number" id="rating_count" name="rating_count" value="{{ recipes.rating_count }}" class="hidden">
                     <input name="id" id="id" type="text" value="{{ recipes._id }}" class="hidden">
                     <div class="input-field col m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-layer-group prefix teal-text text-lighten-2"></i>
                         <select name="category" id="category">
                             <option value="starter">Starter</option>
                             <option value="main">Main</option>
@@ -30,35 +30,35 @@
                     </div>
 
                     <div class="input-field col l5 offset-l1 m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-signature prefix teal-text text-lighten-2"></i>
                         <input id="recipe_name" value="{{ recipes.recipe_name }}" name="recipe_name" type="text" minlength="5" maxlength="50" class="validate">
                         <label class="black-text" for="recipe_name">Recipe Name</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col l5 m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-users prefix teal-text text-lighten-2"></i>
                         <input id="serves" value="{{ recipes.serves }}" name="serves" type="text" minlength="1" maxlength="4" pattern="^[0-9]{1,4}$" class="validate">
                         <label class="black-text" for="serves">Serves</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col l5 offset-l1 m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-user-clock prefix teal-text text-lighten-2"></i>
                         <input id="prep_time" value="{{ recipes.prep_time }}" name="prep_time" type="text" minlength="1" maxlength="3" pattern="^[0-9]{1,3}$" class="validate">
                         <label class="black-text" for="prep_time">Prep Time</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
                     
                     <div class="input-field col l5 m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-stopwatch prefix teal-text text-lighten-2"></i>
                         <input id="cook_time" value="{{ recipes.cooking_time}}" name="cook_time" type="text" minlength="1" maxlength="5" pattern="^[0-9]{1,5}$" class="validate">
                         <label class="black-text" for="cook_time">Cooking Time</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col m10 offset-m1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-chart-line prefix teal-text text-lighten-2"></i>
                         <select name="difficulty" id="difficulty">
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
@@ -69,28 +69,28 @@
                     </div>
                     
                     <div class="input-field col s10 offset-s1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="far fa-image prefix teal-text text-lighten-2"></i>
                         <input id="recipe_pic" name="recipe_pic" type="text" class="validate">
                         <label class="black-text" for="recipe_pic">Picture (From URL)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col s10 offset-s1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-list-ul prefix teal-text text-lighten-2"></i>
                         <input id="ingredients" value="{{ recipes.ingredients }}" name="ingredients" type="text" minlength="5" maxlength="500" class="validate">
                         <label class="black-text" for="ingredients">Ingredients, Seperate Ingredients With Full Stop (.)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col s10 offset-s1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="far fa-file-alt prefix teal-text text-lighten-2"></i>
                         <input id="description" value="{{ recipes.description }}" name="description" type="text" minlength="5" maxlength="500" class="validate" required>
                         <label class="black-text" for="description">Description of Recipe</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
                     </div>
 
                     <div class="input-field col s10 offset-s1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-list-ol prefix teal-text text-lighten-2"></i>
                         <input id="instructions" value="{{ recipes.instructions }}" name="instructions" type="text" minlength="5" maxlength="1500" class="validate" required>
                         <label class="black-text" for="instructions">Instructions after each step use the minus (-)</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="input-field col s10 offset-s1">
-                        <i class="fas fa-user-plus prefix pink-text text-lighten-2"></i>
+                        <i class="fas fa-tags prefix teal-text text-lighten-2"></i>
                         <input id="tags" name="tags" value="{{ recipes.tags }}" type="text" minlength="5" maxlength="500" class="validate" required>
                         <label class="black-text" for="tags">Tags For This Recipe (i.e "chicken")</label>
                         <span class="helper-text" data-error="Input incorrect, This Field Only Accepts Numbers & Characters" data-success="Input Correct"></span>
@@ -149,7 +149,7 @@
                 </div>
                 
                 <div class="row">
-                    <button id="submit" name="submit" type="submit" method="POST" class="col s8 offset-s2 btn-large pink lighten-2 text-shadow">
+                    <button id="submit" name="submit" type="submit" method="POST" class="col s8 offset-s2 btn-large text-shadow">
                         Submit
                     </button>
                 </div>

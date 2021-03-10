@@ -1,4 +1,3 @@
 Final css bits to fix:
 
-Mobile Devices:
-
+Icons on edit recipe page

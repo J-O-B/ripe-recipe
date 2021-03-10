@@ -624,6 +624,10 @@ nav.nav-extended .nav-wrapper {
 #previewProfPic img{
     height: 200px;
 }
+/*---------------------------------------------------------------------------------------- Edit Recipes */
+.editRecipeCard{
+    padding-top:25px;
+}
 /*---------------------------------------------------------------------------------------- Recipes */
 #secondRow p{
     font-size: 150%;;

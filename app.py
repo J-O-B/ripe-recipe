@@ -217,44 +217,49 @@ def signup():
 @app.route("/edit/<id>", methods=["GET", "POST"])
 def editrecipe(id):
     id = id
-    recipe = mongo.db.recipes.find(
+    if (len(id) == 12 or len(id) == 24):
+        recipe = mongo.db.recipes.find(
             {"_id": ObjectId(id)})
+        User = id
+        if request.method == "POST":
 
-    if request.method == "POST":
+            submit = {
+                "category_name": request.form.get("category"),
+                "recipe_name": request.form.get("recipe_name"),
+                "serves": request.form.get("serves"),
+                "prep_time": request.form.get("prep_time"),
+                "cooking_time": request.form.get("cook_time"),
+                "difficulty": request.form.get("difficulty"),
+                "pic_url": request.form.get("recipe_pic"),
+                "description": request.form.get("description"),
+                "ingredients": request.form.get("ingredients"),
+                "instructions": request.form.get("instructions"),
+                "rating": request.form.get("rating"),
+                "rating_count": request.form.get("rating_count"),
+                "created_by": User,
+                "tags": request.form.get("tags"),
+                "kcal": request.form.get("kcal"),
+                "fat": request.form.get("fat"),
+                "saturates": request.form.get("saturates"),
+                "carbs": request.form.get("carbs"),
+                "sugars": request.form.get("sugar"),
+                "fibre": request.form.get("fibre"),
+                "protein": request.form.get("protein"),
+                "salt": request.form.get("salt"),
+                }
+            if request.form.get("submit") == "1":
+                mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
 
-        submit = {
-            "category_name": request.form.get("category"),
-            "recipe_name": request.form.get("recipe_name"),
-            "serves": request.form.get("serves"),
-            "prep_time": request.form.get("prep_time"),
-            "cooking_time": request.form.get("cook_time"),
-            "difficulty": request.form.get("difficulty"),
-            "pic_url": request.form.get("recipe_pic"),
-            "description": request.form.get("description"),
-            "ingredients": request.form.get("ingredients"),
-            "instructions": request.form.get("instructions"),
-            "rating": request.form.get("rating"),
-            "rating_count": request.form.get("rating_count"),
-            "created_by": recipe['created_by'],
-            "tags": request.form.get("tags"),
-            "kcal": request.form.get("kcal"),
-            "fat": request.form.get("fat"),
-            "saturates": request.form.get("saturates"),
-            "carbs": request.form.get("carbs"),
-            "sugars": request.form.get("sugar"),
-            "fibre": request.form.get("fibre"),
-            "protein": request.form.get("protein"),
-            "salt": request.form.get("salt"),
-            }
-        if request.form.get("submit") == "1":
-            mongo.db.recipes.update({"_id": ObjectId(id)}, submit)
+                flash("Your Recipe Has Been Updated!")
+                return render_template("selected.html",
+                                       recipe=recipe, id=id)
 
-            flash("Your Recipe Has Been Updated!")
-            return render_template("selected.html",
-                                   recipe=recipe, id=id)
-
-    return render_template(
-            "edit_recipe.html", recipe=recipe)
+        return render_template(
+                "edit_recipe.html", recipe=recipe)
+    else:
+        flash(
+            "It seems like something went wrong. Please return and try again.")
+        return redirect(url_for("home"))
 
 
 @app.route("/newrecipe", methods=["GET", "POST"])
