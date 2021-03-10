@@ -430,10 +430,7 @@ what dependencies are required to run the application, as well as tell Heroku wh
 6. Once you have connected your GitHub repository:
     1. Navigate to the "Settings" tab:
         1. Scroll to the section "Config Vars" here you will have to tell Heroku what these variables are:
-            1. Input data from env.py in the key value section:
-
-> E.g. Key: "IP", Value: "<IP YOU HAVE IN ENV.PY>"
-
+            1. Input data from env.py in the key value section: (e.g. SECRET_KEY in the first box, <YOUR SECRET_KEY> in the second box)
             2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
     2. Navigate back to the "Deploy" tab:
         1. Scroll to the "Manual Deploy" tab:
@@ -441,7 +438,9 @@ what dependencies are required to run the application, as well as tell Heroku wh
             2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
 
 *Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
+
 *Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct*
+
 ----------------------
 ## **Credits**
 This project, although pieced together by myself, incorporates images, video, sound, and code from multiple sources. These include:
