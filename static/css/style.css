@@ -146,6 +146,19 @@ h3{
 .overflowHidden{
     overflow: hidden;
 }
+.rel{
+    position: relative;
+    margin: 0;
+    padding:0;
+    height:400px;
+}
+.fit{
+    position: absolute;
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100%;
+}
 
 img{
     max-width: 90vw;
