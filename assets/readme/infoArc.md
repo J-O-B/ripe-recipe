@@ -35,7 +35,7 @@ The final database structure consists of one database, hosting 6 different colle
 
 #### A Table Representation Of The Database & Collections Can Be Found Below:
 
-<p align="center">
+<div align="center">
 
 | Users       | Recipes       | Products | Comments     | Messages     | Tickets       |
 |-------------|---------------|----------|--------------|--------------|---------------|
@@ -60,7 +60,7 @@ The final database structure consists of one database, hosting 6 different colle
 |             | fibre         |          |              |              |               |
 |             | protein       |          |              |              |               |
 |             | salt          |          |              |              |               |
-</p>
+</div>
 
 ## Database Overview Planned:
 
