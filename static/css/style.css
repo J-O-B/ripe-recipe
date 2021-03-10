@@ -459,6 +459,9 @@ img{
     padding-bottom:25px;
     overflow-y: auto;
 }
+#quickView button{
+    margin-bottom: 15px;
+}
 /*-----------------------------------------------------------------Navbar */
 
 .fa-bars{

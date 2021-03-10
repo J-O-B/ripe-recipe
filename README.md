@@ -437,9 +437,9 @@ what dependencies are required to run the application, as well as tell Heroku wh
             1. Select the branch you wish to deploy (master is default)
             2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
 
-*Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
-
-*Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct*
+> *Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
+> 
+> *Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct*
 
 ----------------------
 ## **Credits**

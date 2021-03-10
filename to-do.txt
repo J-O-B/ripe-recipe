@@ -1,14 +1,4 @@
-Changing search to GET, 
+Final css bits to fix:
 
-Link locations:
+Mobile Devices:
 
-Main nav, 
-Footer, 
-Homepage
-
-Location of search bar under the second line of top menu bar
-full width and appears on all devices.
-
-
-
-Searchbar should route to results/<search term in here>
