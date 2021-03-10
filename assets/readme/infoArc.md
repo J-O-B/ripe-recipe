@@ -1,8 +1,9 @@
 # Information Architecture
 The initial plan for the database and user flow has changed slightly where more efficient methods or routings were found 
 the plan for the database and website user flow are as follows:
-![Logic Plan](/readme-supporting-docs/website_logic_plan.jpg)
-![Database Plan](/readme-supporting-docs/database_overview.jpg)
+
+![Logic Plan](readme-supporting-docs/website_logic_plan.jpg)
+![Database Plan](readme-supporting-docs/database_overview.jpg)
 
 
 The final database structure consists of one database, hosting 6 different collections:
@@ -22,11 +23,19 @@ The final database structure consists of one database, hosting 6 different colle
     is an array, with each reply being stored at the end of the list. This allows a back and forth conversation between users and admins before finally closing 
     and deleting the ticket.
 
+-----------------------------------------------------------------
 
-## Database: Ripe Recipes
-## Collections: Users, Recipes, Products, Comments, Messages & Tickets.
+### Database: 
+#### Ripe Recipes
 
-### A Table Representation Of The Database & Collections Can Be Found Below:
+### Collections: 
+#### Users, Recipes, Products, Comments, Messages & Tickets.
+
+-----------------------------------------------------------------
+
+#### A Table Representation Of The Database & Collections Can Be Found Below:
+
+<p align="center">
 
 | Users       | Recipes       | Products | Comments     | Messages     | Tickets       |
 |-------------|---------------|----------|--------------|--------------|---------------|
@@ -51,6 +60,7 @@ The final database structure consists of one database, hosting 6 different colle
 |             | fibre         |          |              |              |               |
 |             | protein       |          |              |              |               |
 |             | salt          |          |              |              |               |
+</p>
 
 ## Database Overview Planned:
 
