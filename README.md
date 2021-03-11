@@ -192,7 +192,7 @@ was used throughout. - [Materialize.com](http://materializecss.com/)
 ### <ins>**_Typography_**</ins>
 This project uses "Montez", and "Roboto" (Google Fonts).
 
-![Fonts](/assets/readme-supporting-docs/Fonts.jpg)
+![Fonts](assets/readme/readme-supporting-docs/Fonts.jpg)
 
 ### <ins>**_Colors_**</ins>
 There are three primary colors used in this project:
