@@ -191,7 +191,8 @@ was used throughout. - [Materialize.com](http://materializecss.com/)
 
 ### <ins>**_Typography_**</ins>
 This project uses "Montez", and "Roboto" (Google Fonts).
-![Fonts](assets/readme-supporting-docs/Fonts.jpg)
+
+![Fonts](/assets/readme-supporting-docs/Fonts.jpg)
 
 ### <ins>**_Colors_**</ins>
 There are three primary colors used in this project:
@@ -333,6 +334,7 @@ Dev tools was also used to improve features such as accessability, SEO, and perf
 **Lighthouse:**
 
 Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
+
 ![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
 
 **Responsive Design:**
