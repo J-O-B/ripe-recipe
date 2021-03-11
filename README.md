@@ -191,7 +191,7 @@ was used throughout. - [Materialize.com](http://materializecss.com/)
 
 ### <ins>**_Typography_**</ins>
 This project uses "Montez", and "Roboto" (Google Fonts).
-![Fonts](/assets/readme-supporting-docs/Fonts.jpg)
+![Fonts](assets/readme-supporting-docs/Fonts.jpg)
 
 ### <ins>**_Colors_**</ins>
 There are three primary colors used in this project:
@@ -389,7 +389,7 @@ To create a clone, follow the following steps.
         4. recipes
         5. tickets
         6. users
-> Database Architectures Can Be Found [Here](/assets/readme/infoArc.md)
+> Database Architectures Can Be Found [Here](assets/readme/infoArc.md)
 3. Create environment variables (env.py):
     1. Create a .gitignore file in the root directory of the project.
     2. Create a file in the root directory called "env.py". This will contain all of your envornment variables. Your env.py file should look similar to the following:
@@ -477,16 +477,16 @@ I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance a
 Here are a few previews of Ripe Recipes (mockups from [Am I Responsive](http://ami.responsivedesign.is/))
 
 ### Landing Page 
-![Landing Page](/assets/readme/Front.jpg)
+![Landing Page](assets/readme/Front.jpg)
 
 ### Recipe Page
-![Recipe Page](/assets/readme/Recipe.jpg)
+![Recipe Page](assets/readme/Recipe.jpg)
 
 ### Search Page With Results
-![Search Page](/assets/readme/search.jpg)
+![Search Page](assets/readme/search.jpg)
 
 ### Store Page
-![Store Page](/assets/readme/store.jpg)
+![Store Page](assets/readme/store.jpg)
 
 ### Cart Page
-![Cart Page](/assets/readme/cart.jpg)
+![Cart Page](assets/readme/cart.jpg)
