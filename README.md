@@ -1,7 +1,7 @@
 # Milestone Project Three
 
 ## Ripe Recipe
-![Blocks Away](assets/readme/welcome.jpg)
+![Blocks Away](assets/readme/Front.jpg)
 
 Welcome to Ripe Recipe, a recipes database with some social media crossovers. This project is packed full of features,
 is fully responsive, and features both a recipes database, as well as a store for users to use.

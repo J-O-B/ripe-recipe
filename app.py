@@ -31,6 +31,8 @@ def not_found(e):
 def home():
     home = True
     recipes = mongo.db.recipes.find()
+    items = mongo.db.recipes.find().sort(
+        'recipe_name').limit(4)
     if request.form.get('globalSearch') == "1":
         return redirect(url_for('store'))
 
@@ -55,7 +57,8 @@ def home():
             # username doesn't exist
             flash("Username and/or Password Incorrect")
             return redirect(url_for("home"))
-    return render_template("home.html", home=home, recipes=recipes)
+    return render_template("home.html", home=home,
+                           recipes=recipes, items=items)
 
 
 @app.route("/admin", methods=["GET", "POST"])
@@ -204,7 +207,7 @@ def signup():
             }
             mongo.db.users.insert_one(register)
             # Put the new user into "session" cookie
-            flash("Congratulations, You Are Now Part Of The Ripe Family!")
+            flash("Congrats, You Are Now Part Of The Ripe Family!")
 
             return redirect(url_for("login"))
         else:

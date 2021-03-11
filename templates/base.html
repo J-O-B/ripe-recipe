@@ -34,14 +34,14 @@
                         <div class="nav-wrapper nav-logo">
                             <div class="col s4">
                                 <a href="{{url_for('home')}}">
-                                    <img class="hide-on-large-only left" src="{{ url_for('static', filename='img/test.png') }}" alt="Logo image for Ripe Recipe">
+                                    <img class="hide-on-large-only navLogoSmall" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image for Ripe Recipe">
                                 </a>
                             </div>
-                            <div class="col s4">
-                                
+                            <div class="col s5 hide-on-large-only">
+                                <h2 align="center" class="headingText">Ripe Recipes</h2>
                             </div>
-                            <div class="col s4">
-                                <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                            <div class="col s3">
+                                <a href="#" data-target="sidenav" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                             </div>                            
                             <div id="nav-mobile" class="custom-nav hide-on-med-and-down">
                                 <div class="col s2 offset-s1 center-align">
@@ -121,6 +121,9 @@
                     </div>
                     <div class="center-align secondary-nav">
                         <a href="{{ url_for('store') }}" class="secondary-nav white-text text-shadow">Store</a>
+                    </div>
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('cart') }}" class="secondary-nav white-text text-shadow">Cart</a>
                     </div>
                     <hr class="custom-short-div">
             {% if session['user'] %}       

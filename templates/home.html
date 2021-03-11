@@ -32,12 +32,12 @@
                     {% if not session["user"] %}
                     <div class="row">
                         <div class="col s5 offset-s1" id="login-btn">
-                            <a href="#login" class="btn modal-trigger col s12 center-align">
+                            <a href="#login" class="btn modal-trigger col s11 center-align">
                                 Login
                             </a>
                         </div>
-                        <div id="makeNewRow" class="col s5 offset-s1">
-                            <a href="{{ url_for('signup') }}" class="btn col s12 center-align">
+                        <div id="makeNewRow" class="col s5 ">
+                            <a href="{{ url_for('signup') }}" class="btn col s11 offset-s1 center-align">
                                 Signup
                             </a>
                         </div>
@@ -57,6 +57,7 @@
                                 </p>
                                 <hr class="custom-short-div">
                             </div>
+                            {% set carousel = recipes %}
                             {% for X in recipes %}
                                 <li class="tableItem">
                                     <div class="col s6 m4 homeRecItem">
@@ -79,6 +80,20 @@
                 </div>
             </div>
             <div class="row view-more-info">
+                <div class="row homeItems">
+                    <h3 align="center">Recent Recipes:</h3>
+                    {% for i in items %}
+                    <div class="col s6 m3">
+                        <div class="col s10 offset-s1 center-align homeRecImage">
+                            <a href="{{url_for('selected', id=i._id)}}">
+                                <img src="{{i.pic_url}}" alt="Recipe Photo">
+                                <h3 class="hidden recName">{{i.recipe_name|capitalize}}</h3>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                </div>
                 <div class="col s12 center-align">
                     <button id="view-more-info" class="btn">
                         <span id="moreInfo">What Is Ripe? <br><i class="fas fa-chevron-circle-down"></i></span> 

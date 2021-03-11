@@ -327,6 +327,12 @@ img{
 #home_logo{
     height:500px;
 }
+@media screen and (max-width: 1190px){
+    #home_logo{
+        margin-top: 50px;
+        height:400px;
+    }
+}
 .welcome-image img{
     max-height:500px;
     max-width: 50vw;
@@ -459,6 +465,27 @@ img{
     padding-bottom:25px;
     overflow-y: auto;
 }
+.homeRecImage img{
+    position: static;
+    width: 100%;
+    border-radius: 50%;
+}
+.homeRecImage{
+    position: relative;
+    overflow: hidden;
+}
+.homeRecImage h3{
+    position: absolute;
+    color:black;
+    left:0;
+    right:0;
+    top: 20px;
+    background-color: rgba(248, 248, 248, 0.5);
+    border-radius: 30%;
+    height:50%;
+    padding-top:10px;
+    padding-bottom:10px;
+}
 #quickView button{
     margin-bottom: 15px;
 }
@@ -475,7 +502,7 @@ img{
 }
 @media screen and (max-width:375px){
     .nav-bg{
-    background:rgba(179,229,252, 0.7);
+    background:rgba(248, 248, 248, 0.7);
     }
 }
 .nav-content{
@@ -510,6 +537,13 @@ nav.nav-extended .nav-wrapper {
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
+.headingText{
+    color: #000;
+    text-shadow: 2px 2px 30px var(--first);
+    font-weight: 500;
+    line-height: 0.8;
+    width:100%;
+}
 .secondary-nav{
     color: #000;
     text-shadow: 2px 2px 30px var(--first);
@@ -535,6 +569,14 @@ nav.nav-extended .nav-wrapper {
 .custom-sidenav{
     color: #fff;
     background: rgba(0, 0, 0, 0.9);
+}
+.sidenav-trigger{
+    position: relative;
+    width:100%;
+}
+.sidenav-trigger i{
+    position: absolute;
+    right:10px;
 }
 /*----------------------------------------------------------------------------------------User Profile */
 #prof_pic{

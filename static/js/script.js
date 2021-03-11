@@ -3,6 +3,10 @@ $(document).ready(function(){
 
     backToZero();
     randomAd();
+    $('.headingText').hide();
+    $('.navLogoSmall').hide();
+
+    $('.homeItems').show();
 
     $('#recipeShow').hide();
     $('.homePagination').hide();
@@ -189,6 +193,8 @@ function animate(){
     $('.glass').fadeIn(1000);
     $('.welcome-card').show(1400);
     $('.welcome-image').fadeIn(1600);
+    $('.headingText').fadeIn(1000);
+    $('.navLogoSmall').fadeIn(1000);
     function categories(){
         $('#firstRow').show(1200);
         $('#secondRow').show(1600);   
@@ -394,3 +400,10 @@ $('#viewHome').click(function(){
         });
     });
 })
+
+$('.homeRecImage').mouseenter(function(){
+    $(this).find('.recName').removeClass("hidden")
+});
+$('.homeRecImage').mouseleave(function(){
+    $(this).find('.recName').addClass("hidden")
+});
