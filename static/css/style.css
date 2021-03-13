@@ -311,7 +311,7 @@ img{
     opacity: 1;
     z-index: 99;
     width:100%;
-    text-shadow: 2px 2px 50px rgb(250, 0, 0);
+    text-shadow: 2px 2px 30px var(--first);
     color:white;
 }
 .welcome-message{
@@ -332,6 +332,7 @@ img{
 }
 #home_logo{
     height:500px;
+    filter: drop-shadow(1px 1px 5px var(--first));
 }
 @media screen and (max-width: 1190px){
     #home_logo{
@@ -353,7 +354,7 @@ img{
 }
 .more-info-cards{
     color:white;
-    text-shadow: 2px 2px 50px rgb(250, 0, 0);
+    text-shadow: 2px 2px 50px (rgb(250, 0, 0));
     z-index: 99;
     font-size: 120%;
 }
@@ -518,6 +519,7 @@ img{
     height:95px;
     margin-top:25px;
     margin-left:25px;
+    filter: drop-shadow(1px 1px 5px var(--first));
 }
 nav.nav-extended .nav-wrapper {
     height: 100px;

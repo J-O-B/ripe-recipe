@@ -432,11 +432,9 @@ $('.shopList').click(function(){
 });
 
 $('.openList').click(function(){
-    let sizeOfList = 10;
-    $('#shoppingItems').text(function(){
-        for (var i=0; i<=sizeOfList; i++){
-            let line = shoppingList[i];
-            return line;
-        }  
-    })
+    var i;
+    for (i = 0; i < shoppingList.length; i++) {
+    text += shoppingList[i] + "<br>";
+    }
+    $('#shoppingItems').text(text);
 })

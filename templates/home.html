@@ -81,17 +81,16 @@
             </div>
             <div class="row view-more-info">
                 <div class="row homeItems">
-                    <h3 align="center">Recent Recipes:</h3>
+                    <h3 class="center-align text-shadow">Recent Recipes:</h3>
                     {% for i in items %}
                     <div class="col s6 m3">
                         <div class="col s10 offset-s1 center-align homeRecImage">
                             <a href="{{url_for('selected', id=i._id)}}">
-                                <img src="{{i.pic_url}}" alt="Recipe Photo">
+                                <img src="{{i.pic_url}}" alt="Recipe Photo" class="border">
                                 <h3 class="hidden recName">{{i.recipe_name|capitalize}}</h3>
                             </a>
                         </div>
                     </div>
-                    
                     {% endfor %}
                 </div>
                 <div class="col s12 center-align">
