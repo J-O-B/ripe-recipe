@@ -411,3 +411,12 @@ if ($(window).width() < 960) {
     $('.homeRecImage').find('.recName').removeClass("hidden");
     $('.homeRecImage').find("h3").css("top","0").css("font-size", "20px").css("padding-top", "0");
 }
+
+$('.shopList').click(function(){
+    $(this).siblings('span').text("Item Added");
+    $(this).click(function () {
+      $(this).siblings('span').text(function(i, text){
+          return text === "Item Added" ? "Add To Shopping List" : "Item Added";
+      })
+   });
+});

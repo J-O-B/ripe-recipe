@@ -100,16 +100,16 @@
                 <div class="row">
                     <div class="col s12">
                         <h5 class="center-align">It Looks Like You Are The Creator Of This Recipe!</h5>
-                        <div class="col s6 m4 offset-m1">
-                            <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
+                        <div class="col m6 s10 offset-s1">
+                            <form method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
                                 <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
-                                <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
+                                <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn black-text soft-corners">
                                         Edit Recipe
                                 </button>
                             </form>
                         </div>
-                        <div class="col s6 m4 offset-m2">
-                            <a href="#{{recipes._id}}" class="btn-large modal-trigger col s12 red">Request Delete</a>
+                        <div class="col m6 s10 offset-s1">
+                            <a href="#{{recipes._id}}" class="btn modal-trigger col s12 red">Request Delete</a>
                             <div id="{{recipes._id}}" class="modal">
                                 <div class="modal-content">
                                     <h4>Request Delete</h4>
@@ -176,7 +176,7 @@
                 <div class="col s12 l6 center-align border noPadding">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
-                    <div class="row">
+                    <div class="row hide-on-small-only">
                         <div class="col s7 center-align">
                             <p><strong>Item Name:</strong></p>
                         </div>
@@ -190,13 +190,13 @@
                                 {% for item in list1 %}
                                     {% if item|length != 0 %}
                                     <div class="row spaceAround">
-                                        <div class="col s8">
+                                        <div class="col m8 s10 offset-s1">
                                             <li>{{ item|capitalize }}.</li> 
                                         </div>
-                                        <div class="col s4 center-align">
+                                        <div class="col m4 s10 offset-s1">
                                             <label>
-                                                <input type="checkbox" />
-                                                <span class="black-text">Add</span>
+                                                <input class="shopList" type="checkbox" />
+                                                <span class="black-text">Add To Shopping List.</span>
                                             </label>
                                         </div>
                                     </div>
