@@ -168,8 +168,14 @@ img{
     width:100%;
     height:100%;
     margin:0;
-    padding:0;
+    padding:-10px;
     overflow: hidden;
+}
+.image-holder img{
+    padding:0;
+    margin:0;
+    min-width: 100%;
+    min-height: 100%;
 }
 .spaceAround{
     margin-top:10px;
@@ -943,6 +949,9 @@ nav.nav-extended .nav-wrapper {
     background-image: URL("../img/wood.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+.noPadding{
+    padding: 0 !important;
 }
 .top-recipe-inner{
     padding:25px;

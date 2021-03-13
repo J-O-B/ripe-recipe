@@ -11,7 +11,7 @@
                     <div class="col s12 m6 offset-m3 haze border soft-corners" id="selectedTitle">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
-                <div class="col s10 offset-s1 l4 m10 offset-m1 grey lighten-2 recipe-image">
+                <div class="col s10 offset-s1 l4 m10 offset-m1 recipe-image">
                     <!--Recipe Image-->
                     <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
                         <img class="soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
@@ -64,7 +64,7 @@
                         <h3 class="center-align border">Description:</h3>
                         <div class="row recipe-details">
                             <div class="col s12">
-                                <p class="recipe-details"><span class="largerText">Difficulty: </span>{{ recipes.difficulty|capitalize }}</p>
+                                <p><span class="largerText">Difficulty: </span>{{ recipes.difficulty|capitalize }}</p>
                                 <hr>    
                             </div>
                         </div>
@@ -172,8 +172,8 @@
                     </div>
 
             <!--Bottom Section-->
-            <div class="row haze">
-                <div class="col s12 l6 center-align border">
+            <div class="row haze noPadding">
+                <div class="col s12 l6 center-align border noPadding">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
                     <div class="row">
@@ -186,23 +186,23 @@
                     </div>
                     <div class="row" id="ingredientScroll">
                         {% set list1 = recipes.ingredients.split('.') %}
-                            <ul>
-                                <form>
+                            <ul>    
                                 {% for item in list1 %}
                                     {% if item|length != 0 %}
                                     <div class="row spaceAround">
                                         <div class="col s8">
                                             <li>{{ item|capitalize }}.</li> 
                                         </div>
-                                        <div class="col s4">
-                                            <input type="checkbox" class="filled-in shopListCheck off" value="{{ item|capitalize }}"/>
-                                            <span class="black-text">Add</span>
+                                        <div class="col s4 center-align">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span class="black-text">Add</span>
+                                            </label>
                                         </div>
                                     </div>
-                                    <hr>
                                     {% endif %}
+                                <hr>    
                                 {% endfor %}
-                                </form>
                             </ul>
                             <div class="row center-align">
                                 <a href="#shopList" class="btn modal-trigger">Add Items To Shopping List</a>
@@ -222,10 +222,10 @@
                     </div>
                     
                 
-                <div class="col s12 l6 center-align border">
+                <div class="col s12 l6 center-align border noPadding">
                     <h3 class="center-align">Instructions:</h3>
                     <hr class="custom-short-div">
-                    <div class="row">
+                    <div class="row hide-on-small-only">
                         <div class="col s7 center-align">
                             <p><strong>Step:</strong></p>
                         </div>
@@ -247,8 +247,8 @@
                                         </div>
                                         <div class="col s12 m4 center-align">
                                             <label>
-                                                <input type="checkbox" class="filled-in center-align" />
-                                                <span class="black-text">Done<br><br></span>
+                                                <input type="checkbox" />
+                                                <span class="black-text">Done</span>
                                             </label>
                                         </div>
                                     </div>
@@ -394,8 +394,6 @@
                 </div>
             </div>
     {% endfor %}
-
-        <img src="{{ pic_one }}" alt="">
 {% endblock %}
 
 {% block scripts %}
