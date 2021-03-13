@@ -10,18 +10,16 @@
         </div>
             <div class="row">
                 <div class="col m4 s12 center-align">
-                    <div class="s12 haze border prof-top-card">
+                    <div class="m10 offset-m1 s12 haze border prof-top-card">
                         <img id="prof_pic" src="{{ x.prof_pic }}" alt="Picture of {{ x.username }}">
                     </div>   
                 </div>
                 <div class="col m8 s12 center-align">
-                    <div class="col s12 haze border prof-top-card">
-                        <div class="col s10 offset-s1">
-                            <h2 class="center-align">{{ x.username|capitalize }}</h2>
-                            <p>{{ x.bio|capitalize }}</p>
-                            <div class="col s12 center-align">
-                                <a href="#messageBoard" class="btn">Message {{ x.username|capitalize }}</a>
-                            </div>
+                    <div class="col m10 offset-m1 s12 haze border prof-top-card">
+                        <h2 class="center-align">{{ x.username|capitalize }}</h2>
+                        <p>{{ x.bio|capitalize }}</p>
+                        <div class="col s12 center-align">
+                            <a href="#messageBoard" class="btn">Message {{ x.username|capitalize }}</a>
                         </div>
                     </div>    
                 </div>
@@ -37,7 +35,7 @@
                                 {% if x.recipe_name != "" %}
                                     <ul>
                                         <li>
-                                            <a class="btn modal-trigger" href="#{{ x.recipe_name }}">{{ x.recipe_name|capitalize }}</a>
+                                            <a class="btn modal-trigger" href="#{{ x.recipe_name }}">{{ x.recipe_name[:25]|capitalize }}</a>
                                         </li>
                                     </ul>
                                     <div id="{{ x.recipe_name }}" class="modal">
@@ -67,7 +65,7 @@
                             {% for list in x.fav_recipes %}
                             <ul>
                                 <li>
-                                    <a class="btn" href="{{ url_for('selected', id=list[1]) }}">{{ list[0] }}</a>
+                                    <a class="btn" href="{{ url_for('selected', id=list[1]) }}">{{ list[0][:25] }}</a>
                                 </li>
                             </ul>
                             {% endfor %}
@@ -83,13 +81,13 @@
                         <h3>Leave a message on this users chopping board:</h3>
                         {% if session["user"] %}
                         <div class="row">
-                            <div class="col s10 offset-s1 haze border">
+                            <div class="col m10 offset-m1 s12 haze border">
                                 <form method="POST">
                                     <!--Initial Bug But Fixed By Forcing Inputs To These Fields-->
                                     <input class="hidden" type="text" name="from" id="from" value="{{ session['user'] }}">
                                     <input class="hidden" name="user" id="user" value="{{ user }}">
                                     <!--Data For Database-->
-                                    <input type="text" name="message" id="message" minlength="1" maxlength="250" placeholder="Enter Your Message for {{ user|capitalize }}" class="input-field col s8 offset-s2" required>
+                                    <input type="text" name="message" id="message" minlength="1" maxlength="250" placeholder="Enter Your Message" class="input-field black-text col m8 offset-m2 s12" required>
                                     <button type="submit" class="col s6 offset-s3 btn green" name="newMessage" id="newMessage">
                                         Send
                                     </button>
@@ -105,14 +103,14 @@
                                 <h3>Messages For {{ x.username|capitalize }}</h3>
                                 <!--Begin Message Loop-->
                                 {% for message in messages %}
-                                <div class="col s10 offset-s1 haze border center-align margin-below">
-                                    <div class="col s5 offset-s1">
+                                <div class="col m10 offset-m1 s12 haze border center-align margin-below">
+                                    <div class="col m5 offset-m1 s6">
                                         From: {{ message.message_from }}
                                     </div>
-                                    <div class="col s5">
+                                    <div class="col m5 offset-m1 s6">
                                         Sent On: {{ message.date }}
                                     </div>
-                                    <div class="col s10 offset-s1">
+                                    <div class="col m10 offset-m1 s12">
                                         <p>{{ message.message_text[:50] }}...</p>
                                         <a class="btn col m6 offset-m3 s10 offset-s1 modal-trigger" href="#{{ message._id }}">View Message</a>
                                         {% if message.message_for == session["user"] %}
