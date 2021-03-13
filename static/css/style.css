@@ -1060,6 +1060,9 @@ nav.nav-extended .nav-wrapper {
 .cartItems{
     margin-top: 15px;
 }
+#checkout{
+    font-size: smaller;
+}
 #payDiv{
     margin-top: 15px;
     height:auto;

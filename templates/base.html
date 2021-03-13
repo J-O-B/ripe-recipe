@@ -117,13 +117,13 @@
                         <a href="{{ url_for('search') }}" class="secondary-nav white-text text-shadow">Search Recipes</a>
                     </div>
                     <div class="center-align secondary-nav">
-                        <a href="{{ url_for('about') }}" class="secondary-nav white-text text-shadow">About RipeRecipe</a>
-                    </div>
-                    <div class="center-align secondary-nav">
                         <a href="{{ url_for('store') }}" class="secondary-nav white-text text-shadow">Store</a>
                     </div>
                     <div class="center-align secondary-nav">
                         <a href="{{ url_for('cart') }}" class="secondary-nav white-text text-shadow">Cart</a>
+                    </div>                    
+                    <div class="center-align secondary-nav">
+                        <a href="{{ url_for('about') }}" class="secondary-nav white-text text-shadow">About</a>
                     </div>
                     <hr class="custom-short-div">
             {% if session['user'] %}       

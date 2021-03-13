@@ -272,9 +272,9 @@ function prices(){
     let total = 0;
     $('.prices').each(function(){
         total += parseFloat($(this).text());
-        return total
+        return total;
     });
-    $('#totalPrice').text("$" + total);
+    $('#totalPrice').text("$" + total.toFixed(2));
     let discount = (total * 0.1).toFixed(2);
     $('#tenPercent').text("- $" + discount);
     let newTotal = (total * 0.9).toFixed(2);

@@ -14,7 +14,6 @@
                 <div class="row" id="cart-items">
                     {% for items in user %}
                         {% for products in items.cart_items %}
-                        
                         <div class="row">
                             <div class="col s6">
                                 <p>{{products[1]}}</p> 
@@ -39,16 +38,11 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col s6">
-                        <p>Total Price: </p>
-                        <p>Members Discount: (10%)</p> 
-                        <p>New Total: </p>
-                    </div>
-                    <div class="col s6">
-                        <p id="totalPrice"></p>
+                    <div class="col s12">
+                        <p>Total Price: <br><span id="totalPrice"></span></p>
                         {% if session["user"] %}
-                        <p class="red-text" id="tenPercent"></p>
-                        <p id="newTotal"></p>
+                        <p>Members Discount (10%): <br><span id="tenPercent" class="red-text"></span></p> 
+                        <p>New Total: <br><span id="newTotal"></span></p>
                         {% endif %}
                     </div>
                 </div>
@@ -74,12 +68,13 @@
                             <div class="col l6 s12">
                                 <h4>Billing Address</h4>
                                 <!--First & Last-->
-                                <div class="input-field col s7">
+                                <div class="input-field col m6 s12">
                                     <i class="fa fa-user prefix"></i>
                                     <input id="first_name" type="text" class="validate">
                                     <label class="black-text" for="first_name">First Name</label>
                                 </div>
-                                <div class="input-field col s5">
+                                <div class="input-field col m6 s12">
+                                    <i class="fa fa-user prefix"></i>
                                     <input id="last_name" type="text" class="validate">
                                     <label class="black-text" for="last_name">Last Name</label>
                                 </div>
