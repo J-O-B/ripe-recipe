@@ -412,11 +412,31 @@ if ($(window).width() < 960) {
     $('.homeRecImage').find("h3").css("top","0").css("font-size", "20px").css("padding-top", "0");
 }
 
+let shoppingList = [];
 $('.shopList').click(function(){
+    let itemAdd = $(this).parents().siblings('.itemToAdd').find('li').text();
+    if (shoppingList.includes(itemAdd)){
+        return;
+    }else {
+        shoppingList.push(itemAdd);
+    }
+
     $(this).siblings('span').text("Item Added");
     $(this).click(function () {
-      $(this).siblings('span').text(function(i, text){
-          return text === "Item Added" ? "Add To Shopping List" : "Item Added";
-      })
+        shoppingList.pop(itemAdd);
+        console.log(shoppingList);
+        $(this).siblings('span').text(function(i, text){
+            return text === "Item Added" ? "Add To Shopping List" : "Item Added";
+        })
    });
 });
+
+$('.openList').click(function(){
+    let sizeOfList = 10;
+    $('#shoppingItems').text(function(){
+        for (var i=0; i<=sizeOfList; i++){
+            let line = shoppingList[i];
+            return line;
+        }  
+    })
+})

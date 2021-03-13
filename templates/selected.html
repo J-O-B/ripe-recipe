@@ -190,7 +190,7 @@
                                 {% for item in list1 %}
                                     {% if item|length != 0 %}
                                     <div class="row spaceAround">
-                                        <div class="col m8 s10 offset-s1">
+                                        <div class="col m8 s10 offset-s1 itemToAdd">
                                             <li>{{ item|capitalize }}.</li> 
                                         </div>
                                         <div class="col m4 s10 offset-s1">
@@ -205,12 +205,12 @@
                                 {% endfor %}
                             </ul>
                             <div class="row center-align">
-                                <a href="#shopList" class="btn modal-trigger">Add Items To Shopping List</a>
+                                <a href="#shopList" class="btn modal-trigger openList">Add Items To Shopping List</a>
                                 <div id="shopList" class="modal">
                                     <div class="modal-content light-blue">
                                         <h4>Shopping List:</h4>
                                         <hr class="custom-short-div">
-                                        <p>This feature is currently unavailable. We endevour to have this feature available soon.</p>
+                                        <p id="shoppingItems">You Do Not Have Any Items Added To Your Shopping List</p>
                                         <p>Thank you for your understanding</p>
                                     </div>
                                     <div class="modal-footer light-blue">
@@ -220,8 +220,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                
                 <div class="col s12 l6 center-align border noPadding">
                     <h3 class="center-align">Instructions:</h3>
                     <hr class="custom-short-div">
