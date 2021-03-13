@@ -11,7 +11,7 @@
                     <div class="col s12 m6 offset-m3 haze border soft-corners" id="selectedTitle">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
-                <div class="col s10 offset-s1 l4 m7 grey lighten-2 recipe-image">
+                <div class="col s10 offset-s1 l4 m10 offset-m1 grey lighten-2 recipe-image">
                     <!--Recipe Image-->
                     <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
                         <img class="soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
@@ -25,70 +25,62 @@
                     <a href="#!" class="modal-close btn-flat">Close</a>
                     </div>
                 </div>
-                <div class="col s12 l8 m5 margin-bottom">
+                <div class="col s12 l6 margin-bottom">
                     <!--Left Block--> 
-                    <div class="col l6 s12 left-block">
+                    <div class="col l6 m6 s12 left-block">
                         <h3 class="center-align border">Details: </h3>
                         <div class="row recipe-details">
-                            <div class="col s4 right-align">
-                                <p><strong>Name: </strong></p>
+                            <div class="col s12">
+                                <p><span class="largerText">Name: </span>{{recipes.recipe_name|capitalize}}</p>
                                 <hr>
                             </div>
-                            <div class="col s8">
-                                <p>{{recipes.recipe_name|capitalize}}</p>
+                        </div>
+                        <div class="row recipe-details">
+                            <div class="col s12">
+                                <p><span class="largerText">Serves: </span>{{recipes.serves}} Person(s)</p>
                                 <hr>
                             </div> 
                         </div>
                         <div class="row recipe-details">
-                            <div class="col m4 s5 right-align">
-                                <p>Serves: </p>
-                                <hr>
-                            </div>
-                            <div class="col m8 s7">
-                                <p>{{recipes.serves}} Person(s)</p>
+                            <div class="col s12">
+                                <p><span class="largerText">Prep Time: </span>{{recipes.prep_time}} minutes</p>
                                 <hr>
                             </div>  
                         </div>
                         <div class="row recipe-details">
-                            <div class="col m4 s5 right-align">
-                                <p><strong>Prep Time: </strong></p>
-                                <hr>
-                            </div>
-                            <div class="col m8 s7">
-                                <p>{{recipes.prep_time}} minutes</p>
-                                <hr>
-                            </div>  
-                        </div>
-                        <div class="row recipe-details">
-                            <div class="col m4 s5 right-align">
-                                <p><strong>Cook Time: </strong></p>
-                                <hr>
-                            </div>
-                            <div class="col m8 s7">
+                            <div class="col s12">
                                 {% if recipes.cooking_time|length == 0 %}
                                     {% set cookTime = "No Cooking Time" %}
                                 {% else %}
                                     {% set cookTime = recipes.cooking_time + " minutes" %}
                                 {% endif %}
-                                <p>{{cookTime}}</p>
+                                <p><span class="largerText">Cook Time: </span>{{cookTime}}</p>
                                 <hr>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                     <!--Right Block-->
-                    <div class="col l6 s12 right-block">
+                    <div class="col l6 m6 s12 right-block">
                         <h3 class="center-align border">Description:</h3>
-                        <div class="col s12">
-                            <p class="recipe-details"><strong>Difficulty: </strong><span class="center-align">{{ recipes.difficulty|capitalize }}</span></p>
-                            <hr>
-                            <p class="recipe-details"><strong>Description: </strong><span class="center-align">{{ recipes.description|capitalize }}</span></p>
-                            <hr>
-                            {% if session["user"] %}
+                        <div class="row recipe-details">
+                            <div class="col s12">
+                                <p class="recipe-details"><span class="largerText">Difficulty: </span>{{ recipes.difficulty|capitalize }}</p>
+                                <hr>    
+                            </div>
+                        </div>
+                        <div class="row recipe-details">
+                            <div class="col s12">
+                                <p><span class="largerText">Description: </span>{{ recipes.description|capitalize }}</p>
+                                <hr>     
+                            </div>
+                        </div>
+                        {% if session["user"] %}
+                        <div class="row">
                             <a class="btn modal-trigger col s12" href="#save-recipe">Add To Favorites <i class="far fa-save"></i></a>
                             {% else %}
                             <p class="center-align"><em>Please <a href="{{url_for('login')}}" class="black-text"><u>Login</u></a> To Save Recipe</em></p>
-                            {% endif %}    
-                        </div>
+                        </div>    
+                        {% endif %}  
                     </div>
                     <div id="save-recipe" class="modal">
                         <div class="modal-content save-recipe center-align">
@@ -106,42 +98,45 @@
             <!-- If the current user created the recipe -->
             {% if recipes.created_by == user["_id"] %}
                 <div class="row">
-                    <h5 class="center">It Looks Like You Are The Creator Of This Recipe!</h5>
-                    <div class="col s6 m4 offset-m1">
-                        <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
-                            <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
-                            <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
-                                    Edit Recipe
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col s6 m4 offset-m2">
-                        <a href="#{{recipes._id}}" class="btn-large modal-trigger col s12 red">Request Delete</a>
-                        <div id="{{recipes._id}}" class="modal">
-                            <div class="modal-content">
-                                <h4>Request Delete</h4>
-                                <p>Are You Sure You Want To Delete This Recipe?</p>
-                                <p>(This Will Open Up A Deletion Ticket With An Admin)</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#confirmation" class="modal-close modal-trigger col s6 red btn-flat">Proceed</a>
-                                <a href="#!" class="modal-close col s6 green btn-flat">Cancel</a>
-                            </div>
+                    <div class="col s12">
+                        <h5 class="center-align">It Looks Like You Are The Creator Of This Recipe!</h5>
+                        <div class="col s6 m4 offset-m1">
+                            <form  method="POST" action="{{ url_for('editrecipe', id=recipes._id) }}">
+                                <input class="hidden" name="name" id="name" value="{{ recipes.recipe_name }}">
+                                <button type="submit" value="{{ recipes.recipe_name }}" class="col s12 btn-large green accent-3 black-text soft-corners">
+                                        Edit Recipe
+                                </button>
+                            </form>
                         </div>
-                        <div id="confirmation" class="modal">
-                            <div class="modal-content">
-                                <form method="POST">
-                                    <input type="text" name="recID" id="recID" value="{{recipes._id}}, {{recipes.recipe_name}}" class="hidden">
-                                    <input type="text" name="id" id="id" value="{{user['_id']}}" class="hidden">
-                                    <input type="text" name="confirm" id="confirm" value="no" placeholder="Type 'yes' To Confirm" class="input-field" required>
-                                    <input type="submit" class="btn-flat modal-close red col s6 offset-s3">
-                                </form>
-                                <a href="#!" class="modal-close col s6 offset-s3 green btn-flat">Cancel</a>
+                        <div class="col s6 m4 offset-m2">
+                            <a href="#{{recipes._id}}" class="btn-large modal-trigger col s12 red">Request Delete</a>
+                            <div id="{{recipes._id}}" class="modal">
+                                <div class="modal-content">
+                                    <h4>Request Delete</h4>
+                                    <p>Are You Sure You Want To Delete This Recipe?</p>
+                                    <p>(This Will Open Up A Deletion Ticket With An Admin)</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#confirmation" class="modal-close modal-trigger col s6 red btn-flat">Proceed</a>
+                                    <a href="#!" class="modal-close col s6 green btn-flat">Cancel</a>
+                                </div>
                             </div>
-                            <div class="modal-footer center-align"> 
+                            <div id="confirmation" class="modal">
+                                <div class="modal-content">
+                                    <form method="POST">
+                                        <input type="text" name="recID" id="recID" value="{{recipes._id}}, {{recipes.recipe_name}}" class="hidden">
+                                        <input type="text" name="id" id="id" value="{{user['_id']}}" class="hidden">
+                                        <input type="text" name="confirm" id="confirm" value="no" placeholder="Type 'yes' To Confirm" class="input-field" required>
+                                        <input type="submit" class="btn-flat modal-close red col s6 offset-s3">
+                                    </form>
+                                    <a href="#!" class="modal-close col s6 offset-s3 green btn-flat">Cancel</a>
+                                </div>
+                                <div class="modal-footer center-align"> 
+                                </div>
                             </div>
-                        </div>
+                        </div>    
                     </div>
+                    
                 </div>
             {% endif %}
             <!--Nutrition Row-->
@@ -178,9 +173,17 @@
 
             <!--Bottom Section-->
             <div class="row haze">
-                <div class="col s12 m6 center-align border">
+                <div class="col s12 l6 center-align border">
                     <h3 class="center-align">Ingredients:</h3>
                     <hr class="custom-short-div">
+                    <div class="row">
+                        <div class="col s7 center-align">
+                            <p><strong>Item Name:</strong></p>
+                        </div>
+                        <div class="col s5 center-align">
+                            <p><strong>Add To Shopping List:</strong></p>
+                        </div>
+                    </div>
                     <div class="row" id="ingredientScroll">
                         {% set list1 = recipes.ingredients.split('.') %}
                             <ul>
@@ -188,14 +191,12 @@
                                 {% for item in list1 %}
                                     {% if item|length != 0 %}
                                     <div class="row spaceAround">
-                                        <div class="col s4 left">
-                                            <label>
-                                                <input type="checkbox" class="filled-in shopListCheck off" value="{{ item|capitalize }}"/>
-                                                <span class="black-text">Add To Shopping List</span>
-                                            </label>
-                                        </div>
-                                        <div class="col s8 right">
+                                        <div class="col s8">
                                             <li>{{ item|capitalize }}.</li> 
+                                        </div>
+                                        <div class="col s4">
+                                            <input type="checkbox" class="filled-in shopListCheck off" value="{{ item|capitalize }}"/>
+                                            <span class="black-text">Add</span>
                                         </div>
                                     </div>
                                     <hr>
@@ -221,9 +222,17 @@
                     </div>
                     
                 
-                <div class="col s12 m6 center-align border">
+                <div class="col s12 l6 center-align border">
                     <h3 class="center-align">Instructions:</h3>
                     <hr class="custom-short-div">
+                    <div class="row">
+                        <div class="col s7 center-align">
+                            <p><strong>Step:</strong></p>
+                        </div>
+                        <div class="col s5 center-align">
+                            <p><strong>Completed?</strong></p>
+                        </div>
+                    </div>
                     <div class="row" id="instructionScroll">
                         <!--Convert instructions string into a list-->
                         {% set list2 = recipes.instructions.split('.') %}
@@ -233,13 +242,13 @@
                                 <!--Stop an empty last list item-->
                                 {% if item|length != 0 %}
                                     <div class="row">
-                                        <div class="col s12 l8">
+                                        <div class="col s12 m8">
                                             <li>{{ item|capitalize }}.</li>
                                         </div>
-                                        <div class="col s12 l4 center-align">
+                                        <div class="col s12 m4 center-align">
                                             <label>
                                                 <input type="checkbox" class="filled-in center-align" />
-                                                <span class="black-text">Completed?<br><br></span>
+                                                <span class="black-text">Done<br><br></span>
                                             </label>
                                         </div>
                                     </div>
@@ -248,7 +257,6 @@
                             {% endfor %}     
                             </ol>     
                     </div>
-                        
                 </div>
             </div>
         </div>

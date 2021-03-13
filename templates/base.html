@@ -160,7 +160,7 @@
                     {% if messages %}
                         {% for message in messages %}
                             <div class="row">
-                                <div class="col s8 offset-s2 flashes">
+                                <div class="col s12 flashes">
                                     <h2 class="haze center-align border text-shadow soft-corners">{{ message }}</h2>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
                 <div class="col s12 m8 offset-m2 footer-content footCenter">
                     <h2>Manage</h2>
                     <hr class="custom-short-div">
-                    <ul>
+                    <ul class="tripleHeight">
                         <li class="col m12 s6 center-align"><a href="{{ url_for('login') }}">Login</a></li>
                         <li class="col m12 s6 center-align"><a href="{{ url_for('signup') }}">Signup</a></li>
                         <li class="col m12 s6 center-align"><a href="{{ url_for('newrecipe') }}">Add Recipe</a></li>

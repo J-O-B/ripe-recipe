@@ -268,7 +268,7 @@ img{
 }
 /*---------------------------------------------------------------- Flashes */
 .flashes h2{
-    font-size:400%;
+    font-size:200%;
     line-height: 2;
     color: black;
 }
@@ -917,6 +917,10 @@ nav.nav-extended .nav-wrapper {
     position: relative;
     background-image: URL("../img/timber.jpg");
 }
+.largerText{
+    font-size: large;
+    font-weight: 600;
+}
 .recipe-title>h2{
     font-size: 400%;
     text-shadow: 1px 1px 30px var(--second);
@@ -1115,6 +1119,7 @@ footer a{
 .footCenter li:hover{
     transform: scale(2,1);
 }
+
 footer i{
     font-size: 150%;
     transition: all 1s ease-in-out;
@@ -1128,6 +1133,9 @@ footer i{
     footer i{
         padding-top:30px;
         font-size: 150%;
+    }
+    .tripleHeight li{
+        line-height: 3;
     }
 }
 footer i:hover{

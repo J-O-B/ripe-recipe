@@ -402,8 +402,12 @@ $('#viewHome').click(function(){
 })
 
 $('.homeRecImage').mouseenter(function(){
-    $(this).find('.recName').removeClass("hidden")
+    $(this).find('.recName').removeClass("hidden");
 });
 $('.homeRecImage').mouseleave(function(){
-    $(this).find('.recName').addClass("hidden")
+    $(this).find('.recName').addClass("hidden");
 });
+if ($(window).width() < 960) {
+    $('.homeRecImage').find('.recName').removeClass("hidden");
+    $('.homeRecImage').find("h3").css("top","0").css("font-size", "20px").css("padding-top", "0");
+}
