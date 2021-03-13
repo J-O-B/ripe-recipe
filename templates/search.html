@@ -105,11 +105,11 @@
                                     <p>Cook Time : {{results.cooking_time}} Minutes</p>
                                     {%endif%}
                                 </div>
+                                <div class="row modalFooter">
+                                    <a href="{{ url_for('selected', id=results._id) }}" class="btn-large col s6">View More</a>
+                                    <a href="#" class="btn-large red modal-close col s5 offset-s1">Close</a> 
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="{{ url_for('selected', id=results._id) }}" class="btn">View More</a>
-                            <a href="#" class="btn red modal-close">Close</a>
                         </div>
                     </div>
                 </li>
