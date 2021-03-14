@@ -382,8 +382,6 @@ $('#viewSearchForm').submit(function(event){
     let searchQuery = $('#viewSearchBox').val();
     $('#viewSearchForm').attr('action', `/results/${searchQuery}`);
 });
-// Search Results
-$('#moreDetails')
 
 // Homepage Image Slideshow
 $('#viewHome').click(function(){
@@ -478,7 +476,6 @@ $('.openList').click(function(){
 
 // Voice Search
 const btn = $('#talk');
-
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
@@ -489,6 +486,40 @@ recognition.onstart = function(){
 recognition.onresult = function(event){
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
-    
-    $('#globalSearch').trigger("click");
+    console.log(transcript);
+    $('#searchbar').val(transcript);
+    $('#globalSearch').trigger('click');
 }
+
+let voices = [];
+
+window.speechSynthesis.onvoiceschanged = function() {
+  voices = window.speechSynthesis.getVoices();
+};
+
+$('#talk').click(function(event){
+    const speech = new SpeechSynthesisUtterance();
+    speech.voice = voices[6];
+    speech.lang = "en-GB";
+    speech.text = "Please Allow Access To Your Microphone. Once seeing the red icon in your tabs bar, say what you are looking for. This Feature Is Not Available On Certain Browsers";
+    speech.volume = 1;
+    speech.pitch = 0.9;
+    speech.rate = 1.1;
+    window.speechSynthesis.speak(speech);
+    speech.onend = function(event) {
+        recognition.start();
+    }
+})
+$('#voiceSearch').click(function(event){
+    const speech = new SpeechSynthesisUtterance();
+    speech.voice = voices[6];
+    speech.lang = "en-GB";
+    speech.text = "What food, or recipe ingredients are you looking for?";
+    speech.volume = 1;
+    speech.pitch = 0.9;
+    speech.rate = 1.1;
+    window.speechSynthesis.speak(speech);
+    speech.onend = function(event) {
+        recognition.start();
+    }
+})

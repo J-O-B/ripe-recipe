@@ -5,7 +5,7 @@
 **Text below each tab identifies current features to address the specific user story**
 
 > As a user I want immediate access, from everywhere to search for a recipe.
-**To allow users search for a recipe, regardless of viewing device, or location on the website. A search bar was added just under the main navigation**
+**To allow users search for a recipe, regardless of viewing device, or location on the website. A search bar was added just under the main navigation. Voice search functionality is also available for users**
 
 > Have immediate access to recipes from the homepage.
 **To help counter bounce rate, a button "quick view" was added to the homepage, clicking this will refresh the homepage and display the entire recipe database using pagination**
@@ -28,7 +28,7 @@
 
 > Search For Recipes / Search For Recipes With Specific Ingredients
 
-**Users can search for recipes using the search page**
+**Users can search for recipes using the search page, the search bar(under main navigation) & can also search by voice**
 
 > Have Access To A Store With Cooking Related Products
 

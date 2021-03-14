@@ -223,7 +223,9 @@ PLACE YOUTUBE LINK HERE
 * A Custom Shopping List, Based On Recipe Ingredients A User Needs
 * Download A Text File Of Needed Ingredients
 * Placeholder Checkout Form (No functionality at this time)
-* Search Function (Via search bar)
+* Search Function (Via search page)
+* Search Function (Via global search bar under main navigation)
+* Search Function (Via voice search)
 * JavaScript Interactive Forms 
 * User Feedback On Forms, Cart & Various Places Around Website
 * Modals.

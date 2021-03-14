@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block main_content %}
     <div class="row">
-        <div class="col s12 m6 offset-m3 haze border center-align">
-            <h1 class="text-shadow">Search For Recipes</h1>
+        <div class="col s12 m6 offset-m3">
+            <h2 class="center-align border soft-corners">Search For Recipes</h2>
             <hr>
         </div>
     </div>
 <!--Card to hold the search form-->
     <div class="row center-align" id="searchBox">
-        <div class="col s12 m8 offset-m2 center-align haze border soft-corners">
+        <div class="col s12 m10 offset-m1 center-align haze border soft-corners">
                     <p>
                         <em>To search for a recipe, you can look for keywords, such as "Chicken"</em> 
                     </p>
@@ -26,6 +26,14 @@
                             </button>
                         </div>
                     </form>
+                    <p>
+                        <em>You Can Also Search Via Voice. To Allow This Feature, You Must Allow Access To Your Microphone.<br>Please Wait To See The Red "Record" Icon In Your Browser Tabs Before Speaking.</em>
+                    </p>
+                    <div class="row">
+                        <button id="voiceSearch" class="col s8 offset-s2 btn-large black-text text-shadow">
+                            <i class="fas fa-microphone-alt"></i> Voice Search
+                        </button>
+                    </div>
                 <div class="col s12 card-action" id="suggestion">
                     <p>Don't want to search? You can also browse all recipes:</p>
                     <a href="{{ url_for('recipes') }}"><strong class="black-text text-shadow">Browse Recipes</strong></a>

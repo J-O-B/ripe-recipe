@@ -39,10 +39,12 @@
                 <hr>
                 <div class="row">
                     <div class="col s12">
-                        <p>Total Price: <br><span id="totalPrice"></span></p>
                         {% if session["user"] %}
-                        <p>Members Discount (10%): <br><span id="tenPercent" class="red-text"></span></p> 
-                        <p>New Total: <br><span id="newTotal"></span></p>
+                        <p class="col s12 m4">Total Price: <br><span id="totalPrice"></span></p>
+                        <p class="col s12 m4">Members Discount (10%): <br><span id="tenPercent" class="red-text"></span></p> 
+                        <p class="col s12 m4">New Total: <br><span id="newTotal"></span></p>
+                        {% else %}
+                        <p class="col s12">Total Price: <br><span id="totalPrice"></span></p>
                         {% endif %}
                     </div>
                 </div>

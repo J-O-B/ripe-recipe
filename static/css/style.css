@@ -59,10 +59,17 @@ footer{
 }
 .searchbar{
     height:45px;
+    width:100%;
 }
 #globalSearchIcon{
     font-size: 100%;
     margin-top:10px;
+}
+#talk{
+    margin-top: 10px;
+    padding-top: 10px;
+    height:30px;
+    line-height: 0.5;
 }
 #globalSearch{
     margin-top: 10px;
@@ -131,6 +138,7 @@ footer{
 h1,
 h2,
 h3{
+    text-shadow: 2px 2px 15px var(--first);
     font-family: 'Montez', cursive;
 }
 
