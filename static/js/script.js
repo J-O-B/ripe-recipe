@@ -517,7 +517,7 @@ $('#talk').click(function(event){
     const speech = new SpeechSynthesisUtterance();
     speech.voice = voices[6];
     speech.lang = "en-GB";
-    speech.text = "Please Allow Access To Your Microphone. After This Message, say what you're looking for. This Feature Is Not Available On Certain Browsers";
+    speech.text = "What food, or recipe ingredients are you looking for?";
     speech.volume = 1;
     speech.pitch = 0.9;
     speech.rate = 1.1;
@@ -527,17 +527,7 @@ $('#talk').click(function(event){
     }
 })
 $('#voiceSearch').click(function(event){
-    const speech = new SpeechSynthesisUtterance();
-    speech.voice = voices[6];
-    speech.lang = "en-GB";
-    speech.text = "What food, or recipe ingredients are you looking for?";
-    speech.volume = 1;
-    speech.pitch = 0.9;
-    speech.rate = 1.1;
-    window.speechSynthesis.speak(speech);
-    speech.onend = function(event) {
-        recognition.start();
-    }
+    $('#talk').trigger('click');
 })
 
 // Contact form
