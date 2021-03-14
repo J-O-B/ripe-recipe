@@ -39,6 +39,7 @@ body{
     background: url("../img/flames.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 header,
 footer{
@@ -54,6 +55,8 @@ footer{
 }
 .container{
     background-image: url("../img/wood.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     border-radius: 20px;
     padding: 10px 15px 30px 15px;
 }
@@ -486,7 +489,6 @@ img{
 }
 .homeRecImage{
     position: relative;
-    overflow: hidden;
 }
 .homeRecImage h3{
     position: absolute;
@@ -512,7 +514,7 @@ img{
     margin-right:25px;
 }
 .nav-bg{
-    background:rgba(248, 248, 248, 0.3);
+    background:rgba(248, 248, 248, 0.7);
 }
 @media screen and (max-width:375px){
     .nav-bg{
@@ -939,7 +941,9 @@ nav.nav-extended .nav-wrapper {
     font-size: 400%;
     text-shadow: 1px 1px 30px var(--second);
 }
-
+.ingredientsMargin{
+    margin-bottom: 15px;
+}
 .recipe-image{
     position: relative;
     overflow: hidden;

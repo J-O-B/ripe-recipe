@@ -11,7 +11,7 @@
                     <div class="col s12 m6 offset-m3 haze border soft-corners" id="selectedTitle">
                         <h2 class="center-align black-text"><strong>{{ recipes.recipe_name|capitalize }}</strong></h2>
                     </div>
-                <div class="col s10 offset-s1 l4 m10 offset-m1 recipe-image">
+                <div class="col s10 offset-s1 recipe-image">
                     <!--Recipe Image-->
                     <a class="image-holder modal-trigger" href="#{{ recipes.recipe_name }}">
                         <img class="soft-corners" src="{{ recipes.pic_url }}" alt="{{ recipes.recipe_name }} picture">
@@ -25,9 +25,9 @@
                     <a href="#!" class="modal-close btn-flat">Close</a>
                     </div>
                 </div>
-                <div class="col s12 l6 margin-bottom">
+                <div class="col s12 margin-bottom">
                     <!--Left Block--> 
-                    <div class="col l6 s12 left-block">
+                    <div class="col s12 l6 left-block">
                         <h3 class="center-align border">Details: </h3>
                         <div class="row recipe-details">
                             <div class="col s12">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <!--Right Block-->
-                    <div class="col l6 s12 right-block">
+                    <div class="col s12 l6 right-block">
                         <h3 class="center-align border">Description:</h3>
                         <div class="row recipe-details">
                             <div class="col s12">
@@ -173,7 +173,7 @@
 
             <!--Bottom Section-->
             <div class="row haze noPadding">
-                <div class="col s12 l6">
+                <div class="col s12 ingredientsMargin">
                     <div class="col s12 center-align border noPadding">
                         <h3 class="center-align">Ingredients:</h3>
                         <hr class="custom-short-div">
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 l6">
+                <div class="col s12">
                     <div class="col s12 center-align border noPadding">
                         <h3 class="center-align">Instructions:</h3>
                         <hr class="custom-short-div">
@@ -265,7 +265,6 @@
                     </div>    
                 </div>
             </div>
-        </div>
 
             <!--Created By Link-->
             <div class="row">
@@ -401,6 +400,7 @@
                     </ul>
                 </div>
             </div>
+        </div>
     {% endfor %}
 {% endblock %}
 
