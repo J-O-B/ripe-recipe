@@ -433,10 +433,9 @@ def user(id):
             "message_text": request.form.get("message"),
             "date": d1
         }
-        if request.form.get("newMessage") == "1":
-            mongo.db.messages.insert(newMessage)
-            return render_template("user.html",
-                                   userDB=userDB, messages=messages)
+        mongo.db.messages.insert(newMessage)
+        return render_template("user.html",
+                               userDB=userDB, messages=messages)
 
     return render_template("user.html",
                            userDB=userDB, messages=messages, recipes=recipes)
@@ -641,4 +640,4 @@ def cart():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
