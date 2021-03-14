@@ -412,29 +412,68 @@ if ($(window).width() < 960) {
     $('.homeRecImage').find("h3").css("top","0").css("font-size", "20px").css("padding-top", "0");
 }
 
+// Ingredients Shopping List
 let shoppingList = [];
 $('.shopList').click(function(){
     let itemAdd = $(this).parents().siblings('.itemToAdd').find('li').text();
-    if (shoppingList.includes(itemAdd)){
-        return;
-    }else {
-        shoppingList.push(itemAdd);
+    // If checked or not
+    if ($(this).is(':checked')){
+        $(this).siblings('span').text("Item Added");
+        if (shoppingList.includes(itemAdd)){
+            return;
+        }else {
+            shoppingList.push(itemAdd);
+        }
+    } else{
+        $(this).siblings('span').text("Add To Shopping List");
+        if (shoppingList.includes(itemAdd)){
+            for( var i = 0; i < shoppingList.length; i++){        
+                if ( shoppingList[i] === itemAdd) { 
+                    shoppingList.splice(i, 1); 
+                    i--; 
+                }
+            }
+        }
     }
-
-    $(this).siblings('span').text("Item Added");
-    $(this).click(function () {
-        shoppingList.pop(itemAdd);
-        console.log(shoppingList);
-        $(this).siblings('span').text(function(i, text){
-            return text === "Item Added" ? "Add To Shopping List" : "Item Added";
-        })
-   });
 });
 
+let text = "";
 $('.openList').click(function(){
-    var i;
+    text = "";
+    let i;
+    // Loop through array
     for (i = 0; i < shoppingList.length; i++) {
-    text += shoppingList[i] + "<br>";
+        // Loop through characters
+        for (x = 0; x < shoppingList[i].length; x++){
+            if (shoppingList[i][x] == ","){
+                text += shoppingList[i].substring(0, x) + "\n";
+                console.log(x + " with ,");
+                break;
+            } else if (shoppingList[i][x] == "."){
+                text += shoppingList[i].substring(0, x) + "\n";
+                console.log(x + " with .");
+                break;
+            } else {
+                // Pass
+            }
+        }
     }
-    $('#shoppingItems').text(text);
-})
+    function setupCanvas(){
+        let canvas = document.getElementById("shoppingItems");
+        let ctx = canvas.getContext("2d");
+        ctx.font = '12px Arial';
+        let txt = text;
+        let x = 30;
+        let y = 30;
+        let lineheight = 15;
+        let lines = txt.split('\n');
+
+        for (let i = 0; i<lines.length; i++){
+            ctx.fillText(lines[i], x, y + (i*lineheight) );
+        }
+    }
+    setupCanvas();
+    $('#screenshot').click(function(){
+        // Convert to image
+    });
+});

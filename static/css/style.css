@@ -961,6 +961,10 @@ nav.nav-extended .nav-wrapper {
 #selectedTitle{
     margin-bottom:50px;
 }
+#shoppingItems{
+    width:100%;
+    min-height:100px;
+}
 #detailsRecipe p{
     font-size: 120%;
     line-height: 0.9;
