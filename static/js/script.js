@@ -440,38 +440,40 @@ $('.shopList').click(function(){
 let text = "";
 $('.openList').click(function(){
     text = "";
+    txtFile = "";
     let i;
     // Loop through array
     for (i = 0; i < shoppingList.length; i++) {
         // Loop through characters
         for (x = 0; x < shoppingList[i].length; x++){
             if (shoppingList[i][x] == ","){
-                text += shoppingList[i].substring(0, x) + "\n";
-                console.log(x + " with ,");
+                text += shoppingList[i].substring(0, x) + "<br>";
+                txtFile += shoppingList[i].substring(0, x) + ".\n";
                 break;
             } else if (shoppingList[i][x] == "."){
-                text += shoppingList[i].substring(0, x) + "\n";
-                console.log(x + " with .");
+                text += shoppingList[i].substring(0, x) + "<br>";
+                txtFile += shoppingList[i].substring(0, x) + ".\n";
                 break;
             } else {
                 // Pass
             }
         }
     }
-    // check browser and output either text or canvas.
-    function setupCanvas(){
-        let canvas = document.getElementById("shoppingItems");
-        let ctx = canvas.getContext("2d");
-        ctx.font = '12px Arial';
-        let txt = text;
-        let x = 30;
-        let y = 30;
-        let lineheight = 15;
-        let lines = txt.split('\n');
+    $('#shoppingItems').html(text);
+    $('#downloadButton').click(function(){
+        function download() {
+            var str = txtFile;
+            var uri = 'data:text/csv;charset=utf-8,' + str;
 
-        for (let i = 0; i<lines.length; i++){
-            ctx.fillText(lines[i], x, y + (i*lineheight) );
-        }
-    }
-    setupCanvas();
+            var downloadLink = document.createElement("a");
+            downloadLink.href = uri;
+            downloadLink.download = "ShoppingList.txt";
+
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+        }    
+        download();
+    })
 });

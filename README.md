@@ -220,6 +220,7 @@ PLACE YOUTUBE LINK HERE
 * Adding / Deleting Users 
 * Adding / Deleting Recipes 
 * Adding / Deleting Items in Cart 
+* A Custom Shopping List, Based On Recipe Ingredients A User Needs
 * Placeholder Checkout Form (No functionality at this time)
 * Search Function (Via search bar)
 * JavaScript Interactive Forms 
@@ -249,8 +250,6 @@ An instant messenger feature was added but removed. Code is saved in txt file.
 ### <ins>**_Future Features:_**</ins>
 
 A helper bot to help customers with product orders and store FAQ.
-
-A custom shopping list based on saved recipes.
 
 Automated email marketing. 
 
