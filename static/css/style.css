@@ -638,6 +638,10 @@ nav.nav-extended .nav-wrapper {
     height:45px;
     line-height: 0.9;
 }
+.listFavorites a,
+.removeItem a{
+    margin-top: 5px;
+}
 .listRecipes{
     margin:0;
     height:45px;

@@ -467,7 +467,7 @@ def drink():
 @app.route("/myprofile", methods=["GET", "POST"])
 def my_profile():
     """
-    Load In Databases
+    Load In Collections
     """
     try:
         user = mongo.db.users.find_one(
@@ -531,6 +531,18 @@ def my_profile():
                         {"reply": update}})
                 flash("Ticket Edited")
                 return redirect(url_for('my_profile'))
+        if request.form.get("removeRecipe") == "1":
+            user = session["user"]
+            update = [
+                request.form.get("recipeName"),
+                request.form.get("recipeID")
+            ]
+            mongo.db.users.find_one_and_update(
+                {'username': user},
+                {"$pull":
+                    {'fav_recipes': update}})
+            flash("You have saved this recipe")
+            return redirect(url_for('my_profile'))
 
     return render_template(
         "profile.html",

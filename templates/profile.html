@@ -82,19 +82,34 @@
                                 <p>View Recipe:</p>
                             </div>
                             <div class="col s12" id="savedRecipes">
+                                
                             {% for favorites in user.fav_recipes %}
-                                <div class="row">
+                                <div class="row favoriteRow">
                                     <div class="col s7 haze listFavorites">
                                         <p>{{ favorites[0]|capitalize }}</p>
                                     </div>
-                                    <div class="col s5 haze listFavorites center-align">
-                                    {% set recipeID = favorites[1] %}
+                                    <div class="col s3 haze listFavorites center-align">
+                                        {% set recipeID = favorites[1] %}
                                         <a class="btn" href="{{ url_for('selected', id=recipeID) }}">View</a>
+                                    </div>
+                                    <div class="col s2 haze removeItem center-align">
+                                        <a href="#{{recipeID}}" class="btn modal-trigger"><i class="far fa-times-circle"></i></a>
+                                    </div>
+                                    <!--Modal-->
+                                    <div id="{{recipeID}}" class="modal">
+                                        <div class="modal-content save-recipe center-align">
+                                            <h3>Are You Sure You Would Like To Remove This Recipe From Your Favorites?</h3>
+                                            <form method="POST">
+                                                <input type="text" value="{{favorites[0]}}" name="recipeName" id="recipeName" class="hidden">
+                                                <input type="text" value="{{recipeID}}" name="recipeID" id="recipeID" class="hidden">
+                                                <button type="submit" name="removeRecipe" id="removeRecipe" class="btn">Yes</button>
+                                            </form>
+                                            <button class="btn modal-close">No</button>
+                                        </div>
                                     </div>
                                 </div>   
                             {% endfor %}   
                             </div>
-                            
                         </div>
                     </div>
                 </div>

@@ -89,6 +89,9 @@ $('#seeRecipe').click(function(){
 $('#saveRecipe').click(function(){
     $(this).val(1);
 })
+$('#removeRecipe').click(function(){
+    $(this).val(1);
+})
 $('#delete').click(function(){
     $(this).val(1);
     backToZero();
@@ -141,9 +144,7 @@ $('.shopListCheck').click(function(){
 // Deleting an item from cart:
 $('#delete').click(function(){
     $(this).val(1);
-    backToZero();
 })
-
 $('#deleteProf').click(function(){
     $(this).val(1);
 })
