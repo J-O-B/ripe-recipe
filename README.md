@@ -141,7 +141,7 @@ To expand further on strategy, I have included some user stories. They can be fo
 The logo for this project is based simply on a photo that was available via [Pixabay](https://pixabay.com)
 
 ### <ins>**_Wireframes_**</ins>
-You can view the wireframe designs [here](assets/readme/wireframes.pdf)
+You can view the wireframe designs [here](assets/readme/RipeWire.pdf)
 
 The wireframes for this project served as an initial design idea. As more features developed designs have been altered, or 
 changed completely.
@@ -209,8 +209,6 @@ from [Font Awsome](http://fontawesome.com/)
 ## **Features**
 
 Due to the quantity of features available on this website, a video has been made to outline each page, and all features on those pages.
-
-PLACE YOUTUBE LINK HERE
 
 ### <ins>**_Existing Features:_**</ins>
 
@@ -370,8 +368,6 @@ the form.
 * Fix: Generate a random string and attach this string to each list. Therefore even adding the same product twice will 
 essentially create fields that can be differentiated between. This was chosen as a viable solution as I wanted to retain a nested list 
 style within my database.
-
-A full list of testing can be found in the [Testing](assets/readme/testing.md)
 
 --------------------
 ## **Deployment**
