@@ -523,3 +523,24 @@ $('#voiceSearch').click(function(event){
         recognition.start();
     }
 })
+
+// Contact form
+function sendMail(contactForm) {
+    let contactName = contactForm.name.value;
+    let email = contactForm.emailaddress.value;
+    emailjs.send("gmail", "john", {
+        "from_name": contactForm.name.value,
+        "from_email": contactForm.emailaddress.value,
+        "message": contactForm.theMessage.value
+    })
+    .then(
+        function(response) {
+            $('.contactForm').hide(1000);
+            $('#feedbackContact').html(`<h4>Thank You For Your Message ${contactName}, It Has Been Sent Successfully!</h4><p>We Will Get Back To You At ${email} In Due Course.</p>`);
+        },
+        function(error) {
+            $('#feedbackContact').html(`<h4>It Seems Like Something Went Wrong!</h4><p>Please Try Again, Or Feel Free To Email Us Directly On Admin@RipeRecipe.com</p>`)
+        }
+    );
+    return false;  // To block from loading a new page
+}

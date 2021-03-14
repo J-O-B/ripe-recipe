@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block style %}
 <!--EmailJS Script-->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
         (function() {
             emailjs.init("user_qzVjfCSbvhEce7QuYTh1Y");
         })();
@@ -15,37 +15,28 @@
         </div>
     </div>
     <div class="row">
-        <form class="col s12 m8 offset-m2 round" method="POST" onsubmit="sendMail(this)">
-            <div class="card-panel haze border round-corners">
-                <div class="row">
-                    <div class="input-field col l5 offset-l1 m10 offset-m1">
-                        <i class="fas fa-signature prefix pink-text text-lighten-2"></i>
-                        <input id="name" name="name" type="text" minlength="2" maxlength="50" class="validate" required>
-                        <label class="black-text" for="name">Name</label>
-                        <span class="helper-text" data-error="Input Incorrect," data-success="Input Correct"></span>
-                    </div>
-                    
-                    <div class="input-field col l5 m10 offset-m1">
-                        <i class="fas fa-at prefix pink-text text-lighten-2"></i>
-                        <input id="email" name="email" type="email" minlength="1" maxlength="70" class="validate" required>
-                        <label class="black-text" for="email">Email Address</label>
-                        <span class="helper-text" data-error="Input Incorrect, Please Enter A Valid Email" data-success="Input Correct"></span>
-                    </div>
-
-                    <div class="input-field col s10 offset-m1">
-                        <i class="fas fa-comment-dots prefix pink-text text-lighten-2"></i>
-                        <textarea id="message" name="message" class="materialize-textarea validate" minlength="4" maxlength="500" required></textarea>
-                        <label for="message" class="black-text">Your Message...</label>
-                        <span class="helper-text" data-error="This Field Must Not Be Blank, Or Contain Over 500 Characters" data-success="Input Correct"></span>
-                    </div>
-                    <div class="row">
-                        <button type="submit" class="col s8 offset-s2 btn-large text-shadow">
-                            Send Message <i class="fas fa-sign-in-alt"></i>
-                        </button>
-                    </div>
-                </div>
+        <form onsubmit="return sendMail(this);" class="center-align contactForm col s10 offset-s1 m8 offset-m2 border">
+            <div class="col s8 offset-s2 input-field">
+                <i class="fas fa-signature prefix"></i>
+                <label for="name" class="black-text">Name</label>
+                <input type="text" name="name" id="fullname" class="input-field" required />
             </div>
+            <div class="col s8 offset-s2 input-field">
+                <i class="fas fa-at prefix"></i>
+                <label for="emailaddress" class="black-text">Email Address</label>
+                <input type="email" name="emailaddress" id="emailaddress" class="input-field" required />
+            </div>
+            <div class="col s8 offset-s2 input-field">
+                <i class="fas fa-comment-dots prefix"></i>
+                <label for="theMessage" class="black-text">Message</label>
+                <input type="text" rows="5" name="theMessage" id="theMessage" class="input-field" required>              
+            </div>
+            <button type="submit" id="submitContact" class="btn">Send Message</button>
         </form>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align" id="feedbackContact">
+        </div>
     </div>
     <div class="row">
         <div class="col m8 offset-m2 s10 offset-s1 soft-corners border haze text-shadow">
