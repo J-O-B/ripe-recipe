@@ -295,8 +295,8 @@ Python is the brains behind this project. All website routing as well as all dat
 > GitHub is used to host the project files.
 4. Google Fonts
 > Google Fonts was used to provide the required fonts.
-5. Balsamiqu
-> Balsamiqu was used to create the mockup designs for the project.
+5. Balsamiq
+> Balsamiq was used to create the mockup designs for the project.
 6. Materialize
 > Materialize was used for the design framework.
 7. MobgoDB
@@ -311,6 +311,8 @@ Python is the brains behind this project. All website routing as well as all dat
 > Werkzeug was used for password hashing in this project
 12. jQuery
 > jQuery was used throughout this project mainly to speed up programming.
+13. Fontawesome
+> Fontawesome was used to supply all icons in this project.
 
 ---------------------
 ## **Testing**
