@@ -458,6 +458,7 @@ $('.openList').click(function(){
             }
         }
     }
+    // check browser and output either text or canvas.
     function setupCanvas(){
         let canvas = document.getElementById("shoppingItems");
         let ctx = canvas.getContext("2d");

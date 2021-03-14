@@ -75,7 +75,7 @@ footer{
     background-repeat: no-repeat;
 }
 .modal{
-    position: absolute;
+    /*position: absolute;*/
     width: 75vw;
     max-height: 70vh;
     z-index: 9999;
@@ -964,6 +964,7 @@ nav.nav-extended .nav-wrapper {
 #shoppingItems{
     border: 1px solid #000;
     min-height:300px;
+    max-width: 90%;
 }
 #detailsRecipe p{
     font-size: 120%;
