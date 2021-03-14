@@ -149,7 +149,7 @@ changed completely.
 
 ### <ins>**_User Stories_**</ins>
 
-A full breakdown of user stories and the features created to address them are located in the [Full User Stories](user-stories-features.md) file. Below are the 
+A full breakdown of user stories and the features created to address them are located in the [Full User Stories](assets/readme/user-stories-features.md) file. Below are the 
 initial, 'founding' user stories.
 
 Being a recipe database and store the following user stories specific to this project are: 
@@ -221,6 +221,7 @@ PLACE YOUTUBE LINK HERE
 * Adding / Deleting Recipes 
 * Adding / Deleting Items in Cart 
 * A Custom Shopping List, Based On Recipe Ingredients A User Needs
+* Download A Text File Of Needed Ingredients
 * Placeholder Checkout Form (No functionality at this time)
 * Search Function (Via search bar)
 * JavaScript Interactive Forms 

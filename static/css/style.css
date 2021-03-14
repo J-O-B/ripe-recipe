@@ -180,7 +180,7 @@ img{
 .spaceAround{
     margin-top:10px;
     margin-bottom:10px;
-
+    width: 95%;
 }
 .hidden{
     display:none;
@@ -332,7 +332,6 @@ img{
 }
 #home_logo{
     height:500px;
-    filter: drop-shadow(1px 1px 5px var(--first));
 }
 @media screen and (max-width: 1190px){
     #home_logo{
@@ -519,7 +518,6 @@ img{
     height:95px;
     margin-top:25px;
     margin-left:25px;
-    filter: drop-shadow(1px 1px 5px var(--first));
 }
 nav.nav-extended .nav-wrapper {
     height: 100px;

@@ -64,8 +64,8 @@ $(document).ready(function(){
 
 // Date Generator
 function dateGen(){
-    var d = new Date();
-    var date = d.getFullYear();
+    let d = new Date();
+    let date = d.getFullYear();
     $('#date').text(date)
 }
 dateGen();
@@ -215,7 +215,7 @@ $('#goToEdit').click(function(){
     }
 });
 $('#genPreview').click(function(){
-    var url = $('#prof_pic').val();
+    let url = $('#prof_pic').val();
     $('#previewProfPic').show(1500);
     $('#prevPic').attr("src", url)
 });
@@ -425,10 +425,10 @@ $('.shopList').click(function(){
             shoppingList.push(itemAdd);
         }
     } else{
-        $(this).siblings('span').text("Add To Shopping List");
+        $(this).siblings('span').text("Add To List");
         if (shoppingList.includes(itemAdd)){
-            for( var i = 0; i < shoppingList.length; i++){        
-                if ( shoppingList[i] === itemAdd) { 
+            for(let i = 0; i < shoppingList.length; i++){        
+                if (shoppingList[i] === itemAdd) { 
                     shoppingList.splice(i, 1); 
                     i--; 
                 }
@@ -462,18 +462,33 @@ $('.openList').click(function(){
     $('#shoppingItems').html(text);
     $('#downloadButton').click(function(){
         function download() {
-            var str = txtFile;
-            var uri = 'data:text/csv;charset=utf-8,' + str;
-
-            var downloadLink = document.createElement("a");
+            let str = txtFile;
+            let uri = 'data:text/csv;charset=utf-8,' + str;
+            let downloadLink = document.createElement("a");
             downloadLink.href = uri;
             downloadLink.download = "ShoppingList.txt";
-
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
-            
         }    
         download();
     })
 });
+
+
+// Voice Search
+const btn = $('#talk');
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+recognition.onstart = function(){
+    console.log("Listening");
+}
+
+recognition.onresult = function(event){
+    const current = event.resultIndex;
+    const transcript = event.results[current][0].transcript;
+    
+    $('#globalSearch').trigger("click");
+}

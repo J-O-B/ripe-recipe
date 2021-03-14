@@ -65,3 +65,7 @@
 > Preview Products Before Adding Them To The Cart, Or Viewing The Full Page.
 
 **Similar to the recipe previews, a user can preview products prior to adding the item to their cart, or navigating to the full page. This popup will allow users to browse through the product photos, see some basic information and finally offer an add to cart, or view full product options, as well as close the popup**
+
+> Create A Custom Shopping List Based On Ingredients A User Needs.
+
+**A user can simply use the checkboxes located within the "Ingredients" box on a recipe page to add the ingredients they need to buy. Once clicking "add to shopping list" a user will be presented with their custom shopping list. Users can either copy this list manually, or they can click to download a text file with their custom shopping list**
