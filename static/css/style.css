@@ -962,8 +962,8 @@ nav.nav-extended .nav-wrapper {
     margin-bottom:50px;
 }
 #shoppingItems{
-    width:100%;
-    min-height:100px;
+    border: 1px solid #000;
+    min-height:300px;
 }
 #detailsRecipe p{
     font-size: 120%;

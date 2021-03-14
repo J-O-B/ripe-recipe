@@ -1,3 +1,1 @@
-Final css bits to fix:
-
-Icons on edit recipe page
+stars on recipe comment

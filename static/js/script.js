@@ -473,7 +473,4 @@ $('.openList').click(function(){
         }
     }
     setupCanvas();
-    $('#screenshot').click(function(){
-        // Convert to image
-    });
 });
