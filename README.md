@@ -270,14 +270,21 @@ This project uses multiple languages, libraries and frameworks which can be foun
 
 
 ### Languages
-> 1. HTML5
->    1. HTML makes up the foundation of this project.
-> 2. CSS3
->   1. CSS3 is used for all styling throught this application.
+> 1. HTML / HTML5
+
+HTML makes up the foundation of this project.
+
+> 2. CSS / CSS3
+
+CSS3 is used for all styling throught this application.
+
 > 3. JavaScript
->   1. JavaScript is used for all interactive forms and is used to compliment Python code regarding forms.
+
+JavaScript is used for all interactive forms and is used to compliment Python code regarding forms.
+
 > 4. Python
->   1. Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
+
+Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
 
 ### Frameworks, Libraries & Other
 1. Gitpod
@@ -443,7 +450,7 @@ what dependencies are required to run the application, as well as tell Heroku wh
 
 > *Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
 > 
-> *Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct*
+> *Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct before investigating further.*
 
 ----------------------
 ## **Credits**

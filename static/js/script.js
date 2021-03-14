@@ -486,7 +486,23 @@ recognition.onstart = function(){
 recognition.onresult = function(event){
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
-    console.log(transcript);
+    readback(transcript);
+}
+function readback(transcript){
+    //First Read Then Search;
+    const speech = new SpeechSynthesisUtterance();
+    speech.voice = voices[6];
+    speech.lang = "en-GB";
+    speech.text = `Searching For ${transcript}`;
+    speech.volume = 1;
+    speech.pitch = 0.9;
+    speech.rate = 1.1;
+    window.speechSynthesis.speak(speech);
+    speech.onend = function(event) {
+        goToResult(transcript);
+    }
+}
+function goToResult(transcript){
     $('#searchbar').val(transcript);
     $('#globalSearch').trigger('click');
 }
